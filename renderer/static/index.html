@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SCIBooster 文献图谱</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.4/dist/cytoscape.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">SCIBooster</div>
+    <div id="corpus-title" class="corpus-title"></div>
+    <div id="corpus-stats" class="stats"></div>
+  </header>
+
+  <main>
+    <aside id="left">
+      <section>
+        <h3>筛选</h3>
+        <input id="search" type="search" placeholder="搜索标题 / 作者 / 关键词…" />
+        <label class="row">最低相关度 <span id="minscore-val">0</span>
+          <input id="minscore" type="range" min="0" max="10" step="1" value="0" /></label>
+        <label class="row">年份
+          <input id="year-from" type="number" class="num" /> – <input id="year-to" type="number" class="num" /></label>
+        <label class="row">布局
+          <select id="layout">
+            <option value="year">DAG（按年代分层）</option>
+            <option value="dagre">DAG（按拓扑分层）</option>
+            <option value="timeline">时间轴</option>
+            <option value="cose">力导向</option>
+          </select></label>
+      </section>
+
+      <section>
+        <h3>图遍历</h3>
+        <div class="hint">单击节点查看详情，双击节点（或点"添加为起点"）设为起点。</div>
+        <div id="starts" class="chips"></div>
+        <div class="seg" id="mode">
+          <button data-v="bfs" class="on">BFS 广度优先</button>
+          <button data-v="dfs">DFS 深度优先</button>
+        </div>
+        <label class="row">方向
+          <select id="direction">
+            <option value="both">双向</option>
+            <option value="refs">参考文献 ↑（追溯源头）</option>
+            <option value="cited_by">被引 ↓（追踪发展）</option>
+          </select></label>
+        <label class="row">最大深度 <input id="depth" type="number" class="num" value="3" min="0" max="12" /></label>
+        <div class="btns">
+          <button id="run" class="primary">开始遍历</button>
+          <button id="clear-trav">清除</button>
+        </div>
+        <div class="player">
+          <button id="p-play" title="播放/暂停">▶</button>
+          <button id="p-step" title="单步">⏭</button>
+          <button id="p-all" title="全部显示">⏩</button>
+          <input id="p-speed" type="range" min="50" max="1200" value="400" title="速度" />
+          <span id="p-pos" class="muted"></span>
+        </div>
+        <ol id="visit-list" class="visit-list"></ol>
+      </section>
+
+      <section>
+        <h3>图例</h3>
+        <div id="legend" class="legend"></div>
+      </section>
+    </aside>
+
+    <div id="cy-wrap"><div id="cy"></div><div id="cy-empty" class="muted" hidden>没有符合筛选条件的文献</div></div>
+
+    <aside id="right">
+      <div class="tabs">
+        <button data-tab="detail" class="on">文献详情</button>
+        <button data-tab="meta">检索信息</button>
+      </div>
+      <div id="tab-detail" class="tab on"><div class="muted">点击图中节点查看文献详情</div></div>
+      <div id="tab-meta" class="tab"></div>
+    </aside>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

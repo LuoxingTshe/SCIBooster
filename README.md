@@ -1,0 +1,172 @@
+# SCIBooster
+
+A literature retrieval agent harness driven by DeepSeek. You describe a research need in natural language and supply a few core papers; SCIBooster searches **Web of Science Starter API**, uses **OpenAlex** (via [pyalex](https://github.com/J535D165/pyalex)) to fill in abstracts and citation relations, and builds a citation-linked corpus in JSON. Results are written as an **Obsidian vault** (a note per paper, a Bases table, a year-layered citation Canvas, an overview with the PRISMA flow). A small bundled web renderer (citation DAG + BFS/DFS playback) is kept as a development tool. Corpora can be scored for recall against published surveys and exported to BibTeX / RIS / CSV.
+
+```
+natural language + seed papers
+   │  DeepSeek: intent parsing (Chinese → English search terms, concept facets, synonyms, years)
+   ▼
+WoS advanced query (LLM-generated, auto-fixed on syntax errors) ──► WoS Starter search
+   │  matched to OpenAlex by DOI (abstract, referenced_works, citation counts)
+   ▼
+BM25 prefilter → DeepSeek batched relevance scoring (anchored 0–10 rubric)
+   ▼
+snowball expansion: backward (references) / forward (citing works), screened each hop;
+stops early when a hop's share of relevant papers falls below --min-hop-yield
+   ▼
+co-citation gap fill: works cited by ≥ N relevant papers but never reached are fetched and screened
+   ▼
+selection (retracted papers excluded) → citation edges (+ optional LLM semantic labels) → corpus.json
+                                                         (with a PRISMA-style flow record)
+   ▼
+Obsidian vault: papers/*.md + 文献库.base + 引用图谱.canvas + 总览.md
+```
+
+## Installation
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -e ".[dev]"
+cp .env.example .env   # fill in DEEPSEEK_API_KEY, WOS_API_KEY, OPENALEX_EMAIL
+```
+
+| Variable | Description |
+|---|---|
+| `DEEPSEEK_API_KEY` / `DEEPSEEK_MODEL` | Default model `deepseek-chat` (OpenAI-compatible endpoint) |
+| `WOS_API_KEY` | WoS Starter API key. Starter has no cited-reference data, so citation edges come entirely from OpenAlex |
+| `WOS_MAX_REQUESTS` | Cap on WoS requests per run (the free tier has a low daily quota); cache hits don't count toward it |
+| `OPENALEX_EMAIL` / `OPENALEX_API_KEY` | OpenAlex polite pool / optional API key |
+
+All WoS / OpenAlex responses are cached in `.cache/http.sqlite`, so rerunning the same task uses no quota.
+
+## CLI
+
+```bash
+# Debug: show only the parsed intent and generated queries
+scibooster intent "图神经网络在药物发现中的应用" --years 2017-2025
+
+# Pipeline build (seeds accept DOI / OpenAlex ID / WOS:UID / title; repeat --seed or use --seed-file)
+scibooster build "图神经网络在药物发现中的应用" \
+  -s 10.48550/arXiv.1704.01212 \
+  -s "Analyzing Learned Molecular Representations for Property Prediction" \
+  --years 2015-2025 --tier standard --label-edges
+
+# Without a WoS key, search with OpenAlex instead
+scibooster build "..." --source openalex --tier quick
+
+# Agent mode: DeepSeek calls tools on its own (search / snowball / screen / add) to extend an existing corpus
+# --max-papers is a hard cap: add_to_corpus refuses beyond it
+scibooster agent "补充 2023 年后基于大模型的分子生成工作" --corpus corpora/<run>/corpus.json --max-steps 30 --max-papers 100
+
+# (Re)write the Obsidian output for an existing corpus; build/agent do this automatically
+scibooster obsidian corpora/<run>/corpus.json                       # → corpora/<run>/obsidian/ (open as a vault)
+scibooster obsidian corpora/<run>/corpus.json --vault ~/Notes       # → ~/Notes/SCIBooster/<run>/
+
+# Recall against the reference list of a published survey (OpenAlex only, no LLM); writes eval.json
+scibooster eval   corpora/<run>/corpus.json --gold 10.1016/j.ddtec.2020.11.009
+
+# Export for Zotero / EndNote / spreadsheets (corpus.bib / .ris / .csv next to the corpus)
+scibooster export corpora/<run>/corpus.json --format bibtex --min-score 7
+
+scibooster stats    corpora/<run>/corpus.json
+scibooster traverse corpora/<run>/corpus.json --start W2606780347 --mode dfs --direction cited_by --depth 4
+scibooster serve    corpora/<run>/corpus.json        # dev renderer, http://127.0.0.1:8765
+```
+
+`--tier quick|standard|deep` picks a preset; any explicit option overrides it:
+
+| | queries | per query | max hops | per node | frontier | prefilter | max papers | gap fill max |
+|---|---|---|---|---|---|---|---|---|
+| quick | 2 | 30 | 0 | 15 | 8 | 60 | 60 | 15 |
+| standard (default) | 3 | 50 | 1 | 25 | 15 | 150 | 200 | 30 |
+| deep | 4 | 100 | 3 | 40 | 25 | 300 | 400 | 60 |
+
+Other `build` options: `--direction backward|forward|both`; `--threshold` relevance threshold (default 6); `--min-hop-yield` saturation stop (default 0.1); `--gap-min-count` / `--no-gap-fill`; `--keep-retracted`.
+
+`eval` caveat: a survey's reference list also contains background works outside your need, so absolute recall understates coverage. Use it to compare runs on the same gold set, and don't use a corpus seed as the gold survey (its references are snowballed directly; the command warns).
+
+Each run produces `corpora/<slug>-<time>/`:
+- `corpus.json`: the corpus (schema below)
+- `trace.jsonl`: every LLM / WoS / OpenAlex / tool call (for auditing and reproducibility)
+- `obsidian/`: the Obsidian vault output (unless `SCIB_OBSIDIAN_VAULT` points at your own vault, or `--no-obsidian`)
+- `eval.json`, `corpus.bib|ris|csv`: written by `eval` / `export`
+
+## corpus.json
+
+```jsonc
+{
+  "meta": { "prompt": "...", "seeds": [...], "intent": {...}, "queries": ["TS=..."], "params": {...},
+            "usage": { "deepseek_calls": 0, "deepseek_prompt_tokens": 0, "wos_requests": 0, ... }, "summary": null,
+            "prisma": { "identified": {"seed": 2, "openalex_search": 57, "cocited": 13}, "search_duplicates": 3,
+                        "not_screened": 0, "screened": 70, "excluded_low_relevance": 24, "excluded_retracted": 0,
+                        "excluded_over_cap": 0, "included": 48,
+                        "hops": [{"hop": 1, "candidates": 120, "screened": 120, "relevant": 9}],
+                        "stop_reason": "hop 2: yield 4% < 10%", "agent_added": 0 } },
+  "papers": [{
+    "id": "W2606780347",            // OpenAlex ID; papers that can't be matched use "WOS:<uid>" (no citation edges)
+    "doi": "...", "wos_uid": "WOS:...", "title": "...", "authors": [...], "year": 2017, "venue": "...",
+    "abstract": "...", "keywords": [...], "cited_by_count": 0, "wos_times_cited": 0,
+    "is_seed": true, "retracted": false,   // retracted = OpenAlex is_retracted
+    "origin": "seed|wos_search|openalex_search|backward|forward|cocited|agent", "hop": 0,
+    "relevance": { "score": 8, "reason": "...", "flag": null },   // flag "no_abstract" = scored from title only
+    "referenced_works": [...],      // full OpenAlex reference list (includes papers outside the corpus)
+    "external_refs_count": 12, "external_cited_by": 300
+  }],
+  "edges": [{
+    "source": "W_citing", "target": "W_cited", "type": "cites", "provenance": "openalex",
+    "relation": { "label": "extends|uses_method|uses_data|compares|critiques|background", "rationale": "..." } // --label-edges
+  }],
+  "stats": { "n_papers": 0, "n_edges": 0, "by_origin": {...}, "n_retracted": 0, "year_span": [2002, 2025] }
+}
+```
+
+The schema is defined in `scibooster/models.py` (Pydantic), and `Corpus.model_validate` can validate it.
+
+## Obsidian output
+
+Obsidian's core Graph view is force-directed only (no edge labels, edge colours or hierarchical layout), so the citation DAG goes into a **Canvas** instead, where positions, edge labels and colours are explicit:
+
+| File | Opens as | Contents |
+|---|---|---|
+| `总览.md` | note | need, intent, queries, Agent summary, PRISMA flow (mermaid), most-cited papers, embedded table |
+| `文献库.base` | Bases table (Obsidian ≥ 1.9) | views: all papers, core (≥ 8), co-citation gap fill, title-only scores, retracted |
+| `引用图谱.canvas` | Canvas | one band per year (older on top), cards coloured by origin, edges citing → cited with relation labels |
+| `papers/*.md` | notes | properties (year, relevance, origin, `corpus_cites`, …), abstract, `cites` links and typed links (`extends`, `uses_method`, …); the Graph view and Backlinks pane work on these |
+
+- Links are vault-relative paths (`[[SCIBooster/<run>/papers/…|Gilmer 2017]]`), so several runs can share one vault.
+- Re-exporting (e.g. after `agent`) rewrites each note **above** the `%% scibooster:notes … %%` marker and keeps everything you wrote below it. Notes for papers that left the corpus are deleted only if you never wrote in them; files SCIBooster didn't generate are never touched. The Base and the Canvas are regenerated in full, so put manual Canvas edits in a copy.
+- Set `SCIB_OBSIDIAN_VAULT` in `.env` to write every run into your own vault.
+
+## Dev renderer (`renderer/`)
+
+`scibooster serve` starts FastAPI + Cytoscape.js. It is kept for development (inspecting a corpus and checking traversal); day-to-day reading happens in Obsidian.
+
+- **Citation DAG**: layered by year by default (older on top), with in-row order chosen to reduce edge crossings; topological layering (dagre), timeline, and force-directed layouts are also available. Node size ∝ log(citation count), color = source, ★ = seed, edge color = semantic dependency label.
+- **BFS / DFS traversal**: double-click nodes to set start points (several allowed), and choose direction (references ↑ to trace sources / citing works ↓ to follow later work / both) and depth; the visit order plays back step by step, and DFS shows the lineage path.
+- **Search info tab**: parsed intent, executed queries, usage, parameters, and the PRISMA-style screening flow. Paper details flag retracted papers and title-only scores.
+- API: `GET /api/corpus`, `GET /api/traverse?start=&mode=&direction=&depth=`. The renderer makes no LLM calls.
+
+## Code layout
+
+```
+scibooster/
+  cli.py                 Typer CLI
+  config.py models.py    configuration / data models (corpus.json schema)
+  evaluate.py export.py  recall against survey references; BibTeX / RIS / CSV export
+  obsidian.py            Obsidian vault output (notes, Base, Canvas, overview)
+  store.py graph.py      corpus dedup/merge/persistence; citation graph and BFS/DFS
+  llm/                   DeepSeek wrapper (JSON output, tool calling, retries, token accounting) + prompts
+  sources/               WoS Starter client, OpenAlex (pyalex) wrapper, sqlite cache
+  pipeline/              intent / seeds / query / enrich / screen / snowball / gaps / relations / build
+  agent/                 tool definitions + tool-calling loop
+renderer/                dev renderer: FastAPI backend (corpus + traversal API), static frontend
+tests/                   pytest (fake LLM + in-memory citation universe + respx-mocked WoS)
+```
+
+## Tests
+
+```bash
+.venv/bin/python -m pytest -q
+```
+
+CI (`.github/workflows/ci.yml`) runs the same offline suite on Python 3.11 and 3.14.
