@@ -179,4 +179,4 @@ node --test tests/test_network_layout.cjs  # offline layout regression tests; No
 # test_obsidian.py also runs the Canvas layout through Node when it is installed, and always tests the fallback
 ```
 
-CI (`.github/workflows/ci.yml`) runs the Python suite on Python 3.11 and 3.14, plus the layout tests on Node.js 22. Layout tests execute the bundled browser scripts and cover overlap, year independence, filtering, empty/disconnected graphs, spacing, the fallback layout and the headless `layout.cjs` entry point (Canvas-sized cards, reproducibility, CLI).
+CI (`.github/workflows/ci.yml`, `ubuntu-26.04`, actions v7 on the Node 24 runtime) runs the Python suite on Python 3.11 and 3.14, plus the layout tests on Node.js 22. Layout tests execute the bundled browser scripts and cover overlap, year independence, filtering, empty/disconnected graphs, spacing, the fallback layout and the headless `layout.cjs` entry point (Canvas-sized cards, reproducibility, CLI).
