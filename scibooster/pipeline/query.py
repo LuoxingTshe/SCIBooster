@@ -14,6 +14,29 @@ from ..sources.wos import MAX_LIMIT, WosBudgetExceeded, WosClient, WosQueryError
 from ..trace import NULL_TRACER, Tracer
 
 
+# Stable, separately auditable recall branches for garden-heritage searches.
+WOS_BRANCHES: dict[str, str] = {
+    "vegetation_tls": (
+        'TS=("historic garden*" OR "heritage garden*" OR "classical garden*") '
+        'AND TS=(tree OR vegetation OR canopy OR "tree structure" OR "carbon storage" OR "ancient tree*") '
+        'AND TS=(TLS OR "terrestrial laser scanning" OR LiDAR OR "point cloud*")'
+    ),
+    "garden_syntax": (
+        'TS=("Chinese garden*" OR "historic garden*" OR "heritage garden*" OR "classical garden*") '
+        'AND TS=("space syntax" OR wayfinding OR "path network*" OR "spatial configuration" OR "graph theory" OR accessibility)'
+    ),
+    "garden_reviews": (
+        'TS=("garden heritage" OR "heritage garden*" OR "historic garden*" OR "classical garden*") '
+        'AND TS=(review OR bibliometric OR "systematic review" OR "scoping review" OR "literature review")'
+    ),
+    "heritage_pointcloud": (
+        'TS=("cultural heritage" OR "built heritage" OR "architectural heritage" OR "heritage site*") '
+        'AND TS=("point cloud*" OR LiDAR OR "laser scanning" OR photogrammetry) '
+        'AND TS=(segmentation OR classification OR "feature extraction" OR "digital twin" OR HBIM OR "3D documentation")'
+    ),
+}
+
+
 def build_wos_queries(intent: ResearchIntent, llm: LLM, n: int = 3) -> list[str]:
     data = llm.chat_json(
         P.fill(P.QUERY_SYSTEM, n=n),
@@ -23,6 +46,14 @@ def build_wos_queries(intent: ResearchIntent, llm: LLM, n: int = 3) -> list[str]
     qs = [q.strip() for q in data.get("queries") or [] if isinstance(q, str) and q.strip()]
     qs = [ensure_year_clause(strip_acronym_truncation(q), intent.year_range) for q in qs[:n]]
     return qs or [fallback_wos_query(intent)]
+
+
+def build_wos_branch_queries(branches: list[str], years: tuple[int | None, int | None]) -> list[str]:
+    """Build deterministic, independently named recall branches and apply the requested years to each."""
+    unknown = sorted(set(branches) - set(WOS_BRANCHES))
+    if unknown:
+        raise ValueError(f"unknown WoS query branch(es): {', '.join(unknown)}")
+    return [ensure_year_clause(WOS_BRANCHES[name], years) for name in dict.fromkeys(branches)]
 
 
 def ensure_year_clause(q: str, years: tuple[int | None, int | None]) -> str:

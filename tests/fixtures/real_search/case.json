@@ -1,0 +1,43 @@
+{
+  "case_id": "classical-garden-v1",
+  "schema_version": 1,
+  "model": "deepseek-chat",
+  "temperature": 0.2,
+  "wos_max_requests": 60,
+  "minimum_nonseed_hits": 6,
+  "params": {
+    "years": [
+      2018,
+      2025
+    ],
+    "source": "wos",
+    "n_queries": 3,
+    "query_branches": [
+      "vegetation_tls",
+      "garden_syntax",
+      "garden_reviews",
+      "heritage_pointcloud"
+    ],
+    "per_query": 50,
+    "hops": 1,
+    "direction": "both",
+    "per_node": 25,
+    "frontier_size": 15,
+    "prefilter_keep": 150,
+    "threshold": 6.0,
+    "max_papers": 200,
+    "label_edges": true,
+    "label_min_score": 7.0,
+    "label_max_edges": 150,
+    "min_hop_yield": 0.1,
+    "gap_fill": true,
+    "gap_min_count": 3,
+    "gap_max": 30,
+    "exclude_retracted": true,
+    "wos_queries": [
+      "TS=(\"Chinese classical garden\" OR \"historic garden\" OR \"garden heritage\") AND TS=(\"terrestrial laser scanning\" OR \"LiDAR\" OR \"photogrammetry\" OR \"point cloud\" OR \"3D documentation\" OR \"3D reconstruction\") AND TS=(\"conservation\" OR \"management\" OR \"digital twin\" OR \"HBIM\" OR \"semantic segmentation\" OR \"spatial analysis\") AND PY=(2018-2025) AND DT=(Article OR Review OR Proceedings Paper)",
+      "TS=(\"garden\" OR \"garden heritage\" OR \"cultural landscape\") AND TS=(\"3D\" OR \"three-dimensional\" OR \"point cloud\" OR \"laser scanning\" OR \"LiDAR\" OR \"photogrammetry\") AND TS=(\"conservation\" OR \"documentation\" OR \"survey\" OR \"management\") AND PY=(2018-2025) AND DT=(Article OR Review OR Proceedings Paper)",
+      "TS=(\"garden\" OR \"heritage\" OR \"cultural landscape\") AND TS=(\"quantitative\" OR \"spatial analysis\" OR \"spatial metric\" OR \"morphological analysis\" OR \"landscape metric\" OR \"geometric quantification\") AND TS=(\"3D\" OR \"point cloud\" OR \"digital\" OR \"GIS\") AND PY=(2018-2025) AND DT=(Article OR Review OR Proceedings Paper)"
+    ]
+  }
+}

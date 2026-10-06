@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "selection_note": "Retrospectively curated in this conversation after the initial runs; frozen now for development regression, not an independent blind test or a complete PDF-package gold standard.",
+  "papers": [
+    {
+      "doi": "10.1016/j.culher.2022.09.020",
+      "title": "Conservation and management of Chinese classical royal garden heritages based on 3D digitalization - A case study of Jianxin courtyard in Jingyi garden in fragrant hills",
+      "role": "seed",
+      "topic": "皇家园林三维保护",
+      "local_files": [
+        "1.pdf",
+        "Conservation-and-management-of-Chinese-classical-royal-garden_2022_Journal-o.pdf"
+      ]
+    },
+    {
+      "doi": "10.1016/j.ufug.2023.128159",
+      "title": "Towards a framework for point-cloud-based visual analysis of historic gardens: Jichang Garden as a case study",
+      "role": "seed",
+      "topic": "历史园林点云分析",
+      "local_files": [
+        "11.pdf"
+      ]
+    },
+    {
+      "doi": "10.1186/s40494-024-01213-5",
+      "title": "A multi-level quantitative analysis method on the scale, shape and quantity of rockeries in Chinese classical gardens: taking Wanfang Anhe rockery in the Old Summer Palace as an example",
+      "role": "seed",
+      "topic": "假山定量分析",
+      "local_files": [
+        "2.pdf"
+      ]
+    },
+    {
+      "doi": "10.1186/s40494-024-01500-1",
+      "title": "Exploring the correlation between tree structure characteristics and carbon storage in historic gardens using TLS technology: a case study of Jian Xin Pavilions at Jingyi Park, Fragrant Hills Park",
+      "role": "core",
+      "topic": "古树/TLS",
+      "local_files": [
+        "3.pdf"
+      ]
+    },
+    {
+      "doi": "10.1186/s40494-024-01138-z",
+      "title": "Digital preservation of classical gardens at the San Su Shrine",
+      "role": "core",
+      "topic": "三苏祠数字保存",
+      "local_files": [
+        "5.pdf"
+      ]
+    },
+    {
+      "doi": "10.1186/s40494-024-01483-z",
+      "title": "Bibliometric and visual analysis of sustainable preservation of heritage gardens",
+      "role": "review",
+      "topic": "园林保护综述",
+      "local_files": [
+        "6.pdf"
+      ]
+    },
+    {
+      "doi": "10.1186/s40494-024-01179-4",
+      "title": "Deep learning based approaches from semantic point clouds to semantic BIM models for heritage digital twin",
+      "role": "method",
+      "topic": "语义点云数字孪生",
+      "local_files": [
+        "9.pdf"
+      ]
+    },
+    {
+      "doi": "10.1038/s40494-025-01582-5",
+      "title": "The texture of Chinese garden rockery stones: based on 3D point cloud and 3D printing technology",
+      "role": "core",
+      "topic": "假山点云与打印",
+      "local_files": [
+        "10.pdf"
+      ]
+    },
+    {
+      "doi": "10.1016/j.culher.2018.11.015",
+      "title": "Semantic-based 3D information modelling and documentation of rockeries in Chinese classical gardens: A case study on the rockery at Huanxiu Shanzhuang, Suzhou, China",
+      "role": "core",
+      "topic": "假山语义模型",
+      "local_files": [
+        "Semantic-based 3D information modelling and documentation of.pdf"
+      ]
+    },
+    {
+      "doi": "10.3390/land11122304",
+      "title": "Selection and Application of Quantitative Indicators of Paths Based on Graph Theory: A Case Study of Traditional Private and Antique Gardens in Beijing",
+      "role": "core",
+      "topic": "园路图论指标",
+      "local_files": [
+        "Selection_and_Application_of_Quantitative_Indicato.pdf"
+      ]
+    }
+  ]
+}

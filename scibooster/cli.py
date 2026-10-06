@@ -134,6 +134,7 @@ def build(
     source: str = typer.Option("wos", help="Primary search source: wos | openalex"),
     tier: str = typer.Option("standard", help="Preset depth: quick | standard | deep (options below override it)"),
     n_queries: Optional[int] = typer.Option(None, help="Number of WoS queries the LLM generates [tier]"),
+    query_branch: list[str] = typer.Option([], "--branch", help="Additional WoS recall branch: vegetation_tls, garden_syntax, garden_reviews, heritage_pointcloud; repeatable"),
     per_query: Optional[int] = typer.Option(None, help="Max results per query [tier]"),
     hops: Optional[int] = typer.Option(None, help="Max snowball hops; stops early on low yield [tier]"),
     direction: str = typer.Option("both", help="Snowball direction: backward | forward | both"),
@@ -163,7 +164,7 @@ def build(
         raise typer.BadParameter(f"--tier must be one of {', '.join(TIERS)}")
     params = params_for_tier(
         tier, prompt, seeds=_collect_seeds(seed, seed_file), years=_parse_years(years), source=source,
-        n_queries=n_queries, per_query=per_query, hops=hops, direction=direction, per_node=per_node,
+        n_queries=n_queries, query_branches=query_branch, per_query=per_query, hops=hops, direction=direction, per_node=per_node,
         frontier_size=frontier, prefilter_keep=prefilter, threshold=threshold, max_papers=max_papers,
         min_hop_yield=min_hop_yield, gap_fill=gap_fill, gap_min_count=gap_min_count,
         exclude_retracted=not keep_retracted, label_edges=label_edges,

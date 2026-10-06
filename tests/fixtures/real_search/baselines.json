@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-06",
+  "note": "Retrospective evaluation on the same now-frozen positive subset; not a controlled A/B test. Full-package overlap was 8 then 9 distinct works, which differs from this subset.",
+  "runs": [
+    {
+      "label": "原始三查询",
+      "source_local_path": "corpora/real-test-classical-garden-20261006/corpus.json",
+      "papers": 53,
+      "edges": 184,
+      "gold_hits": 7,
+      "nonseed_hits": 4,
+      "out_of_year": 9,
+      "usage": {
+        "deepseek_prompt_tokens": 83074,
+        "deepseek_completion_tokens": 15153,
+        "deepseek_calls": 33,
+        "wos_requests": 4,
+        "openalex_requests": 29
+      },
+      "hit_dois": [
+        "10.1016/j.culher.2022.09.020",
+        "10.1016/j.ufug.2023.128159",
+        "10.1186/s40494-024-01213-5",
+        "10.1186/s40494-024-01138-z",
+        "10.1038/s40494-025-01582-5",
+        "10.1016/j.culher.2018.11.015",
+        "10.3390/land11122304"
+      ]
+    },
+    {
+      "label": "四分支+年份过滤",
+      "source_local_path": "corpora/real-test-classical-garden-branches-20261006/corpus.json",
+      "papers": 66,
+      "edges": 217,
+      "gold_hits": 9,
+      "nonseed_hits": 6,
+      "out_of_year": 0,
+      "usage": {
+        "deepseek_prompt_tokens": 98199,
+        "deepseek_completion_tokens": 18172,
+        "deepseek_calls": 39,
+        "wos_requests": 9,
+        "openalex_requests": 27
+      },
+      "hit_dois": [
+        "10.1016/j.culher.2022.09.020",
+        "10.1016/j.ufug.2023.128159",
+        "10.1186/s40494-024-01213-5",
+        "10.1186/s40494-024-01500-1",
+        "10.1186/s40494-024-01138-z",
+        "10.1186/s40494-024-01179-4",
+        "10.1038/s40494-025-01582-5",
+        "10.1016/j.culher.2018.11.015",
+        "10.3390/land11122304"
+      ]
+    },
+    {
+      "label": "固定入口首次验证（质量回退）",
+      "source_local_path": "corpora/garden-v1-fixed-20261006/corpus.json",
+      "papers": 59,
+      "edges": 177,
+      "gold_hits": 8,
+      "nonseed_hits": 5,
+      "out_of_year": 0,
+      "usage": {
+        "deepseek_prompt_tokens": 93726,
+        "deepseek_completion_tokens": 17258,
+        "deepseek_calls": 36,
+        "wos_requests": 9,
+        "openalex_requests": 40
+      },
+      "status": "regression",
+      "hit_dois": [
+        "10.1016/j.culher.2022.09.020",
+        "10.1016/j.ufug.2023.128159",
+        "10.1186/s40494-024-01213-5",
+        "10.1186/s40494-024-01500-1",
+        "10.1186/s40494-024-01138-z",
+        "10.1038/s40494-025-01582-5",
+        "10.1016/j.culher.2018.11.015",
+        "10.3390/land11122304"
+      ]
+    }
+  ]
+}

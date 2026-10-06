@@ -94,6 +94,7 @@ class Prisma(BaseModel):
     excluded_low_relevance: int = 0
     excluded_retracted: int = 0
     excluded_over_cap: int = 0
+    excluded_out_of_year: int = 0
     included: int = 0
     hops: list[HopStat] = Field(default_factory=list)
     stop_reason: str | None = None

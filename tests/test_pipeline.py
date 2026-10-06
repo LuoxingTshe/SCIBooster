@@ -225,3 +225,45 @@ def test_strip_acronym_truncation():
     assert query.strip_acronym_truncation(q) == (
         'TS=("GNN" OR "GAT" OR "graph attention network*" OR "MPNN") AND TS=("drug design*")'
     )
+
+
+def test_named_wos_branches_are_independent_and_year_bounded():
+    branches = query.build_wos_branch_queries(
+        ["vegetation_tls", "garden_syntax", "garden_reviews", "heritage_pointcloud"], (2018, 2025)
+    )
+    assert len(branches) == 4
+    assert all("PY=(2018-2025)" in branch for branch in branches)
+    assert any("tree structure" in branch and "TLS" in branch for branch in branches)
+    assert any("space syntax" in branch and "wayfinding" in branch for branch in branches)
+    assert any("bibliometric" in branch and "systematic review" in branch for branch in branches)
+    assert any("point cloud*" in branch and "segmentation" in branch for branch in branches)
+    with pytest.raises(ValueError, match="unknown WoS query branch"):
+        query.build_wos_branch_queries(["not-a-branch"], (2018, 2025))
+
+
+def test_build_enforces_year_range_during_search_and_snowball(tmp_path):
+    params = BuildParams(
+        prompt="GNN drug discovery", seeds=["W5"], source="openalex", years=(2019, 2023), hops=1,
+        gap_fill=False,
+    )
+    store = build_corpus(params, FakeLLM(), FakeOA(), None, Tracer(), tmp_path / "years.json", log=lambda m: None)
+    assert store.get("W5") is not None  # seeds remain even if their publication year is outside the range
+    assert all(p.year is None or 2019 <= p.year <= 2023 for p in store.papers if not p.is_seed)
+    assert store.corpus.meta.prisma.excluded_out_of_year > 0
+
+
+def test_fixed_base_queries_bypass_llm_query_generation(tmp_path):
+    llm, wos = FakeLLM(), FakeWos()
+    params = BuildParams(prompt="GNN", source="wos", wos_queries=['TS=("GNN")'], hops=0, gap_fill=False)
+    store = build_corpus(params, llm, FakeOA(), wos, Tracer(), tmp_path / "fixed.json", log=lambda m: None)
+    assert "wos_query" not in llm.calls
+    assert store.corpus.meta.queries == ['TS=("GNN")']
+
+
+@pytest.mark.parametrize("source,branches", [("openalex", ["vegetation_tls"]), ("wos", ["unknown"])])
+def test_invalid_branch_configuration_fails_before_api_calls(tmp_path, source, branches):
+    llm, oa = FakeLLM(), FakeOA()
+    with pytest.raises(ValueError):
+        build_corpus(BuildParams(prompt="x", source=source, query_branches=branches),
+                     llm, oa, FakeWos(), Tracer(), tmp_path / "invalid.json")
+    assert not llm.calls and oa.requests == 0

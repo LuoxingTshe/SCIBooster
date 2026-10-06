@@ -26,6 +26,8 @@ class BuildParams:
     years: tuple[int | None, int | None] = (None, None)
     source: Literal["wos", "openalex"] = "wos"
     n_queries: int = 3
+    query_branches: list[str] = field(default_factory=list)
+    wos_queries: list[str] = field(default_factory=list)  # optional fixed base queries for repeatable runs
     per_query: int = 50
     hops: int = 1
     direction: snowball.Direction = "both"
@@ -75,6 +77,10 @@ def build_corpus(
     out_path: Path,
     log: Log = print,
 ) -> CorpusStore:
+    if params.source != "wos" and (params.query_branches or params.wos_queries):
+        raise ValueError("query_branches and wos_queries require source=wos")
+    # Validate before any external calls, including seed resolution or intent parsing.
+    query.build_wos_branch_queries(params.query_branches, params.years)
     pool = CorpusStore()
     meta = pool.corpus.meta
     meta.prompt, meta.seeds = params.prompt, list(params.seeds)
@@ -104,7 +110,10 @@ def build_corpus(
     if params.source == "wos":
         if wos is None:
             raise RuntimeError("source=wos needs a WOS_API_KEY")
-        queries = query.build_wos_queries(intent, llm, params.n_queries)
+        queries = ([query.ensure_year_clause(q, intent.year_range) for q in params.wos_queries]
+                   if params.wos_queries else query.build_wos_queries(intent, llm, params.n_queries))
+        queries.extend(query.build_wos_branch_queries(params.query_branches, params.years))
+        queries = list(dict.fromkeys(queries))
         log(f"Running {len(queries)} WoS queries…")
         executed, hits, warns = query.run_wos_queries(queries, wos, llm, params.per_query, tracer)
         for w in warns:
@@ -122,13 +131,26 @@ def build_corpus(
         log(f"  · {q}")
     # Every hit goes through pool.add (so a hit that duplicates a seed merges its WoS fields in); only new ones get screened
     search_new: list[Paper] = []
+    excluded_year: set[str] = set()
+    seen_search: set[str] = set()
+    search_duplicates = 0
     for h in hits:
-        is_new = not pool.has(h)
-        p = pool.add(h)
-        if is_new:
-            search_new.append(p)
+        key = h.doi or h.id
+        if key in seen_search:
+            search_duplicates += 1
+            continue
+        seen_search.add(key)
+        if pool.has(h):
+            # Merge WoS identifiers/citation fields into a seed even though it is not a new candidate.
+            pool.add(h)
+            search_duplicates += 1
+            continue
+        if not _within_years(h, params.years):
+            excluded_year.add(key)
+            continue
+        search_new.append(pool.add(h))
     log(f"  {len(search_new)} new candidates after dedup")
-    prisma = Prisma(search_duplicates=len(hits) - len(search_new))
+    prisma = Prisma(search_duplicates=search_duplicates, excluded_out_of_year=len(excluded_year))
     meta.prisma = prisma
 
     # 4. Screen search hits
@@ -145,6 +167,11 @@ def build_corpus(
             break
         log(f"Snowball hop {hop}: expanding {params.direction} from {len(frontier)} papers…")
         cands = snowball.expand(pool, oa, frontier, hop, params.per_node, params.direction, tracer)
+        out_of_year = [p for p in cands if not _within_years(p, params.years)]
+        for p in out_of_year:
+            pool.remove(p.id)
+        prisma.excluded_out_of_year += len({p.doi or p.id for p in out_of_year})
+        cands = [p for p in cands if _within_years(p, params.years)]
         to_screen = screen.prefilter(cands, intent, params.prefilter_keep)
         log(f"  {len(cands)} new candidates, BM25 prefilter -> {len(to_screen)}, LLM screening…")
         _apply(pool, screen.llm_screen(to_screen, intent, llm, seed_papers))
@@ -169,6 +196,9 @@ def build_corpus(
             log(f"Gap fill: {len(missing)} works cited by >= {params.gap_min_count} relevant papers are missing "
                 f"(top: {missing[0][0]} x{missing[0][1]}); fetching and screening…")
             fetched = [p for p in oa.by_ids([rid for rid, _ in missing], origin="cocited", hop=1) if not pool.has(p)]
+            out_of_year = [p for p in fetched if not _within_years(p, params.years)]
+            prisma.excluded_out_of_year += len({p.doi or p.id for p in out_of_year})
+            fetched = [p for p in fetched if _within_years(p, params.years)]
             fetched = [pool.add(p) for p in fetched]
             _apply(pool, screen.llm_screen(fetched, intent, llm, seed_papers))
             n_rel = sum(1 for p in fetched if p.relevance and p.relevance.score >= params.threshold)
@@ -227,6 +257,14 @@ def _apply(pool: CorpusStore, scores: dict[str, Relevance]) -> None:
     for pid, rel in scores.items():
         if (p := pool.get(pid)) is not None and not p.is_seed:
             p.relevance = rel
+
+
+def _within_years(paper: Paper, years: tuple[int | None, int | None]) -> bool:
+    """Keep records with unknown year; reject only known publication years outside explicit bounds."""
+    if paper.year is None:
+        return True
+    start, end = years
+    return not ((start is not None and paper.year < start) or (end is not None and paper.year > end))
 
 
 def _top_relevant(papers: list[Paper], threshold: float, n: int) -> list[Paper]:

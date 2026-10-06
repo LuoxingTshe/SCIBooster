@@ -1,0 +1,6 @@
+# Core literature for the Chinese classical garden digital-conservation test case.
+# One DOI per line; comments and blank lines are ignored by --seed-file.
+
+10.1016/j.culher.2022.09.020
+10.1016/j.ufug.2023.128159
+10.1186/s40494-024-01213-5
