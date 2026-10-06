@@ -1,3 +1,5 @@
+import re
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -27,3 +29,12 @@ def test_traverse_api(client):
     r = client.get("/api/traverse", params=[("start", "W8"), ("start", "W1"), ("mode", "dfs")])
     assert r.status_code == 200 and r.json()["visits"][0]["id"] == "W8"
     assert client.get("/api/traverse", params={"start": "NOPE"}).status_code == 404
+
+
+def test_renderer_assets_are_available_offline(client):
+    html = client.get("/").text
+    scripts = re.findall(r'<script src="([^"]+)"', html)
+    assert scripts and all(src.startswith("/static/") for src in scripts)
+    for src in scripts:
+        response = client.get(src)
+        assert response.status_code == 200 and response.content

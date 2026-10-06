@@ -4,10 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SCIBooster 文献图谱</title>
-  <link rel="stylesheet" href="/static/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.4/dist/cytoscape.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+  <link rel="stylesheet" href="/static/style.css?v=network-1" />
+  <script src="/static/vendor/cytoscape.min.js"></script>
+  <script src="/static/vendor/layout-base.js"></script>
+  <script src="/static/vendor/cose-base.js"></script>
+  <script src="/static/vendor/cytoscape-fcose.js"></script>
+  <script src="/static/network-layout.js?v=network-1"></script>
 </head>
 <body>
   <header>
@@ -25,13 +27,17 @@
           <input id="minscore" type="range" min="0" max="10" step="1" value="0" /></label>
         <label class="row">年份
           <input id="year-from" type="number" class="num" /> – <input id="year-to" type="number" class="num" /></label>
-        <label class="row">布局
-          <select id="layout">
-            <option value="year">DAG（按年代分层）</option>
-            <option value="dagre">DAG（按拓扑分层）</option>
-            <option value="timeline">时间轴</option>
-            <option value="cose">力导向</option>
+        <label class="row">网状布局
+          <select id="spacing">
+            <option value="1">舒展</option>
+            <option value="1.4">宽松</option>
+            <option value="1.8">更宽松</option>
           </select></label>
+        <div class="btns">
+          <button id="relayout">重新布局</button>
+          <button id="fit">适应画布</button>
+        </div>
+        <div class="hint layout-hint">按引用关系自然展开。滚轮缩放，拖动画布或节点；悬停或选中文献可突出直接引用。</div>
       </section>
 
       <section>
@@ -45,8 +51,8 @@
         <label class="row">方向
           <select id="direction">
             <option value="both">双向</option>
-            <option value="refs">参考文献 ↑（追溯源头）</option>
-            <option value="cited_by">被引 ↓（追踪发展）</option>
+            <option value="refs">参考文献（追溯源头）</option>
+            <option value="cited_by">被引文献（追踪发展）</option>
           </select></label>
         <label class="row">最大深度 <input id="depth" type="number" class="num" value="3" min="0" max="12" /></label>
         <div class="btns">
@@ -69,7 +75,16 @@
       </section>
     </aside>
 
-    <div id="cy-wrap"><div id="cy"></div><div id="cy-empty" class="muted" hidden>没有符合筛选条件的文献</div></div>
+    <div id="cy-wrap">
+      <div id="cy" aria-label="文献引用网状图"></div>
+      <div class="graph-toolbar">
+        <span id="graph-status" role="status" aria-live="polite"></span>
+        <button id="clear-focus" hidden>取消聚焦</button>
+        <button id="expand-graph" aria-pressed="false">展开画布</button>
+      </div>
+      <div id="cy-empty" class="muted" hidden>没有符合筛选条件的文献</div>
+      <div class="graph-caption">箭头：施引文献 → 被引用文献 · 年份见节点标签</div>
+    </div>
 
     <aside id="right">
       <div class="tabs">
@@ -80,6 +95,6 @@
       <div id="tab-meta" class="tab"></div>
     </aside>
   </main>
-  <script src="/static/app.js"></script>
+  <script src="/static/app.js?v=network-1"></script>
 </body>
 </html>

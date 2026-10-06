@@ -1,6 +1,6 @@
 # SCIBooster
 
-A literature retrieval agent harness driven by DeepSeek. You describe a research need in natural language and supply a few core papers; SCIBooster searches **Web of Science Starter API**, uses **OpenAlex** (via [pyalex](https://github.com/J535D165/pyalex)) to fill in abstracts and citation relations, and builds a citation-linked corpus in JSON. Results are written as an **Obsidian vault** (a note per paper, a Bases table, a year-layered citation Canvas, an overview with the PRISMA flow). A small bundled web renderer (citation DAG + BFS/DFS playback) is kept as a development tool. Corpora can be scored for recall against published surveys and exported to BibTeX / RIS / CSV.
+A literature retrieval agent harness driven by DeepSeek. You describe a research need in natural language and supply a few core papers; SCIBooster searches **Web of Science Starter API**, uses **OpenAlex** (via [pyalex](https://github.com/J535D165/pyalex)) to fill in abstracts and citation relations, and builds a citation-linked corpus in JSON. Results are written as an **Obsidian vault** (a note per paper, a Bases table, a year-layered citation Canvas, an overview with the PRISMA flow). A small bundled web renderer (citation network + BFS/DFS playback) is kept as a development tool. Corpora can be scored for recall against published surveys and exported to BibTeX / RIS / CSV.
 
 ```
 natural language + seed papers
@@ -141,8 +141,9 @@ Obsidian's core Graph view is force-directed only (no edge labels, edge colours 
 
 `scibooster serve` starts FastAPI + Cytoscape.js. It is kept for development (inspecting a corpus and checking traversal); day-to-day reading happens in Obsidian.
 
-- **Citation DAG**: layered by year by default (older on top), with in-row order chosen to reduce edge crossings; topological layering (dagre), timeline, and force-directed layouts are also available. Node size ∝ log(citation count), color = source, ★ = seed, edge color = semantic dependency label.
-- **BFS / DFS traversal**: double-click nodes to set start points (several allowed), and choose direction (references ↑ to trace sources / citing works ↓ to follow later work / both) and depth; the visit order plays back step by step, and DFS shows the lineage path.
+- **Citation network**: a relaxed [fCoSE](https://github.com/iVis-at-Bilkent/cytoscape.js-fcose) force-directed layout replaces the year-layered DAG and timeline. Citation relationships determine positions; years remain in labels and filters. The proof-quality pass includes label bounds, followed by spacing that prevents bounding-box overlap. Choose three spacing levels, re-layout, fit the view, or expand the canvas. Hover/select a paper to emphasize its direct citations; click the background or “取消聚焦” to restore the overview. All citation edges remain available. Node size ∝ log(citation count), color = source, ★ = seed, edge color = semantic dependency label. Dense networks can still contain crossings; neighborhood focus makes individual relationships easier to follow.
+- **Offline assets**: pinned Cytoscape/fCoSE browser distributions and their licenses are bundled in `renderer/static/vendor/`; rendering needs no CDN or npm build. Built-in CoSE is used if the fCoSE extension is unavailable.
+- **BFS / DFS traversal**: double-click nodes to set start points (several allowed), and choose direction (references to trace sources / citing works to follow later work / both) and depth; the visit order plays back step by step, and DFS shows the lineage path.
 - **Search info tab**: parsed intent, executed queries, usage, parameters, and the PRISMA-style screening flow. Paper details flag retracted papers and title-only scores.
 - API: `GET /api/corpus`, `GET /api/traverse?start=&mode=&direction=&depth=`. The renderer makes no LLM calls.
 
@@ -167,6 +168,7 @@ tests/                   pytest (fake LLM + in-memory citation universe + respx-
 
 ```bash
 .venv/bin/python -m pytest -q
+node --test tests/test_network_layout.cjs  # offline layout regression tests; Node.js 22+
 ```
 
-CI (`.github/workflows/ci.yml`) runs the same offline suite on Python 3.11 and 3.14.
+CI (`.github/workflows/ci.yml`) runs the Python suite on Python 3.11 and 3.14, plus the layout tests on Node.js 22. Layout tests execute the bundled browser scripts and cover overlap, year independence, filtering, empty/disconnected graphs, spacing and the fallback layout.

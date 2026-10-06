@@ -1,4 +1,4 @@
-/* SCIBooster renderer frontend: citation DAG + BFS/DFS playback */
+/* SCIBooster renderer frontend: citation network + BFS/DFS playback */
 (() => {
   "use strict";
 
@@ -32,7 +32,6 @@
 
   // ---------- Initialization ----------
   async function init() {
-    if (window.cytoscapeDagre && window.cytoscape) cytoscape.use(cytoscapeDagre);
     const res = await fetch("/api/corpus");
     S.corpus = await res.json();
     S.corpus.papers.forEach((p) => (S.byId[p.id] = p));
@@ -129,9 +128,6 @@
         classes: p.is_seed ? "seed" : "",
       });
     }
-    for (const y of new Set(S.corpus.papers.map((p) => p.year ?? 0))) {
-      els.push({ data: { id: `year:${y}`, label: y ? String(y) : "n.d.", year: y, ylab: true }, classes: "ylab", selectable: false, grabbable: false });
-    }
     for (const e of S.corpus.edges) {
       const r = RELATION[e.relation?.label];
       els.push({
@@ -143,19 +139,24 @@
       container: $("#cy"),
       elements: els,
       minZoom: 0.05,
+      maxZoom: 3,
+      layout: { name: "preset" },
       style: [
-        { selector: "node[!ylab]", style: {
+        { selector: "node", style: {
           width: "data(size)", height: "data(size)", "background-color": "data(color)",
           "background-opacity": "mapData(score, 0, 10, 0.35, 1)",
-          label: "data(label)", "font-size": 9, color: css("--text"), "text-valign": "bottom", "text-margin-y": 3,
+          label: "data(label)", "font-size": 12, color: css("--text"), "text-valign": "bottom", "text-margin-y": 5,
           "text-outline-color": css("--bg"), "text-outline-width": 2, "border-width": 0,
         } },
         { selector: "node.seed", style: { shape: "star", "border-width": 2, "border-color": css("--seed") } },
         { selector: "edge", style: {
           width: 1, "line-color": "data(color)", "target-arrow-color": "data(color)", "target-arrow-shape": "triangle",
-          "arrow-scale": 0.7, "curve-style": "bezier", opacity: 0.6,
+          "arrow-scale": 0.7, "curve-style": "bezier", opacity: 0.25,
         } },
-        { selector: "edge.labeled", style: { width: 2, opacity: 0.85 } },
+        { selector: "edge.labeled", style: { width: 1.4, opacity: 0.45 } },
+        { selector: ".context-muted", style: { opacity: 0.07 } },
+        { selector: "node.context", style: { opacity: 1, "font-weight": 600 } },
+        { selector: "edge.context", style: { opacity: 0.95, width: 2.2, "z-index": 10 } },
         { selector: "node:selected", style: { "border-width": 3, "border-color": css("--accent") } },
         { selector: "node.start", style: { "border-width": 4, "border-color": css("--visit"), "border-style": "double" } },
         { selector: ".faded", style: { opacity: 0.12 } },
@@ -163,85 +164,58 @@
         { selector: "node.current", style: { "overlay-color": css("--visit"), "overlay-opacity": 0.25, "overlay-padding": 8 } },
         { selector: "edge.tree", style: { opacity: 1, width: 3, "line-color": css("--visit"), "target-arrow-color": css("--visit") } },
         { selector: "node.hl", style: { "overlay-color": css("--accent"), "overlay-opacity": 0.3, "overlay-padding": 6 } },
-        { selector: "node.ylab", style: {
-          width: 1, height: 1, "background-opacity": 0, opacity: 1, label: "data(label)", "font-size": 13,
-          "font-weight": 600, color: css("--muted"), "text-valign": "center", "text-halign": "left", events: "no",
-        } },
         { selector: ".hidden", style: { display: "none" } },
       ],
     });
-    S.cy.on("tap", "node[!ylab]", (ev) => showDetail(ev.target.id()));
-    S.cy.on("dbltap", "node[!ylab]", (ev) => addStart(ev.target.id()));
+    S.cy.on("tap", "node", (ev) => showDetail(ev.target.id()));
+    S.cy.on("dbltap", "node", (ev) => addStart(ev.target.id()));
+    S.cy.on("mouseover", "node", (ev) => highlightNeighborhood(ev.target.id()));
+    S.cy.on("mouseout", "node", () => highlightNeighborhood(S.selected));
+    S.cy.on("tap", (ev) => { if (ev.target === S.cy) clearFocus(); });
     runLayout();
   }
 
-  const paperNodes = () => S.cy.nodes().not(".ylab");
+  const paperNodes = () => S.cy.nodes();
 
-  // Year-layered DAG: one row per year (older on top); within a row, several up/down barycenter sweeps reduce edge crossings
-  function yearLayout(nodes) {
-    const ids = new Set(nodes.map((n) => n.id()));
-    const rows = new Map();
-    nodes.forEach((n) => {
-      const y = n.data("year") || 0;
-      if (!rows.has(y)) rows.set(y, []);
-      rows.get(y).push(n);
-    });
-    const years = [...rows.keys()].sort((a, b) => (a || 9999) - (b || 9999));
-    const xi = new Map();
-    const place = (row) => row.forEach((n, i) => xi.set(n.id(), i - (row.length - 1) / 2));
-    years.forEach((y) => { rows.get(y).sort((a, b) => b.data("score") - a.data("score") || b.data("size") - a.data("size")); place(rows.get(y)); });
-    for (let sweep = 0; sweep < 6; sweep++) {
-      for (const y of sweep % 2 ? [...years].reverse() : years) {
-        const row = rows.get(y);
-        const bc = new Map(row.map((n) => {
-          const nb = n.neighborhood("node").filter((m) => ids.has(m.id()) && (m.data("year") || 0) !== y);
-          return [n.id(), nb.length ? nb.reduce((s, m) => s + xi.get(m.id()), 0) / nb.length : xi.get(n.id())];
-        }));
-        row.sort((a, b) => bc.get(a.id()) - bc.get(b.id()));
-        place(row);
-      }
-    }
-    const DX = 52, DY = 84;
-    const half = Math.max(...years.map((y) => (rows.get(y).length - 1) / 2));
-    const pos = {};
-    years.forEach((y, r) => rows.get(y).forEach((n) => (pos[n.id()] = { x: xi.get(n.id()) * DX, y: r * DY })));
-    S.cy.nodes(".ylab").forEach((l) => {
-      const r = years.indexOf(l.data("year"));
-      l.toggleClass("hidden", r < 0);
-      if (r >= 0) pos[l.id()] = { x: -(half + 1) * DX, y: r * DY };
-    });
-    return pos;
+  function fitGraph() {
+    const visible = NetworkLayout.visibleGraph(S.cy);
+    if (!visible.nodes().length) return;
+    S.cy.fit(visible, 55);
+    if (S.cy.zoom() > 1.25) { S.cy.zoom(1.25); S.cy.center(visible); }
+  }
+
+  function updateGraphStatus() {
+    const visible = NetworkLayout.visibleGraph(S.cy);
+    $("#cy-empty").hidden = visible.nodes().length > 0;
+    $("#graph-status").textContent = `${visible.nodes().length} 篇 · ${visible.edges().length} 条引用`;
   }
 
   function runLayout() {
-    const kind = $("#layout").value;
-    S.cy.nodes(".ylab").addClass("hidden");
-    if (kind === "year") {
-      const pos = yearLayout(paperNodes().filter(":visible"));
-      S.cy.nodes(":visible").layout({ name: "preset", positions: (n) => pos[n.id()] || n.position(), fit: false }).run();
-      S.cy.fit(S.cy.elements(":visible"), 30);
-      return;
-    }
-    const visible = S.cy.elements(":visible");
-    if (kind === "dagre" && window.cytoscapeDagre) {
-      // Edges point citing -> cited; BT puts cited (older) papers on top and later work below
-      visible.layout({ name: "dagre", rankDir: "BT", nodeSep: 18, rankSep: 60, animate: false }).run();
-    } else if (kind === "timeline") {
-      const byYear = {};
-      visible.nodes().forEach((n) => (byYear[n.data("year")] ||= []).push(n));
-      const years = Object.keys(byYear).map(Number).sort((a, b) => a - b);
-      visible.nodes().layout({
-        name: "preset",
-        positions: (n) => {
-          const col = byYear[n.data("year")];
-          col.sort((a, b) => b.data("score") - a.data("score"));
-          return { x: years.indexOf(n.data("year")) * 110, y: col.indexOf(n) * 46 };
-        },
-      }).run();
-    } else {
-      visible.layout({ name: "cose", animate: false, nodeRepulsion: 9000, idealEdgeLength: 80 }).run();
-    }
-    S.cy.fit(visible, 30);
+    NetworkLayout.run(S.cy, $("#spacing").value, !!cytoscape("layout", "fcose"));
+    fitGraph();
+    updateGraphStatus();
+    highlightNeighborhood(S.selected);
+  }
+
+  function highlightNeighborhood(id) {
+    S.cy.batch(() => {
+      S.cy.elements().removeClass("context context-muted");
+      // Playback already has its own emphasis; never obscure its tree edges.
+      if (!id || S.visits.length) return;
+      const n = S.cy.$id(id);
+      if (!n.length || n.hasClass("hidden")) return;
+      const visible = NetworkLayout.visibleGraph(S.cy);
+      const neighborhood = n.closedNeighborhood().intersection(visible);
+      visible.difference(neighborhood).addClass("context-muted");
+      neighborhood.addClass("context");
+    });
+  }
+
+  function clearFocus() {
+    S.selected = null;
+    S.cy.$(":selected").unselect();
+    $("#clear-focus").hidden = true;
+    highlightNeighborhood(null);
   }
 
   function applyFilters() {
@@ -258,7 +232,8 @@
         n.toggleClass("hl", !!q && ok && hay.includes(q));
       });
     });
-    $("#cy-empty").hidden = paperNodes().filter(":visible").length > 0;
+    updateGraphStatus();
+    highlightNeighborhood(S.selected);
   }
 
   // ---------- Details ----------
@@ -273,6 +248,8 @@
     S.selected = id;
     S.cy.$(":selected").unselect();
     S.cy.$id(id).select();
+    $("#clear-focus").hidden = false;
+    highlightNeighborhood(id);
     const refs = S.corpus.edges.filter((e) => e.source === id);
     const citedBy = S.corpus.edges.filter((e) => e.target === id);
     const relTag = (e) => (e.relation ? ` <span class="rel">[${RELATION[e.relation.label]?.name || e.relation.label}] ${esc(e.relation.rationale)}</span>` : "");
@@ -311,6 +288,8 @@
   function focusNode(id) {
     const n = S.cy.$id(id);
     if (!n.length) return;
+    // A detail link may point outside the current year/score filter.
+    if (n.hasClass("hidden")) { showDetail(id); return; }
     S.cy.animate({ center: { eles: n }, zoom: Math.max(S.cy.zoom(), 1.1) }, { duration: 300 });
     showDetail(id);
   }
@@ -348,7 +327,7 @@
     stop();
     S.step = 0;
     S.cy.batch(() => {
-      S.cy.elements().removeClass("visited current tree");
+      S.cy.elements().removeClass("visited current tree context context-muted");
       S.cy.elements().addClass("faded");
       S.cy.nodes().forEach((n) => n.removeData("vlabel"));
     });
@@ -362,6 +341,7 @@
     S.cy.elements().removeClass("visited current tree faded");
     $("#visit-list").innerHTML = "";
     updatePos();
+    highlightNeighborhood(S.selected);
   }
 
   function treeEdge(v) {
@@ -432,7 +412,17 @@
     renderStarts();
     ["#search", "#minscore", "#year-from", "#year-to"].forEach((s) => $(s).addEventListener("input", applyFilters));
     ["#minscore", "#year-from", "#year-to"].forEach((s) => $(s).addEventListener("change", runLayout));
-    $("#layout").addEventListener("change", runLayout);
+    $("#spacing").addEventListener("change", runLayout);
+    $("#relayout").addEventListener("click", runLayout);
+    $("#fit").addEventListener("click", fitGraph);
+    $("#clear-focus").addEventListener("click", clearFocus);
+    $("#expand-graph").addEventListener("click", () => {
+      const expanded = $("main").classList.toggle("graph-expanded");
+      $("#expand-graph").textContent = expanded ? "收起画布" : "展开画布";
+      $("#expand-graph").setAttribute("aria-pressed", String(expanded));
+      S.cy.resize();
+      fitGraph();
+    });
     $$("#mode button").forEach((b) => b.addEventListener("click", () => {
       S.mode = b.dataset.v;
       $$("#mode button").forEach((x) => x.classList.toggle("on", x === b));
