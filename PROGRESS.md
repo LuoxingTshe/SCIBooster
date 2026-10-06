@@ -107,7 +107,7 @@ WoS 实测（2026-10-05，真实 WoS Starter + OpenAlex，同一需求与种子�
 - [ ] 安全：DeepSeek key 曾以明文出现在对话中，如对话会外传，建议到控制台换 key
 - [ ] 可选：填写 `OPENALEX_EMAIL`
 - [x] 前端库本地化、渲染器可离线使用（2026-10-06，见 §4）
-- [ ] 待确认：新加的 Node 布局测试步骤在 GitHub Actions 上是否通过（本地 6/6 通过）
+- [x] Node 布局测试步骤在 GitHub Actions 上通过（2026-10-06 手动触发的 run 37438958446，提交 a97752f）。push 仍然没有自动触发 CI（workflow 的 `on: push` 配置和仓库的 Actions 权限都正常），原因待查
 - [x] `git init` 已完成（v0.2），2026-10-05 完成首次提交（main）；`.github/workflows/ci.yml` 会在 Python 3.11 和 3.14 上跑离线测试。2026-10-05 已推送到私有仓库 https://github.com/LuoxingTshe/SCIBooster；手动触发的 CI（workflow_dispatch）在 3.11 和 3.14 上均通过，但两次 push 都没有自动触发 CI，原因待查
 - [ ] 建议找一篇与需求更贴近的综述作为 `eval` 的标准答案，用它来比较 quick / standard / deep 三个档位
 - ~~RAG 相关待办（中文提问检索、证据式问答、embedding 检索）~~：已随 RAG 一并取消
