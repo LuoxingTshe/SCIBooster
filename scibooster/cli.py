@@ -82,6 +82,8 @@ def _write_obsidian(corpus, corpus_path: Path, vault: Path | None = None, folder
     rep = export_vault(corpus, out, root)
     kept = f" (kept your text in {rep.notes_kept_user_text})" if rep.notes_kept_user_text else ""
     console.print(f"[green]✓ Obsidian:[/] {rep.notes_written} notes{kept} → {out / OVERVIEW}")
+    if rep.canvas_layout == "spring":
+        console.print("  [yellow]Canvas laid out with the networkx fallback: install Node.js to use the renderer's fCoSE layout[/]")
     if rep.stale_removed:
         console.print(f"  removed {len(rep.stale_removed)} notes no longer in the corpus")
     for name in rep.stale_kept:

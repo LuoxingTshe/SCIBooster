@@ -1,6 +1,6 @@
 # SCIBooster
 
-A literature retrieval agent harness driven by DeepSeek. You describe a research need in natural language and supply a few core papers; SCIBooster searches **Web of Science Starter API**, uses **OpenAlex** (via [pyalex](https://github.com/J535D165/pyalex)) to fill in abstracts and citation relations, and builds a citation-linked corpus in JSON. Results are written as an **Obsidian vault** (a note per paper, a Bases table, a year-layered citation Canvas, an overview with the PRISMA flow). A small bundled web renderer (citation network + BFS/DFS playback) is kept as a development tool. Corpora can be scored for recall against published surveys and exported to BibTeX / RIS / CSV.
+A literature retrieval agent harness driven by DeepSeek. You describe a research need in natural language and supply a few core papers; SCIBooster searches **Web of Science Starter API**, uses **OpenAlex** (via [pyalex](https://github.com/J535D165/pyalex)) to fill in abstracts and citation relations, and builds a citation-linked corpus in JSON. Results are written as an **Obsidian vault** (a note per paper, a Bases table, a citation-network Canvas laid out like the dev renderer, Graph view colour groups, an overview with the PRISMA flow). A small bundled web renderer (citation network + BFS/DFS playback) is kept as a development tool. Corpora can be scored for recall against published surveys and exported to BibTeX / RIS / CSV.
 
 ```
 natural language + seed papers
@@ -19,7 +19,7 @@ co-citation gap fill: works cited by ≥ N relevant papers but never reached are
 selection (retracted papers excluded) → citation edges (+ optional LLM semantic labels) → corpus.json
                                                          (with a PRISMA-style flow record)
    ▼
-Obsidian vault: papers/*.md + 文献库.base + 引用图谱.canvas + 总览.md
+Obsidian vault: papers/*.md + 文献库.base + 引用图谱.canvas + 总览.md (+ .obsidian/graph.json colour groups)
 ```
 
 ## Installation
@@ -124,24 +124,27 @@ The schema is defined in `scibooster/models.py` (Pydantic), and `Corpus.model_va
 
 ## Obsidian output
 
-Obsidian's core Graph view is force-directed only (no edge labels, edge colours or hierarchical layout), so the citation DAG goes into a **Canvas** instead, where positions, edge labels and colours are explicit:
+Obsidian's core Graph view cannot label or colour edges, so the citation network also goes into a **Canvas**, where positions, edge labels and colours are explicit. Both views use the dev renderer's conventions (same layout, same origin colours):
 
 | File | Opens as | Contents |
 |---|---|---|
 | `总览.md` | note | need, intent, queries, Agent summary, PRISMA flow (mermaid), most-cited papers, embedded table |
 | `文献库.base` | Bases table (Obsidian ≥ 1.9) | views: all papers, core (≥ 8), co-citation gap fill, title-only scores, retracted |
-| `引用图谱.canvas` | Canvas | one band per year (older on top), cards coloured by origin, edges citing → cited with relation labels |
+| `引用图谱.canvas` | Canvas | the renderer's fCoSE network layout (positions from citation links only; the year is in each card's label), cards coloured by origin, ★ = seed, edges citing → cited leaving from the facing side with relation labels/colours, a colour legend group |
+| `<vault>/.obsidian/graph.json` | Graph view settings | colour groups by tag (retracted → seed → origin), matching the renderer's colours; arrows on for a fresh vault |
 | `papers/*.md` | notes | properties (year, relevance, origin, `corpus_cites`, …), abstract, `cites` links and typed links (`extends`, `uses_method`, …); the Graph view and Backlinks pane work on these |
 
 - Links are vault-relative paths (`[[SCIBooster/<run>/papers/…|Gilmer 2017]]`), so several runs can share one vault.
 - Re-exporting (e.g. after `agent`) rewrites each note **above** the `%% scibooster:notes … %%` marker and keeps everything you wrote below it. Notes for papers that left the corpus are deleted only if you never wrote in them; files SCIBooster didn't generate are never touched. The Base and the Canvas are regenerated in full, so put manual Canvas edits in a copy.
+- **Canvas layout**: `export_vault` pipes the graph to `renderer/layout.cjs`, which runs `NetworkLayout.run` from `renderer/static/network-layout.js` on the vendored Cytoscape + fCoSE bundles under Node.js (no npm, no network), with cards sized 320×150 and a fixed seed so re-exports are identical. Without Node.js it falls back to networkx's spring layout plus the same bounding-box separation (`separate_bounds`), and the CLI says so. About 0.6 s for 50 papers and 12 s for 400.
+- **Graph view colours**: groups whose query starts with `tag:#scibooster/` are replaced on every export; your other settings and colour groups are kept, and an unreadable `graph.json` is left alone. Obsidian reads it when the vault opens, so reopen the vault if the colours don't show. (Approach adapted from [graphify](https://github.com/Graphify-Labs/graphify)'s Obsidian export; queries are built from the same tag strings the notes carry, avoiding its [#2204](https://github.com/Graphify-Labs/graphify/issues/2204) mismatch.) Local graph (the right sidebar) gives the renderer's neighbourhood focus.
 - Set `SCIB_OBSIDIAN_VAULT` in `.env` to write every run into your own vault.
 
 ## Dev renderer (`renderer/`)
 
 `scibooster serve` starts FastAPI + Cytoscape.js. It is kept for development (inspecting a corpus and checking traversal); day-to-day reading happens in Obsidian.
 
-- **Citation network**: a relaxed [fCoSE](https://github.com/iVis-at-Bilkent/cytoscape.js-fcose) force-directed layout replaces the year-layered DAG and timeline. Citation relationships determine positions; years remain in labels and filters. The proof-quality pass includes label bounds, followed by spacing that prevents bounding-box overlap. Choose three spacing levels, re-layout, fit the view, or expand the canvas. Hover/select a paper to emphasize its direct citations; click the background or “取消聚焦” to restore the overview. All citation edges remain available. Node size ∝ log(citation count), color = source, ★ = seed, edge color = semantic dependency label. Dense networks can still contain crossings; neighborhood focus makes individual relationships easier to follow.
+- **Citation network**: a relaxed [fCoSE](https://github.com/iVis-at-Bilkent/cytoscape.js-fcose) force-directed layout (`renderer/static/network-layout.js`); it replaced the earlier year-layered DAG / dagre / timeline layouts. Citation relationships alone determine positions; years remain in labels and filters. The proof-quality pass includes label bounds, followed by spacing that prevents bounding-box overlap. Choose three spacing levels, re-layout, fit the view, or expand the canvas. Hover/select a paper to emphasize its direct citations; click the background or “取消聚焦” to restore the overview. All citation edges remain available. Node size ∝ log(citation count), color = source, ★ = seed, edge color = semantic dependency label. Dense networks can still contain crossings; neighborhood focus makes individual relationships easier to follow.
 - **Offline assets**: pinned Cytoscape/fCoSE browser distributions and their licenses are bundled in `renderer/static/vendor/`; rendering needs no CDN or npm build. Built-in CoSE is used if the fCoSE extension is unavailable.
 - **BFS / DFS traversal**: double-click nodes to set start points (several allowed), and choose direction (references to trace sources / citing works to follow later work / both) and depth; the visit order plays back step by step, and DFS shows the lineage path.
 - **Search info tab**: parsed intent, executed queries, usage, parameters, and the PRISMA-style screening flow. Paper details flag retracted papers and title-only scores.
@@ -161,7 +164,11 @@ scibooster/
   pipeline/              intent / seeds / query / enrich / screen / snowball / gaps / relations / build
   agent/                 tool definitions + tool-calling loop
 renderer/                dev renderer: FastAPI backend (corpus + traversal API), static frontend
+  layout.cjs             headless entry to NetworkLayout (Node CLI), used by the Obsidian Canvas export
+  static/network-layout.js  fCoSE layout + label-aware overlap removal (shared with the Node tests)
+  static/vendor/         pinned Cytoscape / layout-base / cose-base / fCoSE builds + licenses
 tests/                   pytest (fake LLM + in-memory citation universe + respx-mocked WoS)
+  test_network_layout.cjs  node:test layout regression suite
 ```
 
 ## Tests
@@ -169,6 +176,7 @@ tests/                   pytest (fake LLM + in-memory citation universe + respx-
 ```bash
 .venv/bin/python -m pytest -q
 node --test tests/test_network_layout.cjs  # offline layout regression tests; Node.js 22+
+# test_obsidian.py also runs the Canvas layout through Node when it is installed, and always tests the fallback
 ```
 
-CI (`.github/workflows/ci.yml`) runs the Python suite on Python 3.11 and 3.14, plus the layout tests on Node.js 22. Layout tests execute the bundled browser scripts and cover overlap, year independence, filtering, empty/disconnected graphs, spacing and the fallback layout.
+CI (`.github/workflows/ci.yml`) runs the Python suite on Python 3.11 and 3.14, plus the layout tests on Node.js 22. Layout tests execute the bundled browser scripts and cover overlap, year independence, filtering, empty/disconnected graphs, spacing, the fallback layout and the headless `layout.cjs` entry point (Canvas-sized cards, reproducibility, CLI).

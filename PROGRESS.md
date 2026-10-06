@@ -1,13 +1,14 @@
 # SCIBooster 工作记录与进展
 
-> 最后更新：2026-10-05　｜　当前阶段：**v0.3：结果输出为 Obsidian vault（自带渲染器降级为开发工具）；v0.2 已移除 RAG 并新增补缺 / 自适应停止 / 召回评估 / 导出 / 档位 / PRISMA / 撤稿过滤；WoS Starter 已用真实 key 跑通（2026-10-05）**
+> 最后更新：2026-10-06　｜　当前阶段：**v0.3：结果输出为 Obsidian vault（自带渲染器降级为开发工具，2026-10-06 改为离线 fCoSE 网状布局，Obsidian Canvas 同步改用该布局）；v0.2 已移除 RAG 并新增补缺 / 自适应停止 / 召回评估 / 导出 / 档位 / PRISMA / 撤稿过滤；WoS Starter 已用真实 key 跑通（2026-10-05）**
 
 ## 1. 环境与启动项
 
 ### 运行环境
 - macOS（Darwin 25.3），Python **3.14.8**，虚拟环境 `.venv/`（未使用 uv，用的是 pip）
 - 主要依赖版本：openai 3.24.0 · pyalex 0.21 · httpx 0.28.1 · pydantic 2.13.5 · pydantic-settings 2.15.0 · networkx 3.7 · rank-bm25 0.2.2 · tenacity 9.1.4 · typer 0.27.2 · rich 15.0.0 · fastapi 0.142.2 · uvicorn 0.54.0 · pytest 9.1.1 · respx 0.23.1
-- 前端库走 CDN（jsdelivr）：cytoscape 3.30.4、dagre 0.8.5、cytoscape-dagre 2.5.0，**因此渲染器需要联网**
+- 前端库已打包到 `renderer/static/vendor/`（2026-10-06，附 LICENSE）：cytoscape 3.30.4、layout-base 2.0.1、cose-base 2.2.0、cytoscape-fcose 2.2.0，**渲染器无需联网，也不需要 npm**；升级步骤见 `renderer/static/vendor/README.md`。dagre / cytoscape-dagre 已移除
+- 布局回归测试用 Node.js 22+ 自带的 `node:test` 运行（本机 Node v26.10.0）
 
 ### 首次安装 / 重建环境
 ```bash
@@ -47,7 +48,8 @@ cd /Users/xie/code/SCIBooster
 .venv/bin/scibooster traverse corpora/<run>/corpus.json --start <W-id> --mode dfs --direction cited_by
 .venv/bin/scibooster obsidian corpora/<run>/corpus.json [--vault ~/某个vault]   # build/agent 跑完会自动生成
 .venv/bin/scibooster serve    corpora/<run>/corpus.json          # 开发用渲染器 → http://127.0.0.1:8765
-.venv/bin/python -m pytest -q                                     # 39 项测试
+.venv/bin/python -m pytest -q                                     # 44 项测试
+node --test tests/test_network_layout.cjs                         # 8 项布局测试（Node 22+）
 ```
 
 ## 2. 实测记录（2026-10-05，真实 DeepSeek + OpenAlex）
@@ -79,7 +81,8 @@ WoS 实测（2026-10-05，真实 WoS Starter + OpenAlex，同一需求与种子�
 - `eval --gold 10.1016/j.ddtec.2020.11.009`：openalex quick 8.3%（6/72，47 篇）· wos 修复前 9.7%（7/72，29 篇）· wos 修复后 8.3%（6/72，47 篇）。每次运行时 LLM 都会重新生成检索式，加上这篇综述不太贴合需求，差异属于噪声范围
 
 ## 3. 关键设计决策（与用户确认过的）
-- 渲染器 = **引用 DAG 可视化 + BFS/DFS 遍历**（2026-10-05 用户决定删除 RAG 问答，并取消 RAG 相关的待办；渲染器不再调用 LLM）
+- 渲染器 = **引用网络可视化 + BFS/DFS 遍历**（2026-10-05 用户决定删除 RAG 问答，并取消 RAG 相关的待办；渲染器不再调用 LLM）
+- 2026-10-06 用户（借助多模态模型）重写渲染器布局：**去掉按年代分层 DAG / dagre 拓扑分层 / 时间轴 / 旧力导向四种布局，统一改为宽松的 fCoSE 力导向网状布局**（`renderer/static/network-layout.js`）。位置只由引用关系决定，年份只出现在节点标签和筛选里，不作位置约束；按年份分层的视图留给 Obsidian Canvas
 - 2026-10-05 用户决定：**日常阅读的输出改为 Obsidian 格式**，自带渲染器只作开发用途。Obsidian 自带的 Graph view 只有力导向布局，不支持边标签、边颜色和分层，所以引用 DAG 用 Canvas（JSON Canvas 1.0）表达；文献表用 Bases（需要 1.9 及以上）；每篇文献一条笔记（properties + 类型化引用链接）
 - `corpus.json` 仍是唯一的数据源（eval / export / agent 续跑 / 开发渲染器都读它），Obsidian 文件由它生成
 - WoS 使用 **Starter API**：它不提供参考文献数据，所以**引用边和摘要全部来自 OpenAlex**（按 DOI 匹配）
@@ -93,6 +96,8 @@ WoS 实测（2026-10-05，真实 WoS Starter + OpenAlex，同一需求与种子�
 - 检索结果与种子文献重复时，WoS 字段没有合并进种子 → 已修复（有测试覆盖）
 - 合并记录时 WOS id 升级为 OpenAlex id 后索引失效 → 已修复
 - dagre 布局在稠密图上被压得很扁 → 新增"按年代分层"布局作为默认（按年份分行，行内用重心法排序以减少边交叉）
+- 2026-10-06：渲染器整体换成 fCoSE 网状布局：`quality: "proof"` + `nodeDimensionsIncludeLabels`，模拟结束后按包含标签的包围盒做一次**等比例放大**（`separateBounds`，不改变角度和边交叉数）以消除重叠；三档间距（舒展 / 宽松 / 更宽松）、重新布局、适应画布、展开画布（隐藏右栏）；悬停或选中文献时只突出其直接引用、其余淡化，点空白处或「取消聚焦」恢复；BFS/DFS 回放时不叠加邻域高亮；fCoSE 不可用时退回内置 CoSE。详情面板里指向被筛掉文献的链接不再移动画布，只显示详情
+- 测试：`tests/test_renderer.py` 新增断言——页面引用的 `<script>` 必须全部来自 `/static/` 且可访问（防止回退到 CDN）；`tests/test_network_layout.cjs` 在 `vm` 中直接执行打包的浏览器脚本，覆盖无重叠、年份不影响位置、筛选、空图/孤立点/不连通图、间距档位和 CoSE 回退。CI 增加 Node 22 步骤；`pyproject.toml` 的 package-data 加入 `static/vendor/*`
 - v0.2：导出与前端都用 `startswith("W")` 判断 OpenAlex id，导致 `WOS:` 开头的 id 被误当成 OpenAlex id → 改为匹配 `^W\d+$`（有测试覆盖）
 
 ## 5. 待办 / 待决
@@ -100,18 +105,30 @@ WoS 实测（2026-10-05，真实 WoS Starter + OpenAlex，同一需求与种子�
 - [ ] 安全：WoS key 也以明文出现在对话中，如对话会外传，建议在 Clarivate 开发者门户重新生成
 - [x] Agent 的 `--max-papers` 改为硬上限（v0.2）
 - [ ] 安全：DeepSeek key 曾以明文出现在对话中，如对话会外传，建议到控制台换 key
-- [ ] 可选：填写 `OPENALEX_EMAIL`；把前端 CDN 库下载到本地，以便离线使用
+- [ ] 可选：填写 `OPENALEX_EMAIL`
+- [x] 前端库本地化、渲染器可离线使用（2026-10-06，见 §4）
+- [ ] 待确认：新加的 Node 布局测试步骤在 GitHub Actions 上是否通过（本地 6/6 通过）
 - [x] `git init` 已完成（v0.2），2026-10-05 完成首次提交（main）；`.github/workflows/ci.yml` 会在 Python 3.11 和 3.14 上跑离线测试。2026-10-05 已推送到私有仓库 https://github.com/LuoxingTshe/SCIBooster；手动触发的 CI（workflow_dispatch）在 3.11 和 3.14 上均通过，但两次 push 都没有自动触发 CI，原因待查
 - [ ] 建议找一篇与需求更贴近的综述作为 `eval` 的标准答案，用它来比较 quick / standard / deep 三个档位
 - ~~RAG 相关待办（中文提问检索、证据式问答、embedding 检索）~~：已随 RAG 一并取消
 
 ## 6. Obsidian 输出（v0.3，2026-10-05）
-- 实测：`scibooster obsidian corpora/gnn-drug-quick/corpus.json` → 48 篇笔记 + 文献库.base + 引用图谱.canvas（10 个年份分组、152 条边，约 3280×3380 px）+ 总览.md；用 PyYAML / JSON 解析器校验，48 份 frontmatter 和 .base 均无错误，边全部指向存在的节点
+- 实测：`scibooster obsidian corpora/gnn-drug-quick/corpus.json` → 48 篇笔记 + 文献库.base + 引用图谱.canvas（当时为 10 个年份分组、152 条边，约 3280×3380 px；2026-10-06 已改为网状布局）+ 总览.md；用 PyYAML / JSON 解析器校验，48 份 frontmatter 和 .base 均无错误，边全部指向存在的节点
 - 2026-10-05 已通过 `brew install --cask obsidian` 安装 Obsidian 1.13.7，并把 `corpora/gnn-drug-quick/obsidian/` 登记为 vault 打开（为此改过 `~/Library/Application Support/obsidian/obsidian.json`，原有条目未动）。Obsidian 首次启动时还自动建了默认 vault `~/Documents/Obsidian Vault`，用户可以自行删除
-- [ ] **待用户在 Obsidian 中确认**：① 引用图谱.canvas 的分层、颜色、观感；② 文献库.base 的 5 个视图，以及 `sort`（按社区示例写的，官方文档没有说明）是否生效；③ 总览.md 的 mermaid PRISMA 图和嵌入的文献表
+- [ ] **待用户在 Obsidian 中确认**：① ~~引用图谱.canvas 的分层、颜色、观感~~（已改为网状布局，见下方 2026-10-06）；② 文献库.base 的 5 个视图，以及 `sort`（按社区示例写的，官方文档没有说明）是否生效；③ 总览.md 的 mermaid PRISMA 图和嵌入的文献表
 - Obsidian 自带的命令行工具 `obsidian` 需要 Obsidian 正在运行，并在 设置 → 通用 里启用后才能用（尚未启用）
 - 重新导出时，笔记中 `%% scibooster:notes … %%` 标记以下的用户内容会保留；Canvas 和 Base 每次整体重新生成
 - 新增 skill：`obsidian-markdown` / `obsidian-bases` / `json-canvas`（kepano/obsidian-skills，MIT）
+
+### 2026-10-06：Canvas 改用渲染器的网状布局
+- 用户要求"利用现有渲染器的渲染逻辑，参考 GitHub 上成熟方案，更新 Obsidian 导出"。实现：
+  - 新增 `renderer/layout.cjs`：在 Node 的 `vm` 中加载打包好的 cytoscape + fCoSE 和 `network-layout.js`，无头运行 `NetworkLayout.run`，stdin 输入图、stdout 输出坐标；随机数固定种子（42），重新导出结果完全一致。Node 测试也改为复用它的加载函数
+  - `obsidian.py`：`引用图谱.canvas` 不再按年份分组，卡片（320×150）坐标来自上述布局；边按两张卡片的相对位置选择出入的边；新增"图例"分组（来源颜色、关系边颜色、箭头方向）。节点颜色改用渲染器的 `--o-*` 色值，三处配色一致。没有 Node 时退回 networkx spring 布局 + Python 版 `separate_bounds`，CLI 会提示
+  - 新增 `.obsidian/graph.json` 配色组（撤稿 → 种子 → 各来源，按标签匹配），给 Obsidian 自带 Graph view 着色；只替换 `tag:#scibooster/` 开头的组，用户其他设置和配色组保留，无法解析的文件不动；新建时打开箭头。做法参考 graphify（Graphify-Labs/graphify，Apache-2.0/MIT）的 Obsidian 导出，并避开其 #2204 的问题（配色组查询与笔记标签清洗规则不一致导致配色失效）：查询直接使用笔记里写的标签字符串，测试保证每篇笔记都会被某个配色组匹配到
+  - 调研过但没有采用：graphify 的 Canvas 按社区排成网格，不反映引用结构；Juggl、Extended Graph、Advanced Canvas 等插件需要用户另装，而 SCIBooster 的输出不依赖任何插件
+- 实测：gnn-drug-quick（48 篇 / 152 条边）0.6 秒，Canvas 约 6400×4200 px；gnn-drug-demo（60 篇）约 7900×5300 px；合成的 400 篇图约 12 秒（超时上限 120 秒）
+- 已用新版本重新导出 `corpora/gnn-drug-quick/obsidian/`（导出时 Obsidian 正在运行；graph.json 是新建的，如果看不到着色，重新打开该 vault）
+- [ ] **待用户在 Obsidian 中确认**：网状 Canvas 的观感（卡片间距、边的出入方向、图例），以及 Graph view 的着色
 
 ## 7. Claude Code skill 配置（2026-10-05）
 项目级 skill 安装在 `.claude/skills/`，来源与 commit 见 `.claude/skills/SOURCES.md`：

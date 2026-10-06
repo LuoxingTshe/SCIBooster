@@ -33,7 +33,7 @@ scibooster = "scibooster.cli:app"
 include = ["scibooster*", "renderer*"]
 
 [tool.setuptools.package-data]
-renderer = ["static/*", "static/vendor/*"]
+renderer = ["layout.cjs", "static/*", "static/vendor/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

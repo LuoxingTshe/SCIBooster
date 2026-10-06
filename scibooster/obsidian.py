@@ -1,10 +1,13 @@
-"""Obsidian vault export: one note per paper + a Base (table views) + a Canvas (year-layered citation DAG) + an overview.
+"""Obsidian vault export: one note per paper + a Base (table views) + a Canvas (citation network) + an overview.
 
 Layout of the output folder (open it as a vault, or write it into an existing vault with vault_root):
     总览.md            overview: need, intent, queries, PRISMA flow (mermaid), embedded Base, link to the Canvas
     文献库.base         Obsidian Bases table views over the paper notes' properties (Obsidian >= 1.9)
-    引用图谱.canvas     JSON Canvas 1.0: one row band per year (older on top), edges citing -> cited with relation labels
+    引用图谱.canvas     JSON Canvas 1.0: the dev renderer's fCoSE network layout (renderer/layout.cjs), edges
+                       citing -> cited with relation labels/colours, plus a colour legend
     papers/*.md        properties (frontmatter) + abstract + typed citation links
+    <vault>/.obsidian/graph.json   colour groups for the core Graph view (origin / seed / retracted tags), merged
+                       into the vault's existing settings; only groups querying tag:#scibooster/ are ours
 
 Links are written as vault-relative paths ([[sub/folder/papers/Name|Alias]]) so they stay unambiguous when several runs
 share one vault. Everything after NOTES_MARKER in a note is user-owned and survives re-export.
@@ -14,7 +17,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
+import shutil
+import subprocess
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -34,17 +40,22 @@ RELATION_NAMES = {
     "extends": "扩展/改进", "uses_method": "使用方法", "uses_data": "使用数据", "compares": "对比", "critiques": "质疑",
     "background": "背景引用",
 }
-# Canvas colors: presets "1"-"6" follow the user's theme; hex for the rest (same hues as the dev renderer)
-ORIGIN_COLORS = {"seed": "3", "openalex_search": "5", "wos_search": "5", "backward": "4", "forward": "6",
-                 "cocited": "2", "agent": "#e07a2f"}
+# Node colours: the dev renderer's --o-* tokens (renderer/static/style.css), so the renderer, the Canvas and the
+# Graph view colour a paper the same way. Retracted papers use Canvas preset "1" (the theme's red).
+ORIGIN_COLORS = {"seed": "#d99a00", "openalex_search": "#2f6fdb", "wos_search": "#2f6fdb", "backward": "#2a9d8f",
+                 "forward": "#8e5bd6", "cocited": "#c2410c", "agent": "#e07a2f"}
 RETRACTED_COLOR = "1"
+RETRACTED_RGB = "#e03131"
 RELATION_COLORS = {"extends": "#e0457b", "uses_method": "#2a9d8f", "uses_data": "#3a86ff", "compares": "#f4a261",
                    "critiques": "#d62828"}
 
 # Canvas geometry (px)
-NODE_W, NODE_H, H_GAP, V_GAP = 320, 150, 40, 40
-PER_LINE = 10  # wrap a year's row after this many papers
-GROUP_PAD, GROUP_GAP = 40, 120
+NODE_W, NODE_H, H_GAP = 320, 150, 40
+LEGEND_GAP = 160
+# Layout: the dev renderer's fCoSE network (renderer/layout.cjs) under Node.js, seeded so re-exports are stable
+LAYOUT_JS = Path(__file__).resolve().parent.parent / "renderer" / "layout.cjs"
+LAYOUT_SEED, LAYOUT_TIMEOUT = 42, 120
+GRAPH_TAG_PREFIX = "tag:#scibooster/"
 
 
 @dataclass
@@ -54,6 +65,8 @@ class VaultReport:
     notes_kept_user_text: int = 0  # existing notes whose user section was carried over
     stale_removed: list[str] = field(default_factory=list)
     stale_kept: list[str] = field(default_factory=list)  # no longer in the corpus but holding user notes
+    canvas_layout: str = ""  # fcose / cose (renderer layout under Node.js) or spring (networkx fallback)
+    graph_colors: Path | None = None  # .obsidian/graph.json we merged colour groups into (None: left untouched)
 
 
 # ---------- naming / links ----------
@@ -143,9 +156,9 @@ def export_vault(corpus: Corpus, out_dir: Path, vault_root: Path | None = None) 
             report.stale_kept.append(f.name)
 
     (out_dir / BASE).write_text(_base_file(prefix), encoding="utf-8")
-    (out_dir / CANVAS).write_text(
-        json.dumps(_canvas(corpus, names, indeg, prefix), ensure_ascii=False, indent=1), encoding="utf-8"
-    )
+    canvas, report.canvas_layout = _canvas(corpus, names, indeg, prefix)
+    (out_dir / CANVAS).write_text(json.dumps(canvas, ensure_ascii=False, indent=1), encoding="utf-8")
+    report.graph_colors = write_graph_colors(vault_root)
     overview = out_dir / OVERVIEW
     overview_user = _user_section(overview)
     overview.write_text(_overview(corpus, indeg, link, prefix) + (overview_user or "\n## 笔记\n\n"), encoding="utf-8")
@@ -278,77 +291,124 @@ def _cid(*parts: str) -> str:
     return hashlib.sha1("|".join(parts).encode()).hexdigest()[:16]
 
 
-def year_rows(corpus: Corpus, sweeps: int = 6) -> list[tuple[int | None, list[str]]]:
-    """One row per year (oldest first); within a row, barycenter sweeps over cross-year neighbours reduce crossings."""
-    rows: dict[int | None, list[Paper]] = defaultdict(list)
-    for p in corpus.papers:
-        rows[p.year].append(p)
-    years = sorted(rows, key=lambda y: y if y is not None else 9999)
-    nbrs: dict[str, set[str]] = defaultdict(set)
-    for e in corpus.edges:
-        nbrs[e.source].add(e.target)
-        nbrs[e.target].add(e.source)
-    year_of = {p.id: p.year for p in corpus.papers}
-    order: dict[int | None, list[str]] = {}
-    xi: dict[str, float] = {}
-
-    def place(y):
-        row = order[y]
-        for i, pid in enumerate(row):
-            xi[pid] = i - (len(row) - 1) / 2
-
-    for y in years:
-        ranked = sorted(rows[y], key=lambda p: (-(p.relevance.score if p.relevance else 0), -(p.cited_by_count or 0)))
-        order[y] = [p.id for p in ranked]
-        place(y)
-    for sweep in range(sweeps):
-        for y in (reversed(years) if sweep % 2 else years):
-            def bc(pid: str) -> float:
-                nb = [xi[m] for m in nbrs[pid] if m in xi and year_of.get(m) != y]
-                return sum(nb) / len(nb) if nb else xi[pid]
-            order[y].sort(key=bc)
-            place(y)
-    return [(y, order[y]) for y in years]
+def _run_layout_js(payload: dict) -> tuple[dict[str, tuple[float, float]], str] | None:
+    """Card centres from the dev renderer's own fCoSE layout (renderer/layout.cjs under Node); None if unavailable."""
+    node = shutil.which("node")
+    if not node or not LAYOUT_JS.exists():
+        return None
+    try:
+        r = subprocess.run([node, str(LAYOUT_JS)], input=json.dumps(payload), capture_output=True, text=True,
+                           timeout=LAYOUT_TIMEOUT, check=True)
+        out = json.loads(r.stdout)
+        pos = {k: (float(v["x"]), float(v["y"])) for k, v in out["positions"].items()}
+    except (OSError, subprocess.SubprocessError, ValueError, KeyError, TypeError):
+        return None
+    if set(pos) != {n["id"] for n in payload["nodes"]} or not all(map(math.isfinite, (c for xy in pos.values() for c in xy))):
+        return None
+    return pos, out.get("layout", "fcose")
 
 
-def _canvas(corpus: Corpus, names: dict[str, str], indeg: Counter, prefix: str) -> dict:
+def separate_bounds(pos: dict[str, tuple[float, float]], w: float, h: float, gutter: float) -> dict:
+    """Port of NetworkLayout's separateBounds for equal-sized cards: the smallest uniform scale that leaves a gutter
+    between every pair of boxes (angles, and so edge crossings, are preserved)."""
+    seen: set[tuple[float, float]] = set()
+    pos = dict(pos)
+    for k, (x, y) in pos.items():
+        while (x, y) in seen:
+            x += w + gutter
+        seen.add((x, y))
+        pos[k] = (x, y)
+    pts = list(pos.values())
+    scale = 1.0
+    for i, (ax, ay) in enumerate(pts):
+        for bx, by in pts[i + 1:]:
+            dx, dy = abs(bx - ax), abs(by - ay)
+            sx = (w + gutter) / dx if dx else math.inf
+            sy = (h + gutter) / dy if dy else math.inf
+            scale = max(scale, min(sx, sy))
+    return {k: (x * scale, y * scale) for k, (x, y) in pos.items()}
+
+
+def network_positions(corpus: Corpus, spacing: float = 1.0) -> tuple[dict[str, tuple[float, float]], str]:
+    """Card centres for the citation network, plus the engine used ("fcose" / "cose" via Node, else "spring").
+
+    Same layout as `scibooster serve`: positions come from citation links only, years are not a constraint.
+    Without Node.js, networkx's Fruchterman-Reingold spring layout + the same bounding-box separation stand in.
+    """
+    ids = [p.id for p in corpus.papers]
+    known = set(ids)
+    edges = [(e.source, e.target) for e in corpus.edges
+             if e.source in known and e.target in known and e.source != e.target]
+    if not ids:
+        return {}, "none"
+    payload = {"nodes": [{"id": i, "width": NODE_W, "height": NODE_H} for i in ids],
+               "edges": [{"source": s, "target": t} for s, t in edges], "spacing": spacing, "seed": LAYOUT_SEED}
+    got = _run_layout_js(payload)
+    if got:
+        return got
+    import networkx as nx
+
+    g = nx.Graph()
+    g.add_nodes_from(ids)
+    g.add_edges_from(edges)
+    raw = nx.spring_layout(g, seed=LAYOUT_SEED, iterations=200)
+    pos = {k: (float(x), float(y)) for k, (x, y) in raw.items()}
+    return separate_bounds(pos, NODE_W, NODE_H, 2 * H_GAP * spacing), "spring"
+
+
+def _sides(a: tuple[float, float], b: tuple[float, float]) -> tuple[str, str]:
+    """Facing sides of two cards, judged against the card's aspect ratio so edges leave from the nearest side."""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    if abs(dx) * NODE_H >= abs(dy) * NODE_W:
+        return ("right", "left") if dx >= 0 else ("left", "right")
+    return ("bottom", "top") if dy >= 0 else ("top", "bottom")
+
+
+def _canvas(corpus: Corpus, names: dict[str, str], indeg: Counter, prefix: str) -> tuple[dict, str]:
     by_id = {p.id: p for p in corpus.papers}
-    groups, cards = [], []
-    y_cursor = 0
-    rows = year_rows(corpus)
-    max_line = min(PER_LINE, max((len(r) for _, r in rows), default=1))
-    full_w = max_line * NODE_W + (max_line - 1) * H_GAP
-    for year, row in rows:
-        lines = [row[i:i + PER_LINE] for i in range(0, len(row), PER_LINE)]
-        top = y_cursor
-        y = top + GROUP_PAD
-        for line in lines:
-            line_w = len(line) * NODE_W + (len(line) - 1) * H_GAP
-            x = (full_w - line_w) // 2
-            for pid in line:
-                cards.append(_card(by_id[pid], names[pid], indeg[pid], prefix, x, y))
-                x += NODE_W + H_GAP
-            y += NODE_H + V_GAP
-        height = y - V_GAP + GROUP_PAD - top
-        groups.append({"id": _cid("year", str(year)), "type": "group", "x": -GROUP_PAD, "y": top,
-                       "width": full_w + 2 * GROUP_PAD, "height": height,
-                       "label": str(year) if year is not None else "年份未知"})
-        y_cursor = top + height + GROUP_GAP
-    year_of = {p.id: p.year for p in corpus.papers}
+    centres, engine = network_positions(corpus)
+    # Top-left corners on an integer grid, shifted so the network starts at (0, 0)
+    x0 = min((x for x, _ in centres.values()), default=0) - NODE_W / 2
+    y0 = min((y for _, y in centres.values()), default=0) - NODE_H / 2
+    corner = {k: (round(x - NODE_W / 2 - x0), round(y - NODE_H / 2 - y0)) for k, (x, y) in centres.items()}
+    cards = [_card(p, names[p.id], indeg[p.id], prefix, *corner[p.id]) for p in corpus.papers]
     edges = []
     for e in corpus.edges:
-        if e.source not in by_id or e.target not in by_id:
+        if e.source not in by_id or e.target not in by_id or e.source == e.target:
             continue
-        ed = {"id": _cid("edge", e.source, e.target), "fromNode": _cid("paper", e.source),
-              "toNode": _cid("paper", e.target), "toEnd": "arrow"}
-        if year_of.get(e.source) != year_of.get(e.target):
-            ed.update(fromSide="top", toSide="bottom")  # cited (older) rows sit above citing rows
+        from_side, to_side = _sides(centres[e.source], centres[e.target])
+        ed = {"id": _cid("edge", e.source, e.target), "fromNode": _cid("paper", e.source), "fromSide": from_side,
+              "toNode": _cid("paper", e.target), "toSide": to_side, "toEnd": "arrow"}
         if e.relation and e.relation.label != "background":
             ed["label"] = RELATION_NAMES[e.relation.label]
             ed["color"] = RELATION_COLORS[e.relation.label]
         edges.append(ed)
     # Groups first so they render beneath the cards
-    return {"nodes": groups + cards, "edges": edges}
+    return {"nodes": _legend(corpus) + cards, "edges": edges}, engine
+
+
+def _legend(corpus: Corpus) -> list[dict]:
+    """Colour key in a group to the left of the network: one swatch card per origin / relation present."""
+    if not corpus.papers:
+        return []
+    origins = list(dict.fromkeys(p.origin for p in corpus.papers if p.origin in ORIGIN_COLORS))
+    rels = list(dict.fromkeys(e.relation.label for e in corpus.edges
+                              if e.relation and e.relation.label in RELATION_COLORS))
+    items = [(ORIGIN_NAMES.get(o, o), ORIGIN_COLORS[o]) for o in origins]
+    if any(p.retracted for p in corpus.papers):
+        items.append(("已撤稿", RETRACTED_COLOR))
+    items += [(f"→ {RELATION_NAMES[r]}（引用边）", RELATION_COLORS[r]) for r in rels]
+    w, h, gap, pad = 240, 50, 12, 30
+    head = 110
+    x = -(w + 2 * pad) - LEGEND_GAP
+    nodes = [{"id": _cid("legend"), "type": "group", "label": "图例", "x": x, "y": 0, "width": w + 2 * pad,
+              "height": head + len(items) * (h + gap) + pad}]
+    nodes.append({"id": _cid("legend", "note"), "type": "text", "x": x + pad, "y": pad, "width": w, "height": head - pad,
+                  "text": "箭头：施引 → 被引\n位置按引用关系排布，年份见卡片\n★ 种子文献"})
+    for i, (label, color) in enumerate(items):
+        nodes.append({"id": _cid("legend", label), "type": "text", "x": x + pad, "y": head + i * (h + gap),
+                      "width": w, "height": h, "text": label, "color": color})
+    return nodes
 
 
 def _card(p: Paper, name: str, corpus_cites: int, prefix: str, x: int, y: int) -> dict:
@@ -364,6 +424,41 @@ def _card(p: Paper, name: str, corpus_cites: int, prefix: str, x: int, y: int) -
     if color:
         node["color"] = color
     return node
+
+
+# ---------- Graph view ----------
+def _rgb(color: str) -> int:
+    return int(color.lstrip("#"), 16)
+
+
+def graph_color_groups() -> list[dict]:
+    """Core Graph view colour groups, first match wins: retracted, then seed, then each origin."""
+    groups = [("scibooster/retracted", RETRACTED_RGB), ("scibooster/seed", ORIGIN_COLORS["seed"])]
+    groups += [(f"scibooster/origin/{o}", c) for o, c in ORIGIN_COLORS.items() if o != "seed"]
+    return [{"query": f"tag:#{tag}", "color": {"a": 1, "rgb": _rgb(c)}} for tag, c in groups]
+
+
+def write_graph_colors(vault_root: Path) -> Path | None:
+    """Merge our colour groups into <vault>/.obsidian/graph.json, keeping every other setting and the user's groups.
+
+    Groups whose query starts with tag:#scibooster/ are replaced; a fresh config also turns on arrows (citations are
+    directed). An unreadable graph.json is left alone. Obsidian reads the file when it opens the vault.
+    """
+    path = Path(vault_root) / ".obsidian" / "graph.json"
+    cfg: dict = {"showArrow": True}
+    if path.exists():
+        try:
+            cfg = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return None
+        if not isinstance(cfg, dict) or not isinstance(cfg.get("colorGroups", []), list):
+            return None
+    theirs = [g for g in cfg.get("colorGroups", [])
+              if not (isinstance(g, dict) and str(g.get("query", "")).startswith(GRAPH_TAG_PREFIX))]
+    cfg["colorGroups"] = graph_color_groups() + theirs
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(cfg, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
 
 
 # ---------- overview ----------
@@ -392,7 +487,8 @@ def _overview(corpus: Corpus, indeg: Counter, link, prefix: str) -> str:
              f"# {m.prompt or '文献图谱'}", ""]
     lines += [f"{st.get('n_papers', len(corpus.papers))} 篇文献（种子 {st.get('n_seeds', 0)}）· "
               f"{st.get('n_edges', len(corpus.edges))} 条库内引用 · 年份 {st.get('year_span')}", "",
-              f"- 引用图谱（按年代分层，旧在上）：[[{prefix}{CANVAS}]]",
+              f"- 引用图谱（网状布局，箭头指向被引文献）：[[{prefix}{CANVAS}]]；"
+              "也可打开 Graph view，节点按来源着色",
               f"- 文献表：[[{prefix}{BASE}]]（需要 Obsidian 1.9 及以上）", ""]
     if it:
         lines += ["## 研究意图", "", it.topic, ""] + [f"- {q}" for q in it.research_questions] + [""]

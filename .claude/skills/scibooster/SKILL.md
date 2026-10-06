@@ -1,6 +1,6 @@
 ---
 name: scibooster
-description: Run, test, debug, or extend this repo's SCIBooster literature-retrieval harness (DeepSeek + WoS Starter/OpenAlex → citation-linked corpus.json → Obsidian vault output (notes, Base, Canvas) + dev DAG renderer, recall eval, BibTeX/RIS/CSV export). Use when the task is to build or expand a corpus, evaluate or export it, inspect corpus stats, start the renderer, run the test suite, or change pipeline / agent / source / renderer code in this project. Triggers on 构建语料库, 跑一遍 pipeline, 评估召回, 导出文献, 生成 Obsidian, 启动渲染器, 跑测试, scibooster build/agent/obsidian/eval/export/serve.
+description: Run, test, debug, or extend this repo's SCIBooster literature-retrieval harness (DeepSeek + WoS Starter/OpenAlex → citation-linked corpus.json → Obsidian vault output (notes, Base, Canvas) + dev citation-network renderer, recall eval, BibTeX/RIS/CSV export). Use when the task is to build or expand a corpus, evaluate or export it, inspect corpus stats, start the renderer, run the test suite, or change pipeline / agent / source / renderer code in this project. Triggers on 构建语料库, 跑一遍 pipeline, 评估召回, 导出文献, 生成 Obsidian, 启动渲染器, 跑测试, scibooster build/agent/obsidian/eval/export/serve.
 ---
 
 # SCIBooster (project skill)
@@ -26,8 +26,9 @@ Read `PROGRESS.md` first when resuming: it holds env status, the last live run, 
 .venv/bin/scibooster obsidian corpora/<run>/corpus.json [--vault PATH]   # build/agent already do this
 .venv/bin/scibooster stats    corpora/<run>/corpus.json
 .venv/bin/scibooster traverse corpora/<run>/corpus.json --start <W-id> --mode dfs --direction cited_by
-.venv/bin/scibooster serve    corpora/<run>/corpus.json        # dev renderer only; http://127.0.0.1:8765 (CDN JS)
+.venv/bin/scibooster serve    corpora/<run>/corpus.json        # dev renderer only; http://127.0.0.1:8765 (offline, vendored JS)
 .venv/bin/python -m pytest -q                                   # offline: FakeLLM + in-memory citation universe + respx
+node --test tests/test_network_layout.cjs                        # renderer layout tests; Node 22+, no npm install
 ```
 
 Every run writes `trace.jsonl` next to the corpus; token usage is in `corpus.meta.usage`, the screening flow in `corpus.meta.prisma`. Use `eval` on the same gold survey to compare runs before/after a pipeline change.
@@ -47,17 +48,22 @@ Every run writes `trace.jsonl` next to the corpus; token usage is in `corpus.met
 | Dedup / merge rules | `scibooster/store.py` (`_ORIGIN_RANK`, `_merge_into`) |
 | corpus.json schema | `scibooster/models.py` |
 | Obsidian output (user-facing; see json-canvas / obsidian-bases skills for formats) | `scibooster/obsidian.py` |
-| Dev renderer (no LLM calls; RAG was removed on purpose, don't re-add) | `renderer/server.py`, `renderer/static/` |
+| Canvas layout = renderer layout run headless under Node (networkx spring fallback) | `renderer/layout.cjs`, `network_positions` in `obsidian.py` |
+| Dev renderer (no LLM calls; RAG was removed on purpose, don't re-add) | `renderer/server.py`, `renderer/static/app.js` |
+| Renderer layout (fCoSE options, spacing levels, overlap removal) | `renderer/static/network-layout.js` |
+| Vendored browser libs (pinned versions, update procedure) | `renderer/static/vendor/README.md` |
 
 ## Extending safely
 
 - New LLM call → add the prompt to `prompts.py`, give it a distinct `purpose=` string, and teach `FakeLLM` in `tests/conftest.py` to answer that purpose, otherwise tests hit the fallback.
 - New data source → mirror `sources/openalex.py`: return `Paper` objects, route HTTP through `sources/cache.py`, add a fixture under `tests/fixtures/` and a respx/fake-backed test.
 - Schema change in `models.py` → old corpora under `corpora/` must still `Corpus.model_validate`; give new fields defaults.
-- New `origin` value → also add it to `_ORIGIN_RANK` (`store.py`) and `ORIGIN` + a `--o-*` colour token (`renderer/static/`).
+- New `origin` value → also add it to `_ORIGIN_RANK` (`store.py`), `ORIGIN` + a `--o-*` colour token (`renderer/static/`), and `ORIGIN_COLORS` / `ORIGIN_NAMES` in `obsidian.py` (Canvas + Graph view colour groups).
+- `.obsidian/graph.json`: only touch colour groups whose query starts with `tag:#scibooster/`; queries must use the exact tag strings written into note frontmatter.
 - New paper property → add it to `_paper_note` frontmatter and, if useful, a Base column in `_base_file`; never write below `NOTES_MARKER` (user-owned).
+- Renderer layout is a relaxed fCoSE network with **no year/position constraints** (the year-layered DAG was dropped on purpose, in the renderer and the Canvas alike; years live in labels, filters and the Base). The Obsidian Canvas reuses it through `renderer/layout.cjs` — change layout behaviour in `network-layout.js`, not in Python. Keep `network-layout.js` UMD-style so the Node tests can load it; don't reintroduce CDN scripts — `test_renderer.py` asserts every `<script>` is served from `/static/`.
 - PRISMA counts are derived from final pool state in `_fill_prisma`; keep the identity `identified = screened + not_screened + seeds` (tests check it).
-- Finish with `pytest -q` green and update `PROGRESS.md` (Chinese) if behaviour or open items changed.
+- Finish with `pytest -q` green (plus `node --test tests/test_network_layout.cjs` if `renderer/static/` changed) and update `PROGRESS.md` (Chinese) if behaviour or open items changed.
 
 ## Related vendored skills
 

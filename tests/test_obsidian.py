@@ -1,9 +1,12 @@
 import json
+import shutil
 
+import pytest
 import yaml
 
 from scibooster.models import EdgeRelation, Paper, Prisma
-from scibooster.obsidian import BASE, CANVAS, NOTES_MARKER, OVERVIEW, export_vault, note_names
+from scibooster.obsidian import (BASE, CANVAS, NOTES_MARKER, OVERVIEW, RELATION_COLORS, export_vault,
+                                 graph_color_groups, network_positions, note_names, separate_bounds)
 from scibooster.store import CorpusStore
 
 
@@ -46,31 +49,97 @@ def test_vault_layout_and_properties(small_corpus, tmp_path):
     assert "```mermaid" in overview and "[[SCIBooster/run1/引用图谱.canvas]]" in overview
 
 
-def test_canvas_is_valid_year_layered_dag(small_corpus, tmp_path):
-    c = _corpus(small_corpus)
-    export_vault(c, tmp_path)
-    canvas = json.loads((tmp_path / CANVAS).read_text(encoding="utf-8"))
+def _disjoint(a, b, gap=0):
+    return (a["x"] + a["width"] + gap <= b["x"] or b["x"] + b["width"] + gap <= a["x"]
+            or a["y"] + a["height"] + gap <= b["y"] or b["y"] + b["height"] + gap <= a["y"])
+
+
+def _check_canvas(c, path):
+    canvas = json.loads(path.read_text(encoding="utf-8"))
     nodes = {n["id"]: n for n in canvas["nodes"]}
     assert len(nodes) == len(canvas["nodes"])  # unique ids
     for n in canvas["nodes"]:
         assert {"id", "type", "x", "y", "width", "height"} <= n.keys()
         assert all(isinstance(n[k], int) for k in ("x", "y", "width", "height"))
-    cards = [n for n in canvas["nodes"] if n["type"] == "text"]
-    groups = [n for n in canvas["nodes"] if n["type"] == "group"]
-    assert len(cards) == 7 and {g["label"] for g in groups} == {str(p.year) for p in c.papers}
-    assert canvas["nodes"].index(groups[-1]) < canvas["nodes"].index(cards[0])  # groups render beneath cards
+    cards = [n for n in canvas["nodes"] if n["type"] == "text" and "[[" in n["text"]]
+    assert len(cards) == len(c.papers)
+    assert all(_disjoint(a, b) for i, a in enumerate(cards) for b in cards[i + 1:])
+    legend = next(n for n in canvas["nodes"] if n["type"] == "group")
+    assert legend["label"] == "图例" and canvas["nodes"].index(legend) == 0  # groups render beneath cards
+    assert all(_disjoint(legend, card) for card in cards)
     assert len(canvas["edges"]) == len(c.edges)
+    opposite = {"left": "right", "right": "left", "top": "bottom", "bottom": "top"}
     for ed in canvas["edges"]:
         src, dst = nodes[ed["fromNode"]], nodes[ed["toNode"]]
-        assert src["y"] >= dst["y"]  # citing paper sits on or below the (older) cited one
+        assert ed["toEnd"] == "arrow" and opposite[ed["fromSide"]] == ed["toSide"]
+        # Edges leave from the side facing the other card
+        if ed["fromSide"] == "right":
+            assert src["x"] <= dst["x"]
+        elif ed["fromSide"] == "bottom":
+            assert src["y"] <= dst["y"]
     labeled = [ed for ed in canvas["edges"] if "label" in ed]
-    assert len(labeled) == 1 and labeled[0]["label"] == "扩展/改进"
-    # Each card sits inside its year's group
-    year_group = {g["label"]: g for g in groups}
-    for card in cards:
-        pid = next(p for p in c.papers if f"|{p.authors[0].split()[-1]} {p.year}]]" in card["text"] and p.title[:20] in card["text"])
-        g = year_group[str(pid.year)]
-        assert g["y"] <= card["y"] and card["y"] + card["height"] <= g["y"] + g["height"]
+    assert len(labeled) == 1 and labeled[0]["label"] == "扩展/改进" and labeled[0]["color"] == RELATION_COLORS["extends"]
+    return canvas
+
+
+@pytest.mark.skipif(not shutil.which("node"), reason="Node.js not installed")
+def test_canvas_uses_renderer_network_layout(small_corpus, tmp_path):
+    c = _corpus(small_corpus)
+    rep = export_vault(c, tmp_path / "a")
+    assert rep.canvas_layout == "fcose"
+    canvas = _check_canvas(c, tmp_path / "a" / CANVAS)
+    # Seeded layout: re-exporting the same corpus gives the same Canvas
+    export_vault(c, tmp_path / "b")
+    assert json.loads((tmp_path / "b" / CANVAS).read_text(encoding="utf-8")) == canvas
+    # Years only appear in labels: changing them does not move any card
+    shifted = c.model_copy(deep=True)
+    for p in shifted.papers:
+        p.year = None
+    assert network_positions(shifted) == network_positions(c)
+
+
+def test_canvas_falls_back_to_spring_layout_without_node(small_corpus, tmp_path, monkeypatch):
+    monkeypatch.setattr("scibooster.obsidian.shutil.which", lambda _: None)
+    c = _corpus(small_corpus)
+    rep = export_vault(c, tmp_path)
+    assert rep.canvas_layout == "spring"
+    _check_canvas(c, tmp_path / CANVAS)
+
+
+def test_separate_bounds_handles_coincident_and_overlapping_cards():
+    pos = separate_bounds({"a": (0, 0), "b": (0, 0), "c": (10, 5)}, 320, 150, 40)
+    boxes = [{"x": x - 160, "y": y - 75, "width": 320, "height": 150} for x, y in pos.values()]
+    assert all(_disjoint(a, b, gap=39) for i, a in enumerate(boxes) for b in boxes[i + 1:])
+
+
+def test_graph_view_colour_groups_merge_into_existing_settings(small_corpus, tmp_path):
+    cfg_path = tmp_path / ".obsidian" / "graph.json"
+    cfg_path.parent.mkdir()
+    mine = {"query": "path:journal", "color": {"a": 1, "rgb": 1}}
+    stale = {"query": "tag:#scibooster/origin/gone", "color": {"a": 1, "rgb": 2}}
+    cfg_path.write_text(json.dumps({"showTags": True, "colorGroups": [stale, mine]}), encoding="utf-8")
+    rep = export_vault(_corpus(small_corpus), tmp_path / "SCIBooster" / "run1", vault_root=tmp_path)
+    cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+    assert rep.graph_colors == cfg_path and cfg["showTags"] is True and "showArrow" not in cfg
+    assert cfg["colorGroups"] == graph_color_groups() + [mine]
+    # Every paper note is matched by a colour group: queries are built from the same tags the notes carry
+    # (graphify#2204: when the two drift apart, groups silently match nothing)
+    ours = {g["query"].removeprefix("tag:#") for g in graph_color_groups()}
+    for f in (tmp_path / "SCIBooster" / "run1" / "papers").glob("*.md"):
+        assert ours & set(_frontmatter(f)["tags"]), f.name
+
+    export_vault(_corpus(small_corpus), tmp_path / "SCIBooster" / "run1", vault_root=tmp_path)
+    assert json.loads(cfg_path.read_text(encoding="utf-8")) == cfg  # idempotent
+
+    cfg_path.write_text("{not json", encoding="utf-8")
+    assert export_vault(_corpus(small_corpus), tmp_path / "x", vault_root=tmp_path).graph_colors is None
+    assert cfg_path.read_text(encoding="utf-8") == "{not json"  # a config we cannot parse is left alone
+
+
+def test_standalone_vault_gets_graph_config(small_corpus, tmp_path):
+    export_vault(_corpus(small_corpus), tmp_path)
+    cfg = json.loads((tmp_path / ".obsidian" / "graph.json").read_text(encoding="utf-8"))
+    assert cfg["showArrow"] is True and cfg["colorGroups"] == graph_color_groups()
 
 
 def test_reexport_keeps_user_notes_and_cleans_stale(small_corpus, tmp_path):

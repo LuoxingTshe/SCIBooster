@@ -1,22 +1,12 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
+const { spawnSync } = require('node:child_process');
 const path = require('node:path');
 const vm = require('node:vm');
+// Executes the exact browser distributions, offline and without npm installation.
+const { loadRenderer, layout } = require('../renderer/layout.cjs');
 
-// Execute the exact browser distributions, offline and without npm installation.
-function renderer() {
-  let seed = 42;
-  const math = Object.create(Math);
-  math.random = () => ((seed = (1664525 * seed + 1013904223) >>> 0) / 2 ** 32);
-  const context = vm.createContext({ console, Math: math, setTimeout, clearTimeout });
-  context.window = context;
-  for (const file of ['vendor/cytoscape.min.js', 'vendor/layout-base.js',
-    'vendor/cose-base.js', 'vendor/cytoscape-fcose.js', 'network-layout.js']) {
-    vm.runInContext(fs.readFileSync(path.join(__dirname, '../renderer/static', file), 'utf8'), context);
-  }
-  return context;
-}
+const renderer = () => loadRenderer(42);
 
 function graph(env, count = 24, year = (i) => 2000 + i % 6) {
   const elements = Array.from({ length: count }, (_, i) => ({ data: {
@@ -125,4 +115,37 @@ test('CoSE fallback works and wider spacing increases edge lengths', () => {
     env1.NetworkLayout.run(cy1, 1, false);
     assertSeparated(cy1);
   } finally { cy1.destroy(); cy2.destroy(); }
+});
+
+// Canvas cards are wide rectangles; the headless entry point used by the Obsidian export must keep them apart too.
+function cards(count = 30) {
+  const nodes = Array.from({ length: count }, (_, i) => ({ id: `p${i}`, width: 320, height: 150 }));
+  const edges = Array.from({ length: count - 1 }, (_, i) => ({ source: `p${i + 1}`, target: `p${Math.floor(i / 3)}` }));
+  edges.push({ source: 'p5', target: 'p5' }, { source: 'p1', target: 'missing' }); // ignored
+  return { nodes, edges };
+}
+
+function assertCardsApart(positions, w = 320, h = 150) {
+  const pts = Object.values(positions);
+  pts.forEach((a, i) => pts.slice(i + 1).forEach((b) => {
+    assert.ok(Math.abs(a.x - b.x) >= w || Math.abs(a.y - b.y) >= h, 'cards overlap');
+  }));
+}
+
+test('headless layout() keeps Canvas-sized cards apart and is reproducible', () => {
+  const first = layout({ ...cards(), seed: 7 });
+  assert.equal(first.layout, 'fcose');
+  assert.equal(Object.keys(first.positions).length, 30);
+  assertCardsApart(first.positions);
+  assert.deepEqual(layout({ ...cards(), seed: 7 }).positions, first.positions);
+  assert.deepEqual(layout({ nodes: [], edges: [] }).positions, {});
+});
+
+test('layout.cjs CLI reads a graph on stdin and prints positions', () => {
+  const r = spawnSync(process.execPath, [path.join(__dirname, '../renderer/layout.cjs')],
+    { input: JSON.stringify(cards(8)), encoding: 'utf8' });
+  assert.equal(r.status, 0, r.stderr);
+  const out = JSON.parse(r.stdout);
+  assert.equal(out.layout, 'fcose');
+  assertCardsApart(out.positions);
 });
