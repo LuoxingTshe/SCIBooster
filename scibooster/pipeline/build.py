@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Callable, Literal
 
 from ..llm.deepseek import LLM
-from ..models import HopStat, Paper, Prisma, Relevance
+from ..models import HopStat, Paper, Prisma, Relevance, ResearchIntent
 from ..sources.openalex import OpenAlexClient
 from ..sources.wos import WosClient
 from ..store import CorpusStore
@@ -76,6 +76,7 @@ def build_corpus(
     tracer: Tracer,
     out_path: Path,
     log: Log = print,
+    frozen_intent: ResearchIntent | None = None,
 ) -> CorpusStore:
     if params.source != "wos" and (params.query_branches or params.wos_queries):
         raise ValueError("query_branches and wos_queries require source=wos")
@@ -100,8 +101,15 @@ def build_corpus(
             log(f"  ✓ {s.id}  {s.title[:80]} ({s.year})")
 
     # 2. Intent
-    log("Parsing research intent (DeepSeek)…")
-    intent = intent_mod.parse_intent(params.prompt, llm, seed_papers, params.years)
+    if frozen_intent is not None:
+        # Reproducibility runs reuse a recorded intent so prefilter and screening see the same concepts.
+        log("Using frozen research intent (no LLM call)…")
+        intent = frozen_intent.model_copy(deep=True)
+        if params.years and any(params.years):
+            intent.year_range = params.years
+    else:
+        log("Parsing research intent (DeepSeek)…")
+        intent = intent_mod.parse_intent(params.prompt, llm, seed_papers, params.years)
     meta.intent = intent
     log(f"  topic: {intent.topic}")
     log(f"  concepts: {', '.join(intent.core_concepts)}")

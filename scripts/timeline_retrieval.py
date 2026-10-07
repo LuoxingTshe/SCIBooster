@@ -184,7 +184,7 @@ def write_report(out: Path, result: dict, label: str) -> None:
     (out / "comparison.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def run_live(out: Path, config: dict, params: dict[str, BuildParams]) -> int:
+def run_live(out: Path, config: dict, params: dict[str, BuildParams], reparse_intent: bool = False) -> int:
     from scibooster.config import get_settings
     from scibooster.llm.deepseek import DeepSeek
     from scibooster.sources.cache import Cache
@@ -204,9 +204,12 @@ def run_live(out: Path, config: dict, params: dict[str, BuildParams]) -> int:
                 "git_commit": rev.stdout.strip() if rev.returncode == 0 else None,
                 "dirty_scibooster": bool(status.stdout.strip()),
                 "case_sha256": hashlib.sha256((RETRIEVAL / "case.json").read_bytes()).hexdigest(),
-                "cache_policy": "isolated per branch; no previous HTTP cache reused", "status": "running", "usage": {}}
+                "cache_policy": "isolated per branch; no previous HTTP cache reused",
+                "intent": "re-parsed by the LLM" if reparse_intent else "frozen from baseline corpus meta.intent",
+                "status": "running", "usage": {}}
     write_json(out / "run.json", manifest)
     runs = {}
+    baseline = load_baseline()
     try:
         for name in BRANCHES:
             folder = out / name
@@ -219,7 +222,9 @@ def run_live(out: Path, config: dict, params: dict[str, BuildParams]) -> int:
                     print(f"[{name}] {message}", flush=True)
                     log_file.write(message + "\n")
                     log_file.flush()
-                store = build_corpus(params[name], llm, oa, wos, tracer, folder / "corpus.json", log=log)
+                frozen = None if reparse_intent else baseline[name].meta.intent
+                store = build_corpus(params[name], llm, oa, wos, tracer, folder / "corpus.json", log=log,
+                                     frozen_intent=frozen)
             manifest["usage"][name] = tracer.usage.model_dump()
             runs[name] = store.corpus
         result = compare(runs, params)
@@ -241,6 +246,8 @@ def main() -> int:
     sub.add_parser("plan", help="Show the frozen branches and queries; no API calls")
     live = sub.add_parser("run", help="Call real DeepSeek/WoS/OpenAlex for both branches; incurs quota/cost")
     live.add_argument("--out", type=Path, required=True, help="New output directory (existing directories are refused)")
+    live.add_argument("--reparse-intent", action="store_true",
+                      help="Let the LLM re-parse the research intent instead of reusing the baseline's (default: frozen)")
     audit = sub.add_parser("compare", help="Compare an existing run directory (<dir>/<branch>/corpus.json) offline")
     audit.add_argument("run_dir", type=Path)
     args = parser.parse_args()
@@ -250,7 +257,7 @@ def main() -> int:
                          ensure_ascii=False, indent=2))
         return 0
     if args.command == "run":
-        return run_live(args.out.resolve(), config, params)
+        return run_live(args.out.resolve(), config, params, args.reparse_intent)
     runs = {name: Corpus.model_validate(read_json(args.run_dir / name / "corpus.json")) for name in BRANCHES}
     result = compare(runs, params)
     write_report(args.run_dir, result, args.run_dir.name)

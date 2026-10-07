@@ -11,11 +11,13 @@
 
 ```bash
 .venv/bin/python -m scripts.timeline_retrieval plan                       # 离线：显示种子和实际检索式
-.venv/bin/python -m scripts.timeline_retrieval run --out corpora/timeline-repro-<label>   # 真实 API，约 22 次 DeepSeek 调用、6 次 WoS 请求
+.venv/bin/python -m scripts.timeline_retrieval run --out corpora/timeline-repro-<label>   # 真实 API，约 20 次 DeepSeek 调用、6 次 WoS 请求
+.venv/bin/python -m scripts.timeline_retrieval run --out ... --reparse-intent               # 让 LLM 重新解析意图（repro-1 的做法）
+.venv/bin/python -m scripts.timeline_variance run --out corpora/timeline-variance-<label> --cache-from corpora/timeline-repro-<label> [--set frontier_size=6]   # 复用缓存，只量化 LLM 波动
 .venv/bin/python -m scripts.timeline_retrieval compare corpora/timeline-repro-<label>     # 离线重算对比
 ```
 
-`run` 的每条分支使用独立的新 HTTP 缓存，输出目录必须不存在，结果写入 `comparison.md` / `comparison.json`。只有结构问题会导致非零退出码：种子未全部解析、实际检索式与 `case.json` 不同、语料内重复。重合率只用于描述，不作为通过门槛。
+`run` 默认**冻结研究意图**：直接使用基线语料 `meta.intent` 中记录的意图，不再调用 LLM 重新解析（2026-10-07 实验表明意图重解析是最大的波动来源）。每条分支使用独立的新 HTTP 缓存，输出目录必须不存在，结果写入 `comparison.md` / `comparison.json`。只有结构问题会导致非零退出码：种子未全部解析、实际检索式与 `case.json` 不同、语料内重复。重合率只用于描述，不作为通过门槛。
 
 ## 比较口径
 
@@ -34,3 +36,15 @@
 |合计|79|65|61|77.2%|
 
 管线发现的直接支持记录命中 18/20，非种子 9/11；未命中的是 DS004（Tyrwhitt 1941–1951）和 DS018（Saaty 1977）。基线中缺失的 18 篇在基线里都是 6–7 分，多数恰在阈值 6。两次运行的 DeepSeek 意图解析得到的概念面不同。因此差异主要来自 LLM 的意图解析和边界评分，不是 WoS 返回结果变了。history 分支纳入的文献少，边界上的波动对它影响更大。
+
+## 波动实验（2026-10-07）
+
+冻结基线意图，复用 repro-1 的 HTTP 缓存（WoS 0 次实时请求），每组重复 3 次，只剩 DeepSeek 打分在变。最终语料两两 Jaccard 和稳定核心（3 次都入选 / 3 次合计）：
+
+|配置|history|formal_methods|DeepSeek token（每次两分支）|
+|---|---|---|---|
+|冻结意图|70%（15/26）|83%（48/63）|约 6 万|
+|A：+ 阈值附近多次打分取中位数|66%（15/28）|85%（44/56）|约 11 万|
+|B：A + 滚雪球起点 6 篇|77%（19/28）|87%（49/60）|约 11 万|
+
+冻结意图后，管线找到的 20 条直接支持 DOI 在 3 次中都全部命中（repro-1 为 18/20）。A 没有减少跨阈值的翻转，多次打分的代码已回滚；B 的小幅提升在 3 次重复的噪声范围内，未改动冻结协议。本地仅保留 `corpora/timeline-variance-2026-10-07`（冻结意图组）；A、B 两组原始数据已删除，以上表格为其摘要。

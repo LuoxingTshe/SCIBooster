@@ -72,3 +72,21 @@ def test_plan_and_compare_are_offline(tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(sys, "argv", ["timeline_retrieval", "compare", str(tmp_path)])
     assert main() == 0
     assert json.loads((tmp_path / "comparison.json").read_text())["union"]["shared"] == 79
+
+
+def test_stage_recorder_captures_pipeline_and_restores_functions(tmp_path):
+    from conftest import FakeLLM, FakeOA
+    from scripts.timeline_variance import record_stages, stage_view
+    from scibooster.pipeline import build, screen
+    from scibooster.pipeline.build import BuildParams, build_corpus
+    from scibooster.trace import Tracer
+
+    original = screen.llm_screen
+    events = []
+    params = BuildParams(prompt="GNN drug discovery", source="openalex", hops=1, max_papers=6)
+    with record_stages(events):
+        build_corpus(params, FakeLLM(), FakeOA(), None, Tracer(), tmp_path / "c.json", log=lambda m: None)
+    assert screen.llm_screen is original and build._top_relevant.__name__ == "_top_relevant"
+    view = stage_view(events)
+    assert view["scores"]["search"] and view["prefilter"]["search"]["kept"]
+    assert view["frontier"] and view["snowball"]

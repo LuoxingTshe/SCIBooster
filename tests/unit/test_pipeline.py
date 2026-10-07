@@ -5,7 +5,7 @@ import pytest
 from conftest import UNIVERSE, FakeLLM, FakeOA, tool_msg
 from scibooster.agent.loop import run_agent
 from scibooster.agent.tools import AgentContext
-from scibooster.models import Corpus, Paper, Relevance
+from scibooster.models import Corpus, Paper, Relevance, ResearchIntent
 from scibooster.pipeline import query
 from scibooster.pipeline.build import BuildParams, build_corpus, params_for_tier
 from scibooster.pipeline.intent import parse_intent
@@ -258,6 +258,20 @@ def test_fixed_base_queries_bypass_llm_query_generation(tmp_path):
     store = build_corpus(params, llm, FakeOA(), wos, Tracer(), tmp_path / "fixed.json", log=lambda m: None)
     assert "wos_query" not in llm.calls
     assert store.corpus.meta.queries == ['TS=("GNN")']
+
+
+
+def test_frozen_intent_skips_intent_parsing(tmp_path):
+    llm = FakeLLM()
+    frozen = ResearchIntent(topic="frozen topic", core_concepts=["graph neural network"], year_range=(None, None))
+    params = BuildParams(prompt="GNN", source="wos", wos_queries=['TS=("GNN")'], years=(2018, 2025),
+                         hops=0, gap_fill=False)
+    store = build_corpus(params, llm, FakeOA(), FakeWos(), Tracer(), tmp_path / "frozen.json",
+                         log=lambda m: None, frozen_intent=frozen)
+    assert "intent" not in llm.calls
+    assert store.corpus.meta.intent.topic == "frozen topic"
+    assert tuple(store.corpus.meta.intent.year_range) == (2018, 2025)
+    assert frozen.year_range == (None, None)  # caller's object is not mutated
 
 
 @pytest.mark.parametrize("source,branches", [("openalex", ["vegetation_tls"]), ("wos", ["unknown"])])
