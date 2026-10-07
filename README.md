@@ -167,16 +167,18 @@ renderer/                dev renderer: FastAPI backend (corpus + traversal API),
   layout.cjs             headless entry to NetworkLayout (Node CLI), used by the Obsidian Canvas export
   static/network-layout.js  fCoSE layout + label-aware overlap removal (shared with the Node tests)
   static/vendor/         pinned Cytoscape / layout-base / cose-base / fCoSE builds + licenses
-tests/                   pytest (fake LLM + in-memory citation universe + respx-mocked WoS)
-  test_network_layout.cjs  node:test layout regression suite
+tests/                   see tests/README.md
+  unit/                  per-stage offline tests (fake LLM + in-memory citation universe + respx-mocked WoS)
+    test_network_layout.cjs  node:test layout regression suite
+  cases/                 frozen real-search cases: classical-garden (current tech), timeline-study (history)
 ```
 
 ## Tests
 
 ```bash
 .venv/bin/python -m pytest -q
-node --test tests/test_network_layout.cjs  # offline layout regression tests; Node.js 22+
-# test_obsidian.py also runs the Canvas layout through Node when it is installed, and always tests the fallback
+node --test tests/unit/test_network_layout.cjs  # offline layout regression tests; Node.js 22+
+# tests/unit/test_obsidian.py also runs the Canvas layout through Node when it is installed, and always tests the fallback
 ```
 
 CI (`.github/workflows/ci.yml`, `ubuntu-26.04`, actions v7 on the Node 24 runtime) runs the Python suite on Python 3.11 and 3.14, plus the layout tests on Node.js 22. Layout tests execute the bundled browser scripts and cover overlap, year independence, filtering, empty/disconnected graphs, spacing, the fallback layout and the headless `layout.cjs` entry point (Canvas-sized cards, reproducibility, CLI).
@@ -188,10 +190,10 @@ CI (`.github/workflows/ci.yml`, `ubuntu-26.04`, actions v7 on the Node 24 runtim
 - 核心文献固定为 3 篇：皇家园林三维保护、历史园林点云空间分析、古典园林假山定量分析。
 - `build --branch` 可重复指定四个额外 WoS 分支：`vegetation_tls`（古树植被/TLS）、`garden_syntax`（园路/空间句法）、`garden_reviews`（园林综述）、`heritage_pointcloud`（遗产点云方法）。不指定分支时保留原有通用检索行为。这四个分支是本领域的显式选项，并非所有研究主题通用的查询。
 - `build` 对检索补全、引文扩展和共引补缺阶段的已知年份执行显式年份边界，修复初始查询受年份限制而扩展结果越界的问题。`excluded_out_of_year` 记录剔除事件；未知年份及用户显式种子仍按现有规则保留，固定测试会将未知或越界年份判为需关注。
-- 整理 `tests/`：离线系统测试放在 `tests/system/`，可提交的真实测试输入移入 `tests/fixtures/real_search/`，不再依赖 macOS 的 `SCI`/`sci` 大小写兼容。原始 PDF 与约 397 MB 文献包保留本地，不提交 Git；运行结果在 `corpora/`。
+- 整理 `tests/`：离线系统测试放在 `tests/system/`，可提交的真实测试输入移入 `tests/fixtures/real_search/`（2026-10-07 起位于 `tests/cases/classical-garden/`，见 [`tests/README.md`](tests/README.md)），不再依赖 macOS 的 `SCI`/`sci` 大小写兼容。原始 PDF 与约 397 MB 文献包保留本地，不提交 Git；运行结果在 `corpora/`。
 - 新增固定测试入口 `python -m scripts.real_search`：锁定研究意图、种子、基础检索式、分支和参数；真实调用生产管线后自动检查语料、导出 Obsidian、核对 DOI、写报告。基准答案只用于运行后的评估，不参与检索或筛选提示。
 
-以下是把两轮已有语料按**同一个十篇核对集**重新计算的结果，机器可读基线见 [`baselines.json`](tests/fixtures/real_search/baselines.json)：
+以下是把两轮已有语料按**同一个十篇核对集**重新计算的结果，机器可读基线见 [`baselines.json`](tests/cases/classical-garden/baselines.json)：
 
 | 指标 | 原始三查询 | 加四分支及年份过滤 |
 |---|---:|---:|
@@ -227,7 +229,7 @@ CI (`.github/workflows/ci.yml`, `ubuntu-26.04`, actions v7 on the Node 24 runtim
   --out corpora/garden-v1-audit001
 ```
 
-[`case.json`](tests/fixtures/real_search/case.json) 固定 2018–2025、WoS 主检索、3 条基础查询加 4 个分支、每查询 50 条、一跳双向扩展、每节点 25 条、前沿 15、预筛选 150、阈值 6、上限 200、共引至少 3 次且最多 30 条，以及边标注参数。模型固定 `deepseek-chat`、temperature=0.2，单次 WoS 请求预算 60。直接调用通用 CLI 时仍可自由配置；要比较开发版本，请使用固定入口。
+[`case.json`](tests/cases/classical-garden/case.json) 固定 2018–2025、WoS 主检索、3 条基础查询加 4 个分支、每查询 50 条、一跳双向扩展、每节点 25 条、前沿 15、预筛选 150、阈值 6、上限 200、共引至少 3 次且最多 30 条，以及边标注参数。模型固定 `deepseek-chat`、temperature=0.2，单次 WoS 请求预算 60。直接调用通用 CLI 时仍可自由配置；要比较开发版本，请使用固定入口。
 
 每次真实运行使用独立的 HTTP 缓存，保存 `inputs/` 输入快照、`run.json`（Git 提交、工作区状态、代码/输入摘要、模型、实际用量、运行状态）、`console.log`、`trace.jsonl`、`http.sqlite`、`corpus.json`、`obsidian/`、`benchmark.json` 和 `benchmark.md`。失败也保留状态与日志。所有运行产物留在本地，密钥不写入测试配置或 Git。
 

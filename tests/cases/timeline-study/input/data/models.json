@@ -1,0 +1,255 @@
+{
+  "schema_version": "0.1",
+  "stage": "initial_verification_complete_with_explicit_pending_items",
+  "updated_at": "2026-09-25",
+  "records": [
+    {
+      "id": "M01",
+      "label": "Boolean overlay",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "spatial layers",
+        "C": "threshold",
+        "E": "specified thresholds",
+        "A": "AND/OR",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "binary/class",
+      "reference_ids": [
+        "R11"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M02",
+      "label": "WLC",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "spatial layers",
+        "C": "value/standardization",
+        "E": "unspecified elicitation",
+        "A": "weighted sum",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "score",
+      "reference_ids": [
+        "R10",
+        "R12"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M03",
+      "label": "AHP-WLC",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "spatial layers",
+        "C": "unspecified",
+        "E": "AHP pairwise priorities",
+        "A": "WLC",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "score",
+      "reference_ids": [
+        "R13",
+        "R10"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M04",
+      "label": "Fuzzy-AHP-WLC",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "spatial layers",
+        "C": "fuzzy membership",
+        "E": "AHP pairwise priorities",
+        "A": "WLC",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "score",
+      "reference_ids": [
+        "R13",
+        "R33",
+        "R10"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M05",
+      "label": "Pure OWA",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "unspecified",
+        "C": "commensurate inputs",
+        "E": "order-weight specification",
+        "A": "ordered weighted sum",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "score",
+      "reference_ids": [
+        "R14",
+        "R15"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M06",
+      "label": "SMAA-WLC",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "spatial layers",
+        "C": "unspecified",
+        "E": "constraints/prior distribution",
+        "A": "WLC",
+        "U": "SMAA",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "acceptability statistics",
+      "reference_ids": [
+        "R16",
+        "R17"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M07",
+      "label": "Participatory MCDA",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "study dependent",
+        "C": "study dependent",
+        "E": "stakeholder elicitation",
+        "A": "study dependent",
+        "U": "unknown",
+        "P": "participation protocol required",
+        "L": "unknown"
+      },
+      "output_type": "study dependent",
+      "reference_ids": [
+        "R22",
+        "R23",
+        "R31"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M08",
+      "label": "CNN scenicness",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "image/learned representation",
+        "C": "fused_or_unidentifiable",
+        "E": "rating labels are evidence, not necessarily direct elicitation",
+        "A": "fused_or_unidentifiable",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "supervised CNN"
+      },
+      "output_type": "predicted rating",
+      "reference_ids": [
+        "R25",
+        "R26"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M09",
+      "label": "Complete AHP",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "hierarchical problem representation",
+        "C": "local comparisons",
+        "E": "pairwise judgments",
+        "A": "priority synthesis",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "priority/ranking",
+      "reference_ids": [
+        "R13"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M10",
+      "label": "Outranking / ELECTRE-PROMETHEE",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "alternative criteria matrix",
+        "C": "study dependent",
+        "E": "weights and thresholds",
+        "A": "pairwise relation and exploitation",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "relation/partial or complete order",
+      "reference_ids": [],
+      "verification_status": "formal_boundary_example_pending_primary_method_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M11",
+      "label": "TOPSIS",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "alternative criteria matrix",
+        "C": "normalization",
+        "E": "weights",
+        "A": "distance to ideal/anti-ideal",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "not_applicable"
+      },
+      "output_type": "closeness/ranking",
+      "reference_ids": [
+        "R31"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    },
+    {
+      "id": "M12",
+      "label": "Regression / learned predictor",
+      "record_type": "conceptual_template_not_paper_extraction",
+      "modules": {
+        "R": "specified or learned features",
+        "C": "study dependent",
+        "E": "labels/preferences in data",
+        "A": "fused_or_unidentifiable",
+        "U": "unknown",
+        "P": "unknown",
+        "L": "statistical estimation"
+      },
+      "output_type": "predicted response",
+      "reference_ids": [
+        "R05",
+        "R25"
+      ],
+      "verification_status": "conceptual_template_with_supporting_sources",
+      "case_extraction_required": true
+    }
+  ]
+}

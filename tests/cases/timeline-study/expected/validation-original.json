@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "date": "2026-10-07",
+  "record_count": 73,
+  "operational_reconstructions": 53,
+  "context_or_meta": 20,
+  "protocol_sections": 18,
+  "checks": [
+    "source hash",
+    "all IDs and canonical fields",
+    "five uncertainty and six interpretation fields",
+    "evidence and fulltext states preserved",
+    "unknown decision consequence preserved",
+    "no permanent irreducibility claim",
+    "HTML anchors and internal links"
+  ],
+  "visual_review": "not_browser_screenshot_verified"
+}

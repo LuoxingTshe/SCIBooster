@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-07",
+  "checks": {
+    "unique_statement_ids": true,
+    "unique_dois": true,
+    "all_dois_exact_crossref_and_openalex": true,
+    "all_have_evidence_and_limits": true,
+    "no_known_review_dois": true,
+    "no_retracted_selected": true,
+    "no_fulltext_overclaim": true,
+    "no_zotero_keys_invented": true,
+    "original_references_audited": true,
+    "exact_title_comparison_reviewed": true,
+    "no_api_keys_in_export_candidates": true,
+    "all_citation_years_within_scope": true
+  },
+  "stats": {
+    "harness_history_included": 21,
+    "harness_formal_included": 58,
+    "harness_unique_candidates": 79,
+    "direct_statement_count": 41,
+    "unique_direct_doi_count": 41,
+    "existing_dois_checked": 40,
+    "crossref_exact_records": 57,
+    "original_refs_without_established_doi": 11,
+    "historical_nodes": 22,
+    "api_usage": {
+      "deepseek_prompt_tokens": 49062,
+      "deepseek_completion_tokens": 14151,
+      "deepseek_calls": 23,
+      "wos_requests": 6,
+      "openalex_requests": 49
+    }
+  },
+  "title_identity_checks": [
+    {
+      "doi": "10.1177/0739456x8500500106",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1007/s002670010247",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.17645/up.v5i2.2803",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1017/s0963926809006282",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/02665433.2013.860762",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/0007-3628(65)90013-7",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/01944367708977903",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/0304-3924(82)90009-0",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/13658810600661508",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/j.omega.2020.102261",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/02693799508902036",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.3368/lj.9.2.136",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1007/bf01405730",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1111/1467-9671.00035",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/s0360-8352(00)00019-x",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1287/opre.27.4.810",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/j.ejor.2007.08.013",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/0022-2496(77)90033-5",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1504/ijssci.2008.017590",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1109/21.87068",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/136588100240903",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/j.jag.2006.01.003",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/0377-2217(82)90155-2",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1051/ro/196802v100571",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/13658810051030487",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1287/mnsc.31.6.647",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/s0377-2217(97)00163-x",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1287/opre.49.3.444.11220",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/10807030490887221",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/13658810412331280185",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/j.envsoft.2010.06.001",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/j.envsoft.2014.03.007",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/13658810110053125",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/j.ejor.2019.04.031",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/02693799608902119",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1080/13658816.2020.1776870",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1177/13563890211020334",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1098/rsos.170170",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1016/j.isprsjprs.2021.04.020",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.1038/s41598-021-99282-0",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    },
+    {
+      "doi": "10.3390/s23198135",
+      "crossref_openalex_title_similarity": 1.0,
+      "reviewed": true
+    }
+  ]
+}

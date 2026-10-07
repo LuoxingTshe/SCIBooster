@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-07",
+  "status": "passed",
+  "records": 73,
+  "source_files": 30,
+  "checks": [
+    "all copied source hashes",
+    "all 73 profile IDs and fields",
+    "unchanged evidence and review depth",
+    "case replay matches frozen records",
+    "unjustified_fulltext_upgrade rejected",
+    "invented_decision_for_unknown_h rejected",
+    "duplicate_and_missing_source_ids rejected",
+    "altered_source_evidence rejected",
+    "wrong_source_snapshot rejected",
+    "missing_uncertainty_location rejected"
+  ],
+  "independent_agent_evaluation": "not_performed",
+  "semantic_source_verification": "not_established_by_this_test"
+}

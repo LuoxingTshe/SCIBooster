@@ -1,0 +1,79 @@
+{
+  "case_id": "timeline-study-retrieval-v1",
+  "runs": [
+    {
+      "label": "baseline-2026-10-07",
+      "date": "2026-10-07",
+      "framework_commit": "22ffdfc4fc8d663d131fc560fb737c1d4b1d391c",
+      "branches": {
+        "history": {
+          "papers": 21
+        },
+        "formal_methods": {
+          "papers": 58
+        }
+      },
+      "union": {
+        "papers": 79
+      },
+      "direct_support_harness": {
+        "hits": "20/20",
+        "nonseed": "11/11"
+      },
+      "usage": {
+        "history": {
+          "deepseek_calls": 11,
+          "wos_requests": 3
+        },
+        "formal_methods": {
+          "deepseek_calls": 12,
+          "wos_requests": 3
+        }
+      },
+      "note": "EssayI 原始运行（私有缓存）。"
+    },
+    {
+      "label": "repro-1",
+      "date": "2026-10-07",
+      "framework_commit": "22ffdfc4fc8d663d131fc560fb737c1d4b1d391c",
+      "branches": {
+        "history": {
+          "papers": 13,
+          "shared_with_baseline": 12,
+          "baseline_recall": 0.571,
+          "jaccard": 0.545
+        },
+        "formal_methods": {
+          "papers": 52,
+          "shared_with_baseline": 49,
+          "baseline_recall": 0.845,
+          "jaccard": 0.803
+        }
+      },
+      "union": {
+        "papers": 65,
+        "shared_with_baseline": 61,
+        "baseline_recall": 0.772
+      },
+      "direct_support_harness": {
+        "hits": "18/20",
+        "nonseed": "9/11",
+        "missed": [
+          "DS004",
+          "DS018"
+        ]
+      },
+      "usage": {
+        "history": {
+          "deepseek_calls": 10,
+          "wos_requests": 3
+        },
+        "formal_methods": {
+          "deepseek_calls": 12,
+          "wos_requests": 3
+        }
+      },
+      "note": "同一检索式与参数、隔离缓存；WoS 命中数与基线相同（history 70，formal_methods 103 条新候选）。差异来自 DeepSeek 意图解析与相关度评分：基线中缺失的 18 篇在基线里均为 6–7 分，多数恰在阈值 6。"
+    }
+  ]
+}

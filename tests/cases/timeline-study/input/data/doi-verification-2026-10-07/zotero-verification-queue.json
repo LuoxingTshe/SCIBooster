@@ -1,0 +1,662 @@
+{
+  "schema_version": "doi-evidence-queue-1.0",
+  "connection": "offline_not_connected",
+  "records": [
+    {
+      "id": "DS001",
+      "doi": "10.1177/0739456x8500500106",
+      "statement": "城市设计中利用自然以服务健康、安全与公共福祉的传统早于现代生态规划。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2001790080",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "城市设计中利用自然以服务健康、安全与公共福祉的传统早于现代生态规划。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS002",
+      "doi": "10.1007/s002670010247",
+      "statement": "美国土地适宜性分析在20世纪初已有文献记录的应用；2001综述已讨论神经计算和演化程序等技术。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://link.springer.com/article/10.1007/s002670010247",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "美国土地适宜性分析在20世纪初已有文献记录的应用；2001综述已讨论神经计算和演化程序等技术。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS003",
+      "doi": "10.17645/up.v5i2.2803",
+      "statement": "Hein与van Mil的研究将Geddes、Tyrwhitt的先调查后规划与叠合地图观察空间模式联系起来，并明确讨论Tyrwhitt1950文本。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W3039992118",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Hein与van Mil的研究将Geddes、Tyrwhitt的先调查后规划与叠合地图观察空间模式联系起来，并明确讨论Tyrwhitt1950文本。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS004",
+      "doi": "10.1017/s0963926809006282",
+      "statement": "Tyrwhitt在1941—1951年参与跨国规划话语，并将Geddes的生物区域思想与欧洲现代主义相结合。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2069325259",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Tyrwhitt在1941—1951年参与跨国规划话语，并将Geddes的生物区域思想与欧洲现代主义相结合。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS005",
+      "doi": "10.1080/02665433.2013.860762",
+      "statement": "Steinitz以参与者身份回顾1963—1970年Harvard计算制图实验室的早期GIS开发与应用实验。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.tandfonline.com/doi/full/10.1080/02665433.2013.860762",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "Steinitz以参与者身份回顾1963—1970年Harvard计算制图实验室的早期GIS开发与应用实验。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS006",
+      "doi": "10.1016/0007-3628(65)90013-7",
+      "statement": "Kiefer1965年论文提出为都市边缘地区土地利用总体规划分析土地物理特征的方法与建议。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://independent.academia.edu/RalphKiefer",
+        "locator": "Land evaluation for land use planning, 1965：摘要",
+        "inspection_level": "author_profile_indexed_abstract",
+        "paraphrase": "Kiefer1965年论文提出为都市边缘地区土地利用总体规划分析土地物理特征的方法与建议。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS007",
+      "doi": "10.1080/01944367708977903",
+      "statement": "Hopkins1977年已经提出土地适宜性方法分类，并比较同质区域识别及用途适宜性评级方法。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.tandfonline.com/doi/abs/10.1080/01944367708977903",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "Hopkins1977年已经提出土地适宜性方法分类，并比较同质区域识别及用途适宜性评级方法。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS008",
+      "doi": "10.1016/0304-3924(82)90009-0",
+      "statement": "Zube等1982年从1965—1980年160余篇研究中区分专家、心理物理、认知与体验四种景观感知范式。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/0304392482900090",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "Zube等1982年从1965—1980年160余篇研究中区分专家、心理物理、认知与体验四种景观感知范式。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS009",
+      "doi": "10.1080/13658810600661508",
+      "statement": "Malczewski2006年综述对1990—2004年的300余篇GIS-MCDA期刊论文进行分类并辨识发展趋势。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2136050606",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Malczewski2006年综述对1990—2004年的300余篇GIS-MCDA期刊论文进行分类并辨识发展趋势。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS010",
+      "doi": "10.1016/j.omega.2020.102261",
+      "statement": "Cinelli等2020年把MCDA过程的特征组织为问题表述、决策建议构建及定性特征与技术支持三个部分。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://doi.org/10.1016/j.omega.2020.102261",
+        "locator": "Abstract; section 5",
+        "inspection_level": "publisher_abstract_and_sections",
+        "paraphrase": "Cinelli等2020年把MCDA过程的特征组织为问题表述、决策建议构建及定性特征与技术支持三个部分。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS011",
+      "doi": "10.1080/02693799508902036",
+      "statement": "Jankowski1995年给出GIS与MCDM整合框架，对MCDM方法分类并匹配决策者的选择方式。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W1983580115",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Jankowski1995年给出GIS与MCDM整合框架，对MCDM方法分类并匹配决策者的选择方式。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS012",
+      "doi": "10.3368/lj.9.2.136",
+      "statement": "Steinitz1990年提出组织景观设计问题的六层框架，每层对应一种建模类型。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2310779116",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Steinitz1990年提出组织景观设计问题的六层框架，每层对应一种建模类型。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS013",
+      "doi": "10.1007/bf01405730",
+      "statement": "Rittel与Webber指出，社会政策规划中的问题界定、公共利益和最优解都受到价值分歧与条件限制。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://link.springer.com/article/10.1007/BF01405730",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "Rittel与Webber指出，社会政策规划中的问题界定、公共利益和最优解都受到价值分歧与条件限制。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS014",
+      "doi": "10.1111/1467-9671.00035",
+      "statement": "WLC是GIS复合地图的一种决策规则；忽视其适用假设可能导致不当应用和可疑结果。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2151629473",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "WLC是GIS复合地图的一种决策规则；忽视其适用假设可能导致不当应用和可疑结果。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS015",
+      "doi": "10.1016/s0360-8352(00)00019-x",
+      "statement": "准则权重在不同聚合规则下具有不同解释，必须结合测量尺度、可通约性及所采用的模型理解。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/S036083520000019X",
+        "locator": "Abstract; Interpretation of criteria weights",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "准则权重在不同聚合规则下具有不同解释，必须结合测量尺度、可通约性及所采用的模型理解。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS016",
+      "doi": "10.1287/opre.27.4.810",
+      "statement": "Dyer与Sarin1979年讨论可测多属性价值函数，并给出加法、乘法及更复杂形式成立的条件。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2107602771",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Dyer与Sarin1979年讨论可测多属性价值函数，并给出加法、乘法及更复杂形式成立的条件。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS017",
+      "doi": "10.1016/j.ejor.2007.08.013",
+      "statement": "Greco等2008年利用与偏好信息兼容的一组加法价值函数，分别定义对全部函数成立的必要偏好和至少一个函数成立的可能偏好。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/S0377221707008752",
+        "locator": "Introduction: necessary/possible ranking; additive model assumptions",
+        "inspection_level": "publisher_sections",
+        "paraphrase": "Greco等2008年利用与偏好信息兼容的一组加法价值函数，分别定义对全部函数成立的必要偏好和至少一个函数成立的可能偏好。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS018",
+      "doi": "10.1016/0022-2496(77)90033-5",
+      "statement": "Saaty1977年研究成对比较矩阵主特征向量标度、一致性及层级结构中的综合优先度。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/0022249677900335",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "Saaty1977年研究成对比较矩阵主特征向量标度、一致性及层级结构中的综合优先度。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS019",
+      "doi": "10.1504/ijssci.2008.017590",
+      "statement": "AHP不仅从专家成对比较得到优先尺度，还通过父节点优先度进行层级综合。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2034960640",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "AHP不仅从专家成对比较得到优先尺度，还通过父节点优先度进行层级综合。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS020",
+      "doi": "10.1109/21.87068",
+      "statement": "Yager1988年提出OWA聚合算子，并研究其介于AND与OR型聚合之间的性质。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2060907774",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Yager1988年提出OWA聚合算子，并研究其介于AND与OR型聚合之间的性质。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS021",
+      "doi": "10.1080/136588100240903",
+      "statement": "Jiang与Eastman2000年讨论GIS中的Boolean与WLC，并以模糊测度及OWA连接因子标准化和聚合问题。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2098053295",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Jiang与Eastman2000年讨论GIS中的Boolean与WLC，并以模糊测度及OWA连接因子标准化和聚合问题。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS022",
+      "doi": "10.1016/j.jag.2006.01.003",
+      "statement": "Malczewski2006年把模糊语言量词引入GIS土地适宜性的OWA程序，通过参数变化表达不同决策策略。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/S0303243406000031",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "Malczewski2006年把模糊语言量词引入GIS土地适宜性的OWA程序，通过参数变化表达不同决策策略。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS023",
+      "doi": "10.1016/0377-2217(82)90155-2",
+      "statement": "UTA用方案的多准则评价和主观弱序，通过序数回归与线性规划估计加法效用函数，并进行稳定性分析。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/0377221782901552",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "UTA用方案的多准则评价和主观弱序，通过序数回归与线性规划估计加法效用函数，并进行稳定性分析。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS024",
+      "doi": "10.1051/ro/196802v100571",
+      "statement": "Roy1968年发表多观点排序与选择论文；原文参考文献列有1966年ELECTRE技术报告。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.numdam.org/item/?id=RO_1968__2_1_57_0",
+        "locator": "Bibliographic record and reference [3]",
+        "inspection_level": "primary_archive_metadata_and_references",
+        "paraphrase": "Roy1968年发表多观点排序与选择论文；原文参考文献列有1966年ELECTRE技术报告。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS025",
+      "doi": "10.1080/13658810051030487",
+      "statement": "Joerin等将GIS与ELECTRE-TRI结合，用于瑞士地区住房土地适宜性分类。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2166496459",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Joerin等将GIS与ELECTRE-TRI结合，用于瑞士地区住房土地适宜性分类。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS026",
+      "doi": "10.1287/mnsc.31.6.647",
+      "statement": "PROMETHEE I给出部分预序，PROMETHEE II给出全预序，体现不同方法的输出结构差异。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W1748537427",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "PROMETHEE I给出部分预序，PROMETHEE II给出全预序，体现不同方法的输出结构差异。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS027",
+      "doi": "10.1016/s0377-2217(97)00163-x",
+      "statement": "SMAA1998通过探索权重空间描述哪些评价支持某个方案成为首选，并允许以概率分布表达不确定输入。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/S037722179700163X",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "SMAA1998通过探索权重空间描述哪些评价支持某个方案成为首选，并允许以概率分布表达不确定输入。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS028",
+      "doi": "10.1287/opre.49.3.444.11220",
+      "statement": "SMAA-2在2001年将原SMAA扩展到所有名次，并考虑部分偏好信息。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2161149459",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "SMAA-2在2001年将原SMAA扩展到所有名次，并考虑部分偏好信息。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS029",
+      "doi": "10.1080/10807030490887221",
+      "statement": "2004年的空间多准则敏感性综述考察28项研究，指出当时敏感性分析不普遍，常见做法是改变因素权重。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2013072090",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "2004年的空间多准则敏感性综述考察28项研究，指出当时敏感性分析不普遍，常见做法是改变因素权重。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS030",
+      "doi": "10.1080/13658810412331280185",
+      "statement": "Feick与Hall2004年提出研究多准则权重敏感性的空间维度，结合不同参与者的评价和地图表达。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2090532686",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Feick与Hall2004年提出研究多准则权重敏感性的空间维度，结合不同参与者的评价和地图表达。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS031",
+      "doi": "10.1016/j.envsoft.2010.06.001",
+      "statement": "Chen、Yu与Khan2010年把逐一改变权重的OAT敏感性分析与AHP、ArcGIS结合，显示土地适宜性结果的空间变化。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/S1364815210001842",
+        "locator": "Abstract",
+        "inspection_level": "publisher_abstract_or_indexed_abstract",
+        "paraphrase": "Chen、Yu与Khan2010年把逐一改变权重的OAT敏感性分析与AHP、ArcGIS结合，显示土地适宜性结果的空间变化。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS032",
+      "doi": "10.1016/j.envsoft.2014.03.007",
+      "statement": "Ligmann-Zielinska与Jankowski2014年通过Monte Carlo探索准则权重空间，并为每个空间单元生成适宜性、不确定性及敏感性图。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/S1364815214000851",
+        "locator": "Abstract and Introduction: Monte Carlo, mean/SD maps, S/ST maps",
+        "inspection_level": "publisher_abstract_and_sections",
+        "paraphrase": "Ligmann-Zielinska与Jankowski2014年通过Monte Carlo探索准则权重空间，并为每个空间单元生成适宜性、不确定性及敏感性图。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS033",
+      "doi": "10.1080/13658810110053125",
+      "statement": "GIS模型中的不确定性分析研究输入与参数不确定性向输出的传播，敏感性分析研究不同来源对输出不确定性的重要性。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2094255508",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "GIS模型中的不确定性分析研究输入与参数不确定性向输出的传播，敏感性分析研究不同来源对输出不确定性的重要性。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS034",
+      "doi": "10.1016/j.ejor.2019.04.031",
+      "statement": "Dias与Vetschera2019年指出直接随机生成效用值可能使效用函数形状产生抽样偏差，并提出减轻偏差的方法。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://www.sciencedirect.com/science/article/pii/S0377221719303650",
+        "locator": "Abstract; Introduction",
+        "inspection_level": "publisher_abstract_and_sections",
+        "paraphrase": "Dias与Vetschera2019年指出直接随机生成效用值可能使效用函数形状产生抽样偏差，并提出减轻偏差的方法。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS035",
+      "doi": "10.1080/02693799608902119",
+      "statement": "Malczewski1996年在栅格GIS中用TOPSIS生成个人排序，再用Borda规则组合群体偏好。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2080967664",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Malczewski1996年在栅格GIS中用TOPSIS生成个人排序，再用Borda规则组合群体偏好。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS036",
+      "doi": "10.1080/13658816.2020.1776870",
+      "statement": "协作式空间多准则评价已有专门综述，讨论参与过程中的任务、工具和可用性评价。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W3036756606",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "协作式空间多准则评价已有专门综述，讨论参与过程中的任务、工具和可用性评价。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS037",
+      "doi": "10.1177/13563890211020334",
+      "statement": "te Boveldt等2021年比较多准则方法的数学结构及参与框架，认为政治敏感的参与阶段需要重视透明性和易用性。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W3187562289",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "te Boveldt等2021年比较多准则方法的数学结构及参与框架，认为政治敏感的参与阶段需要重视透明性和易用性。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS038",
+      "doi": "10.1098/rsos.170170",
+      "statement": "2017年已有利用Scenic-Or-Not图像评分和卷积神经网络研究、预测户外景观美感的工作。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W2737525190",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "2017年已有利用Scenic-Or-Not图像评分和卷积神经网络研究、预测户外景观美感的工作。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS039",
+      "doi": "10.1016/j.isprsjprs.2021.04.020",
+      "statement": "ScenicNet2021年将土地覆盖预测作为美感回归的可解释中间任务，连接遥感表示与众包景观评分。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W3165726526",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "ScenicNet2021年将土地覆盖预测作为美感回归的可解释中间任务，连接遥感表示与众包景观评分。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS040",
+      "doi": "10.1038/s41598-021-99282-0",
+      "statement": "Havinga等2021年用英国众包调查检验Flickr与深度学习的景观美感模型，并与环境指标模型比较。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W3201761356",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "Havinga等2021年用英国众包调查检验Flickr与深度学习的景观美感模型，并与环境指标模型比较。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    },
+    {
+      "id": "DS041",
+      "doi": "10.3390/s23198135",
+      "statement": "2023年视觉景观综述区分感知与评价，以及人眼视角与鸟瞰视角，并梳理相应的技术与度量。",
+      "next_check": "取得原文后将本陈述定位到页码/章节，核上下文及限制。",
+      "item_key": null,
+      "attachment_key": null,
+      "current_evidence": {
+        "url": "https://api.openalex.org/works/W4387133378",
+        "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+        "inspection_level": "indexed_original_abstract",
+        "paraphrase": "2023年视觉景观综述区分感知与评价，以及人眼视角与鸟瞰视角，并梳理相应的技术与度量。",
+        "checked_at": "2026-10-07",
+        "fulltext_review_complete": false
+      }
+    }
+  ]
+}

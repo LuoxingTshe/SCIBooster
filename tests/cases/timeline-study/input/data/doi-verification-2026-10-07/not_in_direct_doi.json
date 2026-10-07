@@ -1,0 +1,1668 @@
+{
+  "date": "2026-10-07",
+  "screened_harness_candidates": [
+    {
+      "id": "W2131818415",
+      "doi": "10.1007/s002670010247",
+      "title": "Land-Use Suitability Analysis in the United States: Historical Development and Promising Technological Achievements",
+      "branches": [
+        "history"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2001790080",
+      "doi": "10.1177/0739456x8500500106",
+      "title": "Urban Nature and Human Design: Renewing the Great Tradition",
+      "branches": [
+        "history"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W3039992118",
+      "doi": "10.17645/up.v5i2.2803",
+      "title": "Mapping as Gap-Finder: Geddes, Tyrwhitt, and the Comparative Spatial Analysis of Port City Regions",
+      "branches": [
+        "history"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1707715928",
+      "doi": null,
+      "title": "Design with nature",
+      "branches": [
+        "history"
+      ],
+      "decision": "no_doi_in_retrieved_record",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "麦克哈格《设计结合自然》，本主题核心奠基著作。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2063174695",
+      "doi": "10.5860/choice.27-6399",
+      "title": "Patrick Geddes: social evolutionist and city planner",
+      "branches": [
+        "history"
+      ],
+      "decision": "book_review_not_original_work",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "Geddes传记，含区域调查章节，直接关联历史方法与谱系考证。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2089475221",
+      "doi": "10.2307/622711",
+      "title": "Regional Surveys and Local Knowledges: The Geographical Imagination in Britain, 1918-39",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "直接研究Geddes区域调查运动及其地理想象，核心史学文献。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2079006511",
+      "doi": "10.1016/j.jhg.2012.04.003",
+      "title": "The Civic Survey of Greater London: social mapping, planners and urban space in the early twentieth century",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "无摘要，标题关于伦敦公民调查与社会制图，直接对应区域调查与地图叠加核心方法。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W1503276823",
+      "doi": "10.4324/9781003101079",
+      "title": "Cities in Evolution",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "格迪斯经典著作，区域调查与生态分类思想源头，直接相关。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1974742606",
+      "doi": "10.1016/j.landurbplan.2003.07.003",
+      "title": "Greenway planning in the United States: its origins and recent case studies",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "绿道规划起源研究，直接涉及资源廊道与早期规划历史。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W616352482",
+      "doi": "10.5860/choice.40-1348",
+      "title": "Biopolis: Patrick Geddes and the city of life",
+      "branches": [
+        "history"
+      ],
+      "decision": "suspected_review_needs_original_identity_check",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "系统考察格迪斯城市理论与区域概念，直接关联历史景观规划方法。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1970472235",
+      "doi": "10.2307/633252",
+      "title": "The Worlds of Patrick Geddes: Biologist, Town Planner, Re-Educator, Peace-Warrior",
+      "branches": [
+        "history"
+      ],
+      "decision": "suspected_review_needs_original_identity_check",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "格迪斯传记，直接涉及区域调查与规划思想历史。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2519576530",
+      "doi": "10.1016/j.landurbplan.2016.09.011",
+      "title": "Jaqueline Tyrwhitt translates Patrick Geddes for post world war two planning",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "研究Tyrwhitt对Geddes的翻译与传播，直接涉及核心人物与史学。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2069325259",
+      "doi": "10.1017/s0963926809006282",
+      "title": "Jaqueline Tyrwhitt and transnational discourse on modern urban planning and design, 1941–1951",
+      "branches": [
+        "history"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "详述Tyrwhitt综合Geddes生物区域主义与现代主义，直接涉及核心人物及规划思想传播。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W129982415",
+      "doi": "10.1525/9780520343054",
+      "title": "Traces on the Rhodian Shore",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "《罗得岛海岸的痕迹》，环境思想史经典，涉及人地关系史学。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1966807541",
+      "doi": "10.2307/3105172",
+      "title": "The Granite Garden: Urban Nature and Human Design",
+      "branches": [
+        "history"
+      ],
+      "decision": "suspected_review_needs_original_identity_check",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "斯皮恩城市自然与设计传统，涉及景观规划历史方法。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W276162609",
+      "doi": "10.1016/0304-3924(84)90054-6",
+      "title": "The granite garden: Urban nature and human design",
+      "branches": [
+        "history"
+      ],
+      "decision": "suspected_review_needs_original_identity_check",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "同《花岗岩花园》，城市自然与设计传统，历史方法相关。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2145702988",
+      "doi": "10.3828/tpr.2009.12",
+      "title": "Centenary paper: The evolution of cities: Geddes, Abercrombie and the new physicalism",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "讨论Geddes与Abercrombie规划思想演变，涉及区域规划史。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W602772036",
+      "doi": "10.4324/9780429301759",
+      "title": "Planning the Total Landscape: a Guide to Intelligent Land Use",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "景观规划与土地适宜性技术，涉及叠加与评价方法。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2611395626",
+      "doi": "10.1016/j.landurbplan.2017.03.007",
+      "title": "“Free cities and regions”—Patrick Geddes’s theory of planning",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "无摘要，标题直指Geddes规划理论，与核心人物思想直接相关。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2593687386",
+      "doi": "10.1080/13574809.2017.1298401",
+      "title": "Exploring urban resilience in practice: a century of vacant sites mapping in Dublin, Edinburgh and Philadelphia",
+      "branches": [
+        "history"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "以Geddes影响下的空置地制图为例，涉及历史地图方法与城市韧性，部分契合历史景观规划方法。",
+        "flag": null
+      }
+    },
+    {
+      "id": "WOS:000420229400002",
+      "doi": null,
+      "title": "Bridging Urban and Media Studies: Jaqueline Tyrwhitt and the <i>Explorations</i> Group, 1951-1957",
+      "branches": [
+        "history"
+      ],
+      "decision": "no_doi_in_retrieved_record",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "无摘要，标题聚焦Tyrwhitt与Explorations小组，直接关联核心人物与规划话语。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2136050606",
+      "doi": "10.1080/13658810600661508",
+      "title": "GIS‐based multicriteria decision analysis: a survey of the literature",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W3021341554",
+      "doi": "10.1016/j.omega.2020.102261",
+      "title": "How to support the application of multiple criteria decision analysis? Let us start with a comprehensive taxonomy",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W4237302105",
+      "doi": "10.1080/01944367708977903",
+      "title": "Methods for Generating Land Suitability Maps: A Comparative Evaluation",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1966474628",
+      "doi": "10.1016/s0360-8352(00)00019-x",
+      "title": "Interpretation of criteria weights in multicriteria decision making",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2099456005",
+      "doi": "10.1016/j.envsoft.2014.03.007",
+      "title": "Spatially-explicit integrated uncertainty and sensitivity analysis of criteria weights in multicriteria land suitability evaluation",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W3165726526",
+      "doi": "10.1016/j.isprsjprs.2021.04.020",
+      "title": "On the relation between landscape beauty and land cover: A case study in the U.K. at Sentinel-2 resolution with interpretable AI",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 10.0,
+        "reason": "seed",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2060907774",
+      "doi": "10.1109/21.87068",
+      "title": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 9.0,
+        "reason": "OWA聚合算子开创性论文，直接对应聚合规则与补偿性核心议题。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1992691094",
+      "doi": "10.2307/254268",
+      "title": "GIS and Multicriteria Decision Analysis",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "book_review_not_original_work",
+      "discovery_score_not_evidence": {
+        "score": 9.0,
+        "reason": "GIS-MCDA奠基性专著，系统涵盖准则、权重、决策规则与敏感性分析，属核心文献。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2283488656",
+      "doi": null,
+      "title": "RASTER PROCEDURES FOR MULTI-CRITERIA/MULTI-OBJECTIVE DECISIONS",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "no_doi_in_retrieved_record",
+      "discovery_score_not_evidence": {
+        "score": 9.0,
+        "reason": "栅格GIS多准则决策的开创性工作，奠定GIS-MCDA方法基础。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2090532686",
+      "doi": "10.1080/13658810412331280185",
+      "title": "A method for examining the spatial dimension of multi-criteria weight sensitivity",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 9.0,
+        "reason": "专门研究多准则权重敏感性的空间维度，是空间权重不确定性核心文献。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2168936936",
+      "doi": "10.1016/b978-0-08-032599-6.50008-8",
+      "title": "The Analytic Hierarchy Process",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "AHP方法奠基之作，是GIS-MCDA中权重与聚合规则的核心方法来源。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W1986808060",
+      "doi": "10.2307/2584151",
+      "title": "Decisions with Multiple Objectives: Preferences and Value Tradeoffs.",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "book_review_not_original_work",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "多目标决策与价值权衡的奠基性著作，直接支撑价值函数与偏好建模核心议题。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2232034389",
+      "doi": "10.1080/02693799108927858",
+      "title": "Integrating multi-criteria evaluation with geographical information systems",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "GIS与多准则评价整合的开创性论文，奠定GIS-MCE方法学基础。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2052982604",
+      "doi": "10.1016/j.envsoft.2010.06.001",
+      "title": "Spatial sensitivity analysis of multi-criteria weights in GIS-based land suitability evaluation",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "无摘要，标题直指GIS土地适宜性中多准则权重的空间敏感性分析，为核心方法论。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W1983580115",
+      "doi": "10.1080/02693799508902036",
+      "title": "Integrating geographical information systems and multiple criteria decision-making methods",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "GIS与MCDM整合框架及分类，直接对应方法学基础核心议题。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2098053295",
+      "doi": "10.1080/136588100240903",
+      "title": "Application of fuzzy measures in multi-criteria evaluation in GIS",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "提出模糊测度与OWA聚合算子，是GIS-MCE聚合规则基础文献。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2017639333",
+      "doi": "10.1080/02693799308901971",
+      "title": "A multiple criteria decision-making approach to GIS-based land suitability evaluation",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "GIS土地适宜性MCDM方法基础文献，涉及价值函数与聚合。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2090292633",
+      "doi": "10.1016/j.cageo.2013.11.009",
+      "title": "A GIS based spatially-explicit sensitivity and uncertainty analysis approach for multi-criteria decision analysis",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "GIS-MCDA空间显式权重不确定性与敏感性分析，直接对应核心主题。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2094255508",
+      "doi": "10.1080/13658810110053125",
+      "title": "Uncertainty and sensitivity analysis: tools for GIS-based model implementation",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "GIS模型不确定性与敏感性分析的方法学工具，直接支撑空间不确定性议题。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1996933066",
+      "doi": "10.1080/13658816.2013.869821",
+      "title": "An uncertainty and sensitivity analysis approach for GIS-based multicriteria landslide susceptibility mapping",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "GIS-MCDA不确定性与敏感性分析，比较AHP/OWA等方法，契合核心。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W9764731",
+      "doi": "10.1007/978-94-017-1677-2_12",
+      "title": "Multicriteria analysis and geographical information systems: an application to agricultural land use in the netherlands",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "GIS-MCDA应用于土地利用的奠基性工作，直接对应GIS-MCDA方法基础。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W631762758",
+      "doi": "10.4324/9780429436628",
+      "title": "Spatial Multicriteria Decision Making and Analysis",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "空间多准则决策分析的系统性著作，覆盖GIS-MCDA理论与应用。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1978453999",
+      "doi": "10.1016/j.apgeog.2013.08.005",
+      "title": "Spatially-explicit sensitivity analysis for land suitability evaluation",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "土地适宜性评价的空间显式敏感性分析，直接对应权重不确定性核心主题。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W3000292937",
+      "doi": "10.1080/13658816.2020.1712403",
+      "title": "Emerging trends and research frontiers in spatial multicriteria analysis",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "空间多准则分析趋势综述，涵盖不确定性等结构要素，高度相关。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1533234970",
+      "doi": "10.1007/978-3-540-87473-7_14",
+      "title": "A Framework for Sensitivity Analysis in Spatial Multiple Criteria Evaluation",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "空间多准则评价的敏感性分析框架，直接对应空间权重不确定性议题。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W7204135069",
+      "doi": "10.3390/buildings16173357",
+      "title": "Nonlinear Mechanisms Underlying Rural Streetscape Aesthetics: Threshold and Interaction Effects via Interpretable Machine Learning",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 8.0,
+        "reason": "可解释机器学习分析景观美学非线性机制，直接对应视觉美学学习。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2020407132",
+      "doi": "10.1016/0022-2496(77)90033-5",
+      "title": "A scaling method for priorities in hierarchical structures",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "AHP优先级标度原始文献，是GIS-MCDA权重方法的核心基础。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W194786220",
+      "doi": null,
+      "title": "Multiple Attribute Decision Making: Methods and Applications",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "no_doi_in_retrieved_record",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "MADM方法学经典综述，涵盖SAW、ELECTRE、TOPSIS等聚合规则基础。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W173895910",
+      "doi": "10.1007/b100605",
+      "title": "Multiple Criteria Decision Analysis: State of the Art Surveys",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "MCDA权威综述，系统覆盖方法分类与聚合规则，属核心方法论参考。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2000016084",
+      "doi": "10.1007/bf00134132",
+      "title": "The outranking approach and the foundations of electre methods",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "ELECTRE出流方法基础文献，直接对应MCDA聚合规则与补偿性讨论。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W1543403517",
+      "doi": null,
+      "title": "Multiple Objective Decision Making ― Methods and Applications: A State-of-the-Art Survey",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "no_doi_in_retrieved_record",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "多目标决策方法综述，系统涵盖权重、聚合与补偿模型，属MCDA方法论基础。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2129886664",
+      "doi": "10.1016/j.progress.2003.09.002",
+      "title": "GIS-based land-use suitability analysis: a critical overview",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "GIS土地适宜性分析批判性综述，直接覆盖方法学与分类，无摘要保守评分。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2783489174",
+      "doi": "10.1007/s11205-017-1832-9",
+      "title": "On the Methodological Framework of Composite Indices: A Review of the Issues of Weighting, Aggregation, and Robustness",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "综述复合指标加权与聚合方法，直接对应MCDA聚合规则与权重方法论核心。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2149707772",
+      "doi": "10.6100/ir102252",
+      "title": "Multicriteria evaluation for urban and regional planning",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "城市与区域规划多准则评价早期专著，方法学基础文献，无摘要保守评分。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2107602771",
+      "doi": "10.1287/opre.27.4.810",
+      "title": "Measurable Multiattribute Value Functions",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "可测多属性价值函数理论奠基，直接支撑价值函数与偏好差异议题。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2170327195",
+      "doi": "10.1080/13658810010005525",
+      "title": "Map-centred exploratory approach to multiple criteria spatial decision making",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "地图中心的多准则空间决策方法，直接涉及GIS-MCDA交互与权重设定。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1971351853",
+      "doi": "10.1016/s0167-8809(00)00169-9",
+      "title": "Sensitivity and uncertainty analysis in spatial modelling based on GIS",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "GIS空间建模中的敏感性与不确定性分析，契合空间不确定性核心议题。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2737525190",
+      "doi": "10.1098/rsos.170170",
+      "title": "Using deep learning to quantify the beauty of outdoor places",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "用深度学习量化户外美景，直接对应可解释学习与景观视觉美学核心。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1980270874",
+      "doi": "10.1111/j.1540-5915.1982.tb01900.x",
+      "title": "THE RELATIONSHIP BETWEEN THE ANALYTIC HIERARCHY PROCESS AND THE ADDITIVE VALUE FUNCTION*",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 7.0,
+        "reason": "探讨AHP与加性价值函数关系，直接涉及聚合规则与价值函数基础。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2506768821",
+      "doi": "10.1007/978-3-642-48318-9",
+      "title": "Multiple Attribute Decision Making",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "多属性决策经典著作，奠定MCDA方法基础，但无摘要且非GIS景观评价。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W100464641",
+      "doi": "10.1002/9780470725184",
+      "title": "Global Sensitivity Analysis. The Primer",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "全局敏感性分析权威教材，为空间权重不确定性分析提供方法基础。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2088765131",
+      "doi": "10.1016/j.cpc.2009.09.018",
+      "title": "Variance based sensitivity analysis of model output. Design and estimator for the total sensitivity index",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "方差全局敏感性分析总效应指数估计，直接支撑空间权重不确定性分析。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2036737894",
+      "doi": null,
+      "title": "Multiple Criteria Optimization: Theory, Computation, and Application",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "no_doi_in_retrieved_record",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "多目标优化经典教材，涵盖权重与聚合方法，为MCDA方法论基础但非景观评价。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2066495914",
+      "doi": "10.1016/0305-0548(94)00059-h",
+      "title": "Determining objective weights in multiple criteria problems: The critic method",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "CRITIC客观赋权法，直接对应MCDA权重确定方法。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W1516964807",
+      "doi": null,
+      "title": "Decision analysis and behavioral research",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "no_doi_in_retrieved_record",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "决策分析与行为研究经典，涉及敏感性分析与价值判断，支撑MCDA方法论。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2029767409",
+      "doi": "10.1016/s0010-4655(02)00280-1",
+      "title": "Making best use of model evaluations to compute sensitivity indices",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "Sobol敏感性指数计算是空间权重不确定性分析的方法基础。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2124766374",
+      "doi": "10.1287/mnsc.36.3.249",
+      "title": "Remarks on the Analytic Hierarchy Process",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "对AHP的批判性评论，直接涉及权重与聚合假设的方法论争议。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1973885905",
+      "doi": "10.1016/0305-0483(83)90047-6",
+      "title": "On a short-coming of Saaty's method of analytic hierarchies",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "对AHP方法的经典批评，涉及权重与价值判断假设，属方法基础讨论。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2165477019",
+      "doi": "10.1016/0305-0483(92)90003-p",
+      "title": "A critical survey on the status of multiple criteria decision making theory and practice",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "MCDA理论与实践批判性综述，涉及价值判断与方法论反思。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2166496459",
+      "doi": "10.1080/13658810051030487",
+      "title": "Using GIS and outranking multicriteria analysis for land-use suitability assessment",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "included_bounded_direct_support",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "GIS与ELECTRE-TRI出价法用于土地适宜性，涉及聚合规则但偏案例。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2067975844",
+      "doi": "10.1016/j.envsoft.2012.01.011",
+      "title": "The role of expert opinion in environmental modelling",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "探讨专家意见在环境建模中的作用，涉及价值判断与不确定性。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2059433282",
+      "doi": "10.1016/0377-2217(86)90155-4",
+      "title": "A comparison of the analytic hierarchy process and a simple multi-attribute value function",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "AHP与多属性价值函数比较，涉及价值函数与权重方法学。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W2112302117",
+      "doi": "10.2307/2988482",
+      "title": "Multiobjective Decision Support for Environmental Management.",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "suspected_review_needs_original_identity_check",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "环境管理多目标决策支持专著，涉及MCDA应用框架，但非景观评价核心。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W1967278327",
+      "doi": "10.1002/mcda.4020020205",
+      "title": "Scale sensitivity in the multiplicative AHP and SMART",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "AHP与SMART尺度敏感性及聚合规则分析，涉及权重与聚合方法学。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W2046618082",
+      "doi": "10.1016/j.compenvurbsys.2011.07.004",
+      "title": "Effects of increasing fuzziness on analytic hierarchy process for spatial multicriteria decision analysis",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "研究AHP模糊化对空间MCDA的影响，直接涉及价值函数与聚合规则的方法论。",
+        "flag": "no_abstract"
+      }
+    },
+    {
+      "id": "W4412450741",
+      "doi": "10.3390/buildings15142487",
+      "title": "Revealing the Relationship Between Urban Park Landscape Features and Visual Aesthetics by Deep Learning-Driven and Spatial Analysis",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "深度学习与空间分析研究公园视觉美学，契合可解释学习主题但偏案例。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W4391960314",
+      "doi": "10.3390/buildings14020549",
+      "title": "Understanding Urban Residents’ Walking Exercise Preferences: An Empirical Study Using Street View Images and Trajectory Data",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "街景图像与深度学习分析步行偏好，涉及景观视觉与可解释学习。",
+        "flag": null
+      }
+    },
+    {
+      "id": "W7126173752",
+      "doi": "10.3389/fpubh.2025.1757145",
+      "title": "Assessing the impact of waterfront trail aesthetics on psychological restoration in urban environments: a deep learning and random forest approach",
+      "branches": [
+        "formal_methods"
+      ],
+      "decision": "relevant_candidate_not_content_verified_for_specific_statement",
+      "discovery_score_not_evidence": {
+        "score": 6.0,
+        "reason": "深度学习与随机森林分析滨水步道美学，契合可解释学习与景观视觉主题。",
+        "flag": null
+      }
+    }
+  ],
+  "original_works_without_established_doi": [
+    {
+      "reference_id": "R06",
+      "title": "A framework for land evaluation",
+      "year": 1976,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://www.fao.org/4/x5310e/x5310e00.htm",
+      "previous_inspection_level": "official_document_sections"
+    },
+    {
+      "reference_id": "R07",
+      "title": "Design with Nature",
+      "year": 1969,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://mcharg.upenn.edu/conversations/what-does-it-mean-design-nature-now",
+      "previous_inspection_level": "institutional_bibliographic_record"
+    },
+    {
+      "reference_id": "R36",
+      "title": "Decisions with Multiple Objectives: Preferences and Value Tradeoffs",
+      "year": 1976,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://ralphkeeney.com/about/",
+      "previous_inspection_level": "author_bibliographic_record_and_publisher_chapter_summary"
+    },
+    {
+      "reference_id": "R37",
+      "title": "Measuring landscape esthetics: the scenic beauty estimation method",
+      "year": 1976,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://research.fs.usda.gov/treesearch/20911",
+      "previous_inspection_level": "institutional_abstract"
+    },
+    {
+      "reference_id": "R39",
+      "title": "Scenic beauty estimation model: predicting perceived beauty of forest landscapes",
+      "year": 1979,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://research.fs.usda.gov/treesearch/27622",
+      "previous_inspection_level": "institutional_abstract"
+    },
+    {
+      "reference_id": "R43",
+      "title": "Landscape Character Assessment: Guidance for England and Scotland",
+      "year": 2002,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://www.nature.scot/doc/archive/landscape-character-assessment-guidance-england-and-scotland",
+      "previous_inspection_level": "official_metadata_and_current_method_explanation"
+    },
+    {
+      "reference_id": "R45",
+      "title": "Cybernetics: Or Control and Communication in the Animal and the Machine",
+      "year": 1948,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://mitpress.mit.edu/9780262355919/cybernetics-or-control-and-communication-in-the-animal-and-the-machine/",
+      "previous_inspection_level": "primary_metadata_or_indexed_excerpt"
+    },
+    {
+      "reference_id": "R47",
+      "title": "Adaptive Environmental Assessment and Management",
+      "year": 1978,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://pure.iiasa.ac.at/id/eprint/823/1/XB-78-103.pdf",
+      "previous_inspection_level": "primary_metadata_or_indexed_excerpt"
+    },
+    {
+      "reference_id": "R50",
+      "title": "European Landscape Convention",
+      "year": 2000,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://www.coe.int/en/web/landscape/reference-texts",
+      "previous_inspection_level": "primary_metadata_or_indexed_excerpt"
+    },
+    {
+      "reference_id": "R51",
+      "title": "A Framework for Geodesign: Changing Geography by Design",
+      "year": 2012,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://www.esri.com/en-us/esri-press/browse/a-framework-for-geodesign-changing-geography-by-design",
+      "previous_inspection_level": "primary_metadata_or_indexed_excerpt"
+    },
+    {
+      "reference_id": "R52",
+      "title": "Guidelines for Landscape and Visual Impact Assessment",
+      "year": 2013,
+      "doi": null,
+      "status": "doi_not_established_for_original_work_this_run",
+      "source_url": "https://www.routledge.com/Guidelines-for-Landscape-and-Visual-Impact-Assessment/LandscapeInstitute-IEMA/p/book/9780415680042",
+      "previous_inspection_level": "primary_metadata_or_indexed_excerpt"
+    }
+  ],
+  "historical_node_register": [
+    {
+      "id": "H01",
+      "title": "Vitruvius｜De architectura 卷一",
+      "date_label": "约公元前1世纪",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Vitruvius/1%2A.html",
+          "locator": "Book I, chapters 4 and 6",
+          "inspection_scope": "primary_translation_sections",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS001"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H02",
+      "title": "计成｜园冶：相地、借景",
+      "date_label": "1634（通行出版锚点）",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://ctext.org/wiki.pl?chapter=378683&if=gb&remap=gb",
+          "locator": "一、相地",
+          "inspection_scope": "primary_transcription_sections",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://mcaa.illinois.edu/p10-art-literature-and-identity-in-chinese-gardens/",
+          "locator": "Yixuan Song研究报告摘要：1634出版",
+          "inspection_scope": "research_abstract_date_support",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H03",
+      "title": "John Evelyn｜Fumifugium",
+      "date_label": "1661",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.cai.cam.ac.uk/discover/library/featured-books/old-smoke",
+          "locator": "馆藏介绍；原书1661；提案对应p.24",
+          "inspection_scope": "holding_institution_description",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS001"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H04",
+      "title": "Dezallier d’Argenville｜La théorie et la pratique du jardinage",
+      "date_label": "1709",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://digi.ub.uni-heidelberg.de/diglit/dezallier1709/0002",
+          "locator": "目录：I.2 p.7；II.1 p.75；整地p.97",
+          "inspection_scope": "digitized_primary_contents",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H05",
+      "title": "Humphry Repton｜Sketches and Hints on Landscape Gardening",
+      "date_label": "1795（出版锚点）",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.metmuseum.org/art/collection/search/356088",
+          "locator": "Brandsbury图版，作品年1795，实物说明",
+          "inspection_scope": "museum_object_record",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.themorgan.org/collection/Humphry-Reptons-Red-Books",
+          "locator": "Red Books：铰接或滑动叠片",
+          "inspection_scope": "museum_collection_description",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H06",
+      "title": "Humboldt、Bonpland｜植物地理与Naturgemälde",
+      "date_label": "1807（德文版）",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.e-rara.ch/zut/content/titleinfo/5419806",
+          "locator": "Ideen zu einer Geographie der Pflanzen；德文版馆藏",
+          "inspection_scope": "digitized_edition_metadata",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H07",
+      "title": "Gilbert Laing Meason｜On the Landscape Architecture of the Great Painters of Italy",
+      "date_label": "1828",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.biodiversitylibrary.org/item/210144",
+          "locator": "题名及出版年",
+          "inspection_scope": "digitized_primary_metadata",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H08",
+      "title": "George Perkins Marsh｜Man and Nature",
+      "date_label": "1864",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.loc.gov/item/tmp93000823/",
+          "locator": "原书1864；序言pp.iii–vi",
+          "inspection_scope": "digitized_primary_metadata_and_preface",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H09",
+      "title": "Olmsted、Vaux｜Buffalo公园系统",
+      "date_label": "1868",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.loc.gov/collections/frederick-law-olmsted-papers/articles-and-essays/timeline/landscape-architect-for-the-nation-1865-to-1903/",
+          "locator": "年表1868条",
+          "inspection_scope": "archival_institution_timeline",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS001"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H10",
+      "title": "Boston Metropolitan Park Commission｜调查与跨市镇公园规划",
+      "date_label": "1892—1893",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://digitalarchives.sec.state.ma.us/uncategorised/SO_4ec77bfe-5834-4ceb-87b3-46c82dea803f/",
+          "locator": "1892设立；1893报告与常设委员会；Eliot、Baxter",
+          "inspection_scope": "government_archival_description",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS001"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H11",
+      "title": "Charles Eliot及办公室｜三层描图布叠合",
+      "date_label": "1894报告；1902传记收录",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Charles_Eliot%2C_landscape_architect_-_a_lover_of_nature_and_of_his_kind%2C_who_trained_himself_for_a_new_profession%2C_practised_it_happily_and_through_it_wrought_much_good_%28IA_charleseliotland02elio%29.pdf",
+          "locator": "p.496，页眉[1894]；相关报告标题p.492待图像复核",
+          "inspection_scope": "primary_indexed_excerpt",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://bpl.bibliocommons.com/v2/record/S75C2465092",
+          "locator": "Charles William Eliot，1902，Houghton Mifflin",
+          "inspection_scope": "holding_library_metadata",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://overholland.ac/index.php/overholland/en/article/download/52/52/18",
+          "locator": "pp.96–97；脚注对1896定年的不同解释",
+          "inspection_scope": "scholarly_history_indexed_excerpt_conflicting_date",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS002"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H12",
+      "title": "ASLA成立",
+      "date_label": "1899",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.asla.org/resources/library/archives-blog/asla-founders",
+          "locator": "1899年1月4日；3月6日章程",
+          "inspection_scope": "institutional_history",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H13",
+      "title": "Harvard景观建筑系建立",
+      "date_label": "1900",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.gsd.harvard.edu/landscape-architecture/",
+          "locator": "部门历史",
+          "inspection_scope": "institutional_history",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H14",
+      "title": "Patrick Geddes｜Civics: As Applied Sociology",
+      "date_label": "1904—1905",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.gutenberg.org/files/13205/13205-h/13205-h.htm",
+          "locator": "Civics I、II；宣读日期及地理/历史调查论述",
+          "inspection_scope": "primary_transcription_sections",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS003",
+        "DS004"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H15",
+      "title": "Warren H. Manning｜Billerica Town Plan",
+      "date_label": "1912制图；1913发表",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://digitalcollections.lib.iastate.edu/manningwarren/items/manningwarren6610.html",
+          "locator": "Forest map，1912年10月",
+          "inspection_scope": "primary_map_archival_metadata",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.dla-conference.com/wp-content/uploads/2019/06/DLA19_05-23_1300_KEYNOTE_Steinitz-TO-DIGITAL.pdf",
+          "locator": "重现1913年4月Vol.III No.3目录；p.108文章起点",
+          "inspection_scope": "reproduced_primary_issue_indexed_excerpt",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS002"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H16",
+      "title": "Warren H. Manning｜A National Plan",
+      "date_label": "1914开始；1923简稿发表",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://digitalcollections.lib.iastate.edu/manningwarren/items/manningwarren7647.html",
+          "locator": "报告条目，Description与Date Created",
+          "inspection_scope": "primary_report_archival_description",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H17",
+      "title": "Benton MacKaye｜The New Exploration",
+      "date_label": "1928",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://openlibrary.org/books/OL14326989M/The_new_exploration",
+          "locator": "1928版书目",
+          "inspection_scope": "bibliographic_metadata",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H18",
+      "title": "Jaqueline Tyrwhitt｜Surveys for Planning",
+      "date_label": "1950",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://research.tudelft.nl/en/publications/mapping-as-gap-finder-geddes-tyrwhitt-and-the-comparative-spatial/",
+          "locator": "Hein & van Mil 2020；对应Tyrwhitt 1950 p.157",
+          "inspection_scope": "research_article_metadata_and_indexed_quotation",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.researchgate.net/publication/342580349_Mapping_as_Gap-Finder_Geddes_Tyrwhitt_and_the_Comparative_Spatial_Analysis_of_Port_City_Regions",
+          "locator": "Geospatial Mapping Based on Geddes and Tyrwhitt；pp.155–158",
+          "inspection_scope": "research_article_indexed_sections",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS002",
+        "DS003",
+        "DS004"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H19",
+      "title": "G. Angus Hills｜The Ecological Basis for Land-Use Planning",
+      "date_label": "1961",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://kansalliskirjasto.finna.fi/Record/vaari.818246",
+          "locator": "书目：1961；Ontario Department of Lands and Forests",
+          "inspection_scope": "holding_library_metadata",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H20",
+      "title": "Philip H. Lewis Jr.｜Quality Corridors for Wisconsin",
+      "date_label": "1964",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.jstor.org/stable/44670887",
+          "locator": "期刊文章记录；54(2):100–107",
+          "inspection_scope": "journal_archive_metadata",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H21",
+      "title": "Harvard Laboratory for Computer Graphics｜SYMAP与规划分析",
+      "date_label": "1965—1967",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://www.gsd.harvard.edu/2024/11/a-new-way-of-seeing-the-laboratory-for-computer-graphics-and-spatial-analysis/",
+          "locator": "实验室1965；Steinitz 1965—1967；1968更名",
+          "inspection_scope": "institutional_archival_history",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [
+        "DS005"
+      ],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    },
+    {
+      "id": "H22",
+      "title": "Belknap、Furtado｜Three Approaches to Environmental Resource Analysis",
+      "date_label": "1967",
+      "doi": null,
+      "doi_status": "not_established_for_this_historical_node",
+      "previous_evidence": [
+        {
+          "url": "https://agris.fao.org/search/en/providers/122535/records/65ddf0cfb766d82b18fb3539",
+          "locator": "NAL书目；Conservation Foundation，1967；内容说明",
+          "inspection_scope": "national_library_bibliographic_description",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "current_doi_support_statement_ids": [],
+      "note": "历史事件不是书目实体；关联历史研究的DOI不可冒充历史原作DOI。前轮史料证据未自动改写为本轮全文核验。"
+    }
+  ],
+  "unresolved_targeted_leads": [
+    {
+      "title": "Are we eliciting the right preferences? Insights from spatial MCDA sensitivity and uncertainty analysis",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1364815226002847",
+      "doi": null,
+      "status": "indexed_lead_exact_title_unresolved_in_openalex",
+      "reason": "网页索引出现，但本轮未建立DOI与可靠出版日期；不进入直接支持清单。"
+    },
+    {
+      "title": "Hand-Drawn Overlays: Their History and Prospective Uses",
+      "year": 1976,
+      "doi": null,
+      "status": "exact_title_lookup_unresolved",
+      "reason": "未找到不等于不存在；需原期刊或Zotero附件。"
+    },
+    {
+      "title": "Three Approaches to Environmental Resource Analysis",
+      "year": 1967,
+      "doi": null,
+      "status": "exact_title_lookup_unresolved",
+      "reason": "原有NAL书目仍有效；不能用未匹配自动否定此报告。"
+    }
+  ]
+}

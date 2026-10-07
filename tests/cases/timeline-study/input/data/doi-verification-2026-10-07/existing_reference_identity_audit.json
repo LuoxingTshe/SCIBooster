@@ -1,0 +1,1288 @@
+{
+  "date": "2026-10-07",
+  "records": [
+    {
+      "reference_id": "R01",
+      "doi": "10.1080/01944367708977903",
+      "title_original": "Methods for Generating Land Suitability Maps: A Comparative Evaluation",
+      "title_crossref": "Methods for Generating Land Suitability Maps: A Comparative Evaluation",
+      "title_openalex": "Methods for Generating Land Suitability Maps: A Comparative Evaluation",
+      "year_original": 1977,
+      "year_openalex": 1977,
+      "year_crossref_print_preferred": 1977,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1977,
+            10
+          ]
+        ],
+        "issued": [
+          [
+            1977,
+            10
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS007"
+      ]
+    },
+    {
+      "reference_id": "R02",
+      "doi": "10.1016/0304-3924(82)90009-0",
+      "title_original": "Landscape perception: Research, application and theory",
+      "title_crossref": "Landscape perception: Research, application and theory",
+      "title_openalex": "Landscape perception: Research, application and theory",
+      "year_original": 1982,
+      "year_openalex": 1982,
+      "year_crossref_print_preferred": 1982,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1982,
+            7
+          ]
+        ],
+        "issued": [
+          [
+            1982,
+            7
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS008"
+      ]
+    },
+    {
+      "reference_id": "R03",
+      "doi": "10.1080/13658810600661508",
+      "title_original": "GIS-based multicriteria decision analysis: a survey of the literature",
+      "title_crossref": "GIS‐based multicriteria decision analysis: a survey of the literature",
+      "title_openalex": "GIS‐based multicriteria decision analysis: a survey of the literature",
+      "year_original": 2006,
+      "year_openalex": 2006,
+      "year_crossref_print_preferred": 2006,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2006,
+            8
+          ]
+        ],
+        "published-online": [
+          [
+            2007,
+            2,
+            20
+          ]
+        ],
+        "issued": [
+          [
+            2006,
+            8
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS009"
+      ]
+    },
+    {
+      "reference_id": "R04",
+      "doi": "10.1016/j.omega.2020.102261",
+      "title_original": "How to support the application of multiple criteria decision analysis? Let us start with a comprehensive taxonomy",
+      "title_crossref": "How to support the application of multiple criteria decision analysis? Let us start with a comprehensive taxonomy",
+      "title_openalex": "How to support the application of multiple criteria decision analysis? Let us start with a comprehensive taxonomy",
+      "year_original": 2020,
+      "year_openalex": 2020,
+      "year_crossref_print_preferred": 2020,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2020,
+            10
+          ]
+        ],
+        "issued": [
+          [
+            2020,
+            10
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS010"
+      ]
+    },
+    {
+      "reference_id": "R05",
+      "doi": "10.1007/s002670010247",
+      "title_original": "Land-Use Suitability Analysis in the United States: Historical Development and Promising Technological Achievements",
+      "title_crossref": "Land-Use Suitability Analysis in the United States: Historical Development and Promising Technological Achievements",
+      "title_openalex": "Land-Use Suitability Analysis in the United States: Historical Development and Promising Technological Achievements",
+      "year_original": 2001,
+      "year_openalex": 2001,
+      "year_crossref_print_preferred": 2001,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2001,
+            6,
+            22
+          ]
+        ],
+        "issued": [
+          [
+            2001,
+            6,
+            22
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS002"
+      ]
+    },
+    {
+      "reference_id": "R06",
+      "title": "A framework for land evaluation",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R07",
+      "title": "Design with Nature",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R08",
+      "doi": "10.1016/0304-3924(77)90017-x",
+      "title_original": "Ecological planning: Method and evaluation",
+      "title_crossref": "Ecological planning: Method and evaluation",
+      "title_openalex": "Ecological planning: Method and evaluation",
+      "year_original": 1977,
+      "year_openalex": 1977,
+      "year_crossref_print_preferred": 1977,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1977,
+            1
+          ]
+        ],
+        "issued": [
+          [
+            1977,
+            1
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R09",
+      "doi": "10.1016/j.progress.2003.09.002",
+      "title_original": "GIS-based land-use suitability analysis: a critical overview",
+      "title_crossref": "GIS-based land-use suitability analysis: a critical overview",
+      "title_openalex": "GIS-based land-use suitability analysis: a critical overview",
+      "year_original": 2004,
+      "year_openalex": 2003,
+      "year_crossref_print_preferred": 2004,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2004,
+            7
+          ]
+        ],
+        "issued": [
+          [
+            2004,
+            7
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": true,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R10",
+      "doi": "10.1111/1467-9671.00035",
+      "title_original": "On the Use of Weighted Linear Combination Method in GIS: Common and Best Practice Approaches",
+      "title_crossref": "On the Use of Weighted Linear Combination Method in GIS: Common and Best Practice Approaches",
+      "title_openalex": "On the Use of Weighted Linear Combination Method in GIS: Common and Best Practice Approaches",
+      "year_original": 2000,
+      "year_openalex": 2000,
+      "year_crossref_print_preferred": 2000,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2000,
+            1
+          ]
+        ],
+        "published-online": [
+          [
+            2002,
+            12,
+            17
+          ]
+        ],
+        "issued": [
+          [
+            2000,
+            1
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS014"
+      ]
+    },
+    {
+      "reference_id": "R11",
+      "doi": "10.1080/136588100240903",
+      "title_original": "Application of fuzzy measures in multi-criteria evaluation in GIS",
+      "title_crossref": "Application of fuzzy measures in multi-criteria evaluation in GIS",
+      "title_openalex": "Application of fuzzy measures in multi-criteria evaluation in GIS",
+      "year_original": 2000,
+      "year_openalex": 2000,
+      "year_crossref_print_preferred": 2000,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2000,
+            3,
+            13
+          ]
+        ],
+        "issued": [
+          [
+            2000,
+            3,
+            13
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS021"
+      ]
+    },
+    {
+      "reference_id": "R12",
+      "doi": "10.1016/s0360-8352(00)00019-x",
+      "title_original": "Interpretation of criteria weights in multicriteria decision making",
+      "title_crossref": "Interpretation of criteria weights in multicriteria decision making",
+      "title_openalex": "Interpretation of criteria weights in multicriteria decision making",
+      "year_original": 1999,
+      "year_openalex": 1999,
+      "year_crossref_print_preferred": 1999,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1999,
+            11
+          ]
+        ],
+        "issued": [
+          [
+            1999,
+            11
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS015"
+      ]
+    },
+    {
+      "reference_id": "R13",
+      "doi": "10.1504/ijssci.2008.017590",
+      "title_original": "Decision making with the analytic hierarchy process",
+      "title_crossref": "Decision making with the analytic hierarchy process",
+      "title_openalex": "Decision making with the analytic hierarchy process",
+      "year_original": 2008,
+      "year_openalex": 2008,
+      "year_crossref_print_preferred": 2008,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2008
+          ]
+        ],
+        "issued": [
+          [
+            2008
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS019"
+      ]
+    },
+    {
+      "reference_id": "R14",
+      "doi": "10.1109/21.87068",
+      "title_original": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking",
+      "title_crossref": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking",
+      "title_openalex": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking",
+      "year_original": 1988,
+      "year_openalex": 1988,
+      "year_crossref_print_preferred": 1988,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1988
+          ]
+        ],
+        "issued": [
+          [
+            1988
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS020"
+      ]
+    },
+    {
+      "reference_id": "R15",
+      "doi": "10.1016/j.jag.2006.01.003",
+      "title_original": "Ordered weighted averaging with fuzzy quantifiers: GIS-based multicriteria evaluation for land-use suitability analysis",
+      "title_crossref": "Ordered weighted averaging with fuzzy quantifiers: GIS-based multicriteria evaluation for land-use suitability analysis",
+      "title_openalex": "Ordered weighted averaging with fuzzy quantifiers: GIS-based multicriteria evaluation for land-use suitability analysis",
+      "year_original": 2006,
+      "year_openalex": 2006,
+      "year_crossref_print_preferred": 2006,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2006,
+            12
+          ]
+        ],
+        "issued": [
+          [
+            2006,
+            12
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS022"
+      ]
+    },
+    {
+      "reference_id": "R16",
+      "doi": "10.1016/s0377-2217(97)00163-x",
+      "title_original": "SMAA - Stochastic multiobjective acceptability analysis",
+      "title_crossref": "SMAA - Stochastic multiobjective acceptability analysis",
+      "title_openalex": "SMAA - Stochastic multiobjective acceptability analysis",
+      "year_original": 1998,
+      "year_openalex": 1998,
+      "year_crossref_print_preferred": 1998,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1998,
+            4
+          ]
+        ],
+        "issued": [
+          [
+            1998,
+            4
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS027"
+      ]
+    },
+    {
+      "reference_id": "R17",
+      "doi": "10.1287/opre.49.3.444.11220",
+      "title_original": "SMAA-2: Stochastic Multicriteria Acceptability Analysis for Group Decision Making",
+      "title_crossref": "SMAA-2: Stochastic Multicriteria Acceptability Analysis for Group Decision Making",
+      "title_openalex": "SMAA-2: Stochastic Multicriteria Acceptability Analysis for Group Decision Making",
+      "year_original": 2001,
+      "year_openalex": 2001,
+      "year_crossref_print_preferred": 2001,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2001,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            2001,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS028"
+      ]
+    },
+    {
+      "reference_id": "R18",
+      "doi": "10.1080/10807030490887221",
+      "title_original": "Sensitivity Analysis in Multicriteria Spatial Decision-Making: A Review",
+      "title_crossref": "Sensitivity Analysis in Multicriteria Spatial Decision-Making: A Review",
+      "title_openalex": "Sensitivity Analysis in Multicriteria Spatial Decision-Making: A Review",
+      "year_original": 2004,
+      "year_openalex": 2004,
+      "year_crossref_print_preferred": 2004,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2004,
+            12
+          ]
+        ],
+        "issued": [
+          [
+            2004,
+            12
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS029"
+      ]
+    },
+    {
+      "reference_id": "R19",
+      "doi": "10.1016/j.envsoft.2014.03.007",
+      "title_original": "Spatially-explicit integrated uncertainty and sensitivity analysis of criteria weights in multicriteria land suitability evaluation",
+      "title_crossref": "Spatially-explicit integrated uncertainty and sensitivity analysis of criteria weights in multicriteria land suitability evaluation",
+      "title_openalex": "Spatially-explicit integrated uncertainty and sensitivity analysis of criteria weights in multicriteria land suitability evaluation",
+      "year_original": 2014,
+      "year_openalex": 2014,
+      "year_crossref_print_preferred": 2014,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2014,
+            7
+          ]
+        ],
+        "issued": [
+          [
+            2014,
+            7
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS032"
+      ]
+    },
+    {
+      "reference_id": "R20",
+      "doi": "10.1007/s10479-019-03151-z",
+      "title_original": "SMAA methods and their applications: a literature review and future research directions",
+      "title_crossref": "SMAA methods and their applications: a literature review and future research directions",
+      "title_openalex": "SMAA methods and their applications: a literature review and future research directions",
+      "year_original": 2020,
+      "year_openalex": 2019,
+      "year_crossref_print_preferred": 2020,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2020,
+            10
+          ]
+        ],
+        "published-online": [
+          [
+            2019,
+            2,
+            1
+          ]
+        ],
+        "issued": [
+          [
+            2019,
+            2,
+            1
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": true,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R21",
+      "doi": "10.1007/s10669-017-9642-9",
+      "title_original": "Trends and applications of multi-criteria decision analysis in environmental sciences: literature review",
+      "title_crossref": "Trends and applications of multi-criteria decision analysis in environmental sciences: literature review",
+      "title_openalex": "Trends and applications of multi-criteria decision analysis in environmental sciences: literature review",
+      "year_original": 2017,
+      "year_openalex": 2017,
+      "year_crossref_print_preferred": 2017,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2017,
+            6
+          ]
+        ],
+        "published-online": [
+          [
+            2017,
+            5,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            2017,
+            5,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R22",
+      "doi": "10.1080/13658816.2020.1776870",
+      "title_original": "Collaborative spatial multicriteria evaluation: a review and directions for future research",
+      "title_crossref": "Collaborative spatial multicriteria evaluation: a review and directions for future research",
+      "title_openalex": "Collaborative spatial multicriteria evaluation: a review and directions for future research",
+      "year_original": 2021,
+      "year_openalex": 2020,
+      "year_crossref_print_preferred": 2021,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2021,
+            1,
+            2
+          ]
+        ],
+        "published-online": [
+          [
+            2020,
+            6,
+            16
+          ]
+        ],
+        "issued": [
+          [
+            2020,
+            6,
+            16
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": true,
+      "selected_statement_ids": [
+        "DS036"
+      ]
+    },
+    {
+      "reference_id": "R23",
+      "doi": "10.1177/13563890211020334",
+      "title_original": "How can multi-criteria analysis support deliberative spatial planning? A critical review of methods and participatory frameworks",
+      "title_crossref": "How can multi-criteria analysis support deliberative spatial planning? A critical review of methods and participatory frameworks",
+      "title_openalex": "How can multi-criteria analysis support deliberative spatial planning? A critical review of methods and participatory frameworks",
+      "year_original": 2021,
+      "year_openalex": 2021,
+      "year_crossref_print_preferred": 2021,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2021,
+            10
+          ]
+        ],
+        "published-online": [
+          [
+            2021,
+            7,
+            30
+          ]
+        ],
+        "issued": [
+          [
+            2021,
+            7,
+            30
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS037"
+      ]
+    },
+    {
+      "reference_id": "R24",
+      "doi": "10.1016/j.ecolecon.2017.02.011",
+      "title_original": "How Do Multi-criteria Assessments Address Landscape-level Problems? A Review of Studies and Practices",
+      "title_crossref": "How Do Multi-criteria Assessments Address Landscape-level Problems? A Review of Studies and Practices",
+      "title_openalex": "How Do Multi-criteria Assessments Address Landscape-level Problems? A Review of Studies and Practices",
+      "year_original": 2017,
+      "year_openalex": 2017,
+      "year_crossref_print_preferred": 2017,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2017,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            2017,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R25",
+      "doi": "10.1098/rsos.170170",
+      "title_original": "Using deep learning to quantify the beauty of outdoor places",
+      "title_crossref": "Using deep learning to quantify the beauty of outdoor places",
+      "title_openalex": "Using deep learning to quantify the beauty of outdoor places",
+      "year_original": 2017,
+      "year_openalex": 2017,
+      "year_crossref_print_preferred": 2017,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2017,
+            7
+          ]
+        ],
+        "published-online": [
+          [
+            2017,
+            7,
+            19
+          ]
+        ],
+        "issued": [
+          [
+            2017,
+            7
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS038"
+      ]
+    },
+    {
+      "reference_id": "R26",
+      "doi": "10.1016/j.isprsjprs.2021.04.020",
+      "title_original": "On the relation between landscape beauty and land cover: A case study in the U.K. at Sentinel-2 resolution with interpretable AI",
+      "title_crossref": "On the relation between landscape beauty and land cover: A case study in the U.K. at Sentinel-2 resolution with interpretable AI",
+      "title_openalex": "On the relation between landscape beauty and land cover: A case study in the U.K. at Sentinel-2 resolution with interpretable AI",
+      "year_original": 2021,
+      "year_openalex": 2021,
+      "year_crossref_print_preferred": 2021,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2021,
+            7
+          ]
+        ],
+        "issued": [
+          [
+            2021,
+            7
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS039"
+      ]
+    },
+    {
+      "reference_id": "R27",
+      "doi": "10.1038/s41598-021-99282-0",
+      "title_original": "Social media and deep learning capture the aesthetic quality of the landscape",
+      "title_crossref": "Social media and deep learning capture the aesthetic quality of the landscape",
+      "title_openalex": "Social media and deep learning capture the aesthetic quality of the landscape",
+      "year_original": 2021,
+      "year_openalex": 2021,
+      "year_crossref_print_preferred": 2021,
+      "crossref_dates": {
+        "published-online": [
+          [
+            2021,
+            10,
+            8
+          ]
+        ],
+        "issued": [
+          [
+            2021,
+            10,
+            8
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS040"
+      ]
+    },
+    {
+      "reference_id": "R28",
+      "doi": "10.3390/s23198135",
+      "title_original": "Modeling the Visual Landscape: A Review on Approaches, Methods and Techniques",
+      "title_crossref": "Modeling the Visual Landscape: A Review on Approaches, Methods and Techniques",
+      "title_openalex": "Modeling the Visual Landscape: A Review on Approaches, Methods and Techniques",
+      "year_original": 2023,
+      "year_openalex": 2023,
+      "year_crossref_print_preferred": 2023,
+      "crossref_dates": {
+        "published-online": [
+          [
+            2023,
+            9,
+            28
+          ]
+        ],
+        "issued": [
+          [
+            2023,
+            9,
+            28
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS041"
+      ]
+    },
+    {
+      "reference_id": "R29",
+      "doi": "10.3368/lj.9.2.136",
+      "title_original": "A Framework for Theory Applicable to the Education of Landscape Architects (and Other Environmental Design Professionals)",
+      "title_crossref": "A Framework for Theory Applicable to the Education of Landscape Architects (and Other Environmental Design Professionals)",
+      "title_openalex": "A Framework for Theory Applicable to the Education of Landscape Architects (and Other Environmental Design Professionals)",
+      "year_original": 1990,
+      "year_openalex": 1990,
+      "year_crossref_print_preferred": 1990,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1990
+          ]
+        ],
+        "published-online": [
+          [
+            1990,
+            9,
+            1
+          ]
+        ],
+        "issued": [
+          [
+            1990
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS012"
+      ]
+    },
+    {
+      "reference_id": "R30",
+      "doi": "10.1016/s0019-9958(65)90241-x",
+      "title_original": "Fuzzy sets",
+      "title_crossref": "Fuzzy sets",
+      "title_openalex": "Fuzzy sets",
+      "year_original": 1965,
+      "year_openalex": 1965,
+      "year_crossref_print_preferred": 1965,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1965,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            1965,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R31",
+      "doi": "10.1080/02693799608902119",
+      "title_original": "A GIS-based approach to multiple criteria group decision-making",
+      "title_crossref": "A GIS-based approach to multiple criteria group decision-making",
+      "title_openalex": "A GIS-based approach to multiple criteria group decision-making",
+      "year_original": 1996,
+      "year_openalex": 1996,
+      "year_crossref_print_preferred": 1996,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1996,
+            12
+          ]
+        ],
+        "issued": [
+          [
+            1996,
+            12
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS035"
+      ]
+    },
+    {
+      "reference_id": "R32",
+      "doi": "10.1016/j.ejor.2004.07.040",
+      "title_original": "Stochastic multicriteria acceptability analysis using the data envelopment model",
+      "title_crossref": "Stochastic multicriteria acceptability analysis using the data envelopment model",
+      "title_openalex": "Stochastic multicriteria acceptability analysis using the data envelopment model",
+      "year_original": 2006,
+      "year_openalex": 2004,
+      "year_crossref_print_preferred": 2006,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2006,
+            4
+          ]
+        ],
+        "issued": [
+          [
+            2006,
+            4
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": true,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R33",
+      "doi": "10.1016/0198-9715(92)90022-j",
+      "title_original": "A fuzzy GIS modeling approach for Urban land evaluation",
+      "title_crossref": "A fuzzy GIS modeling approach for Urban land evaluation",
+      "title_openalex": "A fuzzy GIS modeling approach for Urban land evaluation",
+      "year_original": 1992,
+      "year_openalex": 1992,
+      "year_crossref_print_preferred": 1992,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1992
+          ]
+        ],
+        "issued": [
+          [
+            1992
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R34",
+      "doi": "10.1016/s0169-2046(01)00141-4",
+      "title_original": "Whither scenic beauty? Visual landscape quality assessment in the 21st century",
+      "title_crossref": "Whither scenic beauty? Visual landscape quality assessment in the 21st century",
+      "title_openalex": "Whither scenic beauty? Visual landscape quality assessment in the 21st century",
+      "year_original": 2001,
+      "year_openalex": 2001,
+      "year_crossref_print_preferred": 2001,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2001,
+            5
+          ]
+        ],
+        "issued": [
+          [
+            2001,
+            5
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R35",
+      "title": "Classement et choix en présence de points de vue multiples",
+      "original_doi": null,
+      "doi": "10.1051/ro/196802v100571",
+      "status": "new_doi_verified"
+    },
+    {
+      "reference_id": "R36",
+      "title": "Decisions with Multiple Objectives: Preferences and Value Tradeoffs",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R37",
+      "title": "Measuring landscape esthetics: the scenic beauty estimation method",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R38",
+      "doi": "10.1016/0022-2496(77)90033-5",
+      "title_original": "A scaling method for priorities in hierarchical structures",
+      "title_crossref": "A scaling method for priorities in hierarchical structures",
+      "title_openalex": "A scaling method for priorities in hierarchical structures",
+      "year_original": 1977,
+      "year_openalex": 1977,
+      "year_crossref_print_preferred": 1977,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1977,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            1977,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS018"
+      ]
+    },
+    {
+      "reference_id": "R39",
+      "title": "Scenic beauty estimation model: predicting perceived beauty of forest landscapes",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R40",
+      "doi": "10.1016/0377-2217(82)90155-2",
+      "title_original": "Assessing a set of additive utility functions for multicriteria decision-making, the UTA method",
+      "title_crossref": "Assessing a set of additive utility functions for multicriteria decision-making, the UTA method",
+      "title_openalex": "Assessing a set of additive utility functions for multicriteria decision-making, the UTA method",
+      "year_original": 1982,
+      "year_openalex": 1982,
+      "year_crossref_print_preferred": 1982,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1982,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            1982,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS023"
+      ]
+    },
+    {
+      "reference_id": "R41",
+      "doi": "10.1080/02693799108927858",
+      "title_original": "Integrating multi-criteria evaluation with geographical information systems",
+      "title_crossref": "Integrating multi-criteria evaluation with geographical information systems",
+      "title_openalex": "Integrating multi-criteria evaluation with geographical information systems",
+      "year_original": 1991,
+      "year_openalex": 1991,
+      "year_crossref_print_preferred": 1991,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1991,
+            1
+          ]
+        ],
+        "issued": [
+          [
+            1991,
+            1
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R42",
+      "doi": "10.1080/13658810051030487",
+      "title_original": "Using GIS and outranking multicriteria analysis for land-use suitability assessment",
+      "title_crossref": "Using GIS and outranking multicriteria analysis for land-use suitability assessment",
+      "title_openalex": "Using GIS and outranking multicriteria analysis for land-use suitability assessment",
+      "year_original": 2001,
+      "year_openalex": 2001,
+      "year_crossref_print_preferred": 2001,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2001,
+            3
+          ]
+        ],
+        "issued": [
+          [
+            2001,
+            3
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS025"
+      ]
+    },
+    {
+      "reference_id": "R43",
+      "title": "Landscape Character Assessment: Guidance for England and Scotland",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R44",
+      "doi": "10.1016/j.ejor.2007.08.013",
+      "title_original": "Ordinal regression revisited: Multiple criteria ranking using a set of additive value functions",
+      "title_crossref": "Ordinal regression revisited: Multiple criteria ranking using a set of additive value functions",
+      "title_openalex": "Ordinal regression revisited: Multiple criteria ranking using a set of additive value functions",
+      "year_original": 2008,
+      "year_openalex": 2007,
+      "year_crossref_print_preferred": 2008,
+      "crossref_dates": {
+        "published-print": [
+          [
+            2008,
+            12
+          ]
+        ],
+        "issued": [
+          [
+            2008,
+            12
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": true,
+      "selected_statement_ids": [
+        "DS017"
+      ]
+    },
+    {
+      "reference_id": "R45",
+      "title": "Cybernetics: Or Control and Communication in the Animal and the Machine",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R46",
+      "doi": "10.1007/bf01405730",
+      "title_original": "Dilemmas in a general theory of planning",
+      "title_crossref": "Dilemmas in a general theory of planning",
+      "title_openalex": "Dilemmas in a general theory of planning",
+      "year_original": 1973,
+      "year_openalex": 1973,
+      "year_crossref_print_preferred": 1973,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1973,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            1973,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS013"
+      ]
+    },
+    {
+      "reference_id": "R47",
+      "title": "Adaptive Environmental Assessment and Management",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R48",
+      "doi": "10.1287/mnsc.31.6.647",
+      "title_original": "Note—A Preference Ranking Organisation Method",
+      "title_crossref": "Note—A Preference Ranking Organisation Method",
+      "title_openalex": "Note—A Preference Ranking Organisation Method",
+      "year_original": 1985,
+      "year_openalex": 1985,
+      "year_crossref_print_preferred": 1985,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1985,
+            6
+          ]
+        ],
+        "issued": [
+          [
+            1985,
+            6
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": [
+        "DS026"
+      ]
+    },
+    {
+      "reference_id": "R49",
+      "doi": "10.1016/0377-2217(95)00176-x",
+      "title_original": "The application of fuzzy integrals in multicriteria decision making",
+      "title_crossref": "The application of fuzzy integrals in multicriteria decision making",
+      "title_openalex": "The application of fuzzy integrals in multicriteria decision making",
+      "year_original": 1996,
+      "year_openalex": 1996,
+      "year_crossref_print_preferred": 1996,
+      "crossref_dates": {
+        "published-print": [
+          [
+            1996,
+            3
+          ]
+        ],
+        "issued": [
+          [
+            1996,
+            3
+          ]
+        ]
+      },
+      "status": "doi_identity_verified",
+      "date_difference_requires_attention": false,
+      "selected_statement_ids": []
+    },
+    {
+      "reference_id": "R50",
+      "title": "European Landscape Convention",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R51",
+      "title": "A Framework for Geodesign: Changing Geography by Design",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    },
+    {
+      "reference_id": "R52",
+      "title": "Guidelines for Landscape and Visual Impact Assessment",
+      "original_doi": null,
+      "doi": null,
+      "status": "no_doi_established"
+    }
+  ]
+}

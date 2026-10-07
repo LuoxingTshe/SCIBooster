@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-07",
+  "timezone": "Europe/Zurich",
+  "framework_commit": "22ffdfc4fc8d663d131fc560fb737c1d4b1d391c",
+  "input_manifest": [
+    {
+      "path": "README.md",
+      "sha256": "2ad15845be3c6107a3fd8366eb3eca99b553851381c10c02e061ebb93ba285da"
+    },
+    {
+      "path": "RESEARCH_CONTEXT.md",
+      "sha256": "983b35ad4788c03499f25b02f1d75e18a68eb42896ad2c96c70b0d96b27b6cf0"
+    },
+    {
+      "path": "research/FORMALISM.md",
+      "sha256": "ac6971b2b0442e57cc5fe9d055956ac7c6ab1060f2e288f4660ee5cbf3772a50"
+    },
+    {
+      "path": "research/data/timeline.json",
+      "sha256": "b29a6a8d66765280234649ebdfa3469f187f042b47e63690656bb6af62741f2c"
+    },
+    {
+      "path": "research/data/timeline-candidates.json",
+      "sha256": "b1f2b7cc79f929d5c4b1e19cc0ef173bfa83a6f7ed5fce098fe9b0120d2e75b5"
+    },
+    {
+      "path": "research/data/pre-mcharg-nodes.json",
+      "sha256": "6100bfedb89c5159d7f3bd21b8a94deef44e3b388ac8d78df741cdcb51acdeea"
+    },
+    {
+      "path": "research/data/references.json",
+      "sha256": "5fb50d5fa7d13e791c6db60127495efc7302b16f9dbce94eedccb2aa25f22fa1"
+    },
+    {
+      "path": "research/data/claims.json",
+      "sha256": "0778d96ca593bb3b429ced7dded1687c1b3f425e4f928562ae5282b5db09f8c5"
+    }
+  ],
+  "branches": {
+    "history": {
+      "prompt": "检索景观与土地规划的历史方法：McHarg之前的场地判断、Repton图像叠片、Charles Eliot与Warren Manning专题地图叠合、Geddes和Tyrwhitt区域调查、Hills生态分类和Lewis资源廊道，以及早期计算制图。纳入后来的历史研究以核验早期事件，不将文献出版年视为历史事件年。目标是核验而非赞同：区分图层表示、价值转换和综合规则，检索相反证据。不要把相似方法或先后发表当成直接传承。排除仅一般介绍生态景观但不讨论历史方法的案例。",
+      "seeds": [
+        "10.1007/s002670010247",
+        "10.17645/up.v5i2.2803",
+        "10.1177/0739456X8500500106"
+      ],
+      "queries": [
+        "TS=((\"landscape planning\" OR \"landscape architecture\" OR \"land suitability\") AND (histor* OR McHarg OR Manning OR Tyrwhitt) AND (overlay* OR survey* OR method*))",
+        "TS=((\"Charles Eliot\" OR \"Warren Manning\" OR Tyrwhitt OR \"Patrick Geddes\") AND (map* OR planning OR survey*))",
+        "TS=(\"Hand-Drawn Overlays\" OR \"Three Approaches to Environmental Resource Analysis\" OR \"The Nature of Ian McHarg\")"
+      ]
+    },
+    "formal_methods": {
+      "prompt": "为景观评价模型时间线检索可直接支持或限定论断的文献。主题包括已有景观评价及GIS-MCDA分类，指标表示与价值函数和聚合规则的区别，WLC权重尺度含义与补偿假设，AHP/OWA/超越法等不同结构，空间显式权重不确定性与敏感性，参与及多元价值区别于参数不确定性，以及景观视觉美感的可解释学习。包括早期方法原作和批判综述，不能假设当前研究已创新或模型可以消除价值判断。优先方法理论和综述而不是只应用AHP的具体案例。",
+      "seeds": [
+        "10.1080/01944367708977903",
+        "10.1080/13658810600661508",
+        "10.1016/j.omega.2020.102261",
+        "10.1016/S0360-8352(00)00019-X",
+        "10.1016/j.envsoft.2014.03.007",
+        "10.1016/j.isprsjprs.2021.04.020"
+      ],
+      "queries": [
+        "TS=((\"landscape assessment\" OR \"landscape evaluation\" OR \"land suitability\" OR \"spatial multicriteria\") AND (taxonomy OR classification OR \"critical review\" OR \"value function\"))",
+        "TS=((\"spatial multicriteria\" OR \"GIS-MCDA\" OR \"land suitability\") AND (\"criteria weights\" OR \"weight uncertainty\" OR \"sensitivity analysis\" OR deliberat* OR \"value pluralism\"))",
+        "TS=((\"landscape beauty\" OR \"scenic beauty\") AND (\"interpretable\" OR \"deep learning\" OR \"assessment method*\"))"
+      ]
+    }
+  },
+  "source_limits": {
+    "wos_requests_per_branch": 25,
+    "search_hits_per_query": 35,
+    "snowball_hops": 1,
+    "papers_per_corpus": 65
+  },
+  "rules": [
+    "LLM relevance is discovery only, never evidence of factual support.",
+    "Seeds are not independently retrieved hits.",
+    "Exact DOI metadata matching is not content verification.",
+    "Claims are narrowed to inspected abstracts/sections.",
+    "No DOI inferred from titles, JSTOR IDs, or digitized-edition identifiers.",
+    "Historical primary texts without DOI remain separately recorded."
+  ]
+}

@@ -3,8 +3,18 @@ import sys
 
 import pytest
 
-from scripts.real_search import evaluate, load_case, main
+from scripts.real_search import FIXTURE, evaluate, load_case, main
 from scibooster.models import Corpus, Edge, Paper, Relevance
+from scibooster.pipeline.seeds import classify, read_seed_file
+
+
+def test_fixture_inputs_are_cli_ready():
+    seeds = read_seed_file(FIXTURE / "core_literature.txt")
+    intent = (FIXTURE / "research_intent.txt").read_text(encoding="utf-8")
+    assert len(seeds) == 3 and len(set(seeds)) == 3
+    assert all(classify(seed)[0] == "doi" for seed in seeds)
+    for phrase in ("中国古典园林", "三维点云", "纳入范围", "排除范围"):
+        assert phrase in intent
 
 
 def sample_corpus(gold):

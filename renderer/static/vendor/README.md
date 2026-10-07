@@ -12,7 +12,7 @@ an Internet connection. Their license files are included alongside the scripts.
 
 Load in the order above. To update, obtain pinned packages from npm with install
 scripts disabled, copy the listed distributions and LICENSE files, update this
-table, and run `node --test tests/test_network_layout.cjs` plus the Python suite.
+table, and run `node --test tests/unit/test_network_layout.cjs` plus the Python suite.
 
 Layout reference: H. Balci and U. Dogrusoz, “fCoSE: A Fast Compound Graph Layout
 Algorithm with Constraint Support,” IEEE TVCG 28(12), 4582–4593, 2022.

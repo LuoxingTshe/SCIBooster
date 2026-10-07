@@ -4,7 +4,7 @@ const { spawnSync } = require('node:child_process');
 const path = require('node:path');
 const vm = require('node:vm');
 // Executes the exact browser distributions, offline and without npm installation.
-const { loadRenderer, layout } = require('../renderer/layout.cjs');
+const { loadRenderer, layout } = require('../../renderer/layout.cjs');
 
 const renderer = () => loadRenderer(42);
 
@@ -142,7 +142,7 @@ test('headless layout() keeps Canvas-sized cards apart and is reproducible', () 
 });
 
 test('layout.cjs CLI reads a graph on stdin and prints positions', () => {
-  const r = spawnSync(process.execPath, [path.join(__dirname, '../renderer/layout.cjs')],
+  const r = spawnSync(process.execPath, [path.join(__dirname, '../../renderer/layout.cjs')],
     { input: JSON.stringify(cards(8)), encoding: 'utf8' });
   assert.equal(r.status, 0, r.stderr);
   const out = JSON.parse(r.stdout);

@@ -1,0 +1,1109 @@
+[
+  {
+    "id": "DS001",
+    "type": "article-journal",
+    "DOI": "10.1177/0739456x8500500106",
+    "title": "Urban Nature and Human Design: Renewing the Great Tradition",
+    "author": [
+      {
+        "literal": "Anne Whiston Spirn"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1985
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1177/0739456x8500500106",
+    "note": "仅支持限定陈述：城市设计中利用自然以服务健康、安全与公共福祉的传统早于现代生态规划。 核验范围：indexed_original_abstract。摘要支持长期传统这一概括；不能单独证明Evelyn、Eliot等每个节点的年份或直接传承。",
+    "container-title": "Journal of Planning Education and Research",
+    "volume": "5",
+    "issue": "1",
+    "page": "39-51"
+  },
+  {
+    "id": "DS002",
+    "type": "article-journal",
+    "DOI": "10.1007/s002670010247",
+    "title": "Land-Use Suitability Analysis in the United States: Historical Development and Promising Technological Achievements",
+    "author": [
+      {
+        "literal": "MICHAEL G. COLLINS"
+      },
+      {
+        "literal": "FREDERICK R. STEINER"
+      },
+      {
+        "literal": "MICHAEL J. RUSHMAN"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1007/s002670010247",
+    "note": "仅支持限定陈述：美国土地适宜性分析在20世纪初已有文献记录的应用；2001综述已讨论神经计算和演化程序等技术。 核验范围：publisher_abstract_or_indexed_abstract。不证明世界最早、叠图唯一发明者，亦不证明2001已有今天的深度学习流程。",
+    "container-title": "Environmental Management",
+    "volume": "28",
+    "issue": "5",
+    "page": "611-621"
+  },
+  {
+    "id": "DS003",
+    "type": "article-journal",
+    "DOI": "10.17645/up.v5i2.2803",
+    "title": "Mapping as Gap-Finder: Geddes, Tyrwhitt, and the Comparative Spatial Analysis of Port City Regions",
+    "author": [
+      {
+        "literal": "Carola Hein"
+      },
+      {
+        "literal": "Yvonne Van Mil"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.17645/up.v5i2.2803",
+    "note": "仅支持限定陈述：Hein与van Mil的研究将Geddes、Tyrwhitt的先调查后规划与叠合地图观察空间模式联系起来，并明确讨论Tyrwhitt1950文本。 核验范围：indexed_original_abstract。是历史研究对1950文本的直接讨论；不是已直接读完1950原书，不支持全球首次叠图。",
+    "container-title": "Urban Planning",
+    "volume": "5",
+    "issue": "2",
+    "page": "152-166"
+  },
+  {
+    "id": "DS004",
+    "type": "article-journal",
+    "DOI": "10.1017/s0963926809006282",
+    "title": "Jaqueline Tyrwhitt and transnational discourse on modern urban planning and design, 1941–1951",
+    "author": [
+      {
+        "literal": "ELLEN SHOSHKES"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2009
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1017/s0963926809006282",
+    "note": "仅支持限定陈述：Tyrwhitt在1941—1951年参与跨国规划话语，并将Geddes的生物区域思想与欧洲现代主义相结合。 核验范围：indexed_original_abstract。不由此断言特定叠图算法由她传给McHarg；思想传播与算法谱系应分开。",
+    "container-title": "Urban History",
+    "volume": "36",
+    "issue": "2",
+    "page": "262-283"
+  },
+  {
+    "id": "DS005",
+    "type": "article-journal",
+    "DOI": "10.1080/02665433.2013.860762",
+    "title": "The beginnings of geographical information systems: a personal historical perspective",
+    "author": [
+      {
+        "literal": "Carl Steinitz"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/02665433.2013.860762",
+    "note": "仅支持限定陈述：Steinitz以参与者身份回顾1963—1970年Harvard计算制图实验室的早期GIS开发与应用实验。 核验范围：publisher_abstract_or_indexed_abstract。2014是回顾论文的发表年；不据摘要推出实验室正式成立于1963或GIS由一人发明。",
+    "container-title": "Planning Perspectives",
+    "volume": "29",
+    "issue": "2",
+    "page": "239-254"
+  },
+  {
+    "id": "DS006",
+    "type": "article-journal",
+    "DOI": "10.1016/0007-3628(65)90013-7",
+    "title": "Land evaluation for land use planning",
+    "author": [
+      {
+        "literal": "Ralph W. Kiefer"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1965
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/0007-3628(65)90013-7",
+    "note": "仅支持限定陈述：Kiefer1965年论文提出为都市边缘地区土地利用总体规划分析土地物理特征的方法与建议。 核验范围：author_profile_indexed_abstract。仅核到作者页面摘要及书目；尚不能认定具体叠图、权重或综合公式。",
+    "container-title": "Building Science",
+    "volume": "1",
+    "issue": "2",
+    "page": "109-125"
+  },
+  {
+    "id": "DS007",
+    "type": "article-journal",
+    "DOI": "10.1080/01944367708977903",
+    "title": "Methods for Generating Land Suitability Maps: A Comparative Evaluation",
+    "author": [
+      {
+        "literal": "Lewis D. Hopkins"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1977
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/01944367708977903",
+    "note": "仅支持限定陈述：Hopkins1977年已经提出土地适宜性方法分类，并比较同质区域识别及用途适宜性评级方法。 核验范围：publisher_abstract_or_indexed_abstract。不能声称本项目首次分类，也不能将Hopkins认定为全球第一次分类。",
+    "container-title": "Journal of the American Institute of Planners",
+    "volume": "43",
+    "issue": "4",
+    "page": "386-400"
+  },
+  {
+    "id": "DS008",
+    "type": "article-journal",
+    "DOI": "10.1016/0304-3924(82)90009-0",
+    "title": "Landscape perception: Research, application and theory",
+    "author": [
+      {
+        "literal": "Ervin H. Zube"
+      },
+      {
+        "literal": "James L. Sell"
+      },
+      {
+        "literal": "Jonathan G. Taylor"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1982
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/0304-3924(82)90009-0",
+    "note": "仅支持限定陈述：Zube等1982年从1965—1980年160余篇研究中区分专家、心理物理、认知与体验四种景观感知范式。 核验范围：publisher_abstract_or_indexed_abstract。这些是研究范式，不是四个互斥的数学聚合模型。",
+    "container-title": "Landscape Planning",
+    "volume": "9",
+    "issue": "1",
+    "page": "1-33"
+  },
+  {
+    "id": "DS009",
+    "type": "article-journal",
+    "DOI": "10.1080/13658810600661508",
+    "title": "GIS‐based multicriteria decision analysis: a survey of the literature",
+    "author": [
+      {
+        "literal": "Jacek Malczewski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/13658810600661508",
+    "note": "仅支持限定陈述：Malczewski2006年综述对1990—2004年的300余篇GIS-MCDA期刊论文进行分类并辨识发展趋势。 核验范围：indexed_original_abstract。当前摘要支持300余篇；精确319篇需对应原文表格，不能用摘要自动核准该数字。",
+    "container-title": "International Journal of Geographical Information Science",
+    "volume": "20",
+    "issue": "7",
+    "page": "703-726"
+  },
+  {
+    "id": "DS010",
+    "type": "article-journal",
+    "DOI": "10.1016/j.omega.2020.102261",
+    "title": "How to support the application of multiple criteria decision analysis? Let us start with a comprehensive taxonomy",
+    "author": [
+      {
+        "literal": "Marco Cinelli"
+      },
+      {
+        "literal": "Miłosz Kadziński"
+      },
+      {
+        "literal": "Michael Gonzalez"
+      },
+      {
+        "literal": "Roman Słowiński"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/j.omega.2020.102261",
+    "note": "仅支持限定陈述：Cinelli等2020年把MCDA过程的特征组织为问题表述、决策建议构建及定性特征与技术支持三个部分。 核验范围：publisher_abstract_and_sections。已有过程分解前例直接限制“无人提供共同语言”的新颖性宣称；不证明其与本项目七轴结构相同。",
+    "container-title": "Omega",
+    "volume": "96",
+    "page": "102261"
+  },
+  {
+    "id": "DS011",
+    "type": "article-journal",
+    "DOI": "10.1080/02693799508902036",
+    "title": "Integrating geographical information systems and multiple criteria decision-making methods",
+    "author": [
+      {
+        "literal": "Piotr Jankowski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1995
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/02693799508902036",
+    "note": "仅支持限定陈述：Jankowski1995年给出GIS与MCDM整合框架，对MCDM方法分类并匹配决策者的选择方式。 核验范围：indexed_original_abstract。数据库整合策略不等于评价函数本身；不声称1995才开始GIS与决策分析整合。",
+    "container-title": "International journal of geographical information systems",
+    "volume": "9",
+    "issue": "3",
+    "page": "251-273"
+  },
+  {
+    "id": "DS012",
+    "type": "article-journal",
+    "DOI": "10.3368/lj.9.2.136",
+    "title": "A Framework for Theory Applicable to the Education of Landscape Architects (and Other Environmental Design Professionals)",
+    "author": [
+      {
+        "literal": "Carl Steinitz"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1990
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.3368/lj.9.2.136",
+    "note": "仅支持限定陈述：Steinitz1990年提出组织景观设计问题的六层框架，每层对应一种建模类型。 核验范围：indexed_original_abstract。本轮确认原作身份及摘要中的六层结构；六模型精确名称、图式与顺序仍需原文页核。",
+    "container-title": "Landscape Journal",
+    "volume": "9",
+    "issue": "2",
+    "page": "136-143"
+  },
+  {
+    "id": "DS013",
+    "type": "article-journal",
+    "DOI": "10.1007/bf01405730",
+    "title": "Dilemmas in a general theory of planning",
+    "author": [
+      {
+        "literal": "Horst W. J. Rittel"
+      },
+      {
+        "literal": "Melvin M. Webber"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1973
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1007/bf01405730",
+    "note": "仅支持限定陈述：Rittel与Webber指出，社会政策规划中的问题界定、公共利益和最优解都受到价值分歧与条件限制。 核验范围：publisher_abstract_or_indexed_abstract。这是其理论论证，不能推成所有景观子问题都不可计算或数学无用。",
+    "container-title": "Policy Sciences",
+    "volume": "4",
+    "issue": "2",
+    "page": "155-169"
+  },
+  {
+    "id": "DS014",
+    "type": "article-journal",
+    "DOI": "10.1111/1467-9671.00035",
+    "title": "On the Use of Weighted Linear Combination Method in GIS: Common and Best Practice Approaches",
+    "author": [
+      {
+        "literal": "Jacek Malczewski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2000
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1111/1467-9671.00035",
+    "note": "仅支持限定陈述：WLC是GIS复合地图的一种决策规则；忽视其适用假设可能导致不当应用和可疑结果。 核验范围：indexed_original_abstract。摘要不单独给出全部假设证明；标准化或权重和为1本身不保证模型有效。",
+    "container-title": "Transactions in GIS",
+    "volume": "4",
+    "issue": "1",
+    "page": "5-22"
+  },
+  {
+    "id": "DS015",
+    "type": "article-journal",
+    "DOI": "10.1016/s0360-8352(00)00019-x",
+    "title": "Interpretation of criteria weights in multicriteria decision making",
+    "author": [
+      {
+        "literal": "Eng U. Choo"
+      },
+      {
+        "literal": "Bertram Schoner"
+      },
+      {
+        "literal": "William C. Wedley"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1999
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/s0360-8352(00)00019-x",
+    "note": "仅支持限定陈述：准则权重在不同聚合规则下具有不同解释，必须结合测量尺度、可通约性及所采用的模型理解。 核验范围：publisher_abstract_or_indexed_abstract。不能把权重无条件解释为脱离尺度的纯重要性；DOI字符串含00不表示期刊年份为2000，卷期是1999。",
+    "container-title": "Computers &amp; Industrial Engineering",
+    "volume": "37",
+    "issue": "3",
+    "page": "527-541"
+  },
+  {
+    "id": "DS016",
+    "type": "article-journal",
+    "DOI": "10.1287/opre.27.4.810",
+    "title": "Measurable Multiattribute Value Functions",
+    "author": [
+      {
+        "literal": "James S. Dyer"
+      },
+      {
+        "literal": "Rakesh K. Sarin"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1979
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1287/opre.27.4.810",
+    "note": "仅支持限定陈述：Dyer与Sarin1979年讨论可测多属性价值函数，并给出加法、乘法及更复杂形式成立的条件。 核验范围：indexed_original_abstract。为模型选择及尺度假设提供理论背景；不等于这些条件在每个景观案例中已满足。",
+    "container-title": "Operations Research",
+    "volume": "27",
+    "issue": "4",
+    "page": "810-822"
+  },
+  {
+    "id": "DS017",
+    "type": "article-journal",
+    "DOI": "10.1016/j.ejor.2007.08.013",
+    "title": "Ordinal regression revisited: Multiple criteria ranking using a set of additive value functions",
+    "author": [
+      {
+        "literal": "Salvatore Greco"
+      },
+      {
+        "literal": "Vincent Mousseau"
+      },
+      {
+        "literal": "Roman Słowiński"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/j.ejor.2007.08.013",
+    "note": "仅支持限定陈述：Greco等2008年利用与偏好信息兼容的一组加法价值函数，分别定义对全部函数成立的必要偏好和至少一个函数成立的可能偏好。 核验范围：publisher_sections。这是兼容模型集合上的关系，不自动产生概率；不能把其等同均匀权重抽样。",
+    "container-title": "European Journal of Operational Research",
+    "volume": "191",
+    "issue": "2",
+    "page": "416-436"
+  },
+  {
+    "id": "DS018",
+    "type": "article-journal",
+    "DOI": "10.1016/0022-2496(77)90033-5",
+    "title": "A scaling method for priorities in hierarchical structures",
+    "author": [
+      {
+        "literal": "Thomas L Saaty"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1977
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/0022-2496(77)90033-5",
+    "note": "仅支持限定陈述：Saaty1977年研究成对比较矩阵主特征向量标度、一致性及层级结构中的综合优先度。 核验范围：publisher_abstract_or_indexed_abstract。是1977原作的内容锚点，不据此声称此前没有成对比较或该文是AHP唯一诞生点。",
+    "container-title": "Journal of Mathematical Psychology",
+    "volume": "15",
+    "issue": "3",
+    "page": "234-281"
+  },
+  {
+    "id": "DS019",
+    "type": "article-journal",
+    "DOI": "10.1504/ijssci.2008.017590",
+    "title": "Decision making with the analytic hierarchy process",
+    "author": [
+      {
+        "literal": "Thomas L. Saaty"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2008
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1504/ijssci.2008.017590",
+    "note": "仅支持限定陈述：AHP不仅从专家成对比较得到优先尺度，还通过父节点优先度进行层级综合。 核验范围：indexed_original_abstract。在特定AHP-WLC流程中AHP可能主要用于赋权；不能把这种局部用法等同完整AHP。",
+    "container-title": "International Journal of Services Sciences",
+    "volume": "1",
+    "issue": "1",
+    "page": "83"
+  },
+  {
+    "id": "DS020",
+    "type": "article-journal",
+    "DOI": "10.1109/21.87068",
+    "title": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking",
+    "author": [
+      {
+        "literal": "R.R. Yager"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1988
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1109/21.87068",
+    "note": "仅支持限定陈述：Yager1988年提出OWA聚合算子，并研究其介于AND与OR型聚合之间的性质。 核验范围：indexed_original_abstract。摘要不证明任意不等权准则WLC都是纯OWA特例；需要区分准则权重与排序位置权重。",
+    "container-title": "IEEE Transactions on Systems, Man, and Cybernetics",
+    "volume": "18",
+    "issue": "1",
+    "page": "183-190"
+  },
+  {
+    "id": "DS021",
+    "type": "article-journal",
+    "DOI": "10.1080/136588100240903",
+    "title": "Application of fuzzy measures in multi-criteria evaluation in GIS",
+    "author": [
+      {
+        "literal": "Hong Jiang"
+      },
+      {
+        "literal": "J. Ronald Eastman"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2000
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/136588100240903",
+    "note": "仅支持限定陈述：Jiang与Eastman2000年讨论GIS中的Boolean与WLC，并以模糊测度及OWA连接因子标准化和聚合问题。 核验范围：indexed_original_abstract。不能把模糊方法只放在价值转换层；该文的GIS扩展不宜与纯OWA定义混同。",
+    "container-title": "International Journal of Geographical Information Science",
+    "volume": "14",
+    "issue": "2",
+    "page": "173-184"
+  },
+  {
+    "id": "DS022",
+    "type": "article-journal",
+    "DOI": "10.1016/j.jag.2006.01.003",
+    "title": "Ordered weighted averaging with fuzzy quantifiers: GIS-based multicriteria evaluation for land-use suitability analysis",
+    "author": [
+      {
+        "literal": "Jacek Malczewski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2006
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/j.jag.2006.01.003",
+    "note": "仅支持限定陈述：Malczewski2006年把模糊语言量词引入GIS土地适宜性的OWA程序，通过参数变化表达不同决策策略。 核验范围：publisher_abstract_or_indexed_abstract。参数策略不直接等于已获取的真实公众偏好；本轮未完整抽取双权重公式。",
+    "container-title": "International Journal of Applied Earth Observation and Geoinformation",
+    "volume": "8",
+    "issue": "4",
+    "page": "270-277"
+  },
+  {
+    "id": "DS023",
+    "type": "article-journal",
+    "DOI": "10.1016/0377-2217(82)90155-2",
+    "title": "Assessing a set of additive utility functions for multicriteria decision-making, the UTA method",
+    "author": [
+      {
+        "literal": "E. Jacquet-Lagreze"
+      },
+      {
+        "literal": "J. Siskos"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1982
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/0377-2217(82)90155-2",
+    "note": "仅支持限定陈述：UTA用方案的多准则评价和主观弱序，通过序数回归与线性规划估计加法效用函数，并进行稳定性分析。 核验范围：publisher_abstract_or_indexed_abstract。这种从偏好例子估计参数的机制早于深度学习；并不等于无价值判断的客观学习。",
+    "container-title": "European Journal of Operational Research",
+    "volume": "10",
+    "issue": "2",
+    "page": "151-164"
+  },
+  {
+    "id": "DS024",
+    "type": "article-journal",
+    "DOI": "10.1051/ro/196802v100571",
+    "title": "Classement et choix en présence de points de vue multiples",
+    "author": [
+      {
+        "literal": "B. Roy"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1968
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1051/ro/196802v100571",
+    "note": "仅支持限定陈述：Roy1968年发表多观点排序与选择论文；原文参考文献列有1966年ELECTRE技术报告。 核验范围：primary_archive_metadata_and_references。1968是论文出版锚点，不应改写为ELECTRE无争议的首次提出年。",
+    "container-title": "Revue française d'informatique et de recherche opérationnelle",
+    "volume": "2",
+    "issue": "8",
+    "page": "57-75"
+  },
+  {
+    "id": "DS025",
+    "type": "article-journal",
+    "DOI": "10.1080/13658810051030487",
+    "title": "Using GIS and outranking multicriteria analysis for land-use suitability assessment",
+    "author": [
+      {
+        "literal": "Florent Joerin"
+      },
+      {
+        "literal": "Marius Thériault"
+      },
+      {
+        "literal": "Andre Musy"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/13658810051030487",
+    "note": "仅支持限定陈述：Joerin等将GIS与ELECTRE-TRI结合，用于瑞士地区住房土地适宜性分类。 核验范围：indexed_original_abstract。原文包含计算限制及同质区域处理；不能简化成在每个栅格直接运行相同超越关系。",
+    "container-title": "International Journal of Geographical Information Science",
+    "volume": "15",
+    "issue": "2",
+    "page": "153-174"
+  },
+  {
+    "id": "DS026",
+    "type": "article-journal",
+    "DOI": "10.1287/mnsc.31.6.647",
+    "title": "Note—A Preference Ranking Organisation Method",
+    "author": [
+      {
+        "literal": "J. P. Brans"
+      },
+      {
+        "literal": "Ph. Vincke"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1985
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1287/mnsc.31.6.647",
+    "note": "仅支持限定陈述：PROMETHEE I给出部分预序，PROMETHEE II给出全预序，体现不同方法的输出结构差异。 核验范围：indexed_original_abstract。不同输出域应保留；不能强制把所有评价结果解释为一个直接测得的客观分值。",
+    "container-title": "Management Science",
+    "volume": "31",
+    "issue": "6",
+    "page": "647-656"
+  },
+  {
+    "id": "DS027",
+    "type": "article-journal",
+    "DOI": "10.1016/s0377-2217(97)00163-x",
+    "title": "SMAA - Stochastic multiobjective acceptability analysis",
+    "author": [
+      {
+        "literal": "Risto Lahdelma"
+      },
+      {
+        "literal": "Joonas Hokkanen"
+      },
+      {
+        "literal": "Pekka Salminen"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1998
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/s0377-2217(97)00163-x",
+    "note": "仅支持限定陈述：SMAA1998通过探索权重空间描述哪些评价支持某个方案成为首选，并允许以概率分布表达不确定输入。 核验范围：publisher_abstract_or_indexed_abstract。接受度依赖模型和概率假设，不是价值正确性的客观概率。",
+    "container-title": "European Journal of Operational Research",
+    "volume": "106",
+    "issue": "1",
+    "page": "137-143"
+  },
+  {
+    "id": "DS028",
+    "type": "article-journal",
+    "DOI": "10.1287/opre.49.3.444.11220",
+    "title": "SMAA-2: Stochastic Multicriteria Acceptability Analysis for Group Decision Making",
+    "author": [
+      {
+        "literal": "Risto Lahdelma"
+      },
+      {
+        "literal": "Pekka Salminen"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1287/opre.49.3.444.11220",
+    "note": "仅支持限定陈述：SMAA-2在2001年将原SMAA扩展到所有名次，并考虑部分偏好信息。 核验范围：indexed_original_abstract。全部名次的扩展应关联SMAA-2，不能全部归给1998原作。",
+    "container-title": "Operations Research",
+    "volume": "49",
+    "issue": "3",
+    "page": "444-454"
+  },
+  {
+    "id": "DS029",
+    "type": "article-journal",
+    "DOI": "10.1080/10807030490887221",
+    "title": "Sensitivity Analysis in Multicriteria Spatial Decision-Making: A Review",
+    "author": [
+      {
+        "literal": "Montserrat Gómez Delgado"
+      },
+      {
+        "literal": "Joaquín Bosque Sendra"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2004
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/10807030490887221",
+    "note": "仅支持限定陈述：2004年的空间多准则敏感性综述考察28项研究，指出当时敏感性分析不普遍，常见做法是改变因素权重。 核验范围：indexed_original_abstract。28是被审查研究数，不是28项都实施了敏感性分析；17和14等精确子计数不在当前摘要核验范围。",
+    "container-title": "Human and Ecological Risk Assessment: An International Journal",
+    "volume": "10",
+    "issue": "6",
+    "page": "1173-1187"
+  },
+  {
+    "id": "DS030",
+    "type": "article-journal",
+    "DOI": "10.1080/13658810412331280185",
+    "title": "A method for examining the spatial dimension of multi-criteria weight sensitivity",
+    "author": [
+      {
+        "literal": "Robert Feick"
+      },
+      {
+        "literal": "Brent Hall"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2004
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/13658810412331280185",
+    "note": "仅支持限定陈述：Feick与Hall2004年提出研究多准则权重敏感性的空间维度，结合不同参与者的评价和地图表达。 核验范围：indexed_original_abstract。该先例排除“首次将权重变化空间化”的宽泛创新说法；不等同后来的逐单元全局敏感性方法。",
+    "container-title": "International Journal of Geographical Information Science",
+    "volume": "18",
+    "issue": "8",
+    "page": "815-840"
+  },
+  {
+    "id": "DS031",
+    "type": "article-journal",
+    "DOI": "10.1016/j.envsoft.2010.06.001",
+    "title": "Spatial sensitivity analysis of multi-criteria weights in GIS-based land suitability evaluation",
+    "author": [
+      {
+        "literal": "Y. Chen"
+      },
+      {
+        "literal": "J. Yu"
+      },
+      {
+        "literal": "S. Khan"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2010
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/j.envsoft.2010.06.001",
+    "note": "仅支持限定陈述：Chen、Yu与Khan2010年把逐一改变权重的OAT敏感性分析与AHP、ArcGIS结合，显示土地适宜性结果的空间变化。 核验范围：publisher_abstract_or_indexed_abstract。OAT不能自动覆盖权重同时变化的交互作用；作者不是Ligmann-Zielinska与Jankowski。",
+    "container-title": "Environmental Modelling &amp; Software",
+    "volume": "25",
+    "issue": "12",
+    "page": "1582-1591"
+  },
+  {
+    "id": "DS032",
+    "type": "article-journal",
+    "DOI": "10.1016/j.envsoft.2014.03.007",
+    "title": "Spatially-explicit integrated uncertainty and sensitivity analysis of criteria weights in multicriteria land suitability evaluation",
+    "author": [
+      {
+        "literal": "Arika Ligmann-Zielinska"
+      },
+      {
+        "literal": "Piotr Jankowski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2014
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/j.envsoft.2014.03.007",
+    "note": "仅支持限定陈述：Ligmann-Zielinska与Jankowski2014年通过Monte Carlo探索准则权重空间，并为每个空间单元生成适宜性、不确定性及敏感性图。 核验范围：publisher_abstract_and_sections。已经是权重空间研究的直接先例；本轮读到摘要和方法概述，不代表完成代码复现或全公式核验。",
+    "container-title": "Environmental Modelling &amp; Software",
+    "volume": "57",
+    "page": "235-247"
+  },
+  {
+    "id": "DS033",
+    "type": "article-journal",
+    "DOI": "10.1080/13658810110053125",
+    "title": "Uncertainty and sensitivity analysis: tools for GIS-based model implementation",
+    "author": [
+      {
+        "literal": "Michele Crosetto"
+      },
+      {
+        "literal": "Stefano Tarantola"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2001
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/13658810110053125",
+    "note": "仅支持限定陈述：GIS模型中的不确定性分析研究输入与参数不确定性向输出的传播，敏感性分析研究不同来源对输出不确定性的重要性。 核验范围：indexed_original_abstract。该文以水文模型示例，不应误称直接的景观评价模型；区分概念不代表两类分析彼此独立。",
+    "container-title": "International Journal of Geographical Information Science",
+    "volume": "15",
+    "issue": "5",
+    "page": "415-437"
+  },
+  {
+    "id": "DS034",
+    "type": "article-journal",
+    "DOI": "10.1016/j.ejor.2019.04.031",
+    "title": "On generating utility functions in Stochastic Multicriteria Acceptability Analysis",
+    "author": [
+      {
+        "literal": "Luis C. Dias"
+      },
+      {
+        "literal": "Rudolf Vetschera"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2019
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/j.ejor.2019.04.031",
+    "note": "仅支持限定陈述：Dias与Vetschera2019年指出直接随机生成效用值可能使效用函数形状产生抽样偏差，并提出减轻偏差的方法。 核验范围：publisher_abstract_and_sections。随机抽样不是自动中立；不能将该文的偏差结论不加条件地套用于所有权重采样。",
+    "container-title": "European Journal of Operational Research",
+    "volume": "278",
+    "issue": "2",
+    "page": "672-685"
+  },
+  {
+    "id": "DS035",
+    "type": "article-journal",
+    "DOI": "10.1080/02693799608902119",
+    "title": "A GIS-based approach to multiple criteria group decision-making",
+    "author": [
+      {
+        "literal": "Jacek Malczewski"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          1996
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/02693799608902119",
+    "note": "仅支持限定陈述：Malczewski1996年在栅格GIS中用TOPSIS生成个人排序，再用Borda规则组合群体偏好。 核验范围：indexed_original_abstract。证明已有群体算法，不证明所有利益相关者得到公平代表，也不是参与规划的起源。",
+    "container-title": "International journal of geographical information systems",
+    "volume": "10",
+    "issue": "8",
+    "page": "955-971"
+  },
+  {
+    "id": "DS036",
+    "type": "article-journal",
+    "DOI": "10.1080/13658816.2020.1776870",
+    "title": "Collaborative spatial multicriteria evaluation: a review and directions for future research",
+    "author": [
+      {
+        "literal": "Mohammadreza Jelokhani-Niaraki"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1080/13658816.2020.1776870",
+    "note": "仅支持限定陈述：协作式空间多准则评价已有专门综述，讨论参与过程中的任务、工具和可用性评价。 核验范围：indexed_original_abstract。在线2020与卷期2021分开记录；有协作软件不自动证明实现了实质协商。",
+    "container-title": "International Journal of Geographical Information Science",
+    "volume": "35",
+    "issue": "1",
+    "page": "9-42"
+  },
+  {
+    "id": "DS037",
+    "type": "article-journal",
+    "DOI": "10.1177/13563890211020334",
+    "title": "How can multi-criteria analysis support deliberative spatial planning? A critical review of methods and participatory frameworks",
+    "author": [
+      {
+        "literal": "Geert te Boveldt"
+      },
+      {
+        "literal": "Imre Keseru"
+      },
+      {
+        "literal": "Cathy Macharis"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1177/13563890211020334",
+    "note": "仅支持限定陈述：te Boveldt等2021年比较多准则方法的数学结构及参与框架，认为政治敏感的参与阶段需要重视透明性和易用性。 核验范围：indexed_original_abstract。是限定情境下的作者结论，不证明数学越简单越好或所有规划都已完成范式转变。",
+    "container-title": "Evaluation",
+    "volume": "27",
+    "issue": "4",
+    "page": "492-509"
+  },
+  {
+    "id": "DS038",
+    "type": "article-journal",
+    "DOI": "10.1098/rsos.170170",
+    "title": "Using deep learning to quantify the beauty of outdoor places",
+    "author": [
+      {
+        "literal": "Chanuki Illushka Seresinhe"
+      },
+      {
+        "literal": "Tobias Preis"
+      },
+      {
+        "literal": "Helen Susannah Moat"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1098/rsos.170170",
+    "note": "仅支持限定陈述：2017年已有利用Scenic-Or-Not图像评分和卷积神经网络研究、预测户外景观美感的工作。 核验范围：indexed_original_abstract。20余万指图像及其评分背景，不是20余万名评分者；预测既有评分不等于客观定义美。",
+    "container-title": "Royal Society Open Science",
+    "volume": "4",
+    "issue": "7",
+    "page": "170170"
+  },
+  {
+    "id": "DS039",
+    "type": "article-journal",
+    "DOI": "10.1016/j.isprsjprs.2021.04.020",
+    "title": "On the relation between landscape beauty and land cover: A case study in the U.K. at Sentinel-2 resolution with interpretable AI",
+    "author": [
+      {
+        "literal": "Alex Levering"
+      },
+      {
+        "literal": "Diego Marcos"
+      },
+      {
+        "literal": "Devis Tuia"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1016/j.isprsjprs.2021.04.020",
+    "note": "仅支持限定陈述：ScenicNet2021年将土地覆盖预测作为美感回归的可解释中间任务，连接遥感表示与众包景观评分。 核验范围：indexed_original_abstract。反驳所有学习模型都必然无法解释的概括；解释性不自动证明因果、跨文化普适性或价值正当性。",
+    "container-title": "ISPRS Journal of Photogrammetry and Remote Sensing",
+    "volume": "177",
+    "page": "194-203"
+  },
+  {
+    "id": "DS040",
+    "type": "article-journal",
+    "DOI": "10.1038/s41598-021-99282-0",
+    "title": "Social media and deep learning capture the aesthetic quality of the landscape",
+    "author": [
+      {
+        "literal": "Ilan Havinga"
+      },
+      {
+        "literal": "Diego Marcos"
+      },
+      {
+        "literal": "Patrick W. Bogaart"
+      },
+      {
+        "literal": "Lars Hein"
+      },
+      {
+        "literal": "Devis Tuia"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2021
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.1038/s41598-021-99282-0",
+    "note": "仅支持限定陈述：Havinga等2021年用英国众包调查检验Flickr与深度学习的景观美感模型，并与环境指标模型比较。 核验范围：indexed_original_abstract。社交媒体样本不自动代表全部公众；模型预测质量与应当采用的公共价值标准须区分。",
+    "container-title": "Scientific Reports",
+    "volume": "11",
+    "issue": "1",
+    "page": "20000"
+  },
+  {
+    "id": "DS041",
+    "type": "article-journal",
+    "DOI": "10.3390/s23198135",
+    "title": "Modeling the Visual Landscape: A Review on Approaches, Methods and Techniques",
+    "author": [
+      {
+        "literal": "Loukas-Moysis Misthos"
+      },
+      {
+        "literal": "Vassilios Krassanakis"
+      },
+      {
+        "literal": "Nikolaos Merlemis"
+      },
+      {
+        "literal": "Anastasios L. Kesidis"
+      }
+    ],
+    "issued": {
+      "date-parts": [
+        [
+          2023
+        ]
+      ]
+    },
+    "URL": "https://doi.org/10.3390/s23198135",
+    "note": "仅支持限定陈述：2023年视觉景观综述区分感知与评价，以及人眼视角与鸟瞰视角，并梳理相应的技术与度量。 核验范围：indexed_original_abstract。摘要不证明所有技术都能预测偏好；ML/ANN细分论述仍需对应正文段落。",
+    "container-title": "Sensors",
+    "volume": "23",
+    "issue": "19",
+    "page": "8135"
+  }
+]

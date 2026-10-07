@@ -48,8 +48,8 @@ cd /Users/xie/code/SCIBooster
 .venv/bin/scibooster traverse corpora/<run>/corpus.json --start <W-id> --mode dfs --direction cited_by
 .venv/bin/scibooster obsidian corpora/<run>/corpus.json [--vault ~/某个vault]   # build/agent 跑完会自动生成
 .venv/bin/scibooster serve    corpora/<run>/corpus.json          # 开发用渲染器 → http://127.0.0.1:8765
-.venv/bin/python -m pytest -q                                     # 44 项测试
-node --test tests/test_network_layout.cjs                         # 8 项布局测试（Node 22+）
+.venv/bin/python -m pytest -q                                     # 64 项离线测试（unit + cases）
+node --test tests/unit/test_network_layout.cjs                    # 8 项布局测试（Node 22+）
 ```
 
 ## 2. 实测记录（2026-10-05，真实 DeepSeek + OpenAlex）
@@ -79,6 +79,20 @@ WoS 实测（2026-10-05，真实 WoS Starter + OpenAlex，同一需求与种子�
 - 发现问题 3（旧 bug）：`search_all` 最后一页用剩余条数作为 `limit`，而 WoS 的偏移量按 `(page-1)×limit` 计算，导致翻页取错位置 → 翻页过程中固定页大小
 - 结果：`corpora/gnn-drug-wos/`（修复前）29 篇 / 97 条边；`corpora/gnn-drug-wos2/`（修复后）47 篇 / 186 条边，WoS 仅用 2 次请求，DeepSeek 7 次调用，约 21K tokens
 - `eval --gold 10.1016/j.ddtec.2020.11.009`：openalex quick 8.3%（6/72，47 篇）· wos 修复前 9.7%（7/72，29 篇）· wos 修复后 8.3%（6/72，47 篇）。每次运行时 LLM 都会重新生成检索式，加上这篇综述不太贴合需求，差异属于噪声范围
+
+无种子实测（2026-10-06，`corpora/landscape-planning-history/`，真实 WoS + OpenAlex）：
+- 需求："景观规划技术史研究：景观规划技术，McHarg千层饼模型（叠图法/Design with Nature），Steinitz六步骤法（景观规划框架），规划技术演进"；`--source wos --tier standard --label-edges`，**不给种子、不限年份**（`build` 无种子可正常运行）
+- 52 篇 / 132 条边（75 条带语义标注），年份 1969–2025；来源：检索 20 · 向后 15 · 向前 9 · 补缺 8；PRISMA：识别 453 → 筛选 270（未送筛 183）→ 排除 218 → 纳入 52；DeepSeek 31 次调用约 74K tokens，WoS 4 次请求
+- 核心文献命中：《Design with Nature》（库内被引 17，最多）、Steinitz 1990 框架原文、San Pedro 替代未来（2003）、A Framework for Geodesign（2012）、Steinitz 框架 25 年回顾（2019）、Ndubisi《Ecological Planning》（2003）
+- 发现问题 1：两组重复条目未合并（A Framework for Geodesign、Environmental Design, Systems Thinking…（2017）各两条），应为 OpenAlex 中同一作品存在多条记录（见 §5）
+- 发现问题 2：**向前滚雪球得到的文献并不前沿**。各来源年份：向后 1969–2014（中位 2002，2020 年后 0 篇）；向前 2017–2025（中位 2019，2020 年后仅 2 篇）；检索中位 2016.5；补缺 1974–2018。原因是各环节都按 `cited_by_count` 降序截断：`sources/openalex.py` 的 `citing()`（OpenAlex 端 `sort(cited_by_count="desc")`）和 `references()`、`pipeline/snowball.py` 的每节点截断、WoS 检索排序。新论文引用少，被系统性截掉；引用经典的新文献又多为回顾/纪念性质（见 §5）
+- 运维：`serve` 默认端口 8765 若被旧渲染器占用会以 exit 3 退出，可用 `--port` 换端口
+
+TimelineStudy 检索复现（2026-10-07，`corpora/timeline-repro-2026-10-07/`，真实 WoS + OpenAlex + DeepSeek）：
+- 案例 `cases/timeline-study/` 已原样复制到 `tests/cases/timeline-study/`（原目录未动，由用户自行删除）；新增 `retrieval/`（固定两分支配置 + EssayI 原始语料基线）和 `scripts/timeline_retrieval.py`（plan / run / compare），离线测试 `tests/cases/timeline-study/test_timeline_study.py`
+- 同一检索式与参数、隔离缓存：WoS 新候选数与基线相同；合并 65 篇，与基线 79 篇重合 61（77.2%）；history 12/21，formal_methods 49/58；管线发现的直接支持 DOI 命中 18/20（非种子 9/11，缺 DS004、DS018）
+- 差异来自 DeepSeek 意图解析和阈值附近（6 分）的评分波动；基线中缺失的 18 篇在基线里都是 6–7 分。DeepSeek 22 次调用，WoS 6 次请求
+- 同日整理 `tests/`：`unit/`（管线各环节，离线）+ `cases/classical-garden/`（原 `fixtures/real_search/` 与 `system/` 测试合并）+ `cases/timeline-study/`；结构与两案例对照见 `tests/README.md`。`scripts/real_search.py` 路径、CI 的 Node 测试路径同步更新
 
 ## 3. 关键设计决策（与用户确认过的）
 - 渲染器 = **引用网络可视化 + BFS/DFS 遍历**（2026-10-05 用户决定删除 RAG 问答，并取消 RAG 相关的待办；渲染器不再调用 LLM）
@@ -111,6 +125,9 @@ WoS 实测（2026-10-05，真实 WoS Starter + OpenAlex，同一需求与种子�
 - [x] 2026-10-06 CI 升级：actions/checkout、setup-python、setup-node 均升到 v7（Node 24 运行时，消除 Node 20 弃用警告），runner 固定为 `ubuntu-26.04`（`ubuntu-latest` 从 2026-10-19 起切到 26.04，提前固定可以验证兼容性）；Node 仍测 22（README 写明的最低版本）。之后 push 到分支和 main 都能自动触发 CI，并在 3.11 / 3.14 上通过（run 37439281592），之前不触发的原因没有查明
 - [x] `git init` 已完成（v0.2），2026-10-05 完成首次提交（main）；`.github/workflows/ci.yml` 会在 Python 3.11 和 3.14 上跑离线测试。2026-10-05 已推送到私有仓库 https://github.com/LuoxingTshe/SCIBooster；手动触发的 CI（workflow_dispatch）在 3.11 和 3.14 上均通过，但两次 push 都没有自动触发 CI，原因待查
 - [ ] 建议找一篇与需求更贴近的综述作为 `eval` 的标准答案，用它来比较 quick / standard / deep 三个档位
+- [ ] **待用户决定**：滚雪球按被引数降序截断导致"前向 ≠ 前沿"（2026-10-06 景观规划实测，见 §2）。可选做法：① 不改代码，用 `agent` 补 2020 年后的新进展，或另跑 `--years 2020-2025 --direction forward`；② 前向改为按年份新近排序，或按年均被引（cited_by_count / 发表年数）排序，会改变 pipeline 默认行为
+- [ ] 排查去重：`corpora/landscape-planning-history/` 中同标题、不同 OpenAlex id 的条目没有合并（`store.py` 的去重规则）
+- [ ] **待用户决定**：TimelineStudy 检索复现目前只检查结构（种子、检索式、重复），重合率不作门槛；是否设置重合率门槛，或降低 LLM 波动（如温度 0、多次运行取交集）
 - ~~RAG 相关待办（中文提问检索、证据式问答、embedding 检索）~~：已随 RAG 一并取消
 
 ## 6. Obsidian 输出（v0.3，2026-10-05）

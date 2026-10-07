@@ -1,0 +1,1148 @@
+{
+  "schema_version": "0.1",
+  "stage": "timeline_expansion_v02_with_explicit_scope_and_pending_items",
+  "updated_at": "2026-09-25",
+  "records": [
+    {
+      "id": "T01",
+      "label": "前现代经验与相地",
+      "original_period": "pre-modern–early 20th century",
+      "date_type": "practice",
+      "start_year": null,
+      "end_year": null,
+      "tradition": "land_planning",
+      "modules": [
+        "R",
+        "C"
+      ],
+      "interpretation": "经验规则隐含于实践者；不是无判断或无模型",
+      "caveat": "未提供具体原典，不作起源断言",
+      "verification_status": "unresolved",
+      "reference_ids": [],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": null,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": []
+    },
+    {
+      "id": "T02",
+      "label": "手工叠图与场地调查",
+      "original_period": "early 20th century–1960s",
+      "date_type": "historical_period",
+      "start_year": null,
+      "end_year": null,
+      "tradition": "land_planning",
+      "modules": [
+        "R",
+        "C",
+        "A"
+      ],
+      "interpretation": "空间属性分层与程序表达",
+      "caveat": "时期为旧稿概括，须以历史综述限定",
+      "verification_status": "period_not_established",
+      "reference_ids": [
+        "R05"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1900,
+      "original_end_year": 1969,
+      "publication_year": null,
+      "date_precision": "author_periodization",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C09",
+        "C27",
+        "C43",
+        "C45"
+      ]
+    },
+    {
+      "id": "T03",
+      "label": "McHarg / Design with Nature",
+      "original_period": "1960s–1970s",
+      "date_type": "publication",
+      "start_year": 1969,
+      "end_year": 1969,
+      "tradition": "land_planning",
+      "modules": [
+        "R",
+        "C",
+        "A"
+      ],
+      "interpretation": "生态规划与叠图程序",
+      "caveat": "不能写为叠图或适宜性评价的发明",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R07",
+        "R08"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1969,
+      "original_end_year": 1969,
+      "publication_year": 1969,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C08",
+        "C09",
+        "C10",
+        "C44"
+      ]
+    },
+    {
+      "id": "T04",
+      "label": "FAO Framework for Land Evaluation",
+      "original_period": "1970s",
+      "date_type": "publication",
+      "start_year": 1976,
+      "end_year": 1976,
+      "tradition": "land_evaluation",
+      "modules": [
+        "R",
+        "C",
+        "A"
+      ],
+      "interpretation": "土地质量、用途要求和适宜性分类标准化",
+      "caveat": "土地评价不等于全部景观规划",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R06"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1976,
+      "original_end_year": 1976,
+      "publication_year": 1976,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C08",
+        "C11"
+      ]
+    },
+    {
+      "id": "T05",
+      "label": "Hopkins taxonomy",
+      "original_period": "1970s",
+      "date_type": "publication",
+      "start_year": 1977,
+      "end_year": 1977,
+      "tradition": "land_evaluation",
+      "modules": [
+        "R",
+        "C",
+        "A"
+      ],
+      "interpretation": "方法分类与比较",
+      "caveat": "删除首次分类说法",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R01"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1977,
+      "original_end_year": 1977,
+      "publication_year": 1977,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C01",
+        "C05",
+        "C06",
+        "C12"
+      ]
+    },
+    {
+      "id": "T06",
+      "label": "Zube landscape perception paradigms",
+      "original_period": "1965–1980s",
+      "date_type": "review_coverage",
+      "start_year": 1965,
+      "end_year": 1980,
+      "tradition": "visual_perception",
+      "modules": [
+        "R",
+        "C",
+        "E"
+      ],
+      "interpretation": "四种研究范式",
+      "caveat": "覆盖期与1982出版日期分开",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R02",
+        "R34"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1965,
+      "original_end_year": 1980,
+      "publication_year": 1982,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C02",
+        "C05",
+        "C06",
+        "C43"
+      ]
+    },
+    {
+      "id": "T07",
+      "label": "Boolean GIS overlay",
+      "original_period": "1980s–1990s",
+      "date_type": "application_period",
+      "start_year": null,
+      "end_year": null,
+      "tradition": "gis_mcda",
+      "modules": [
+        "C",
+        "A"
+      ],
+      "interpretation": "阈值与逻辑约束",
+      "caveat": "不是布尔逻辑的提出日期",
+      "verification_status": "period_not_established",
+      "reference_ids": [
+        "R11"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1980,
+      "original_end_year": 1999,
+      "publication_year": null,
+      "date_precision": "author_periodization",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C14",
+        "C16",
+        "C18"
+      ]
+    },
+    {
+      "id": "T08",
+      "label": "WLC / additive evaluation in GIS",
+      "original_period": "1990s",
+      "date_type": "application_period",
+      "start_year": null,
+      "end_year": null,
+      "tradition": "gis_mcda",
+      "modules": [
+        "C",
+        "E",
+        "A"
+      ],
+      "interpretation": "尺度转换及补偿权衡",
+      "caveat": "不是加权和的发明年代",
+      "verification_status": "period_not_established",
+      "reference_ids": [
+        "R10",
+        "R11"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1990,
+      "original_end_year": 1999,
+      "publication_year": null,
+      "date_precision": "author_periodization",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C14",
+        "C16",
+        "C18"
+      ]
+    },
+    {
+      "id": "T09",
+      "label": "AHP 与其他 MCDA 的 GIS 应用",
+      "original_period": "1990s–2000s",
+      "date_type": "application_period",
+      "start_year": null,
+      "end_year": null,
+      "tradition": "gis_mcda",
+      "modules": [
+        "E",
+        "A"
+      ],
+      "interpretation": "偏好获取与综合方法并存",
+      "caveat": "AHP/MAVT/ELECTRE/PROMETHEE 不可当同一机制",
+      "verification_status": "period_not_established",
+      "reference_ids": [
+        "R03",
+        "R13"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1990,
+      "original_end_year": 2009,
+      "publication_year": null,
+      "date_precision": "author_periodization",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C13",
+        "C42",
+        "C43"
+      ]
+    },
+    {
+      "id": "T10",
+      "label": "Fuzzy land evaluation",
+      "original_period": "1990s–2000s",
+      "date_type": "representative_application",
+      "start_year": 1992,
+      "end_year": 1992,
+      "tradition": "land_evaluation",
+      "modules": [
+        "C",
+        "E",
+        "A"
+      ],
+      "interpretation": "连续隶属与模糊信息",
+      "caveat": "用Sui1992作已核的应用锚点；不声称首次。模糊集合原理另记1965。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R33"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1990,
+      "original_end_year": 2009,
+      "publication_year": 1992,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C14"
+      ]
+    },
+    {
+      "id": "T11",
+      "label": "OWA",
+      "original_period": "2000s",
+      "date_type": "method_origin",
+      "start_year": 1988,
+      "end_year": 1988,
+      "tradition": "mcda",
+      "modules": [
+        "A"
+      ],
+      "interpretation": "位置权重调节综合行为",
+      "caveat": "旧稿混淆算法提出和 GIS 应用",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R14"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1988,
+      "original_end_year": 1988,
+      "publication_year": 1988,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C17",
+        "C18"
+      ]
+    },
+    {
+      "id": "T12",
+      "label": "SMAA",
+      "original_period": "1998–present",
+      "date_type": "method_origin",
+      "start_year": 1998,
+      "end_year": 1998,
+      "tradition": "mcda",
+      "modules": [
+        "U"
+      ],
+      "interpretation": "探索偏好与输入空间",
+      "caveat": "概率指标依赖输入分布",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R16"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1998,
+      "original_end_year": 1998,
+      "publication_year": 1998,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C19",
+        "C20",
+        "C24"
+      ]
+    },
+    {
+      "id": "T13",
+      "label": "GIS sensitivity / uncertainty / robustness",
+      "original_period": "2000s–2010s",
+      "date_type": "review_and_application",
+      "start_year": null,
+      "end_year": null,
+      "tradition": "gis_mcda",
+      "modules": [
+        "U"
+      ],
+      "interpretation": "结果不确定性与敏感性地图",
+      "caveat": "不是这些概念的首次提出",
+      "verification_status": "period_not_established",
+      "reference_ids": [
+        "R18",
+        "R19"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 2004,
+      "original_end_year": 2014,
+      "publication_year": null,
+      "date_precision": "author_periodization",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C21",
+        "C22",
+        "C23"
+      ]
+    },
+    {
+      "id": "T14",
+      "label": "Participatory/collaborative spatial MCDA",
+      "original_period": "2000s–2020s",
+      "date_type": "application_period",
+      "start_year": null,
+      "end_year": null,
+      "tradition": "participatory",
+      "modules": [
+        "E",
+        "P"
+      ],
+      "interpretation": "群体价值结构与协商",
+      "caveat": "原始概括不证明参与在2000年后才出现",
+      "verification_status": "period_not_established",
+      "reference_ids": [
+        "R22",
+        "R23",
+        "R31"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 2000,
+      "original_end_year": 2029,
+      "publication_year": null,
+      "date_precision": "author_periodization",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C24",
+        "C25",
+        "C39",
+        "C40",
+        "C42"
+      ]
+    },
+    {
+      "id": "T15",
+      "label": "Landscape-level integrated assessment",
+      "original_period": "2010s–2020s",
+      "date_type": "review_anchor",
+      "start_year": 2017,
+      "end_year": 2017,
+      "tradition": "integrated_landscape",
+      "modules": [
+        "R",
+        "E",
+        "U",
+        "P"
+      ],
+      "interpretation": "多尺度与多价值的空间评价",
+      "caveat": "综述年份不是综合评估的起点",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R24"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 2017,
+      "original_end_year": 2017,
+      "publication_year": 2017,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C26"
+      ]
+    },
+    {
+      "id": "T16",
+      "label": "Learned scenicness / CNN",
+      "original_period": "2020s",
+      "date_type": "representative_application",
+      "start_year": 2017,
+      "end_year": 2017,
+      "tradition": "visual_perception",
+      "modules": [
+        "R",
+        "L"
+      ],
+      "interpretation": "从图像与公众评分学习预测",
+      "caveat": "2017只是CNN代表节点，不是学习型景观评价起点",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R25",
+        "R05"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 2017,
+      "original_end_year": 2017,
+      "publication_year": 2017,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C08",
+        "C09",
+        "C27",
+        "C28",
+        "C43",
+        "C45"
+      ]
+    },
+    {
+      "id": "T17",
+      "label": "Steinitz six-model framework",
+      "original_period": "1990",
+      "date_type": "publication",
+      "start_year": 1990,
+      "end_year": 1990,
+      "tradition": "land_planning",
+      "modules": [
+        "R",
+        "C",
+        "A"
+      ],
+      "interpretation": "区分表示、过程、评价、变化、影响与决策",
+      "caveat": "外部框架锚点而非当前签名的同义物",
+      "verification_status": "primary_verification_pending",
+      "reference_ids": [
+        "R29"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1990,
+      "original_end_year": 1990,
+      "publication_year": 1990,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C32"
+      ]
+    },
+    {
+      "id": "T18",
+      "label": "Malczewski GIS-MCDA taxonomy",
+      "original_period": "1990–2004",
+      "date_type": "review_coverage",
+      "start_year": 1990,
+      "end_year": 2004,
+      "tradition": "gis_mcda",
+      "modules": [
+        "R",
+        "C",
+        "E",
+        "A",
+        "U",
+        "P"
+      ],
+      "interpretation": "按GIS和MCDA构成分类",
+      "caveat": "2006为综述出版年份",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R03"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 1990,
+      "original_end_year": 2004,
+      "publication_year": 2006,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C43"
+      ]
+    },
+    {
+      "id": "T19",
+      "label": "Cinelli MCDA process taxonomy",
+      "original_period": "2020",
+      "date_type": "publication",
+      "start_year": 2020,
+      "end_year": 2020,
+      "tradition": "mcda",
+      "modules": [
+        "R",
+        "C",
+        "E",
+        "A",
+        "U",
+        "P"
+      ],
+      "interpretation": "过程拆解与方法选择",
+      "caveat": "必须作新颖性对照",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R04"
+      ],
+      "source": "timeline-original.txt + conversation.json",
+      "causal_predecessors": [],
+      "original_start_year": 2020,
+      "original_end_year": 2020,
+      "publication_year": 2020,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C04",
+        "C05",
+        "C06"
+      ]
+    },
+    {
+      "id": "T20",
+      "label": "模糊集合原理",
+      "original_period": null,
+      "date_type": "method_origin",
+      "start_year": 1965,
+      "end_year": 1965,
+      "publication_year": 1965,
+      "tradition": "mcda",
+      "modules": [
+        "C",
+        "A"
+      ],
+      "reference_ids": [
+        "R30"
+      ],
+      "date_precision": "year",
+      "verification_status": "anchor_supported",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C14"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T21",
+      "label": "GIS 群体多准则决策",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 1996,
+      "end_year": 1996,
+      "publication_year": 1996,
+      "tradition": "participatory",
+      "modules": [
+        "A",
+        "P"
+      ],
+      "reference_ids": [
+        "R31"
+      ],
+      "date_precision": "year",
+      "verification_status": "anchor_supported",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C24",
+        "C25",
+        "C42"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T22",
+      "label": "SMAA-2",
+      "original_period": null,
+      "date_type": "method_extension",
+      "start_year": 2001,
+      "end_year": 2001,
+      "publication_year": 2001,
+      "tradition": "mcda",
+      "modules": [
+        "U"
+      ],
+      "reference_ids": [
+        "R17",
+        "R32"
+      ],
+      "date_precision": "year",
+      "verification_status": "extension_supported_original_detail_pending",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C20"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T23",
+      "label": "GIS 标准化与 OWA 扩展",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 2000,
+      "end_year": 2000,
+      "publication_year": 2000,
+      "tradition": "gis_mcda",
+      "modules": [
+        "C",
+        "A"
+      ],
+      "reference_ids": [
+        "R11"
+      ],
+      "date_precision": "year",
+      "verification_status": "anchor_supported",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C14",
+        "C16",
+        "C18"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T24",
+      "label": "空间显式权重 UA/SA",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 2014,
+      "end_year": 2014,
+      "publication_year": 2014,
+      "tradition": "gis_mcda",
+      "modules": [
+        "U"
+      ],
+      "reference_ids": [
+        "R19"
+      ],
+      "date_precision": "year",
+      "verification_status": "anchor_supported",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C22",
+        "C23"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T25",
+      "label": "ScenicNet 语义瓶颈",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 2021,
+      "end_year": 2021,
+      "publication_year": 2021,
+      "tradition": "visual_perception",
+      "modules": [
+        "R",
+        "L"
+      ],
+      "reference_ids": [
+        "R26"
+      ],
+      "date_precision": "year",
+      "verification_status": "anchor_supported",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C29",
+        "C36"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T26",
+      "label": "社交媒体与深度学习景观审美",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 2021,
+      "end_year": 2021,
+      "publication_year": 2021,
+      "tradition": "visual_perception",
+      "modules": [
+        "R",
+        "L"
+      ],
+      "reference_ids": [
+        "R27"
+      ],
+      "date_precision": "year",
+      "verification_status": "anchor_supported",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C30"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T27",
+      "label": "GIS-MCE 敏感性综述",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 2004,
+      "end_year": 2004,
+      "publication_year": 2004,
+      "tradition": "gis_mcda",
+      "modules": [
+        "U"
+      ],
+      "reference_ids": [
+        "R18"
+      ],
+      "date_precision": "year",
+      "verification_status": "anchor_supported",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C21",
+        "C23"
+      ],
+      "causal_predecessors": [],
+      "caveat": "补充核验节点；非穷尽历史或首次应用断言。",
+      "source": "external verification 2026-09-25"
+    },
+    {
+      "id": "T28",
+      "label": "Roy：ELECTRE 代表论文",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 1968,
+      "end_year": 1968,
+      "tradition": "mcda",
+      "display_lane": "preference",
+      "modules": [
+        "A"
+      ],
+      "interpretation": "给加法总分之外的比较机制设置历史锚点。",
+      "caveat": "1968是代表出版节点，不是ELECTRE的发明年；超越关系具体定义与阈值仍待逐页编码。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R35"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 1968,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C46"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T29",
+      "label": "Keeney–Raiffa：多属性价值与效用",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 1976,
+      "end_year": 1976,
+      "tradition": "mcda",
+      "display_lane": "preference",
+      "modules": [
+        "C",
+        "E",
+        "A"
+      ],
+      "interpretation": "补入加法表达背后的偏好与尺度前提，而非只记录WLC计算式。",
+      "caveat": "尚未逐页抽取加法表示定理；确定性value与风险下utility须分开，不能把所有独立性条件混写。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R36"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 1976,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C47"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T30",
+      "label": "Daniel–Boster：SBE 感知量化",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 1976,
+      "end_year": 1976,
+      "tradition": "visual_perception",
+      "display_lane": "perception",
+      "modules": [
+        "E",
+        "C"
+      ],
+      "interpretation": "建立“人的评分如何成为评价数据”的节点。",
+      "caveat": "量化偏好不等于获得独立于群体和测量程序的客观美；抽样与标准化细节待全文核验。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R37"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 1976,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C48"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T31",
+      "label": "Saaty：AHP 理论论文",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 1977,
+      "end_year": 1977,
+      "tradition": "mcda",
+      "display_lane": "preference",
+      "modules": [
+        "E",
+        "A"
+      ],
+      "interpretation": "将偏好获取的理论论文与后来的GIS组合应用分开。",
+      "caveat": "不主张1977是AHP首次出现；完整AHP不只负责赋权。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R38"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 1977,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C49"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T32",
+      "label": "Daniel–Schroeder：景观美感预测",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 1979,
+      "end_year": 1979,
+      "tradition": "visual_perception",
+      "display_lane": "perception",
+      "modules": [
+        "R",
+        "C",
+        "L"
+      ],
+      "interpretation": "把感知预测的历史向前补齐，避免将2017 CNN画成学习路线起点。",
+      "caveat": "摘要支持预测结构；具体回归形式、样本和外部验证尚待全文，不能称为深度学习。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R39"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 1979,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C50"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T33",
+      "label": "Jacquet-Lagrèze–Siskos：UTA",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 1982,
+      "end_year": 1982,
+      "tradition": "mcda",
+      "display_lane": "preference",
+      "modules": [
+        "E",
+        "C",
+        "A",
+        "L",
+        "U"
+      ],
+      "interpretation": "加入“判断→参数/约束”的逆向路径；学习偏好早于深度学习。",
+      "caveat": "论文使用utility措辞，不能由此推断其采用风险彩票效用；L是本项目对参数估计的广义编码。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R40"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 1982,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C51"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T34",
+      "label": "Carver：GIS 与 MCE 集成",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 1991,
+      "end_year": 1991,
+      "tradition": "land_evaluation",
+      "display_lane": "land",
+      "modules": [
+        "R",
+        "A"
+      ],
+      "interpretation": "为GIS平台与决策机制的组合提供代表文献。",
+      "caveat": "不作首创声明；具体接口、算例和算法需全文核验。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R41"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 1991,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C52"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T35",
+      "label": "Joerin 等：GIS + ELECTRE-TRI",
+      "original_period": null,
+      "date_type": "representative_application",
+      "start_year": 2001,
+      "end_year": 2001,
+      "tradition": "land_evaluation",
+      "display_lane": "land",
+      "modules": [
+        "R",
+        "A"
+      ],
+      "interpretation": "把超越方法理论与真实空间评价应用接起来。",
+      "caveat": "2001为卷期年，不用2010网页上线年；地图服务于协商不自动证明实质参与，暂不编码P。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R42"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 2001,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C53"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T36",
+      "label": "Swanwick / LUC：景观特征评价",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 2002,
+      "end_year": 2002,
+      "tradition": "land_evaluation",
+      "display_lane": "land",
+      "modules": [
+        "R"
+      ],
+      "interpretation": "让“描述什么”与“什么更好”的区别在时间线上可见。",
+      "caveat": "2002原文的characterisation/making judgements两阶段原句未核；不把特征类型直接解释成质量排名。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R43"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 2002,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C54"
+      ],
+      "admission_status": "added_v02"
+    },
+    {
+      "id": "T37",
+      "label": "Greco 等：UTAᴳᴹˢ / 稳健序数回归",
+      "original_period": null,
+      "date_type": "publication",
+      "start_year": 2008,
+      "end_year": 2008,
+      "tradition": "mcda",
+      "display_lane": "uncertainty",
+      "modules": [
+        "E",
+        "A",
+        "U",
+        "L"
+      ],
+      "interpretation": "补入无需先给参数概率分布的稳健比较，与SMAA形成结构对照。",
+      "caveat": "2008全文访问403；必要/可能关系得到后续作者方法条目支持，原文公式和定理页码仍待核。",
+      "verification_status": "anchor_supported",
+      "reference_ids": [
+        "R44"
+      ],
+      "source": "2026-09-25 targeted timeline expansion",
+      "causal_predecessors": [],
+      "original_start_year": null,
+      "original_end_year": null,
+      "publication_year": 2008,
+      "date_precision": "year",
+      "interpretation_status": "project_functional_interpretation",
+      "claim_ids": [
+        "C55"
+      ],
+      "admission_status": "added_v02"
+    }
+  ]
+}

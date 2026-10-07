@@ -28,7 +28,7 @@ Read `PROGRESS.md` first when resuming: it holds env status, the last live run, 
 .venv/bin/scibooster traverse corpora/<run>/corpus.json --start <W-id> --mode dfs --direction cited_by
 .venv/bin/scibooster serve    corpora/<run>/corpus.json        # dev renderer only; http://127.0.0.1:8765 (offline, vendored JS)
 .venv/bin/python -m pytest -q                                   # offline: FakeLLM + in-memory citation universe + respx
-node --test tests/test_network_layout.cjs                        # renderer layout tests; Node 22+, no npm install
+node --test tests/unit/test_network_layout.cjs                        # renderer layout tests; Node 22+, no npm install
 ```
 
 Every run writes `trace.jsonl` next to the corpus; token usage is in `corpus.meta.usage`, the screening flow in `corpus.meta.prisma`. Use `eval` on the same gold survey to compare runs before/after a pipeline change.
@@ -56,14 +56,14 @@ Every run writes `trace.jsonl` next to the corpus; token usage is in `corpus.met
 ## Extending safely
 
 - New LLM call → add the prompt to `prompts.py`, give it a distinct `purpose=` string, and teach `FakeLLM` in `tests/conftest.py` to answer that purpose, otherwise tests hit the fallback.
-- New data source → mirror `sources/openalex.py`: return `Paper` objects, route HTTP through `sources/cache.py`, add a fixture under `tests/fixtures/` and a respx/fake-backed test.
+- New data source → mirror `sources/openalex.py`: return `Paper` objects, route HTTP through `sources/cache.py`, add a fixture under `tests/unit/fixtures/` and a respx/fake-backed test.
 - Schema change in `models.py` → old corpora under `corpora/` must still `Corpus.model_validate`; give new fields defaults.
 - New `origin` value → also add it to `_ORIGIN_RANK` (`store.py`), `ORIGIN` + a `--o-*` colour token (`renderer/static/`), and `ORIGIN_COLORS` / `ORIGIN_NAMES` in `obsidian.py` (Canvas + Graph view colour groups).
 - `.obsidian/graph.json`: only touch colour groups whose query starts with `tag:#scibooster/`; queries must use the exact tag strings written into note frontmatter.
 - New paper property → add it to `_paper_note` frontmatter and, if useful, a Base column in `_base_file`; never write below `NOTES_MARKER` (user-owned).
 - Renderer layout is a relaxed fCoSE network with **no year/position constraints** (the year-layered DAG was dropped on purpose, in the renderer and the Canvas alike; years live in labels, filters and the Base). The Obsidian Canvas reuses it through `renderer/layout.cjs` — change layout behaviour in `network-layout.js`, not in Python. Keep `network-layout.js` UMD-style so the Node tests can load it; don't reintroduce CDN scripts — `test_renderer.py` asserts every `<script>` is served from `/static/`.
 - PRISMA counts are derived from final pool state in `_fill_prisma`; keep the identity `identified = screened + not_screened + seeds` (tests check it).
-- Finish with `pytest -q` green (plus `node --test tests/test_network_layout.cjs` if `renderer/static/` changed) and update `PROGRESS.md` (Chinese) if behaviour or open items changed.
+- Finish with `pytest -q` green (plus `node --test tests/unit/test_network_layout.cjs` if `renderer/static/` changed) and update `PROGRESS.md` (Chinese) if behaviour or open items changed.
 
 ## Related vendored skills
 

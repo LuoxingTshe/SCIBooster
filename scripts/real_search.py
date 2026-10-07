@@ -19,7 +19,7 @@ from scibooster.pipeline.seeds import read_seed_file
 from scibooster.store import normalize_doi
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURE = ROOT / "tests" / "fixtures" / "real_search"
+FIXTURE = ROOT / "tests" / "cases" / "classical-garden"
 INPUTS = ("case.json", "core_literature.txt", "research_intent.txt", "gold.json")
 
 

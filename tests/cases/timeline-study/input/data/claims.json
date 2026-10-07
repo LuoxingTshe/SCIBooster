@@ -1,0 +1,1605 @@
+{
+  "schema_version": "0.1",
+  "stage": "timeline_expansion_v02_with_explicit_scope_and_pending_items",
+  "updated_at": "2026-09-25",
+  "records": [
+    {
+      "id": "C01",
+      "original_claim": "已有适宜性评价 taxonomy：Hopkins 1977",
+      "claim_type": "bibliographic_fact",
+      "status": "supported",
+      "reference_ids": [
+        "R01"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R01",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/01944367708977903",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "1977年已有适宜性方法分类；不是无人分类。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C02",
+      "original_claim": "Zube 1982 归纳四范式、综述160余篇1965–1980研究",
+      "claim_type": "historical_fact",
+      "status": "supported",
+      "reference_ids": [
+        "R02"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R02",
+          "url": "https://www.sciencedirect.com/science/article/pii/0304392482900090",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "四范式及160余篇、1965–1980覆盖期得到摘要支持。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C03",
+      "original_claim": "Malczewski 2006 综述1990–2004年319篇并提出taxonomy",
+      "claim_type": "historical_fact",
+      "status": "supported",
+      "reference_ids": [
+        "R03"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R03",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/13658810600661508",
+          "locator": "Sections 2–4 (web indexed text)",
+          "evidence_level": "publisher_fulltext_sections"
+        }
+      ],
+      "revised_wording": "卷期2006，检索范围1990–2004，纳入319篇；不把上线2007改成出版锚点。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C04",
+      "original_claim": "Cinelli 2020 已有MCDA过程分类",
+      "claim_type": "historical_fact",
+      "status": "supported",
+      "reference_ids": [
+        "R04"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R04",
+          "url": "https://doi.org/10.1016/j.omega.2020.102261",
+          "locator": "Abstract / taxonomy description",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "MCDA过程拆解已有直接前例；须开展逐维比较。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C05",
+      "original_claim": "没有人严肃地为景观模型分家族",
+      "claim_type": "novelty_claim",
+      "status": "contradicted",
+      "reference_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R01",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/01944367708977903",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R02",
+          "url": "https://www.sciencedirect.com/science/article/pii/0304392482900090",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R03",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/13658810600661508",
+          "locator": "Sections 2–4 (web indexed text)",
+          "evidence_level": "publisher_fulltext_sections"
+        },
+        {
+          "reference_id": "R04",
+          "url": "https://doi.org/10.1016/j.omega.2020.102261",
+          "locator": "Abstract / taxonomy description",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "删除“无人严肃分类”；已有不同尺度的分类工作。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C06",
+      "original_claim": "跨传统的功能结构语言受到较少关注",
+      "claim_type": "novelty_claim",
+      "status": "unresolved",
+      "reference_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R01",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/01944367708977903",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R02",
+          "url": "https://www.sciencedirect.com/science/article/pii/0304392482900090",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R03",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/13658810600661508",
+          "locator": "Sections 2–4 (web indexed text)",
+          "evidence_level": "publisher_fulltext_sections"
+        },
+        {
+          "reference_id": "R04",
+          "url": "https://doi.org/10.1016/j.omega.2020.102261",
+          "locator": "Abstract / taxonomy description",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "本研究尝试跨传统功能比较；是否填补空白尚待系统检索与对照编码。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C07",
+      "original_claim": "景观是方法进口区，所以缺乏统一家族",
+      "claim_type": "causal_interpretation",
+      "status": "interpretation_only",
+      "reference_ids": [
+        "R03",
+        "R09"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R03",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/13658810600661508",
+          "locator": "Sections 2–4 (web indexed text)",
+          "evidence_level": "publisher_fulltext_sections"
+        },
+        {
+          "reference_id": "R09",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0305900603000801",
+          "locator": "Abstract and introduction excerpt",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "跨领域方法组合可作为观察；不能由几个案例推出学科缺分类的因果解释。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C08",
+      "original_claim": "判断的位置与形式不断变化",
+      "claim_type": "interpretive_thesis",
+      "status": "interpretation_only",
+      "reference_ids": [
+        "R06",
+        "R08",
+        "R12",
+        "R25"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R06",
+          "url": "https://www.fao.org/4/x5310e/x5310e00.htm",
+          "locator": "Contents; Chapters 2–4 headings",
+          "evidence_level": "official_document_sections"
+        },
+        {
+          "reference_id": "R08",
+          "url": "https://www.sciencedirect.com/science/article/pii/030439247790017X",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R12",
+          "url": "https://www.sciencedirect.com/science/article/pii/S036083520000019X",
+          "locator": "Abstract; introduction; conclusion excerpt",
+          "evidence_level": "publisher_fulltext_sections"
+        },
+        {
+          "reference_id": "R25",
+          "url": "https://wrap.warwick.ac.uk/id/eprint/91136/",
+          "locator": "Abstract; metadata",
+          "evidence_level": "author_repository_abstract"
+        }
+      ],
+      "revised_wording": "本研究提出用判断进入模型的位置来解释所选文献，不宣称已证明全史规律。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C09",
+      "original_claim": "McHarg 首创叠图/适宜性评价",
+      "claim_type": "historical_priority",
+      "status": "contradicted",
+      "reference_ids": [
+        "R05",
+        "R07"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R05",
+          "url": "https://link.springer.com/article/10.1007/s002670010247",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R07",
+          "url": "https://mcharg.upenn.edu/conversations/what-does-it-mean-design-nature-now",
+          "locator": "McHarg Center bibliography; Penn archive collection 109",
+          "evidence_level": "institutional_bibliographic_record"
+        }
+      ],
+      "revised_wording": "McHarg是重要推进节点；20世纪初已有有记录的适宜性应用。叠图的精确优先权仍须史料。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C10",
+      "original_claim": "McHarg 的主要贡献可解释为程序化",
+      "claim_type": "interpretation",
+      "status": "interpretation_only",
+      "reference_ids": [
+        "R08"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R08",
+          "url": "https://www.sciencedirect.com/science/article/pii/030439247790017X",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "程序化是本研究对既有生态规划流程的解释，不是原文验证的唯一历史贡献。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C11",
+      "original_claim": "FAO 1976 对土地评价语义与程序作标准化",
+      "claim_type": "historical_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R06"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R06",
+          "url": "https://www.fao.org/4/x5310e/x5310e00.htm",
+          "locator": "Contents; Chapters 2–4 headings",
+          "evidence_level": "official_document_sections"
+        }
+      ],
+      "revised_wording": "框架组织土地评价概念和程序；不等同于整个景观学标准化。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C12",
+      "original_claim": "Hopkins 是第一次系统分类",
+      "claim_type": "historical_priority",
+      "status": "unsupported_priority",
+      "reference_ids": [
+        "R01"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R01",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/01944367708977903",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "可写“1977年已有系统分类”，不可写“第一次”。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C13",
+      "original_claim": "AHP 只是权重导出机制",
+      "claim_type": "method_claim",
+      "status": "contradicted",
+      "reference_ids": [
+        "R13"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R13",
+          "url": "https://doi.org/10.1504/IJSSCI.2008.017590",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "只在特定AHP-WLC工作流中将AHP编码为主要承担E；完整AHP包括综合。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C14",
+      "original_claim": "Fuzzy 只改变C",
+      "claim_type": "method_claim",
+      "status": "overgeneralized",
+      "reference_ids": [
+        "R11",
+        "R15",
+        "R30",
+        "R33"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R11",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/136588100240903",
+          "locator": "Abstract; PDF first-page metadata",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R15",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0303243406000031",
+          "locator": "Abstract; Definition of OWA excerpt",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R30",
+          "url": "https://www.sciencedirect.com/science/article/pii/S001999586590241X",
+          "locator": "Abstract; issue metadata",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R33",
+          "url": "https://www.sciencedirect.com/science/article/pii/019897159290022J",
+          "locator": "Abstract/metadata",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "模糊隶属用于C是具体用法；模糊量词也可调节A，不能独占一个层。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C15",
+      "original_claim": "WLC 权重就是独立于尺度的指标重要性",
+      "claim_type": "method_claim",
+      "status": "contradicted",
+      "reference_ids": [
+        "R12"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R12",
+          "url": "https://www.sciencedirect.com/science/article/pii/S036083520000019X",
+          "locator": "Abstract; introduction; conclusion excerpt",
+          "evidence_level": "publisher_fulltext_sections"
+        }
+      ],
+      "revised_wording": "须说明权重对应的价值尺度、范围及聚合规则。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C16",
+      "original_claim": "WLC允许准则间补偿且需检查假设",
+      "claim_type": "method_claim",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R10",
+        "R11",
+        "R12"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R10",
+          "url": "https://onlinelibrary.wiley.com/doi/10.1111/1467-9671.00035",
+          "locator": "Abstract; How to cite",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R11",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/136588100240903",
+          "locator": "Abstract; PDF first-page metadata",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R12",
+          "url": "https://www.sciencedirect.com/science/article/pii/S036083520000019X",
+          "locator": "Abstract; introduction; conclusion excerpt",
+          "evidence_level": "publisher_fulltext_sections"
+        }
+      ],
+      "revised_wording": "加法聚合允许补偿；权重与转换函数一起决定权衡，应用前须验证适用假设。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C17",
+      "original_claim": "OWA是2000年代提出",
+      "claim_type": "historical_fact",
+      "status": "contradicted",
+      "reference_ids": [
+        "R14"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R14",
+          "url": "https://ieeexplore.ieee.org/document/87068",
+          "locator": "Metadata; Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "OWA提出节点为1988，GIS扩展至少有2000和2006代表文献。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C18",
+      "original_claim": "纯OWA总是同时含准则权重和顺序权重，并涵盖任意WLC",
+      "claim_type": "method_claim",
+      "status": "corrected_by_formal_analysis",
+      "reference_ids": [
+        "R14",
+        "R11",
+        "R15"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R14",
+          "url": "https://ieeexplore.ieee.org/document/87068",
+          "locator": "Metadata; Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R11",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/136588100240903",
+          "locator": "Abstract; PDF first-page metadata",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R15",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0303243406000031",
+          "locator": "Abstract; Definition of OWA excerpt",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "纯OWA权重对应排序位置，GIS扩展可另引入准则权重。纯OWA是置换不变的；不等权固定准则WLC通常不是，故不能直接声称任意WLC为纯OWA特例。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C19",
+      "original_claim": "SMAA 1998 探索权重空间与不确定输入",
+      "claim_type": "method_claim",
+      "status": "supported",
+      "reference_ids": [
+        "R16"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R16",
+          "url": "https://www.sciencedirect.com/science/article/pii/S037722179700163X/pdf",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "1998 SMAA探索使候选最优的权重空间，并可表达输入分布。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C20",
+      "original_claim": "原始SMAA就输出所有排名接受度",
+      "claim_type": "method_claim",
+      "status": "supported_correction_pending_original",
+      "reference_ids": [
+        "R16",
+        "R17",
+        "R32"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R16",
+          "url": "https://www.sciencedirect.com/science/article/pii/S037722179700163X/pdf",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R17",
+          "url": "https://research.aalto.fi/en/publications/smaa-2-stochastic-multicriteria-acceptability-analysis-for-group-/",
+          "locator": "Repository citation; extension described in R32",
+          "evidence_level": "author_repository_metadata"
+        },
+        {
+          "reference_id": "R32",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221704005090",
+          "locator": "Introduction excerpt",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "全部名次接受度应关联SMAA-2（2001）；原作细节待全文页码核验，扩展归属已由后续同作者文献支持。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C21",
+      "original_claim": "2004 GIS-MCE敏感性综述检查28项研究，常改变权重",
+      "claim_type": "historical_fact",
+      "status": "corrected",
+      "reference_ids": [
+        "R18"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R18",
+          "url": "https://www.researchgate.net/publication/240520097_Sensitivity_Analysis_in_Multicriteria_Spatial_Decision-Making_A_Review",
+          "locator": "Abstract; section before Table 1; pp.1176–1183",
+          "evidence_level": "author_uploaded_fulltext_sections"
+        }
+      ],
+      "revised_wording": "综述28项研究，其中17项包含某类SA，14项改变权重；不能称为28项SA研究。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C22",
+      "original_claim": "2014研究输出空间显式不确定性与敏感性地图",
+      "claim_type": "historical_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R19"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R19",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S1364815214000851",
+          "locator": "Abstract/section excerpts; author reprint URL",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "2014已有空间逐单元UA/SA和权重分析；摘要/正文片段足以确认先例，具体抽样算法与公式仍需全文。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C23",
+      "original_claim": "敏感性、不确定性、稳健性是同一分析",
+      "claim_type": "method_claim",
+      "status": "corrected",
+      "reference_ids": [
+        "R18",
+        "R19"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R18",
+          "url": "https://www.researchgate.net/publication/240520097_Sensitivity_Analysis_in_Multicriteria_Spatial_Decision-Making_A_Review",
+          "locator": "Abstract; section before Table 1; pp.1176–1183",
+          "evidence_level": "author_uploaded_fulltext_sections"
+        },
+        {
+          "reference_id": "R19",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S1364815214000851",
+          "locator": "Abstract/section excerpts; author reprint URL",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "UA量化输出不确定性；SA研究输出对输入/假设变化的响应或归因；稳健性需给定扰动集合及判据。导数仅是局部工具。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C24",
+      "original_claim": "参与式多元价值等于未知参数",
+      "claim_type": "method_claim",
+      "status": "corrected",
+      "reference_ids": [
+        "R16",
+        "R22",
+        "R23",
+        "R31"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R16",
+          "url": "https://www.sciencedirect.com/science/article/pii/S037722179700163X/pdf",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R22",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/13658816.2020.1776870",
+          "locator": "Metadata; Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R23",
+          "url": "https://journals.sagepub.com/doi/abs/10.1177/13563890211020334",
+          "locator": "Title/author metadata; abstract excerpt",
+          "evidence_level": "publisher_indexed_excerpt"
+        },
+        {
+          "reference_id": "R31",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/02693799608902119",
+          "locator": "Abstract; issue metadata",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "分别记录偏好信息不完全与群体价值分歧；两者可共存且SMAA也可服务多个决策者。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C25",
+      "original_claim": "参与式GIS-MCDA在2000年后才出现",
+      "claim_type": "historical_priority",
+      "status": "contradicted",
+      "reference_ids": [
+        "R31"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R31",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/02693799608902119",
+          "locator": "Abstract; issue metadata",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "至少1996已有GIS群体多准则方法；可记录2000后综述/应用发展，不宣称参与起源。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C26",
+      "original_claim": "Allain 2017 综述景观尺度空间参与式MC评估",
+      "claim_type": "historical_fact",
+      "status": "supported",
+      "reference_ids": [
+        "R24"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R24",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0921800916300428",
+          "locator": "Highlights; Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "2017综述确以空间与参与式评估为对象；其年份不是综合景观评估起源。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C27",
+      "original_claim": "ML到2020年代才进入景观评价",
+      "claim_type": "historical_priority",
+      "status": "contradicted",
+      "reference_ids": [
+        "R05",
+        "R25"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R05",
+          "url": "https://link.springer.com/article/10.1007/s002670010247",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R25",
+          "url": "https://wrap.warwick.ac.uk/id/eprint/91136/",
+          "locator": "Abstract; metadata",
+          "evidence_level": "author_repository_abstract"
+        }
+      ],
+      "revised_wording": "2017已有CNN景观美感研究，且2001综述已讨论neural computing；不同学习机制须分开设节点。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C28",
+      "original_claim": "2017 CNN使用20余万景观图像预测scenicness",
+      "claim_type": "historical_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R25"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R25",
+          "url": "https://wrap.warwick.ac.uk/id/eprint/91136/",
+          "locator": "Abstract; metadata",
+          "evidence_level": "author_repository_abstract"
+        }
+      ],
+      "revised_wording": "原文摘要为20余万幅图像评分，不能替换成20余万名评分者或训练集确切大小。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C29",
+      "original_claim": "2021 interpretable AI解释land cover与scenicness",
+      "claim_type": "historical_fact",
+      "status": "supported",
+      "reference_ids": [
+        "R26"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R26",
+          "url": "https://infoscience.epfl.ch/server/api/core/bitstreams/1f815379-1adf-4588-8b99-c9711de25221/content",
+          "locator": "p.194 Abstract; p.195 Introduction",
+          "evidence_level": "author_repository_fulltext_sections"
+        }
+      ],
+      "revised_wording": "2021 ScenicNet以土地覆盖作为可解释中间任务；该案例不证明所有学习模型可解释。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C30",
+      "original_claim": "2021社交媒体和深度学习的大尺度景观审美研究",
+      "claim_type": "bibliographic_identity",
+      "status": "identified",
+      "reference_ids": [
+        "R27"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R27",
+          "url": "https://www.nature.com/articles/s41598-021-99282-0",
+          "locator": "Abstract; Introduction",
+          "evidence_level": "publisher_fulltext_sections"
+        }
+      ],
+      "revised_wording": "定位为Havinga等2021；可以据原文进一步拆解训练数据与评价目标。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C31",
+      "original_claim": "2023 visual landscape modeling综述使用ML/ANN",
+      "claim_type": "bibliographic_identity",
+      "status": "partially_verified",
+      "reference_ids": [
+        "R28"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R28",
+          "url": "https://www.mdpi.com/1424-8220/23/19/8135",
+          "locator": "Publisher indexed page; PubMed PMID 37836966",
+          "evidence_level": "metadata_and_limited_excerpt"
+        }
+      ],
+      "revised_wording": "2023综述身份确认，ML/ANN具体内容段落待全文核验。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C32",
+      "original_claim": "Steinitz 1990 六模型框架",
+      "claim_type": "historical_fact",
+      "status": "partially_verified",
+      "reference_ids": [
+        "R29"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R29",
+          "url": "https://lj.uwpress.org/content/9/2/136",
+          "locator": "Publisher returned 403; secondary/review leads only",
+          "evidence_level": "primary_access_unavailable"
+        }
+      ],
+      "revised_wording": "保留Steinitz1990为候选锚点；本轮原文访问受限，六模型名称/顺序的原文证据待补。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C33",
+      "original_claim": "新结构提高直接可理解性",
+      "claim_type": "empirical_hypothesis",
+      "status": "requires_empirical_test",
+      "reference_ids": [],
+      "evidence": [],
+      "revised_wording": "增加结构可读性是待测假设：比较编码一致性、阅读时间、识别判断位置的正确率。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C34",
+      "original_claim": "足以保证博士毕业",
+      "claim_type": "advisory_judgment",
+      "status": "not_literature_verifiable",
+      "reference_ids": [],
+      "evidence": [],
+      "revised_wording": "博士课题潜力属于条件性评估，不得把旧助手肯定话语转成毕业保证。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C35",
+      "original_claim": "未来AGI景观原型与规范性判断保留",
+      "claim_type": "research_goal",
+      "status": "normative_research_goal",
+      "reference_ids": [],
+      "evidence": [],
+      "revised_wording": "保留用户研究愿景，不把价值取向或AGI远期目标当作文献已证明的事实。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "user_stated_goal"
+    },
+    {
+      "id": "C36",
+      "original_claim": "形式化越多可解释性越高",
+      "claim_type": "empirical_generalization",
+      "status": "unsupported_generalization",
+      "reference_ids": [
+        "R26"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R26",
+          "url": "https://infoscience.epfl.ch/server/api/core/bitstreams/1f815379-1adf-4588-8b99-c9711de25221/content",
+          "locator": "p.194 Abstract; p.195 Introduction",
+          "evidence_level": "author_repository_fulltext_sections"
+        }
+      ],
+      "revised_wording": "形式化与可解释性分别评估；学习模型可有可解释设计，不能简单写成全体重新黑箱化。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C37",
+      "original_claim": "2017环境MCDA文本挖掘约3000篇",
+      "claim_type": "historical_fact",
+      "status": "supported_with_correction",
+      "reference_ids": [
+        "R21"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R21",
+          "url": "https://link.springer.com/article/10.1007/s10669-017-9642-9",
+          "locator": "Abstract; Note 1",
+          "evidence_level": "publisher_abstract_and_note"
+        }
+      ],
+      "revised_wording": "摘要约3000篇，正文注释给出2837篇；研究领域为环境科学，不全是景观。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C38",
+      "original_claim": "2020 SMAA综述118篇1998–2017论文",
+      "claim_type": "historical_fact",
+      "status": "supported_with_date_correction",
+      "reference_ids": [
+        "R20"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R20",
+          "url": "https://link.springer.com/article/10.1007/s10479-019-03151-z",
+          "locator": "Abstract; publication metadata",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "118篇/1998–2017成立；online2019，卷期2020分别存储。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C39",
+      "original_claim": "2020 collaborative spatial MCE系统综述",
+      "claim_type": "bibliographic_identity",
+      "status": "identified_with_date_correction",
+      "reference_ids": [
+        "R22"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R22",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/13658816.2020.1776870",
+          "locator": "Metadata; Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "Jelokhani-Niaraki；online2020，卷期2021。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C40",
+      "original_claim": "2021 MCDA deliberative spatial planning综述",
+      "claim_type": "bibliographic_identity",
+      "status": "identified_with_scope",
+      "reference_ids": [
+        "R23"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R23",
+          "url": "https://journals.sagepub.com/doi/abs/10.1177/13563890211020334",
+          "locator": "Title/author metadata; abstract excerpt",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "te Boveldt等2021；审议式框架是讨论对象，不能泛化为全学科已转换。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C41",
+      "original_claim": "θ包含ρ而x已给定的记号足够精确",
+      "claim_type": "formalism_audit",
+      "status": "corrected_by_formal_analysis",
+      "reference_ids": [],
+      "evidence": [],
+      "revised_wording": "区分θ_eval=(α,w,β)与θ_all=(ρ,α,w,β)，前者用于给定x的f，后者用于从z出发的F。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C42",
+      "original_claim": "所有模型都可拆成串行C/A并输出标量",
+      "claim_type": "formalism_audit",
+      "status": "corrected_by_formal_analysis",
+      "reference_ids": [
+        "R13",
+        "R31"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R13",
+          "url": "https://doi.org/10.1504/IJSSCI.2008.017590",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R31",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/02693799608902119",
+          "locator": "Abstract; issue metadata",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "记录输出域及融合模块；比较关系可依赖整个候选集，不能强迫所有方法变为点对点标量函数。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C43",
+      "original_claim": "三条传统和五阶段是严格历史谱系",
+      "claim_type": "interpretive_thesis",
+      "status": "interpretation_only",
+      "reference_ids": [
+        "R02",
+        "R05",
+        "R03"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R02",
+          "url": "https://www.sciencedirect.com/science/article/pii/0304392482900090",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R05",
+          "url": "https://link.springer.com/article/10.1007/s002670010247",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        },
+        {
+          "reference_id": "R03",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/13658810600661508",
+          "locator": "Sections 2–4 (web indexed text)",
+          "evidence_level": "publisher_fulltext_sections"
+        }
+      ],
+      "revised_wording": "三传统/五阶段是作者组织工具，可并存与交叉；年代先后不等于因果传承。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "audit_of_overgeneralization_or_implicit_risk_not_verbatim_claim",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C44",
+      "original_claim": "1977 Penn生态规划程序综述",
+      "claim_type": "bibliographic_identity",
+      "status": "identified_metadata_partial",
+      "reference_ids": [
+        "R08"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R08",
+          "url": "https://www.sciencedirect.com/science/article/pii/030439247790017X",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "题名、年份、DOI及程序摘要已定位；作者名待Zotero复核。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C45",
+      "original_claim": "Collins 2001 追踪20世纪初美国适宜性评价史",
+      "claim_type": "historical_fact",
+      "status": "supported",
+      "reference_ids": [
+        "R05"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R05",
+          "url": "https://link.springer.com/article/10.1007/s002670010247",
+          "locator": "Abstract",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "Collins等2001摘要明确追踪20世纪初美国有记录应用，不能外推为全球起源。",
+      "scope_note": "旧聊天/附件论断或其隐含风险；非全部为用户主张",
+      "verified_at": "2026-09-25",
+      "source_relation": "paraphrase_of_source",
+      "source_locations": [
+        "provenance/timeline-original.txt",
+        "provenance/conversation.json"
+      ],
+      "source_role": "assistant_suggestion_or_audit"
+    },
+    {
+      "id": "C46",
+      "original_claim": "1968年发表关于多观点排序与选择的ELECTRE论文；该文参考文献已列1966年ELECTRE技术报告。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R35"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R35",
+          "url": "https://www.numdam.org/item/RO_1968__2_1_57_0/",
+          "locator": "原始期刊档案书目、原文标题及参考文献[3–4]",
+          "evidence_level": "institutional_bibliographic_record"
+        }
+      ],
+      "revised_wording": "1968年发表关于多观点排序与选择的ELECTRE论文；该文参考文献已列1966年ELECTRE技术报告。",
+      "scope_note": "1968是代表出版节点，不是ELECTRE的发明年；超越关系具体定义与阈值仍待逐页编码。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C47",
+      "original_claim": "作者确认与Raiffa合著书首版1976；后续版章摘要讨论确定条件下的目标权衡。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R36"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R36",
+          "url": "https://ralphkeeney.com/about/",
+          "locator": "作者介绍首版1976；Cambridge章摘要 Tradeoffs under certainty",
+          "evidence_level": "author_bibliographic_record_and_publisher_chapter_summary"
+        },
+        {
+          "reference_id": "R36",
+          "url": "https://www.cambridge.org/core/books/abs/decisions-with-multiple-objectives/tradeoffs-under-certainty/63531BB0093A8674D12FE2A6F9FF88B4",
+          "locator": "补充来源；检视范围见文献记录",
+          "evidence_level": "author_bibliographic_record_and_publisher_chapter_summary"
+        }
+      ],
+      "revised_wording": "作者确认与Raiffa合著书首版1976；后续版章摘要讨论确定条件下的目标权衡。",
+      "scope_note": "尚未逐页抽取加法表示定理；确定性value与风险下utility须分开，不能把所有独立性条件混写。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C48",
+      "original_claim": "1976年SBE报告给出量化公众景观审美偏好的程序，并报告相关实验。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R37"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R37",
+          "url": "https://research.fs.usda.gov/treesearch/20911",
+          "locator": "USDA书目与Abstract",
+          "evidence_level": "institutional_abstract"
+        }
+      ],
+      "revised_wording": "1976年SBE报告给出量化公众景观审美偏好的程序，并报告相关实验。",
+      "scope_note": "量化偏好不等于获得独立于群体和测量程序的客观美；抽样与标准化细节待全文核验。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C49",
+      "original_claim": "论文讨论成对比较矩阵的特征向量、判断一致性及层级优先度综合。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R38"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R38",
+          "url": "https://www.sciencedirect.com/science/article/pii/0022249677900335",
+          "locator": "Abstract；卷15(3)",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "论文讨论成对比较矩阵的特征向量、判断一致性及层级优先度综合。",
+      "scope_note": "不主张1977是AHP首次出现；完整AHP不只负责赋权。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C50",
+      "original_claim": "模型以公众审美判断构成的美景度指标为预测目标，以森林清查特征为预测变量，讨论植被管理方案的美感后果。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R39"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R39",
+          "url": "https://research.fs.usda.gov/treesearch/27622",
+          "locator": "USDA书目与Abstract",
+          "evidence_level": "institutional_abstract"
+        }
+      ],
+      "revised_wording": "模型以公众审美判断构成的美景度指标为预测目标，以森林清查特征为预测变量，讨论植被管理方案的美感后果。",
+      "scope_note": "摘要支持预测结构；具体回归形式、样本和外部验证尚待全文，不能称为深度学习。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C51",
+      "original_claim": "UTA由备选方案的准则评价和主观弱序，经序数回归与线性规划估计加法效用函数，并开展稳定性分析。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R40"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R40",
+          "url": "https://www.sciencedirect.com/science/article/pii/0377221782901552",
+          "locator": "Abstract；卷10(2)",
+          "evidence_level": "publisher_abstract"
+        }
+      ],
+      "revised_wording": "UTA由备选方案的准则评价和主观弱序，经序数回归与线性规划估计加法效用函数，并开展稳定性分析。",
+      "scope_note": "论文使用utility措辞，不能由此推断其采用风险彩票效用；L是本项目对参数估计的广义编码。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C52",
+      "original_claim": "1991年论文明确研究多准则评价与GIS集成。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R41"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R41",
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/02693799108927858",
+          "locator": "出版商索引书目与摘要片段",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "1991年论文明确研究多准则评价与GIS集成。",
+      "scope_note": "不作首创声明；具体接口、算例和算法需全文核验。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C53",
+      "original_claim": "土地适宜性案例将GIS与ELECTRE-TRI超越分析结合。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R42"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R42",
+          "url": "https://www.tandfonline.com/doi/pdf/10.1080/13658810051030487",
+          "locator": "原文第一页 Abstract，卷15(2)",
+          "evidence_level": "publisher_indexed_excerpt"
+        }
+      ],
+      "revised_wording": "土地适宜性案例将GIS与ELECTRE-TRI超越分析结合。",
+      "scope_note": "2001为卷期年，不用2010网页上线年；地图服务于协商不自动证明实质参与，暂不编码P。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C54",
+      "original_claim": "官方档案确认2002年指南；当前官方解释把LCA定义为识别、描述与制图景观特征差异的基线程序。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R43"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R43",
+          "url": "https://www.nature.scot/doc/archive/landscape-character-assessment-guidance-england-and-scotland",
+          "locator": "2002官方档案；当前官方方法解释；原指导书分阶段细节待核",
+          "evidence_level": "official_metadata_and_current_method_explanation"
+        },
+        {
+          "reference_id": "R43",
+          "url": "https://www.nature.scot/professional-advice/landscape/landscape-character-assessment/what-landscape-character-assessment",
+          "locator": "补充来源；检视范围见文献记录",
+          "evidence_level": "official_metadata_and_current_method_explanation"
+        }
+      ],
+      "revised_wording": "官方档案确认2002年指南；当前官方解释把LCA定义为识别、描述与制图景观特征差异的基线程序。",
+      "scope_note": "2002原文的characterisation/making judgements两阶段原句未核；不把特征类型直接解释成质量排名。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    },
+    {
+      "id": "C55",
+      "original_claim": "2008论文使用与偏好信息兼容的一组加法价值函数；ROR以全部或至少一个兼容模型上的关系表达必要与可能偏好。",
+      "claim_type": "historical_or_method_fact",
+      "status": "supported_with_scope",
+      "reference_ids": [
+        "R44"
+      ],
+      "evidence": [
+        {
+          "reference_id": "R44",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221707008752",
+          "locator": "2008出版商摘要/书目；后续ROR作者条目Abstract说明necessary/possible",
+          "evidence_level": "publisher_indexed_abstract_and_later_method_summary"
+        },
+        {
+          "reference_id": "R44",
+          "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470400531.eorms1090",
+          "locator": "补充来源；检视范围见文献记录",
+          "evidence_level": "publisher_indexed_abstract_and_later_method_summary"
+        }
+      ],
+      "revised_wording": "2008论文使用与偏好信息兼容的一组加法价值函数；ROR以全部或至少一个兼容模型上的关系表达必要与可能偏好。",
+      "scope_note": "2008全文访问403；必要/可能关系得到后续作者方法条目支持，原文公式和定理页码仍待核。",
+      "verified_at": "2026-09-25",
+      "source_relation": "new_literature_expansion_not_from_original_chat",
+      "source_locations": [
+        "TIMELINE_EXPANSION.md"
+      ],
+      "source_role": "assistant_research_extension"
+    }
+  ]
+}

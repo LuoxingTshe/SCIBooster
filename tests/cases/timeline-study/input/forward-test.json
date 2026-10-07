@@ -1,0 +1,252 @@
+{
+  "schema_version": "case-evidence-1.0",
+  "note": "Bounded source statements and inspection limits; no prior formal_reading or assigned axis. Do not treat these summaries as full text.",
+  "records": [
+    {
+      "id": "H05",
+      "title": "Humphry Repton｜Sketches and Hints on Landscape Gardening",
+      "date_label": "1795（出版锚点）",
+      "date_type": "publication",
+      "supported_statement": "存世版画用可掀起的叠片显示景观改造前后。",
+      "caveat": "是情景比较与沟通的实物证据；不等同于多准则地图叠合，不声称1795首次使用。",
+      "evidence": [
+        {
+          "url": "https://www.metmuseum.org/art/collection/search/356088",
+          "locator": "Brandsbury图版，作品年1795，实物说明",
+          "inspection_scope": "museum_object_record",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://www.themorgan.org/collection/Humphry-Reptons-Red-Books",
+          "locator": "Red Books：铰接或滑动叠片",
+          "inspection_scope": "museum_collection_description",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "doi": null,
+      "source_records": [
+        {
+          "file": "pre-mcharg-nodes.json",
+          "id": "H05"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "H11",
+      "title": "Charles Eliot及办公室｜三层描图布叠合",
+      "date_label": "1894报告；1902传记收录",
+      "date_type": "historical_event_or_application",
+      "supported_statement": "原书p.496描述三张描图布叠合，灰色晒印供研究，并以三色制成公众导览图。",
+      "caveat": "当前依据原书搜索索引片段，PDF直读失败。后世研究存在约1896等不同定年，须核p.492报告标题及原年度报告；三层合成不证明加权评分。传记作者为父亲Charles W. Eliot，实践者为Charles Eliot。",
+      "evidence": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Charles_Eliot%2C_landscape_architect_-_a_lover_of_nature_and_of_his_kind%2C_who_trained_himself_for_a_new_profession%2C_practised_it_happily_and_through_it_wrought_much_good_%28IA_charleseliotland02elio%29.pdf",
+          "locator": "p.496，页眉[1894]；相关报告标题p.492待图像复核",
+          "inspection_scope": "primary_indexed_excerpt",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://bpl.bibliocommons.com/v2/record/S75C2465092",
+          "locator": "Charles William Eliot，1902，Houghton Mifflin",
+          "inspection_scope": "holding_library_metadata",
+          "accessed_at": "2026-09-26"
+        },
+        {
+          "url": "https://overholland.ac/index.php/overholland/en/article/download/52/52/18",
+          "locator": "pp.96–97；脚注对1896定年的不同解释",
+          "inspection_scope": "scholarly_history_indexed_excerpt_conflicting_date",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "doi": null,
+      "source_records": [
+        {
+          "file": "pre-mcharg-nodes.json",
+          "id": "H11"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "H12",
+      "title": "ASLA成立",
+      "date_label": "1899",
+      "date_type": "historical_event_or_application",
+      "supported_statement": "ASLA机构史记录1899年组织成立。",
+      "caveat": "美国机构节点，不是全球景观实践或学科的统一诞生日期。",
+      "evidence": [
+        {
+          "url": "https://www.asla.org/resources/library/archives-blog/asla-founders",
+          "locator": "1899年1月4日；3月6日章程",
+          "inspection_scope": "institutional_history",
+          "accessed_at": "2026-09-26"
+        }
+      ],
+      "doi": null,
+      "source_records": [
+        {
+          "file": "pre-mcharg-nodes.json",
+          "id": "H12"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "DS024",
+      "title": "Classement et choix en présence de points de vue multiples",
+      "date_label": "1968",
+      "date_type": "publication",
+      "supported_statement": "Roy1968年发表多观点排序与选择论文；原文参考文献列有1966年ELECTRE技术报告。",
+      "caveat": "1968是论文出版锚点，不应改写为ELECTRE无争议的首次提出年。",
+      "evidence": [
+        {
+          "url": "https://www.numdam.org/item/?id=RO_1968__2_1_57_0",
+          "locator": "Bibliographic record and reference [3]",
+          "inspection_level": "primary_archive_metadata_and_references",
+          "paraphrase": "Roy1968年发表多观点排序与选择论文；原文参考文献列有1966年ELECTRE技术报告。",
+          "checked_at": "2026-10-07",
+          "fulltext_review_complete": false
+        }
+      ],
+      "doi": "10.1051/ro/196802v100571",
+      "source_records": [
+        {
+          "file": "doi-verification-2026-10-07/direct_support_doi.json",
+          "id": "DS024"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "DS020",
+      "title": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking",
+      "date_label": "1988",
+      "date_type": "publication",
+      "supported_statement": "Yager1988年提出OWA聚合算子，并研究其介于AND与OR型聚合之间的性质。",
+      "caveat": "摘要不证明任意不等权准则WLC都是纯OWA特例；需要区分准则权重与排序位置权重。",
+      "evidence": [
+        {
+          "url": "https://api.openalex.org/works/W2060907774",
+          "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+          "inspection_level": "indexed_original_abstract",
+          "paraphrase": "Yager1988年提出OWA聚合算子，并研究其介于AND与OR型聚合之间的性质。",
+          "checked_at": "2026-10-07",
+          "fulltext_review_complete": false
+        }
+      ],
+      "doi": "10.1109/21.87068",
+      "source_records": [
+        {
+          "file": "doi-verification-2026-10-07/direct_support_doi.json",
+          "id": "DS020"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "DS014",
+      "title": "On the Use of Weighted Linear Combination Method in GIS: Common and Best Practice Approaches",
+      "date_label": "2000",
+      "date_type": "publication",
+      "supported_statement": "WLC是GIS复合地图的一种决策规则；忽视其适用假设可能导致不当应用和可疑结果。",
+      "caveat": "摘要不单独给出全部假设证明；标准化或权重和为1本身不保证模型有效。",
+      "evidence": [
+        {
+          "url": "https://api.openalex.org/works/W2151629473",
+          "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+          "inspection_level": "indexed_original_abstract",
+          "paraphrase": "WLC是GIS复合地图的一种决策规则；忽视其适用假设可能导致不当应用和可疑结果。",
+          "checked_at": "2026-10-07",
+          "fulltext_review_complete": false
+        }
+      ],
+      "doi": "10.1111/1467-9671.00035",
+      "source_records": [
+        {
+          "file": "doi-verification-2026-10-07/direct_support_doi.json",
+          "id": "DS014"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "DS017",
+      "title": "Ordinal regression revisited: Multiple criteria ranking using a set of additive value functions",
+      "date_label": "2008",
+      "date_type": "publication",
+      "supported_statement": "Greco等2008年利用与偏好信息兼容的一组加法价值函数，分别定义对全部函数成立的必要偏好和至少一个函数成立的可能偏好。",
+      "caveat": "这是兼容模型集合上的关系，不自动产生概率；不能把其等同均匀权重抽样。",
+      "evidence": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S0377221707008752",
+          "locator": "Introduction: necessary/possible ranking; additive model assumptions",
+          "inspection_level": "publisher_sections",
+          "paraphrase": "Greco等2008年利用与偏好信息兼容的一组加法价值函数，分别定义对全部函数成立的必要偏好和至少一个函数成立的可能偏好。",
+          "checked_at": "2026-10-07",
+          "fulltext_review_complete": false
+        }
+      ],
+      "doi": "10.1016/j.ejor.2007.08.013",
+      "source_records": [
+        {
+          "file": "doi-verification-2026-10-07/direct_support_doi.json",
+          "id": "DS017"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "DS010",
+      "title": "How to support the application of multiple criteria decision analysis? Let us start with a comprehensive taxonomy",
+      "date_label": "2020",
+      "date_type": "publication",
+      "supported_statement": "Cinelli等2020年把MCDA过程的特征组织为问题表述、决策建议构建及定性特征与技术支持三个部分。",
+      "caveat": "已有过程分解前例直接限制“无人提供共同语言”的新颖性宣称；不证明其与本项目七轴结构相同。",
+      "evidence": [
+        {
+          "url": "https://doi.org/10.1016/j.omega.2020.102261",
+          "locator": "Abstract; section 5",
+          "inspection_level": "publisher_abstract_and_sections",
+          "paraphrase": "Cinelli等2020年把MCDA过程的特征组织为问题表述、决策建议构建及定性特征与技术支持三个部分。",
+          "checked_at": "2026-10-07",
+          "fulltext_review_complete": false
+        }
+      ],
+      "doi": "10.1016/j.omega.2020.102261",
+      "source_records": [
+        {
+          "file": "doi-verification-2026-10-07/direct_support_doi.json",
+          "id": "DS010"
+        }
+      ],
+      "fulltext_review_complete": false
+    },
+    {
+      "id": "DS039",
+      "title": "On the relation between landscape beauty and land cover: A case study in the U.K. at Sentinel-2 resolution with interpretable AI",
+      "date_label": "2021",
+      "date_type": "publication",
+      "supported_statement": "ScenicNet2021年将土地覆盖预测作为美感回归的可解释中间任务，连接遥感表示与众包景观评分。",
+      "caveat": "反驳所有学习模型都必然无法解释的概括；解释性不自动证明因果、跨文化普适性或价值正当性。",
+      "evidence": [
+        {
+          "url": "https://api.openalex.org/works/W3165726526",
+          "locator": "abstract_inverted_index; reconstructed abstract stored in API snapshot",
+          "inspection_level": "indexed_original_abstract",
+          "paraphrase": "ScenicNet2021年将土地覆盖预测作为美感回归的可解释中间任务，连接遥感表示与众包景观评分。",
+          "checked_at": "2026-10-07",
+          "fulltext_review_complete": false
+        }
+      ],
+      "doi": "10.1016/j.isprsjprs.2021.04.020",
+      "source_records": [
+        {
+          "file": "doi-verification-2026-10-07/direct_support_doi.json",
+          "id": "DS039"
+        }
+      ],
+      "fulltext_review_complete": false
+    }
+  ]
+}

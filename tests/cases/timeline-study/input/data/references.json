@@ -1,0 +1,1810 @@
+{
+  "schema_version": "0.1",
+  "stage": "timeline_expansion_v02_with_explicit_scope_and_pending_items",
+  "updated_at": "2026-09-25",
+  "records": [
+    {
+      "id": "R01",
+      "title": "Methods for Generating Land Suitability Maps: A Comparative Evaluation",
+      "authors": [
+        "Lewis D. Hopkins"
+      ],
+      "year": 1977,
+      "doi": "10.1080/01944367708977903",
+      "container_title": "Journal of the American Institute of Planners",
+      "volume": "43",
+      "issue": "4",
+      "pages_or_article": "386–400",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/01944367708977903",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract",
+      "evidence_summary": "明确提出适宜性分析的方法分类和比较；不证明历史上第一次分类。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C01",
+        "C05",
+        "C06",
+        "C12"
+      ]
+    },
+    {
+      "id": "R02",
+      "title": "Landscape perception: Research, application and theory",
+      "authors": [
+        "Ervin H. Zube",
+        "James L. Sell",
+        "Jonathan G. Taylor"
+      ],
+      "year": 1982,
+      "doi": "10.1016/0304-3924(82)90009-0",
+      "container_title": "Landscape Planning",
+      "volume": "9",
+      "issue": "1",
+      "pages_or_article": "1–33",
+      "url": "https://www.sciencedirect.com/science/article/pii/0304392482900090",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract",
+      "evidence_summary": "1965–1980年20种期刊160余篇；四范式 expert、psychophysical、cognitive、experiential。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C02",
+        "C05",
+        "C06",
+        "C43"
+      ]
+    },
+    {
+      "id": "R03",
+      "title": "GIS-based multicriteria decision analysis: a survey of the literature",
+      "authors": [
+        "Jacek Malczewski"
+      ],
+      "year": 2006,
+      "doi": "10.1080/13658810600661508",
+      "container_title": "International Journal of Geographical Information Science",
+      "volume": "20",
+      "issue": "7",
+      "pages_or_article": "703–726",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/13658810600661508",
+      "verification_level": "publisher_fulltext_sections",
+      "evidence_locator": "Sections 2–4 (web indexed text)",
+      "evidence_summary": "1990–2004年319项；提供taxonomy；早于1991的GIS-MCDA研究亦被承认。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C03",
+        "C05",
+        "C06",
+        "C07",
+        "C43"
+      ],
+      "online_year": 2007
+    },
+    {
+      "id": "R04",
+      "title": "How to support the application of multiple criteria decision analysis? Let us start with a comprehensive taxonomy",
+      "authors": [
+        "Marco Cinelli",
+        "Miłosz Kadziński",
+        "Michael Gonzalez",
+        "Roman Słowiński"
+      ],
+      "year": 2020,
+      "doi": "10.1016/j.omega.2020.102261",
+      "container_title": "Omega",
+      "volume": "96",
+      "issue": null,
+      "pages_or_article": "102261",
+      "url": "https://doi.org/10.1016/j.omega.2020.102261",
+      "verification_level": "publisher_indexed_excerpt",
+      "evidence_locator": "Abstract / taxonomy description",
+      "evidence_summary": "提出MCDA过程特征分类，是新框架需要认真对照的先例。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C04",
+        "C05",
+        "C06"
+      ]
+    },
+    {
+      "id": "R05",
+      "title": "Land-Use Suitability Analysis in the United States: Historical Development and Promising Technological Achievements",
+      "authors": [
+        "Michael G. Collins",
+        "Frederick R. Steiner",
+        "Michael J. Rushman"
+      ],
+      "year": 2001,
+      "doi": "10.1007/s002670010247",
+      "container_title": "Environmental Management",
+      "volume": "28",
+      "issue": "5",
+      "pages_or_article": "611–621",
+      "url": "https://link.springer.com/article/10.1007/s002670010247",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract",
+      "evidence_summary": "从20世纪初的有记录应用讲起；2001年已讨论 neural computing，不能把学习方法始于2017。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C09",
+        "C27",
+        "C43",
+        "C45"
+      ]
+    },
+    {
+      "id": "R06",
+      "title": "A framework for land evaluation",
+      "authors": [
+        "FAO"
+      ],
+      "year": 1976,
+      "doi": null,
+      "container_title": "FAO Soils Bulletin",
+      "volume": "32",
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.fao.org/4/x5310e/x5310e00.htm",
+      "verification_level": "official_document_sections",
+      "evidence_locator": "Contents; Chapters 2–4 headings",
+      "evidence_summary": "土地特征/质量、用途要求/限制、适宜性分类、评价程序得到组织；未逐页审阅整书。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C08",
+        "C11"
+      ]
+    },
+    {
+      "id": "R07",
+      "title": "Design with Nature",
+      "authors": [
+        "Ian L. McHarg"
+      ],
+      "year": 1969,
+      "doi": null,
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://mcharg.upenn.edu/conversations/what-does-it-mean-design-nature-now",
+      "verification_level": "institutional_bibliographic_record",
+      "evidence_locator": "McHarg Center bibliography; Penn archive collection 109",
+      "evidence_summary": "出版年份1969；原书未读，本轮仅用于出版锚点。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C09"
+      ]
+    },
+    {
+      "id": "R08",
+      "title": "Ecological planning: Method and evaluation",
+      "authors": [
+        "J. H. Giliomee"
+      ],
+      "year": 1977,
+      "doi": "10.1016/0304-3924(77)90017-X",
+      "container_title": "Landscape Planning",
+      "volume": "4",
+      "issue": null,
+      "pages_or_article": "185–191",
+      "url": "https://www.sciencedirect.com/science/article/pii/030439247790017X",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract",
+      "evidence_summary": "Penn方法连接环境要素、使用者价值、机会限制和叠图适宜性类别；作者名仍需书目复核。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C08",
+        "C10",
+        "C44"
+      ],
+      "metadata_caveat": "作者名仅有检索线索，导出条目需在Zotero复核。"
+    },
+    {
+      "id": "R09",
+      "title": "GIS-based land-use suitability analysis: a critical overview",
+      "authors": [
+        "Jacek Malczewski"
+      ],
+      "year": 2004,
+      "doi": "10.1016/j.progress.2003.09.002",
+      "container_title": "Progress in Planning",
+      "volume": "62",
+      "issue": "1",
+      "pages_or_article": "3–65",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0305900603000801",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract and introduction excerpt",
+      "evidence_summary": "同时讨论技术与社会政治/公众参与视角；不是一条纯计算技术史。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C07"
+      ]
+    },
+    {
+      "id": "R10",
+      "title": "On the Use of Weighted Linear Combination Method in GIS: Common and Best Practice Approaches",
+      "authors": [
+        "Jacek Malczewski"
+      ],
+      "year": 2000,
+      "doi": "10.1111/1467-9671.00035",
+      "container_title": "Transactions in GIS",
+      "volume": "4",
+      "issue": "1",
+      "pages_or_article": "5–22",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/1467-9671.00035",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract; How to cite",
+      "evidence_summary": "WLC常用且容易因未理解假设而误用；卷期2000，网页上线2002。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C16"
+      ],
+      "online_year": 2002
+    },
+    {
+      "id": "R11",
+      "title": "Application of fuzzy measures in multi-criteria evaluation in GIS",
+      "authors": [
+        "Hong Jiang",
+        "J. Ronald Eastman"
+      ],
+      "year": 2000,
+      "doi": "10.1080/136588100240903",
+      "container_title": "International Journal of Geographical Information Science",
+      "volume": "14",
+      "issue": "2",
+      "pages_or_article": "173–184",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/136588100240903",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract; PDF first-page metadata",
+      "evidence_summary": "讨论Boolean/WLC、标准化与GIS中的OWA扩展；卷期2000，网页上线2010不能作为起源年。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C14",
+        "C16",
+        "C18"
+      ],
+      "online_year": 2010
+    },
+    {
+      "id": "R12",
+      "title": "Interpretation of criteria weights in multicriteria decision making",
+      "authors": [
+        "Eng Ung Choo",
+        "Bertram Schoner",
+        "William C. Wedley"
+      ],
+      "year": 1999,
+      "doi": "10.1016/S0360-8352(00)00019-X",
+      "container_title": "Computers & Industrial Engineering",
+      "volume": "37",
+      "issue": "3",
+      "pages_or_article": "527–541",
+      "url": "https://www.sciencedirect.com/science/article/pii/S036083520000019X",
+      "verification_level": "publisher_fulltext_sections",
+      "evidence_locator": "Abstract; introduction; conclusion excerpt",
+      "evidence_summary": "权重的解释依赖聚合方式、尺度和测量单位。DOI含00不改变卷期1999。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C08",
+        "C15",
+        "C16"
+      ]
+    },
+    {
+      "id": "R13",
+      "title": "Decision making with the analytic hierarchy process",
+      "authors": [
+        "Thomas L. Saaty"
+      ],
+      "year": 2008,
+      "doi": "10.1504/IJSSCI.2008.017590",
+      "container_title": "International Journal of Services Sciences",
+      "volume": "1",
+      "issue": "1",
+      "pages_or_article": "83–98",
+      "url": "https://doi.org/10.1504/IJSSCI.2008.017590",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract",
+      "evidence_summary": "包括成对比较、优先尺度、一致性与跨层综合，不能将完整AHP限定为赋权。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C13",
+        "C42"
+      ]
+    },
+    {
+      "id": "R14",
+      "title": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking",
+      "authors": [
+        "Ronald R. Yager"
+      ],
+      "year": 1988,
+      "doi": "10.1109/21.87068",
+      "container_title": "IEEE Transactions on Systems, Man, and Cybernetics",
+      "volume": "18",
+      "issue": "1",
+      "pages_or_article": "183–190",
+      "url": "https://ieeexplore.ieee.org/document/87068",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Metadata; Abstract",
+      "evidence_summary": "1988提出OWA；位于AND/OR行为之间。纯OWA与一般准则加权和的区别见本项目数学审计。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C17",
+        "C18"
+      ]
+    },
+    {
+      "id": "R15",
+      "title": "Ordered weighted averaging with fuzzy quantifiers: GIS-based multicriteria evaluation for land-use suitability analysis",
+      "authors": [
+        "Jacek Malczewski"
+      ],
+      "year": 2006,
+      "doi": "10.1016/j.jag.2006.01.003",
+      "container_title": "International Journal of Applied Earth Observation and Geoinformation",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.sciencedirect.com/science/article/pii/S0303243406000031",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract; Definition of OWA excerpt",
+      "evidence_summary": "GIS-OWA引入模糊量词并调节策略；是GIS扩展应用而非OWA发明。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C14",
+        "C18"
+      ]
+    },
+    {
+      "id": "R16",
+      "title": "SMAA - Stochastic multiobjective acceptability analysis",
+      "authors": [
+        "Risto Lahdelma",
+        "Joonas Hokkanen",
+        "Pekka Salminen"
+      ],
+      "year": 1998,
+      "doi": "10.1016/S0377-2217(97)00163-X",
+      "container_title": "European Journal of Operational Research",
+      "volume": "106",
+      "issue": "1",
+      "pages_or_article": "137–143",
+      "url": "https://www.sciencedirect.com/science/article/pii/S037722179700163X/pdf",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract",
+      "evidence_summary": "探索权重空间，不确定输入可用分布表达；分析哪些偏好使某个候选最优。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C19",
+        "C20",
+        "C24"
+      ]
+    },
+    {
+      "id": "R17",
+      "title": "SMAA-2: Stochastic Multicriteria Acceptability Analysis for Group Decision Making",
+      "authors": [
+        "Risto Lahdelma",
+        "Pekka Salminen"
+      ],
+      "year": 2001,
+      "doi": "10.1287/opre.49.3.444.11220",
+      "container_title": "Operations Research",
+      "volume": "49",
+      "issue": "3",
+      "pages_or_article": "444–454",
+      "url": "https://research.aalto.fi/en/publications/smaa-2-stochastic-multicriteria-acceptability-analysis-for-group-/",
+      "verification_level": "author_repository_metadata",
+      "evidence_locator": "Repository citation; extension described in R32",
+      "evidence_summary": "原作身份与2001年已核；所有名次扩展的内容由同作者后续论文R32印证，待原文页码。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C20"
+      ]
+    },
+    {
+      "id": "R18",
+      "title": "Sensitivity Analysis in Multicriteria Spatial Decision-Making: A Review",
+      "authors": [
+        "Montserrat Gómez Delgado",
+        "Joaquín Bosque Sendra"
+      ],
+      "year": 2004,
+      "doi": "10.1080/10807030490887221",
+      "container_title": "Human and Ecological Risk Assessment",
+      "volume": "10",
+      "issue": "6",
+      "pages_or_article": "1173–1187",
+      "url": "https://www.researchgate.net/publication/240520097_Sensitivity_Analysis_in_Multicriteria_Spatial_Decision-Making_A_Review",
+      "verification_level": "author_uploaded_fulltext_sections",
+      "evidence_locator": "Abstract; section before Table 1; pp.1176–1183",
+      "evidence_summary": "28项被回顾研究中17项含某类SA，14/17改变权重；不是28项都做了SA。作者上传文本；出版社页本轮受阻。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C21",
+        "C23"
+      ]
+    },
+    {
+      "id": "R19",
+      "title": "Spatially-explicit integrated uncertainty and sensitivity analysis of criteria weights in multicriteria land suitability evaluation",
+      "authors": [
+        "Arika Ligmann-Zielinska",
+        "Piotr Jankowski"
+      ],
+      "year": 2014,
+      "doi": "10.1016/j.envsoft.2014.03.007",
+      "container_title": "Environmental Modelling & Software",
+      "volume": "57",
+      "issue": null,
+      "pages_or_article": "235–247",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S1364815214000851",
+      "verification_level": "publisher_indexed_excerpt",
+      "evidence_locator": "Abstract/section excerpts; author reprint URL",
+      "evidence_summary": "空间逐单元UA/SA与权重分析已存在，不能只将其重新实现视为方法首创。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C22",
+        "C23"
+      ]
+    },
+    {
+      "id": "R20",
+      "title": "SMAA methods and their applications: a literature review and future research directions",
+      "authors": [
+        "R. Pelissari",
+        "M. C. Oliveira",
+        "S. Ben Amor",
+        "A. Kandakoglu",
+        "A. L. Helleno"
+      ],
+      "year": 2020,
+      "doi": "10.1007/s10479-019-03151-z",
+      "container_title": "Annals of Operations Research",
+      "volume": "293",
+      "issue": null,
+      "pages_or_article": "433–493",
+      "url": "https://link.springer.com/article/10.1007/s10479-019-03151-z",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract; publication metadata",
+      "evidence_summary": "118篇，1998–2017；online 2019，卷期2020。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C38"
+      ],
+      "online_year": 2019
+    },
+    {
+      "id": "R21",
+      "title": "Trends and applications of multi-criteria decision analysis in environmental sciences: literature review",
+      "authors": [
+        "Jeffrey C. Cegan",
+        "Ashley M. Filion",
+        "Jeffrey M. Keisler",
+        "Igor Linkov"
+      ],
+      "year": 2017,
+      "doi": "10.1007/s10669-017-9642-9",
+      "container_title": "Environment Systems and Decisions",
+      "volume": "37",
+      "issue": null,
+      "pages_or_article": "123–133",
+      "url": "https://link.springer.com/article/10.1007/s10669-017-9642-9",
+      "verification_level": "publisher_abstract_and_note",
+      "evidence_locator": "Abstract; Note 1",
+      "evidence_summary": "摘要约3000篇，注释给出2837篇；不能说3000篇全部为景观论文。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C37"
+      ]
+    },
+    {
+      "id": "R22",
+      "title": "Collaborative spatial multicriteria evaluation: a review and directions for future research",
+      "authors": [
+        "Mohammadreza Jelokhani-Niaraki"
+      ],
+      "year": 2021,
+      "doi": "10.1080/13658816.2020.1776870",
+      "container_title": "International Journal of Geographical Information Science",
+      "volume": "35",
+      "issue": "1",
+      "pages_or_article": "9–42",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/13658816.2020.1776870",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Metadata; Abstract",
+      "evidence_summary": "系统综述协作SME任务/工具；online 2020，卷期2021。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C24",
+        "C39"
+      ],
+      "online_year": 2020
+    },
+    {
+      "id": "R23",
+      "title": "How can multi-criteria analysis support deliberative spatial planning? A critical review of methods and participatory frameworks",
+      "authors": [
+        "Geert te Boveldt",
+        "Imre Keseru",
+        "Cathy Macharis"
+      ],
+      "year": 2021,
+      "doi": "10.1177/13563890211020334",
+      "container_title": "Evaluation",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://journals.sagepub.com/doi/abs/10.1177/13563890211020334",
+      "verification_level": "publisher_indexed_excerpt",
+      "evidence_locator": "Title/author metadata; abstract excerpt",
+      "evidence_summary": "可支撑审议式规划与MCA关系的讨论，不能推出全部规划已完成范式替代。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C24",
+        "C40"
+      ]
+    },
+    {
+      "id": "R24",
+      "title": "How Do Multi-criteria Assessments Address Landscape-level Problems? A Review of Studies and Practices",
+      "authors": [
+        "Sandrine Allain",
+        "Gaël Plumecocq",
+        "Delphine Leenhardt"
+      ],
+      "year": 2017,
+      "doi": "10.1016/j.ecolecon.2017.02.011",
+      "container_title": "Ecological Economics",
+      "volume": "136",
+      "issue": null,
+      "pages_or_article": "282–295",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0921800916300428",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Highlights; Abstract",
+      "evidence_summary": "系统回顾空间与参与结合的评估，讨论多视角、多层级和时空复杂性。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C26"
+      ]
+    },
+    {
+      "id": "R25",
+      "title": "Using deep learning to quantify the beauty of outdoor places",
+      "authors": [
+        "Chanuki Illushka Seresinhe",
+        "Tobias Preis",
+        "Helen Susannah Moat"
+      ],
+      "year": 2017,
+      "doi": "10.1098/rsos.170170",
+      "container_title": "Royal Society Open Science",
+      "volume": "4",
+      "issue": "7",
+      "pages_or_article": "170170",
+      "url": "https://wrap.warwick.ac.uk/id/eprint/91136/",
+      "verification_level": "author_repository_abstract",
+      "evidence_locator": "Abstract; metadata",
+      "evidence_summary": "20余万大不列颠图像评分结合CNN特征，并训练网络识别scenic places；不等于20余万人。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C08",
+        "C27",
+        "C28"
+      ]
+    },
+    {
+      "id": "R26",
+      "title": "On the relation between landscape beauty and land cover: A case study in the U.K. at Sentinel-2 resolution with interpretable AI",
+      "authors": [
+        "Alex Levering",
+        "Diego Marcos",
+        "Devis Tuia"
+      ],
+      "year": 2021,
+      "doi": "10.1016/j.isprsjprs.2021.04.020",
+      "container_title": "ISPRS Journal of Photogrammetry and Remote Sensing",
+      "volume": "177",
+      "issue": null,
+      "pages_or_article": "194–203",
+      "url": "https://infoscience.epfl.ch/server/api/core/bitstreams/1f815379-1adf-4588-8b99-c9711de25221/content",
+      "verification_level": "author_repository_fulltext_sections",
+      "evidence_locator": "p.194 Abstract; p.195 Introduction",
+      "evidence_summary": "ScenicNet利用land-cover中间任务形成语义瓶颈；支持有特定可解释设计，非所有AI可解释。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C29",
+        "C36"
+      ]
+    },
+    {
+      "id": "R27",
+      "title": "Social media and deep learning capture the aesthetic quality of the landscape",
+      "authors": [
+        "Ilan Havinga",
+        "Diego Marcos",
+        "Patrick W. Bogaart",
+        "Lars Hein",
+        "Devis Tuia"
+      ],
+      "year": 2021,
+      "doi": "10.1038/s41598-021-99282-0",
+      "container_title": "Scientific Reports",
+      "volume": "11",
+      "issue": null,
+      "pages_or_article": "20000",
+      "url": "https://www.nature.com/articles/s41598-021-99282-0",
+      "verification_level": "publisher_fulltext_sections",
+      "evidence_locator": "Abstract; Introduction",
+      "evidence_summary": "确认原聊天未命名的2021研究身份；社交媒体与深度学习用于景观审美评估。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C30"
+      ]
+    },
+    {
+      "id": "R28",
+      "title": "Modeling the Visual Landscape: A Review on Approaches, Methods and Techniques",
+      "authors": [
+        "Loukas-Moysis Misthos",
+        "Vassilios Krassanakis",
+        "Nikolaos Merlemis",
+        "Anastasios L. Kesidis"
+      ],
+      "year": 2023,
+      "doi": "10.3390/s23198135",
+      "container_title": "Sensors",
+      "volume": "23",
+      "issue": "19",
+      "pages_or_article": "8135",
+      "url": "https://www.mdpi.com/1424-8220/23/19/8135",
+      "verification_level": "metadata_and_limited_excerpt",
+      "evidence_locator": "Publisher indexed page; PubMed PMID 37836966",
+      "evidence_summary": "文献身份确认；ML/ANN具体论述段落本轮未取得，需全文查验。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C31"
+      ]
+    },
+    {
+      "id": "R29",
+      "title": "A Framework for Theory Applicable to the Education of Landscape Architects (and Other Environmental Design Professionals)",
+      "authors": [
+        "Carl Steinitz"
+      ],
+      "year": 1990,
+      "doi": "10.3368/lj.9.2.136",
+      "container_title": "Landscape Journal",
+      "volume": "9",
+      "issue": "2",
+      "pages_or_article": "136–143",
+      "url": "https://lj.uwpress.org/content/9/2/136",
+      "verification_level": "primary_access_unavailable",
+      "evidence_locator": "Publisher returned 403; secondary/review leads only",
+      "evidence_summary": "原始全文未取到；六模型名称和次序待原文逐页核验，不将转引升级为原文证据。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "candidate_primary_unavailable",
+      "claim_ids": [
+        "C32"
+      ]
+    },
+    {
+      "id": "R30",
+      "title": "Fuzzy sets",
+      "authors": [
+        "Lotfi A. Zadeh"
+      ],
+      "year": 1965,
+      "doi": "10.1016/S0019-9958(65)90241-X",
+      "container_title": "Information and Control",
+      "volume": "8",
+      "issue": "3",
+      "pages_or_article": "338–353",
+      "url": "https://www.sciencedirect.com/science/article/pii/S001999586590241X",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract; issue metadata",
+      "evidence_summary": "连续隶属度与集合运算，1965为原理节点，不是景观应用年份。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C14"
+      ]
+    },
+    {
+      "id": "R31",
+      "title": "A GIS-based approach to multiple criteria group decision-making",
+      "authors": [
+        "Jacek Malczewski"
+      ],
+      "year": 1996,
+      "doi": "10.1080/02693799608902119",
+      "container_title": "International Journal of Geographical Information Systems",
+      "volume": "10",
+      "issue": "8",
+      "pages_or_article": "955–971",
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/02693799608902119",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract; issue metadata",
+      "evidence_summary": "1996已有GIS群体多准则决策；TOPSIS个体排序+Borda群体合成。群体决策方法不自动等于实质参与。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C24",
+        "C25",
+        "C42"
+      ],
+      "online_year": 2007
+    },
+    {
+      "id": "R32",
+      "title": "Stochastic multicriteria acceptability analysis using the data envelopment model",
+      "authors": [
+        "Risto Lahdelma",
+        "Pekka Salminen"
+      ],
+      "year": 2006,
+      "doi": "10.1016/j.ejor.2004.07.040",
+      "container_title": "European Journal of Operational Research",
+      "volume": "170",
+      "issue": "1",
+      "pages_or_article": "241–252",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221704005090",
+      "verification_level": "publisher_indexed_excerpt",
+      "evidence_locator": "Introduction excerpt",
+      "evidence_summary": "同作者后续论文明确指出，SMAA-2把权重空间分析扩展至所有名次。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C20"
+      ]
+    },
+    {
+      "id": "R33",
+      "title": "A fuzzy GIS modeling approach for Urban land evaluation",
+      "authors": [
+        "Daniel Z. Sui"
+      ],
+      "year": 1992,
+      "doi": "10.1016/0198-9715(92)90022-J",
+      "url": "https://www.sciencedirect.com/science/article/pii/019897159290022J",
+      "container_title": "Computers, Environment and Urban Systems",
+      "volume": "16",
+      "issue": "2",
+      "pages_or_article": "101–115",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract/metadata",
+      "evidence_summary": "1992城市土地评价应用，讨论连续隶属与布尔边界的差异。",
+      "accessed_at": "2026-09-25",
+      "identity_status": "identified",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "claim_ids": [
+        "C14"
+      ]
+    },
+    {
+      "id": "R34",
+      "title": "Whither scenic beauty? Visual landscape quality assessment in the 21st century",
+      "authors": [
+        "Terry C. Daniel"
+      ],
+      "year": 2001,
+      "doi": "10.1016/S0169-2046(01)00141-4",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0169204601001414",
+      "container_title": "Landscape and Urban Planning",
+      "volume": "54",
+      "issue": "1–4",
+      "pages_or_article": "267–281",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract/metadata",
+      "evidence_summary": "讨论专家与感知路线及物理特征和人的判断互动。",
+      "accessed_at": "2026-09-25",
+      "identity_status": "identified",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "claim_ids": []
+    },
+    {
+      "id": "R35",
+      "title": "Classement et choix en présence de points de vue multiples",
+      "authors": [
+        "Bernard Roy"
+      ],
+      "year": 1968,
+      "doi": null,
+      "container_title": "Revue française d’informatique et de recherche opérationnelle. Série verte",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": "57–75",
+      "url": "https://www.numdam.org/item/RO_1968__2_1_57_0/",
+      "verification_level": "institutional_bibliographic_record",
+      "evidence_locator": "原始期刊档案书目、原文标题及参考文献[3–4]",
+      "evidence_summary": "1968年发表关于多观点排序与选择的ELECTRE论文；该文参考文献已列1966年ELECTRE技术报告。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C46"
+      ],
+      "csl_type": "article-journal",
+      "timeline_admission": "added",
+      "metadata_caveat": "1968是代表出版节点，不是ELECTRE的发明年；超越关系具体定义与阈值仍待逐页编码。"
+    },
+    {
+      "id": "R36",
+      "title": "Decisions with Multiple Objectives: Preferences and Value Tradeoffs",
+      "authors": [
+        "Ralph L. Keeney",
+        "Howard Raiffa"
+      ],
+      "year": 1976,
+      "doi": null,
+      "container_title": "Wiley",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://ralphkeeney.com/about/",
+      "verification_level": "author_bibliographic_record_and_publisher_chapter_summary",
+      "evidence_locator": "作者介绍首版1976；Cambridge章摘要 Tradeoffs under certainty",
+      "evidence_summary": "作者确认与Raiffa合著书首版1976；后续版章摘要讨论确定条件下的目标权衡。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C47"
+      ],
+      "csl_type": "book",
+      "timeline_admission": "added",
+      "metadata_caveat": "尚未逐页抽取加法表示定理；确定性value与风险下utility须分开，不能把所有独立性条件混写。",
+      "additional_evidence_urls": [
+        "https://www.cambridge.org/core/books/abs/decisions-with-multiple-objectives/tradeoffs-under-certainty/63531BB0093A8674D12FE2A6F9FF88B4"
+      ]
+    },
+    {
+      "id": "R37",
+      "title": "Measuring landscape esthetics: the scenic beauty estimation method",
+      "authors": [
+        "Terry C. Daniel",
+        "Ron S. Boster"
+      ],
+      "year": 1976,
+      "doi": null,
+      "container_title": "USDA Forest Service, Research Paper RM-RP-167",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://research.fs.usda.gov/treesearch/20911",
+      "verification_level": "institutional_abstract",
+      "evidence_locator": "USDA书目与Abstract",
+      "evidence_summary": "1976年SBE报告给出量化公众景观审美偏好的程序，并报告相关实验。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C48"
+      ],
+      "csl_type": "report",
+      "timeline_admission": "added",
+      "metadata_caveat": "量化偏好不等于获得独立于群体和测量程序的客观美；抽样与标准化细节待全文核验。"
+    },
+    {
+      "id": "R38",
+      "title": "A scaling method for priorities in hierarchical structures",
+      "authors": [
+        "Thomas L. Saaty"
+      ],
+      "year": 1977,
+      "doi": "10.1016/0022-2496(77)90033-5",
+      "container_title": "Journal of Mathematical Psychology",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": "234–281",
+      "url": "https://www.sciencedirect.com/science/article/pii/0022249677900335",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract；卷15(3)",
+      "evidence_summary": "论文讨论成对比较矩阵的特征向量、判断一致性及层级优先度综合。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C49"
+      ],
+      "csl_type": "article-journal",
+      "timeline_admission": "added",
+      "metadata_caveat": "不主张1977是AHP首次出现；完整AHP不只负责赋权。"
+    },
+    {
+      "id": "R39",
+      "title": "Scenic beauty estimation model: predicting perceived beauty of forest landscapes",
+      "authors": [
+        "Terry C. Daniel",
+        "Herbert W. Schroeder"
+      ],
+      "year": 1979,
+      "doi": null,
+      "container_title": "Proceedings of Our National Landscape, PSW-GTR-35",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": "514–523",
+      "url": "https://research.fs.usda.gov/treesearch/27622",
+      "verification_level": "institutional_abstract",
+      "evidence_locator": "USDA书目与Abstract",
+      "evidence_summary": "模型以公众审美判断构成的美景度指标为预测目标，以森林清查特征为预测变量，讨论植被管理方案的美感后果。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C50"
+      ],
+      "csl_type": "paper-conference",
+      "timeline_admission": "added",
+      "metadata_caveat": "摘要支持预测结构；具体回归形式、样本和外部验证尚待全文，不能称为深度学习。"
+    },
+    {
+      "id": "R40",
+      "title": "Assessing a set of additive utility functions for multicriteria decision-making, the UTA method",
+      "authors": [
+        "E. Jacquet-Lagrèze",
+        "J. Siskos"
+      ],
+      "year": 1982,
+      "doi": "10.1016/0377-2217(82)90155-2",
+      "container_title": "European Journal of Operational Research",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": "151–164",
+      "url": "https://www.sciencedirect.com/science/article/pii/0377221782901552",
+      "verification_level": "publisher_abstract",
+      "evidence_locator": "Abstract；卷10(2)",
+      "evidence_summary": "UTA由备选方案的准则评价和主观弱序，经序数回归与线性规划估计加法效用函数，并开展稳定性分析。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C51"
+      ],
+      "csl_type": "article-journal",
+      "timeline_admission": "added",
+      "metadata_caveat": "论文使用utility措辞，不能由此推断其采用风险彩票效用；L是本项目对参数估计的广义编码。"
+    },
+    {
+      "id": "R41",
+      "title": "Integrating multi-criteria evaluation with geographical information systems",
+      "authors": [
+        "S. J. Carver"
+      ],
+      "year": 1991,
+      "doi": "10.1080/02693799108927858",
+      "container_title": "International Journal of Geographical Information Systems",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.tandfonline.com/doi/abs/10.1080/02693799108927858",
+      "verification_level": "publisher_indexed_excerpt",
+      "evidence_locator": "出版商索引书目与摘要片段",
+      "evidence_summary": "1991年论文明确研究多准则评价与GIS集成。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C52"
+      ],
+      "csl_type": "article-journal",
+      "timeline_admission": "added",
+      "metadata_caveat": "不作首创声明；具体接口、算例和算法需全文核验。"
+    },
+    {
+      "id": "R42",
+      "title": "Using GIS and outranking multicriteria analysis for land-use suitability assessment",
+      "authors": [
+        "Florent Joerin",
+        "Marius Thériault",
+        "André Musy"
+      ],
+      "year": 2001,
+      "doi": "10.1080/13658810051030487",
+      "container_title": "International Journal of Geographical Information Science",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": "153–174",
+      "url": "https://www.tandfonline.com/doi/pdf/10.1080/13658810051030487",
+      "verification_level": "publisher_indexed_excerpt",
+      "evidence_locator": "原文第一页 Abstract，卷15(2)",
+      "evidence_summary": "土地适宜性案例将GIS与ELECTRE-TRI超越分析结合。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C53"
+      ],
+      "csl_type": "article-journal",
+      "timeline_admission": "added",
+      "metadata_caveat": "2001为卷期年，不用2010网页上线年；地图服务于协商不自动证明实质参与，暂不编码P。"
+    },
+    {
+      "id": "R43",
+      "title": "Landscape Character Assessment: Guidance for England and Scotland",
+      "authors": [
+        "Carys Swanwick",
+        "Land Use Consultants"
+      ],
+      "year": 2002,
+      "doi": null,
+      "container_title": "The Countryside Agency and Scottish Natural Heritage",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.nature.scot/doc/archive/landscape-character-assessment-guidance-england-and-scotland",
+      "verification_level": "official_metadata_and_current_method_explanation",
+      "evidence_locator": "2002官方档案；当前官方方法解释；原指导书分阶段细节待核",
+      "evidence_summary": "官方档案确认2002年指南；当前官方解释把LCA定义为识别、描述与制图景观特征差异的基线程序。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C54"
+      ],
+      "csl_type": "report",
+      "timeline_admission": "added",
+      "metadata_caveat": "2002原文的characterisation/making judgements两阶段原句未核；不把特征类型直接解释成质量排名。",
+      "additional_evidence_urls": [
+        "https://www.nature.scot/professional-advice/landscape/landscape-character-assessment/what-landscape-character-assessment"
+      ]
+    },
+    {
+      "id": "R44",
+      "title": "Ordinal regression revisited: Multiple criteria ranking using a set of additive value functions",
+      "authors": [
+        "Salvatore Greco",
+        "Vincent Mousseau",
+        "Roman Słowiński"
+      ],
+      "year": 2008,
+      "doi": "10.1016/j.ejor.2007.08.013",
+      "container_title": "European Journal of Operational Research",
+      "volume": null,
+      "issue": null,
+      "pages_or_article": "416–436",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0377221707008752",
+      "verification_level": "publisher_indexed_abstract_and_later_method_summary",
+      "evidence_locator": "2008出版商摘要/书目；后续ROR作者条目Abstract说明necessary/possible",
+      "evidence_summary": "2008论文使用与偏好信息兼容的一组加法价值函数；ROR以全部或至少一个兼容模型上的关系表达必要与可能偏好。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [
+        "C55"
+      ],
+      "csl_type": "article-journal",
+      "timeline_admission": "added",
+      "metadata_caveat": "2008全文访问403；必要/可能关系得到后续作者方法条目支持，原文公式和定理页码仍待核。",
+      "additional_evidence_urls": [
+        "https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470400531.eorms1090"
+      ]
+    },
+    {
+      "id": "R45",
+      "title": "Cybernetics: Or Control and Communication in the Animal and the Machine",
+      "authors": [
+        "Norbert Wiener"
+      ],
+      "year": 1948,
+      "doi": null,
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://mitpress.mit.edu/9780262355919/cybernetics-or-control-and-communication-in-the-animal-and-the-machine/",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "为观察—行动—反馈闭环建立概念背景。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "book",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "出版商后续版介绍确认首版1948；不是景观评价算法的起源，也不证明当前框架可控。"
+    },
+    {
+      "id": "R46",
+      "title": "Dilemmas in a general theory of planning",
+      "authors": [
+        "Horst W. J. Rittel",
+        "Melvin M. Webber"
+      ],
+      "year": 1973,
+      "doi": "10.1007/BF01405730",
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://doi.org/10.1007/BF01405730",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "使问题界定与价值分歧的边界进入研究背景。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "article-journal",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "不能用“wicked”推出所有量化都无效或价值判断永久不可计算。"
+    },
+    {
+      "id": "R47",
+      "title": "Adaptive Environmental Assessment and Management",
+      "authors": [],
+      "year": 1978,
+      "doi": null,
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://pure.iiasa.ac.at/id/eprint/823/1/XB-78-103.pdf",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "补充干预、监测、再学习的动态管理传统。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "book",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "需核原文监测与更新机制；仅重复评分不构成适应性管理。",
+      "editors": [
+        "C. S. Holling"
+      ]
+    },
+    {
+      "id": "R48",
+      "title": "Note—A Preference Ranking Organisation Method",
+      "authors": [
+        "J. P. Brans",
+        "Ph. Vincke"
+      ],
+      "year": 1985,
+      "doi": "10.1287/mnsc.31.6.647",
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://pubsonline.informs.org/doi/pdf/10.1287/mnsc.31.6.647",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "比较PROMETHEE I部分预序与II完全预序，检验输出域。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "article-journal",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "1985是代表论文，存在更早发展；不称发明年。"
+    },
+    {
+      "id": "R49",
+      "title": "The application of fuzzy integrals in multicriteria decision making",
+      "authors": [
+        "Michel Grabisch"
+      ],
+      "year": 1996,
+      "doi": "10.1016/0377-2217(95)00176-X",
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.sciencedirect.com/science/article/pii/037722179500176X",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "补入准则协同/冗余，检验加法独立性边界。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "article-journal",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "1996为应用综述锚点，不是Choquet积分提出年份；避免与模糊隶属度混为一类。"
+    },
+    {
+      "id": "R50",
+      "title": "European Landscape Convention",
+      "authors": [
+        "Council of Europe"
+      ],
+      "year": 2000,
+      "doi": null,
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.coe.int/en/web/landscape/reference-texts",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "补充感知、公众参与与景观定义的制度背景。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "report",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "2000为开放签署节点；制度要求不能证明某个模型已经实现参与。"
+    },
+    {
+      "id": "R51",
+      "title": "A Framework for Geodesign: Changing Geography by Design",
+      "authors": [
+        "Carl Steinitz"
+      ],
+      "year": 2012,
+      "doi": null,
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.esri.com/en-us/esri-press/browse/a-framework-for-geodesign-changing-geography-by-design",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "连接评价、设计方案、影响与决策。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "book",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "需全文核六问六模型对应；不能由2012倒推1990原文全部内容，更不等于AGI。"
+    },
+    {
+      "id": "R52",
+      "title": "Guidelines for Landscape and Visual Impact Assessment",
+      "authors": [
+        "Landscape Institute",
+        "Institute of Environmental Management and Assessment"
+      ],
+      "year": 2013,
+      "doi": null,
+      "container_title": null,
+      "volume": null,
+      "issue": null,
+      "pages_or_article": null,
+      "url": "https://www.routledge.com/Guidelines-for-Landscape-and-Visual-Impact-Assessment/LandscapeInstitute-IEMA/p/book/9780415680042",
+      "verification_level": "primary_metadata_or_indexed_excerpt",
+      "evidence_locator": "出版商/机构记录及索引片段；候选尚未进行内容编码",
+      "evidence_summary": "纳入专业判断、影响评价与可追溯程序。",
+      "accessed_at": "2026-09-25",
+      "fulltext_review_complete": false,
+      "zotero": {
+        "library_type": null,
+        "library_id": null,
+        "item_key": null,
+        "item_version": null,
+        "attachment_key": null,
+        "annotation_keys": [],
+        "last_verified_at": null
+      },
+      "identity_status": "identified",
+      "claim_ids": [],
+      "csl_type": "book",
+      "timeline_admission": "candidate",
+      "metadata_caveat": "2013为第三版；显著性、敏感性和幅度的组合规则需核全文，不预设机械乘法。"
+    }
+  ]
+}
