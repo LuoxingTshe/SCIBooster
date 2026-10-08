@@ -24,7 +24,7 @@ from scibooster.store import normalize_doi
 ROOT = Path(__file__).resolve().parents[1]
 CASE = ROOT / "tests" / "cases" / "timeline-study"
 RETRIEVAL = CASE / "retrieval"
-VERIFICATION = CASE / "input" / "data" / "doi-verification-2026-10-07"
+VERIFICATION = CASE / "literature" / "doi-verification-2026-10-07"
 BRANCHES = ("history", "formal_methods")
 
 
@@ -71,6 +71,10 @@ def _key(p: Paper) -> str:
     return paper_key(p.doi, p.id, p.title)
 
 
+def _keys(p: Paper) -> set[str]:
+    return {_key(v) for v in [p, *p.versions]}
+
+
 def load_baseline() -> dict[str, Corpus]:
     config = read_json(RETRIEVAL / "case.json")
     return {name: Corpus.model_validate(read_json(RETRIEVAL / config["branches"][name]["baseline_corpus"]))
@@ -97,16 +101,16 @@ def compare(runs: dict[str, Corpus], params: dict[str, BuildParams]) -> dict:
     for name in BRANCHES:
         b, r = base[name], runs[name]
         bk = {_key(p): p for p in b.papers}
-        rk = {_key(p): p for p in r.papers}
+        rk = {key: p for p in r.papers for key in _keys(p)}
         shared = bk.keys() & rk.keys()
         seeds_expected = {normalize_doi(s) for s in params[name].seeds}
-        seeds_found = {normalize_doi(p.doi) for p in r.papers if p.is_seed}
+        seeds_found = {normalize_doi(v.doi) for p in r.papers for v in p.versions or [p] if v.is_seed}
         queries_ok = r.meta.queries == expected_queries(params[name])
         if seeds_found != seeds_expected:
             result["errors"].append(f"{name}: seed_resolution")
         if not queries_ok:
             result["errors"].append(f"{name}: executed_queries_differ_from_fixed_case")
-        if len(rk) != len(r.papers):
+        if len(rk) != sum(len(_keys(p)) for p in r.papers) or len({p.id for p in r.papers}) != len(r.papers):
             result["errors"].append(f"{name}: duplicate_keys")
         by_origin = {}
         for origin in sorted({p.origin for p in b.papers}):
@@ -114,6 +118,7 @@ def compare(runs: dict[str, Corpus], params: dict[str, BuildParams]) -> dict:
             by_origin[origin] = {"baseline": len(keys), "reproduced": sum(k in rk for k in keys)}
         result["branches"][name] = {
             "baseline_papers": len(b.papers), "reproduced_papers": len(r.papers),
+            "reproduced_record_keys": len(rk),
             "shared": len(shared), "baseline_recall": len(shared) / len(bk) if bk else None,
             "jaccard": len(shared) / len(bk.keys() | rk.keys()) if bk or rk else None,
             "baseline_by_origin": by_origin,
@@ -129,7 +134,7 @@ def compare(runs: dict[str, Corpus], params: dict[str, BuildParams]) -> dict:
                     for k in sorted(rk.keys() - bk.keys())],
         }
     cand_keys = {paper_key(c.get("doi"), c.get("id"), c.get("title")) for c in candidates}
-    run_keys = {_key(p) for c in runs.values() for p in c.papers}
+    run_keys = {key for c in runs.values() for p in c.papers for key in _keys(p)}
     base_keys = {_key(p) for c in base.values() for p in c.papers}
     if cand_keys != base_keys:
         result["errors"].append("baseline_corpora_differ_from_79_candidate_list")
@@ -184,7 +189,8 @@ def write_report(out: Path, result: dict, label: str) -> None:
     (out / "comparison.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def run_live(out: Path, config: dict, params: dict[str, BuildParams], reparse_intent: bool = False) -> int:
+def run_live(out: Path, config: dict, params: dict[str, BuildParams], reparse_intent: bool = False, *,
+             keep_history: bool = False, keep_cache: bool = False) -> int:
     from scibooster.config import get_settings
     from scibooster.llm.deepseek import DeepSeek
     from scibooster.sources.cache import Cache
@@ -197,47 +203,54 @@ def run_live(out: Path, config: dict, params: dict[str, BuildParams], reparse_in
     if not settings.deepseek_api_key or not settings.wos_api_key:
         raise ValueError("DEEPSEEK_API_KEY and WOS_API_KEY are required")
     out.mkdir(parents=True, exist_ok=False)
-    shutil.copyfile(RETRIEVAL / "case.json", out / "case.json")
-    rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
-    status = subprocess.run(["git", "status", "--porcelain", "scibooster"], cwd=ROOT, capture_output=True, text=True)
-    manifest = {"case_id": config["case_id"], "started_at_utc": datetime.now(timezone.utc).isoformat(),
-                "git_commit": rev.stdout.strip() if rev.returncode == 0 else None,
-                "dirty_scibooster": bool(status.stdout.strip()),
-                "case_sha256": hashlib.sha256((RETRIEVAL / "case.json").read_bytes()).hexdigest(),
-                "cache_policy": "isolated per branch; no previous HTTP cache reused",
-                "intent": "re-parsed by the LLM" if reparse_intent else "frozen from baseline corpus meta.intent",
-                "status": "running", "usage": {}}
-    write_json(out / "run.json", manifest)
-    runs = {}
-    baseline = load_baseline()
-    try:
-        for name in BRANCHES:
-            folder = out / name
-            folder.mkdir()
-            tracer = Tracer(folder / "trace.jsonl")
-            cache = Cache(folder / "http.sqlite")
-            llm, oa, wos = DeepSeek(settings, tracer), OpenAlexClient(settings, cache, tracer), WosClient(settings, cache, tracer)
-            with (folder / "console.log").open("w", encoding="utf-8") as log_file:
-                def log(message):
-                    print(f"[{name}] {message}", flush=True)
-                    log_file.write(message + "\n")
-                    log_file.flush()
-                frozen = None if reparse_intent else baseline[name].meta.intent
-                store = build_corpus(params[name], llm, oa, wos, tracer, folder / "corpus.json", log=log,
-                                     frozen_intent=frozen)
-            manifest["usage"][name] = tracer.usage.model_dump()
-            runs[name] = store.corpus
-        result = compare(runs, params)
-        write_report(out, result, out.name)
-        manifest["status"] = "passed" if result["passed"] else "structural_errors"
-        print(f"Report: {out / 'comparison.md'}", flush=True)
-        return 0 if result["passed"] else 1
-    except Exception as exc:
-        manifest["status"], manifest["error_type"] = "failed", type(exc).__name__
-        raise
-    finally:
-        manifest["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
+    from scibooster.runtime import RetrievalRun
+
+    with RetrievalRun(settings, out, kind="timeline-study", keep_history=keep_history, keep_cache=keep_cache) as run:
+        shutil.copyfile(RETRIEVAL / "case.json", out / "case.json")
+        rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
+        status = subprocess.run(["git", "status", "--porcelain", "scibooster"], cwd=ROOT, capture_output=True, text=True)
+        manifest = {"case_id": config["case_id"], "started_at_utc": datetime.now(timezone.utc).isoformat(),
+                    "git_commit": rev.stdout.strip() if rev.returncode == 0 else None,
+                    "dirty_scibooster": bool(status.stdout.strip()),
+                    "case_sha256": hashlib.sha256((RETRIEVAL / "case.json").read_bytes()).hexdigest(),
+                    "cache_policy": "isolated per branch; no previous HTTP cache reused",
+                    "intent": "re-parsed by the LLM" if reparse_intent else "frozen from baseline corpus meta.intent",
+                    "status": "running", "usage": {}}
         write_json(out / "run.json", manifest)
+        runs = {}
+        baseline = load_baseline()
+        try:
+            for name in BRANCHES:
+                folder = out / name
+                folder.mkdir()
+                tracer = Tracer(folder / "trace.jsonl")
+                cache = run.cache(Cache(folder / "http.sqlite"))
+                llm, oa, wos = DeepSeek(settings, tracer), OpenAlexClient(settings, cache, tracer), WosClient(settings, cache, tracer)
+                with (folder / "console.log").open("w", encoding="utf-8") as log_file:
+                    def log(message):
+                        print(f"[{name}] {message}", flush=True)
+                        log_file.write(message + "\n")
+                        log_file.flush()
+                    frozen = None if reparse_intent else baseline[name].meta.intent
+                    store = build_corpus(params[name], llm, oa, wos, tracer, folder / "corpus.json", log=log,
+                                         frozen_intent=frozen)
+                manifest["usage"][name] = tracer.usage.model_dump()
+                runs[name] = store.corpus
+            result = compare(runs, params)
+            write_report(out, result, out.name)
+            manifest["status"] = "passed" if result["passed"] else "structural_errors"
+            print(f"Report: {out / 'comparison.md'}", flush=True)
+            return_code = 0 if result["passed"] else 1
+        except Exception as exc:
+            manifest["status"], manifest["error_type"] = "failed", type(exc).__name__
+            raise
+        finally:
+            manifest["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
+            write_json(out / "run.json", manifest)
+
+        if return_code == 0:
+            run.complete([out / name / "corpus.json" for name in BRANCHES])
+        return return_code
 
 
 def main() -> int:
@@ -248,6 +261,8 @@ def main() -> int:
     live.add_argument("--out", type=Path, required=True, help="New output directory (existing directories are refused)")
     live.add_argument("--reparse-intent", action="store_true",
                       help="Let the LLM re-parse the research intent instead of reusing the baseline's (default: frozen)")
+    live.add_argument("--keep-history", action="store_true", help="Keep earlier completed results")
+    live.add_argument("--keep-cache", action="store_true", help="Keep cache for repeat experiments")
     audit = sub.add_parser("compare", help="Compare an existing run directory (<dir>/<branch>/corpus.json) offline")
     audit.add_argument("run_dir", type=Path)
     args = parser.parse_args()
@@ -257,7 +272,7 @@ def main() -> int:
                          ensure_ascii=False, indent=2))
         return 0
     if args.command == "run":
-        return run_live(args.out.resolve(), config, params, args.reparse_intent)
+        return run_live(args.out.resolve(), config, params, args.reparse_intent, keep_history=args.keep_history, keep_cache=args.keep_cache)
     runs = {name: Corpus.model_validate(read_json(args.run_dir / name / "corpus.json")) for name in BRANCHES}
     result = compare(runs, params)
     write_report(args.run_dir, result, args.run_dir.name)

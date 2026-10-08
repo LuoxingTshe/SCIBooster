@@ -3,155 +3,56 @@
   "source_project": "/Users/xie/Documents/EssayI",
   "files": [
     {
-      "source_project_path": "research/provenance/conversation.json",
-      "case_path": "input/original/conversation.json",
-      "sha256": "1638f1e88f3a19cefbed37f9027c6450ba841272cd5086abed7a235a8dfb2393"
-    },
-    {
-      "source_project_path": "research/provenance/timeline-original.txt",
-      "case_path": "input/original/timeline-original.txt",
-      "sha256": "199098c2b9b2544d4d10ee8982c5c5f36728e964d384272521272bf7dbd863ab"
-    },
-    {
-      "source_project_path": "research/provenance/structured-draft-before-verification.json",
-      "case_path": "input/original/structured-draft-before-verification.json",
-      "sha256": "7697946512bc5b8c489b16c4391cc5a70e65a41713d6ef1d2517d8707d8f08f9"
-    },
-    {
-      "source_project_path": "research/provenance/verification-method.md",
-      "case_path": "input/original/verification-method.md",
-      "sha256": "60022c49642d1755e9f0f2eb66e8283625d49cbf8d874ff00f5e193ae3407874"
-    },
-    {
-      "source_project_path": "RESEARCH_CONTEXT.md",
-      "case_path": "input/research-context-snapshot.md",
-      "sha256": "bd1b24f85ec16d88b0af363944ddf1801fb201a7018324c0eb57d97472637e4f"
-    },
-    {
-      "source_project_path": "research/FORMALISM.md",
-      "case_path": "input/formalism-snapshot.md",
-      "sha256": "daa151bf4f4f38839d9787290dbb2dd880cadccf5251dcaf001899c6ebb1bc8e"
-    },
-    {
-      "source_project_path": "research/PRE_MCHARG_RESEARCH.md",
-      "case_path": "input/pre-mcharg-research-snapshot.md",
-      "sha256": "2ebf9fdc468a7fd6419043200b6ab47024e76d963c2f2a777e21e0655b37c639"
-    },
-    {
-      "source_project_path": "research/data/timeline-functional.json",
-      "case_path": "expected/timeline-functional.json",
-      "sha256": "10b6f5f19bb9249cf21596e4a185f3010be568309400b06747b84a2fd226f9d5"
-    },
-    {
-      "source_project_path": "research/TIMELINE_FUNCTIONAL.md",
-      "case_path": "expected/TIMELINE_FUNCTIONAL.md",
-      "sha256": "3227c11baa941ba81560ccb63748829f2a8747c972c19638a1fe49e01b195a78"
-    },
-    {
-      "source_project_path": "research/TIMELINE_SYNTHESIS.md",
-      "case_path": "expected/TIMELINE_SYNTHESIS.md",
-      "sha256": "f6f27ded89621d88676c4cf7b1881e8f4e82a6595991248220cd65bbedb27b77"
-    },
-    {
-      "source_project_path": "research/VALIDATION_FUNCTIONAL.json",
-      "case_path": "expected/validation-original.json",
-      "sha256": "569fc1e15eabd35653387f04e5bd9aac1f11d095775568d744429148dc09afe1"
-    },
-    {
-      "source_project_path": "figures/timeline-2026-10-07/timeline.png",
-      "case_path": "expected/figures/timeline.png",
-      "sha256": "2f52d32557b46c09f8ac66d9fea9cdd115dc34406916ff80c1b8c0193f264801"
-    },
-    {
-      "source_project_path": "figures/timeline-2026-10-07/timeline.svg",
-      "case_path": "expected/figures/timeline.svg",
-      "sha256": "ada9521b10aa1e80c1f62740de5b4a325ea1556b37014f82b49aa535b7a0e313"
-    },
-    {
-      "source_project_path": "figures/timeline-2026-10-07/timeline-nodes.json",
-      "case_path": "expected/figures/timeline-nodes.json",
-      "sha256": "ff23a13c6cd92fcff0c3a729327ebed9f3efe25d545bf6c4f6dcaac5f74bd330"
-    },
-    {
-      "source_project_path": "research/data/timeline-revised.json",
-      "case_path": "input/data/timeline-revised.json",
-      "sha256": "2df631bb6a4f6aa7101593ff9493a5103b9ef2fbdae030c73f3b1ce6f4818cce"
-    },
-    {
-      "source_project_path": "research/data/timeline.json",
-      "case_path": "input/data/timeline.json",
-      "sha256": "b29a6a8d66765280234649ebdfa3469f187f042b47e63690656bb6af62741f2c"
-    },
-    {
-      "source_project_path": "research/data/timeline-candidates.json",
-      "case_path": "input/data/timeline-candidates.json",
-      "sha256": "b1f2b7cc79f929d5c4b1e19cc0ef173bfa83a6f7ed5fce098fe9b0120d2e75b5"
-    },
-    {
-      "source_project_path": "research/data/pre-mcharg-nodes.json",
-      "case_path": "input/data/pre-mcharg-nodes.json",
-      "sha256": "6100bfedb89c5159d7f3bd21b8a94deef44e3b388ac8d78df741cdcb51acdeea"
-    },
-    {
       "source_project_path": "research/data/references.json",
-      "case_path": "input/data/references.json",
+      "case_path": "literature/references.json",
       "sha256": "5fb50d5fa7d13e791c6db60127495efc7302b16f9dbce94eedccb2aa25f22fa1"
     },
     {
-      "source_project_path": "research/data/claims.json",
-      "case_path": "input/data/claims.json",
-      "sha256": "0778d96ca593bb3b429ced7dded1687c1b3f425e4f928562ae5282b5db09f8c5"
-    },
-    {
-      "source_project_path": "research/data/models.json",
-      "case_path": "input/data/models.json",
-      "sha256": "a662e8f478169842415cf5fadcfa625ed1b48c620bc5cdf1457bcfc3e2c4ed55"
-    },
-    {
       "source_project_path": "research/data/doi-verification-2026-10-07/direct_support_doi.json",
-      "case_path": "input/data/doi-verification-2026-10-07/direct_support_doi.json",
+      "case_path": "literature/doi-verification-2026-10-07/direct_support_doi.json",
       "sha256": "d7154a2542990eeccbbbb16baf5bbd2b8bac3bcc9a5c3101efe3f7b55a8fc562"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/doi_by_claim.json",
-      "case_path": "input/data/doi-verification-2026-10-07/doi_by_claim.json",
+      "case_path": "literature/doi-verification-2026-10-07/doi_by_claim.json",
       "sha256": "718a62c14a796c295bf251ba7ce87a2b95900b20492156696cf6a64652a6147f"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/doi_list.json",
-      "case_path": "input/data/doi-verification-2026-10-07/doi_list.json",
+      "case_path": "literature/doi-verification-2026-10-07/doi_list.json",
       "sha256": "00e3f05fb4f6908484cd9ac0084cc10fdb9d90c3a30e5baa4091e140261fb5a9"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/direct_support.csl.json",
-      "case_path": "input/data/doi-verification-2026-10-07/direct_support.csl.json",
+      "case_path": "literature/doi-verification-2026-10-07/direct_support.csl.json",
       "sha256": "66a29b525239b47510da1fd31bde1564dd79530db17f3bb5f5966fc517f4a43f"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/existing_reference_identity_audit.json",
-      "case_path": "input/data/doi-verification-2026-10-07/existing_reference_identity_audit.json",
+      "case_path": "literature/doi-verification-2026-10-07/existing_reference_identity_audit.json",
       "sha256": "02910868f2a74b65c9194f2df4f8ccd766910f6ed73c113ff0ec72293bbd3a0e"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/not_in_direct_doi.json",
-      "case_path": "input/data/doi-verification-2026-10-07/not_in_direct_doi.json",
+      "case_path": "literature/doi-verification-2026-10-07/not_in_direct_doi.json",
       "sha256": "2fbea555114426e52b1f3dd3213fae0be0de3d8a497efce2469dcad3379198a0"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/zotero-verification-queue.json",
-      "case_path": "input/data/doi-verification-2026-10-07/zotero-verification-queue.json",
+      "case_path": "literature/doi-verification-2026-10-07/zotero-verification-queue.json",
       "sha256": "115a795060fa2fa13e15d736a5d33402fb5a9f8abca68c459f59e3b7ad350119"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/validation.json",
-      "case_path": "input/data/doi-verification-2026-10-07/validation.json",
+      "case_path": "literature/doi-verification-2026-10-07/validation.json",
       "sha256": "837588a43af5ebab3ef0a810c27fedab6631ffb324c2ea4f3a2f600b9d37dd31"
     },
     {
       "source_project_path": "research/data/doi-verification-2026-10-07/REPORT.md",
-      "case_path": "input/data/doi-verification-2026-10-07/REPORT.md",
+      "case_path": "literature/doi-verification-2026-10-07/REPORT.md",
       "sha256": "c17f3d6aba996e0cdfb3509859e58c04bc233932bc947001a66ca199636397a1"
     }
   ],
-  "note": "Case inputs include curated research and prior interpretations; no independent gold standard or paper PDFs."
+  "note": "Case inputs include curated research and prior interpretations; no independent gold standard or paper PDFs.",
+  "scope": "Bibliographic inputs retained for retrieval tests; original research package archived locally under artifacts/archive/timeline-study."
 }

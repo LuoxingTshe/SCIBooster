@@ -12,11 +12,14 @@
 
 ```bash
 .venv/bin/python -m scripts.real_search plan
-.venv/bin/python -m scripts.real_search run --out corpora/garden-v1-dev001
-.venv/bin/python -m scripts.real_search evaluate corpora/garden-v1-dev001/corpus.json --out corpora/garden-v1-audit001
+.venv/bin/python -m scripts.real_search run --out artifacts/runs/garden-v1-dev001
+.venv/bin/python -m scripts.real_search evaluate artifacts/runs/garden-v1-dev001/corpus.json --out artifacts/runs/garden-v1-audit001
 ```
 
 `plan` 和 `evaluate` 完全离线。`run` 使用真实 DeepSeek/WoS/OpenAlex，输出目录必须不存在，每次隔离 HTTP 缓存；需要 `.env` 或环境变量中的 API 配置。默认产物仅写到指定输出目录的 Obsidian 子目录，不使用个人笔记库路径。
+
+通过检查后默认仅保留最新完整运行并清空本次和共享缓存，清理明细写入 `cleanup.json`。
+比较多次实验时在 `run` 上加 `--keep-history --keep-cache`；测试失败或回归保留旧结果与缓存。
 
 分支：`vegetation_tls`、`garden_syntax`、`garden_reviews`、`heritage_pointcloud`。基础查询来自第二次真实运行，现固定以减少后续对比的混杂；意图解析及相关度评分仍由实时模型完成。核对集只在检索结束后读取匹配，不把目标 DOI 注入搜索。
 

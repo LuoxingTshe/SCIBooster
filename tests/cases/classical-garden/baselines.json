@@ -5,7 +5,7 @@
   "runs": [
     {
       "label": "原始三查询",
-      "source_local_path": "corpora/real-test-classical-garden-20261006/corpus.json",
+      "source_local_path": "artifacts/runs/real-test-classical-garden-20261006/corpus.json",
       "papers": 53,
       "edges": 184,
       "gold_hits": 7,
@@ -30,7 +30,7 @@
     },
     {
       "label": "四分支+年份过滤",
-      "source_local_path": "corpora/real-test-classical-garden-branches-20261006/corpus.json",
+      "source_local_path": "artifacts/runs/real-test-classical-garden-branches-20261006/corpus.json",
       "papers": 66,
       "edges": 217,
       "gold_hits": 9,
@@ -57,7 +57,7 @@
     },
     {
       "label": "固定入口首次验证（质量回退）",
-      "source_local_path": "corpora/garden-v1-fixed-20261006/corpus.json",
+      "source_local_path": "artifacts/runs/garden-v1-fixed-20261006/corpus.json",
       "papers": 59,
       "edges": 177,
       "gold_hits": 8,

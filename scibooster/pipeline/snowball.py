@@ -27,7 +27,7 @@ def expand(
     if direction in ("backward", "both"):
         ref_ids: list[str] = []
         for p in frontier:
-            ref_ids += [r for r in p.referenced_works if r not in pool]
+            ref_ids += [r for r in p.referenced_works if pool.get(r) is None]
         refs = oa.by_ids(list(dict.fromkeys(ref_ids)), origin="backward", hop=hop)
         # Cap per node: keep the per_node most-cited references from each frontier node
         keep: set[str] = set()

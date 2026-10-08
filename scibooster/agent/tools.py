@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable
 
 from ..llm.deepseek import LLM
+from ..dedup import deduplicate, find_duplicate
 from ..models import Paper, ResearchIntent
 from ..pipeline import enrich, gaps, screen
 from ..sources.openalex import OpenAlexClient
@@ -29,6 +30,9 @@ class AgentContext:
     finished: bool = False
     summary: str = ""
     n_added: int = 0
+
+    def __post_init__(self) -> None:
+        deduplicate(self.corpus, self.tracer)
 
     def remember(self, papers: list[Paper]) -> list[Paper]:
         out = []
@@ -180,15 +184,19 @@ def t_add(ctx: AgentContext, args: dict) -> Any:
         if p.retracted:
             retracted.append(pid)
             continue
-        if p.id not in ctx.corpus and ctx.max_papers is not None and len(ctx.corpus) >= ctx.max_papers:
+        duplicate = find_duplicate(ctx.corpus, p)
+        if duplicate is None and ctx.max_papers is not None and len(ctx.corpus) >= ctx.max_papers:
             over_cap.append(pid)
             continue
         if args.get("note"):
             p.notes.append(args["note"])
-        if p.id not in ctx.corpus:
+        if duplicate is None:
             ctx.n_added += 1
-        ctx.corpus.add(p)
-        added.append(p.id)
+        canonical = ctx.corpus.add(p.model_copy(deep=True))
+        if duplicate is not None:
+            deduplicate(ctx.corpus, ctx.tracer)
+            canonical = ctx.corpus.get(p.id)
+        added.append(canonical.id)
     res: dict[str, Any] = {"added": added, "corpus_size": len(ctx.corpus)}
     if low:
         res["rejected_unscreened_or_low_score"] = low

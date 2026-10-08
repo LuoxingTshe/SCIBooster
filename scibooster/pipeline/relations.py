@@ -19,11 +19,18 @@ def build_edges(store: CorpusStore) -> list[Edge]:
     edges: list[Edge] = []
     indeg: dict[str, int] = {}
     for p in store.papers:
-        internal = [r for r in dict.fromkeys(p.referenced_works) if r in store and r != p.id]
-        p.external_refs_count = len(set(p.referenced_works)) - len(internal)
+        refs = {store.canonical_id(r) for r in p.referenced_works} - {p.id}
+        internal = sorted(r for r in refs if r in store)
+        p.external_refs_count = len(refs) - len(internal)
+        original = [(v.id, r) for v in p.versions for r in v.referenced_works]
+        covered = {r for _, r in original}
+        original += [(p.id, r) for r in p.referenced_works if r not in covered]
         for r in internal:
             prev = old.get((p.id, r))
-            edges.append(Edge(source=p.id, target=r, relation=prev.relation if prev else None))
+            raw = list(dict.fromkeys(pair for pair in original if store.canonical_id(pair[1]) == r))
+            mapped = any(pair != (p.id, r) for pair in raw)
+            edges.append(Edge(source=p.id, target=r, relation=prev.relation if prev else None,
+                              provenance="openalex_version_mapped" if mapped else "openalex", record_pairs=raw))
             indeg[r] = indeg.get(r, 0) + 1
     for p in store.papers:
         p.external_cited_by = max(0, (p.cited_by_count or 0) - indeg.get(p.id, 0))

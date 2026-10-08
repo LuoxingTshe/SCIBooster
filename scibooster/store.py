@@ -8,7 +8,7 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
-from .models import Corpus, Edge, Paper
+from .models import Corpus, Edge, Paper, PaperRecord
 
 # Higher priority = closer to the user's intent; on merge, keep the higher-priority origin
 _ORIGIN_RANK = {"seed": 5, "wos_search": 4, "openalex_search": 4, "agent": 3, "cocited": 2, "backward": 2, "forward": 2}
@@ -33,9 +33,11 @@ class CorpusStore:
         self.corpus = corpus or Corpus()
         self._by_id: dict[str, Paper] = {}
         self._by_doi: dict[str, str] = {}
+        self._aliases: dict[str, str] = {}
         papers, self.corpus.papers = self.corpus.papers, []
         for p in papers:
             self.add(p)
+        self.remap_edges()
 
     # ---- queries ----
     def __contains__(self, pid: str) -> bool:
@@ -45,14 +47,17 @@ class CorpusStore:
         return len(self._by_id)
 
     def get(self, pid: str) -> Paper | None:
-        return self._by_id.get(pid)
+        return self._by_id.get(self.canonical_id(pid))
+
+    def canonical_id(self, pid: str) -> str:
+        return self._aliases.get(pid, pid)
 
     def find_by_doi(self, doi: str | None) -> Paper | None:
         d = normalize_doi(doi)
         return self._by_id.get(self._by_doi[d]) if d and d in self._by_doi else None
 
     def has(self, paper: Paper) -> bool:
-        return paper.id in self._by_id or self.find_by_doi(paper.doi) is not None
+        return self.get(paper.id) is not None or self.find_by_doi(paper.doi) is not None
 
     @property
     def papers(self) -> list[Paper]:
@@ -62,12 +67,14 @@ class CorpusStore:
     def add(self, paper: Paper) -> Paper:
         """Add or merge a paper; returns the canonical instance in the store."""
         paper.doi = normalize_doi(paper.doi)
-        existing = self._by_id.get(paper.id) or self.find_by_doi(paper.doi)
+        existing = self.get(paper.id) or self.find_by_doi(paper.doi)
         if existing is None:
             self._by_id[paper.id] = paper
             if paper.doi:
                 self._by_doi[paper.doi] = paper.id
+            self._index_versions(paper)
             return paper
+        snapshots = self._snapshots(existing, paper) if existing.id != paper.id or existing.versions or paper.versions else []
         old_id = existing.id
         self._merge_into(existing, paper)
         if existing.id != old_id:
@@ -75,15 +82,71 @@ class CorpusStore:
             self._by_id[existing.id] = existing
         if existing.doi:
             self._by_doi[existing.doi] = existing.id
+        if snapshots:
+            existing.versions = snapshots
+            self.rekey()
+            self.remap_edges()
         return existing
 
+    @staticmethod
+    def _snapshots(*papers: Paper) -> list[PaperRecord]:
+        records = {}
+        for paper in papers:
+            for record in paper.versions or [PaperRecord.model_validate(paper.model_dump(exclude={"versions"}))]:
+                records.setdefault((record.id, normalize_doi(record.doi)), record.model_copy(deep=True))
+        return [records[key] for key in sorted(records, key=lambda k: (k[0], k[1] or ""))]
+
+    def merge_versions(self, primary: Paper, other: Paper) -> Paper:
+        """Consolidate a supported pair, keeping raw snapshots and all identifier aliases."""
+        snapshots = self._snapshots(primary, other)
+        primary_id = primary.id
+        scores = [p.relevance for p in (primary, other) if p.relevance is not None]
+        self._merge_into(primary, other)
+        primary.id = primary_id
+        if scores:
+            primary.relevance = max(scores, key=lambda r: r.score).model_copy(deep=True)
+        primary.versions = snapshots
+        del self._by_id[other.id]
+        self.rekey()
+        self.remap_edges()
+        return primary
+
+    def _index_versions(self, paper: Paper) -> None:
+        for v in paper.versions:
+            self._aliases[v.id] = paper.id
+            if d := normalize_doi(v.doi):
+                self._by_doi[d] = paper.id
+
+    def remap_edges(self) -> None:
+        edges = {}
+        for e in self.corpus.edges:
+            source, target = self.canonical_id(e.source), self.canonical_id(e.target)
+            if source == target:
+                continue
+            key = (source, target)
+            raw = e.record_pairs or [(e.source, e.target)]
+            previous = edges.get(key)
+            raw = list(dict.fromkeys((previous.record_pairs if previous else []) + raw))
+            mapped = any(pair != key for pair in raw)
+            if key not in edges or (edges[key].relation is None and e.relation is not None):
+                edges[key] = e.model_copy(update={"source": source, "target": target,
+                    "record_pairs": raw,
+                    "provenance": "openalex_version_mapped" if mapped else e.provenance})
+            else:
+                edges[key].record_pairs = raw
+                if mapped:
+                    edges[key].provenance = "openalex_version_mapped"
+        self.corpus.edges = list(edges.values())
+
     def remove(self, pid: str) -> bool:
+        pid = self.canonical_id(pid)
         p = self._by_id.pop(pid, None)
         if p is None:
             return False
         if p.doi and self._by_doi.get(p.doi) == pid:
             del self._by_doi[p.doi]
         self.corpus.edges = [e for e in self.corpus.edges if pid not in (e.source, e.target)]
+        self.rekey()
         return True
 
     def retain(self, keep: set[str]) -> None:
@@ -97,9 +160,10 @@ class CorpusStore:
                 setattr(dst, field, getattr(src, field))
         if not dst.title and src.title:
             dst.title = src.title
-        for field in ("authors", "keywords", "referenced_works"):
-            if not getattr(dst, field) and getattr(src, field):
-                setattr(dst, field, getattr(src, field))
+        if not dst.authors and src.authors:
+            dst.authors = list(src.authors)
+        for field in ("keywords", "referenced_works"):
+            setattr(dst, field, list(dict.fromkeys(getattr(dst, field) + getattr(src, field))))
         dst.is_seed = dst.is_seed or src.is_seed
         dst.retracted = dst.retracted or src.retracted
         if _ORIGIN_RANK.get(src.origin, 0) > _ORIGIN_RANK.get(dst.origin, 0):
@@ -115,6 +179,9 @@ class CorpusStore:
         papers = list(self._by_id.values())
         self._by_id = {p.id: p for p in papers}
         self._by_doi = {p.doi: p.id for p in papers if p.doi}
+        self._aliases = {}
+        for p in papers:
+            self._index_versions(p)
 
     def set_edges(self, edges: list[Edge]) -> None:
         self.corpus.edges = edges
@@ -128,6 +195,8 @@ class CorpusStore:
         )
         self.corpus.stats = {
             "n_papers": len(self.corpus.papers),
+            "n_source_records": sum(len(p.versions) or 1 for p in self.corpus.papers),
+            "n_version_groups": sum(bool(p.versions) for p in self.corpus.papers),
             "n_edges": len(self.corpus.edges),
             "n_seeds": sum(p.is_seed for p in self.corpus.papers),
             "by_origin": dict(Counter(p.origin for p in self.corpus.papers)),
@@ -159,6 +228,6 @@ def slugify(text: str, maxlen: int = 40) -> str:
 
 
 def new_run_dir(base: Path, prompt: str) -> Path:
-    d = base / f"{slugify(prompt)}-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
-    d.mkdir(parents=True, exist_ok=True)
+    d = base / f"{slugify(prompt)}-{datetime.now().strftime('%Y%m%d-%H%M%S-%f')}"
+    d.mkdir(parents=True, exist_ok=False)
     return d

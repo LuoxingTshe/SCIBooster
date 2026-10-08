@@ -191,6 +191,9 @@ def _paper_note(p: Paper, edges: list, corpus_cites: int, link) -> str:
     if p.doi:
         fm += [f"doi: {_yaml_str(p.doi)}", f"url: {_yaml_str('https://doi.org/' + p.doi)}"]
     fm.append(f"paper_id: {_yaml_str(p.id)}")
+    if p.versions:
+        fm.append(f"version_count: {len(p.versions)}")
+        fm += _yaml_list("version_dois", list(dict.fromkeys(v.doi for v in p.versions if v.doi)))
     if r:
         fm += [f"relevance: {r.score:g}", f"relevance_reason: {_yaml_str(r.reason)}"]
         if r.flag:
@@ -234,11 +237,18 @@ def _paper_note(p: Paper, edges: list, corpus_cites: int, link) -> str:
     body += ["> [!abstract] 摘要"]
     body += [f"> {line}" if line else ">" for line in (p.abstract or "（无摘要）").splitlines()]
     body.append("")
+    if p.versions:
+        body += ["## 文献版本", "", "以下原始记录合并展示；引用图汇总各版本引用，相关度取已记录评分的最高值。", ""]
+        for v in p.versions:
+            url = f"[DOI](https://doi.org/{v.doi})" if v.doi else v.id
+            body.append(f"- {v.year or 'n.d.'} · {v.title} · {v.venue or '—'} · {url}（{v.id}）")
+        body.append("")
     if edges:
         body += [f"## 引用了库内 {len(edges)} 篇", ""]
         for e in edges:
             rel = f" — {RELATION_NAMES.get(e.relation.label, e.relation.label)}：{e.relation.rationale}" if e.relation else ""
-            body.append(f"- {link(e.target)}{rel}")
+            version_note = "（含版本映射；原始引用见 corpus.json）" if e.provenance == "openalex_version_mapped" else ""
+            body.append(f"- {link(e.target)}{rel}{version_note}")
         body.append("")
     body.append(f"被库内 {corpus_cites} 篇引用（见反向链接面板）；外部另有 {p.external_cited_by} 次被引。")
     if p.notes:

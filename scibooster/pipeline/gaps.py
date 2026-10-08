@@ -17,5 +17,5 @@ def top_missing_refs(
     citing: Iterable[Paper], known: CorpusStore, min_count: int = 3, limit: int = 30
 ) -> list[tuple[str, int]]:
     """(OpenAlex id, number of `citing` papers that reference it) for works not in `known`, most-cited first."""
-    counts = Counter(r for p in citing for r in dict.fromkeys(p.referenced_works) if r and r not in known)
+    counts = Counter(r for p in citing for r in dict.fromkeys(p.referenced_works) if r and known.get(r) is None)
     return [(rid, n) for rid, n in counts.most_common() if n >= min_count][:limit]

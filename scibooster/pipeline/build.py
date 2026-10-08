@@ -212,6 +212,13 @@ def build_corpus(
             n_rel = sum(1 for p in fetched if p.relevance and p.relevance.score >= params.threshold)
             log(f"  {n_rel}/{len(fetched)} gap-fill papers are relevant")
 
+    # Consolidate versions before applying the cap, keeping all original records.
+    from ..dedup import deduplicate
+
+    dedup_report = deduplicate(pool, tracer)
+    log(f"Version filter: {dedup_report['last_pass']['merged']} merged; "
+        f"{len(dedup_report['review_candidates'])} pairs need review")
+
     # 7. Selection
     for sp in seed_papers:
         if sp.retracted:
@@ -222,7 +229,8 @@ def build_corpus(
         and not (params.exclude_retracted and p.retracted)
     ]
     ranked = sorted(eligible, key=lambda p: (-p.relevance.score, -(p.cited_by_count or p.wos_times_cited or 0)))
-    keep = {p.id for p in pool.papers if p.is_seed} | {p.id for p in ranked[: max(0, params.max_papers - len(seed_papers))]}
+    seed_ids = {p.id for p in pool.papers if p.is_seed}
+    keep = seed_ids | {p.id for p in ranked[: max(0, params.max_papers - len(seed_ids))]}
     _fill_prisma(prisma, pool, keep, params)
     log(f"Selection: {len(pool)} candidates -> {len(keep)} papers (threshold {params.threshold})")
     pool.retain(keep)

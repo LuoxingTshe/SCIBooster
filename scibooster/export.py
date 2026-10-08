@@ -33,6 +33,8 @@ def _note(p: Paper) -> str:
         parts.append(f"relevance {p.relevance.score:g}: {p.relevance.reason}".rstrip(": "))
     if p.is_seed:
         parts.append("seed")
+    if p.versions:
+        parts.append("versions: " + "; ".join(f"{v.id} {v.doi or ''}".strip() for v in p.versions))
     if p.retracted:
         parts.append("RETRACTED")
     return "; ".join(parts)

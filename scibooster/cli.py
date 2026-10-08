@@ -11,11 +11,26 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
+from . import __release__, __version__
 from .config import get_settings
 from .models import Usage
 
 app = typer.Typer(add_completion=False, help="SCIBooster: DeepSeek-driven literature retrieval agent harness (WoS Starter + OpenAlex)")
 console = Console()
+
+
+def _show_version(value: bool) -> None:
+    if value:
+        console.print(f"SCIBooster {__release__} ({__version__})")
+        raise typer.Exit()
+
+
+@app.callback()
+def main(
+    version: bool = typer.Option(False, "--version", callback=_show_version,
+                                 is_eager=True, help="Show the release version and exit."),
+) -> None:
+    """Retrieve, evaluate and export literature corpora."""
 
 
 def _log(msg: str) -> None:
@@ -33,6 +48,13 @@ def _parse_years(s: str | None) -> tuple[int | None, int | None]:
     return (int(m.group(1)) if m.group(1) else None, int(m.group(2)) if m.group(2) else None)
 
 
+def _report_cleanup(report: dict) -> None:
+    console.print(f"[dim]Cleanup: {len(report['removed_runs'])} earlier results removed; "
+                  f"{len(report['cleared_caches'])} caches cleared.[/]")
+    for error in report['errors']:
+        console.print(f"[yellow]Cleanup incomplete: {error}[/]")
+
+
 def _collect_seeds(seed: list[str], seed_file: Path | None) -> list[str]:
     from .pipeline.seeds import read_seed_file
 
@@ -42,7 +64,7 @@ def _collect_seeds(seed: list[str], seed_file: Path | None) -> list[str]:
     return list(dict.fromkeys(out))
 
 
-def _clients(tracer, source: str):
+def _clients(tracer, source: str, run=None):
     from .llm.deepseek import DeepSeek
     from .sources.cache import Cache
     from .sources.openalex import OpenAlexClient
@@ -50,6 +72,8 @@ def _clients(tracer, source: str):
 
     s = get_settings()
     cache = Cache(s.scib_cache_dir / "http.sqlite")
+    if run is not None:
+        run.cache(cache)
     try:
         llm = DeepSeek(s, tracer)
     except RuntimeError as e:
@@ -149,7 +173,9 @@ def build(
     keep_retracted: bool = typer.Option(False, "--keep-retracted", help="Keep papers OpenAlex marks as retracted"),
     label_edges: bool = typer.Option(False, "--label-edges", help="Have the LLM label semantic dependencies on citation edges"),
     obsidian: bool = typer.Option(True, "--obsidian/--no-obsidian", help="Also write the Obsidian vault output"),
-    out: Optional[Path] = typer.Option(None, help="Output corpus.json path (default corpora/<slug>-<time>/corpus.json)"),
+    out: Optional[Path] = typer.Option(None, help="Output corpus.json path (default artifacts/runs/<slug>-<time>/corpus.json)"),
+    keep_history: bool = typer.Option(False, "--keep-history", help="Keep earlier completed results"),
+    keep_cache: bool = typer.Option(False, "--keep-cache", help="Keep HTTP cache for repeat experiments"),
 ):
     """Run the full pipeline and build a corpus with citation relations."""
     from .pipeline.build import TIERS, build_corpus, params_for_tier
@@ -173,14 +199,18 @@ def build(
     run_dir = out.parent if out else new_run_dir(s.scib_corpora_dir, prompt)
     run_dir.mkdir(parents=True, exist_ok=True)
     out_path = out or run_dir / "corpus.json"
-    tracer = Tracer(run_dir / "trace.jsonl")
-    llm, oa, wos = _clients(tracer, source)
-    store = build_corpus(params, llm, oa, wos, tracer, out_path, log=_log)
-    _print_stats(store.corpus)
-    _print_usage(tracer.usage)
-    console.print(f"\n[green]✓ Corpus written to[/] {out_path}")
-    if obsidian:
-        _write_obsidian(store.corpus, out_path)
+    from .runtime import RetrievalRun
+
+    with RetrievalRun(s, run_dir, kind="build", keep_history=keep_history, keep_cache=keep_cache) as run:
+        tracer = Tracer(run_dir / "trace.jsonl")
+        llm, oa, wos = _clients(tracer, source, run)
+        store = build_corpus(params, llm, oa, wos, tracer, out_path, log=_log)
+        _print_stats(store.corpus)
+        _print_usage(tracer.usage)
+        console.print(f"\n[green]✓ Corpus written to[/] {out_path}")
+        if obsidian:
+            _write_obsidian(store.corpus, out_path)
+        _report_cleanup(run.complete([out_path]))
 
 
 @app.command()
@@ -195,7 +225,9 @@ def agent(
     max_tokens: int = typer.Option(400_000, help="DeepSeek token budget"),
     label_edges: bool = typer.Option(False, "--label-edges"),
     obsidian: bool = typer.Option(True, "--obsidian/--no-obsidian", help="Also update the Obsidian vault output"),
-    out: Optional[Path] = typer.Option(None, help="Output path (default: overwrite --corpus, or a new directory)"),
+    out: Optional[Path] = typer.Option(None, help="Output path (default: a new run directory, including when continuing --corpus)"),
+    keep_history: bool = typer.Option(False, "--keep-history", help="Keep earlier completed results"),
+    keep_cache: bool = typer.Option(False, "--keep-cache", help="Keep HTTP cache for repeat experiments"),
 ):
     """DeepSeek-driven tool-calling agent that explores and extends the corpus on its own."""
     from .agent.loop import run_agent
@@ -207,57 +239,111 @@ def agent(
     from .trace import Tracer
 
     s = get_settings()
-    if corpus:
-        store = CorpusStore.load(corpus)
-        run_dir = corpus.parent
-    else:
-        store = CorpusStore()
-        run_dir = new_run_dir(s.scib_corpora_dir, prompt)
-    out_path = out or (corpus if corpus else run_dir / "corpus.json")
-    tracer = Tracer(run_dir / "trace.jsonl", usage=store.corpus.meta.usage)
-    llm, oa, wos = _clients(tracer, "openalex")
+    store = CorpusStore.load(corpus) if corpus else CorpusStore()
+    run_dir = out.parent if out else new_run_dir(s.scib_corpora_dir, prompt)
+    if corpus and out and out.resolve() == corpus.resolve():
+        raise typer.BadParameter("--out must differ from the input corpus; continuation writes a new result")
+    out_path = out or run_dir / "corpus.json"
+    from .runtime import RetrievalRun
 
-    if seed:
-        found, missing = resolve_seeds(seed, oa, wos)
-        for m in missing:
-            console.print(f"[yellow]could not resolve seed: {m}[/]")
-        for p in found:
-            p.relevance = Relevance(score=10, reason="seed")
-            store.add(p)
-    meta = store.corpus.meta
-    if meta.intent is None or not corpus:
-        meta.intent = intent_mod.parse_intent(prompt, llm, [p for p in store.papers if p.is_seed], _parse_years(years))
-    meta.prompt = meta.prompt or prompt
-    meta.seeds = list(dict.fromkeys(meta.seeds + seed))
-    meta.params.setdefault("agent_runs", []).append(
-        {"prompt": prompt, "max_steps": max_steps, "threshold": threshold, "max_papers": max_papers}
-    )
-    console.print(f"[bold]Intent:[/] {meta.intent.topic}")
+    with RetrievalRun(s, run_dir, kind="agent", keep_history=keep_history, keep_cache=keep_cache) as run:
+        tracer = Tracer(run_dir / "trace.jsonl", usage=store.corpus.meta.usage)
+        llm, oa, wos = _clients(tracer, "openalex", run)
 
-    ctx = AgentContext(corpus=store, llm=llm, oa=oa, wos=wos, intent=meta.intent, tracer=tracer, threshold=threshold,
-                       max_papers=max_papers)
-    if len(store) >= max_papers:
-        console.print(f"[yellow]Corpus already has {len(store)} papers (cap {max_papers}); the agent can only swap papers[/]")
-    try:
-        run_agent(ctx, prompt, max_steps, max_tokens, log=_log)
-    except KeyboardInterrupt:
-        console.print("[yellow]Interrupted; saving current corpus…[/]")
-    meta.summary = ctx.summary or meta.summary
-    if meta.prisma is not None:
-        meta.prisma.agent_added += ctx.n_added
-        meta.prisma.included = len(store)
-    edges = relations.build_edges(store)
-    store.set_edges(edges)
-    if label_edges and edges:
-        relations.label_edges(edges, store, llm, meta.intent.language)
-    store.save(out_path)
-    if ctx.summary:
-        console.print(f"\n[bold]Agent summary:[/] {ctx.summary}")
-    _print_stats(store.corpus)
-    _print_usage(tracer.usage)
-    console.print(f"\n[green]✓ Corpus written to[/] {out_path}")
+        if seed:
+            found, missing = resolve_seeds(seed, oa, wos)
+            for m in missing:
+                console.print(f"[yellow]could not resolve seed: {m}[/]")
+            for p in found:
+                p.relevance = Relevance(score=10, reason="seed")
+                store.add(p)
+        meta = store.corpus.meta
+        if meta.intent is None or not corpus:
+            meta.intent = intent_mod.parse_intent(prompt, llm, [p for p in store.papers if p.is_seed], _parse_years(years))
+        meta.prompt = meta.prompt or prompt
+        meta.seeds = list(dict.fromkeys(meta.seeds + seed))
+        meta.params.setdefault("agent_runs", []).append(
+            {"prompt": prompt, "max_steps": max_steps, "threshold": threshold, "max_papers": max_papers}
+        )
+        console.print(f"[bold]Intent:[/] {meta.intent.topic}")
+
+        ctx = AgentContext(corpus=store, llm=llm, oa=oa, wos=wos, intent=meta.intent, tracer=tracer, threshold=threshold,
+                           max_papers=max_papers)
+        if len(store) >= max_papers:
+            console.print(f"[yellow]Corpus already has {len(store)} papers (cap {max_papers}); the agent can only swap papers[/]")
+        interrupted = False
+        try:
+            run_agent(ctx, prompt, max_steps, max_tokens, log=_log)
+        except KeyboardInterrupt:
+            interrupted = True
+            console.print("[yellow]Interrupted; saving current corpus…[/]")
+        meta.summary = ctx.summary or meta.summary
+        if meta.prisma is not None:
+            meta.prisma.agent_added += ctx.n_added
+            meta.prisma.included = len(store)
+        edges = relations.build_edges(store)
+        store.set_edges(edges)
+        if label_edges and edges:
+            relations.label_edges(edges, store, llm, meta.intent.language)
+        store.save(out_path)
+        if ctx.summary:
+            console.print(f"\n[bold]Agent summary:[/] {ctx.summary}")
+        _print_stats(store.corpus)
+        _print_usage(tracer.usage)
+        console.print(f"\n[green]✓ Corpus written to[/] {out_path}")
+        if obsidian:
+            _write_obsidian(store.corpus, out_path)
+        if ctx.finished and not interrupted:
+            _report_cleanup(run.complete([out_path]))
+        else:
+            console.print("[yellow]Partial result saved; previous results and cache are preserved.[/]")
+
+
+@app.command()
+def deduplicate(
+    corpus: Path = typer.Argument(..., exists=True, dir_okay=False),
+    out: Path = typer.Option(..., help="New output directory; the source corpus is preserved"),
+    obsidian: bool = typer.Option(True, "--obsidian/--no-obsidian", help="Write a local Obsidian vault"),
+):
+    """Merge well-supported publication versions offline, preserving originals and a review report."""
+    import json
+
+    from .dedup import deduplicate as filter_versions
+    from .export import EXTENSIONS, export
+    from .obsidian import export_vault
+    from .pipeline.relations import build_edges
+    from .store import CorpusStore
+
+    if out.exists():
+        raise typer.BadParameter("--out must be a new directory")
+    store = CorpusStore.load(corpus)
+    report = filter_versions(store)
+    store.set_edges(build_edges(store))
+    out.mkdir(parents=True, exist_ok=False)
+    store.save(out / "corpus.json")
+    (out / "deduplication.json").write_text(json.dumps({
+        "source": str(corpus.resolve()), "stats": store.corpus.stats, **report,
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+    lines = ["# 文献版本去重报告", "", f"来源：`{corpus.resolve()}`", "",
+             f"本次 {report['last_pass']['before']} → {len(store)} 条主记录；"
+             f"合并 {report['last_pass']['merged']} 条，保留 {store.corpus.stats['n_source_records']} 条原始版本记录。", "",
+             "按题名、作者、年份、预印本来源及引用信息作保守匹配；未查询外部版本关系，也未调用 LLM。",
+             "主记录优先选正式发表版本，评分取已记录最高值，种子与撤稿标记保留。",
+             "原始版本保存在 corpus.json 的 versions 中；引用边保留 record_pairs 原始端点。",
+             "既有 PRISMA 保留原检索运行口径，去重后的数量见本报告和 stats。", "", "## 合并记录", ""]
+    for m in report["merges"]:
+        p = store.get(m["kept_id"])
+        lines.append(f"- `{m['removed_id']}` → `{m['kept_id']}`：{p.title if p else ''}（{m['rule']}）")
+    lines += ["", "## 待核对", ""]
+    lines += [f"- {' / '.join(r['ids'])}：{' / '.join(r['titles'])}" for r in report["review_candidates"]] or ["无相似题名候选；这不代表已排除所有潜在重复。"]
+    (out / "deduplication.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    for fmt, ext in EXTENSIONS.items():
+        (out / f"corpus.{ext}").write_text(export(store.corpus.papers, fmt), encoding="utf-8")
     if obsidian:
-        _write_obsidian(store.corpus, out_path)
+        export_vault(store.corpus, out / "obsidian")
+    _print_stats(store.corpus)
+    console.print(f"[green]✓ Version filter:[/] {report['last_pass']['merged']} merged, "
+                  f"{len(report['review_candidates'])} pairs need review → {out}")
 
 
 @app.command()

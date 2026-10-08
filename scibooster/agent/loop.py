@@ -54,3 +54,6 @@ def run_agent(ctx: AgentContext, prompt: str, max_steps: int = 30, max_tokens: i
         log(f"   corpus = {len(ctx.corpus)}")
         if ctx.finished:
             break
+    from ..dedup import deduplicate
+
+    deduplicate(ctx.corpus, ctx.tracer)

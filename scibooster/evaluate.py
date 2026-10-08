@@ -31,8 +31,11 @@ def gold_from_surveys(surveys: list[Paper]) -> set[str]:
 
 def recall_report(corpus: Corpus, surveys: list[Paper], ks: tuple[int, ...] = DEFAULT_KS) -> EvalReport:
     """corpus.papers must be in rank order (CorpusStore.finalize puts seeds first, then by relevance)."""
-    gold = gold_from_surveys(surveys)
-    survey_ids = {s.id for s in surveys}
+    aliases = {v.id: p.id for p in corpus.papers for v in p.versions}
+    canonical = lambda pid: aliases.get(pid, pid)
+    gold = {canonical(pid) for pid in gold_from_surveys(surveys)}
+    survey_ids = {canonical(s.id) for s in surveys}
+    gold -= survey_ids
     ranked = [p.id for p in corpus.papers if p.id not in survey_ids]
     found = [pid for pid in ranked if pid in gold]
     warnings = [

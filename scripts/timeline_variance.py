@@ -105,7 +105,8 @@ def analyze(out: Path, threshold: float = 6.0) -> dict:
     reps = meta["replicates"]
     _, params = load_case()
     base = load_baseline()
-    repro1 = {b: Corpus.model_validate(read_json(Path(meta["cache_from"]) / b / "corpus.json")) for b in BRANCHES}
+    source = out / "inputs" if (out / "inputs").is_dir() else Path(meta["cache_from"])
+    repro1 = {b: Corpus.model_validate(read_json(source / b / "corpus.json")) for b in BRANCHES}
     result = {"replicates": reps, "overrides": meta.get("overrides", {}), "branches": {}, "vs_baseline": [], "repro1_vs_baseline": compare(repro1, params)}
     corpora = []
     for r in range(1, reps + 1):
@@ -228,7 +229,8 @@ def parse_overrides(items: list[str]) -> dict:
     return out
 
 
-def run(out: Path, cache_from: Path, replicates: int, overrides: dict | None = None) -> int:
+def run(out: Path, cache_from: Path, replicates: int, overrides: dict | None = None, *,
+        keep_history: bool = False, keep_cache: bool = False) -> int:
     from scibooster.config import get_settings
     from scibooster.llm.deepseek import DeepSeek
     from scibooster.sources.cache import Cache
@@ -246,32 +248,40 @@ def run(out: Path, cache_from: Path, replicates: int, overrides: dict | None = N
             raise FileNotFoundError(cache_from / b / "http.sqlite")
     base = load_baseline()
     out.mkdir(parents=True, exist_ok=False)
-    rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
-    write_json(out / "variance-run.json", {
-        "started_at_utc": datetime.now(timezone.utc).isoformat(), "git_commit": rev.stdout.strip(),
-        "replicates": replicates, "cache_from": str(cache_from), "intent_source": "baseline corpus meta.intent",
-        "overrides": overrides,
-        "model": config["model"], "temperature": config["temperature"]})
-    for r in range(1, replicates + 1):
+    from scibooster.runtime import RetrievalRun
+
+    with RetrievalRun(settings, out, kind="timeline-variance", keep_history=keep_history, keep_cache=keep_cache) as run:
         for b in BRANCHES:
-            folder = out / f"rep{r}" / b
-            folder.mkdir(parents=True)
-            shutil.copyfile(cache_from / b / "http.sqlite", folder / "http.sqlite")
-            tracer = Tracer(folder / "trace.jsonl")
-            cache = Cache(folder / "http.sqlite")
-            llm, oa, wos = DeepSeek(settings, tracer), OpenAlexClient(settings, cache, tracer), WosClient(settings, cache, tracer)
-            events: list[dict] = []
-            with (folder / "console.log").open("w", encoding="utf-8") as log_file, record_stages(events):
-                def log(message):
-                    print(f"[rep{r} {b}] {message}", flush=True)
-                    log_file.write(message + "\n")
-                build.build_corpus(params[b], llm, oa, wos, tracer, folder / "corpus.json", log=log,
-                                   frozen_intent=base[b].meta.intent)
-            write_json(folder / "stages.json", events)
-            write_json(folder / "usage.json", tracer.usage.model_dump())
-    analyze(out)
-    print(f"Report: {out / 'variance.md'}", flush=True)
-    return 0
+            target = out / "inputs" / b
+            target.mkdir(parents=True)
+            shutil.copyfile(cache_from / b / "corpus.json", target / "corpus.json")
+        rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
+        write_json(out / "variance-run.json", {
+            "started_at_utc": datetime.now(timezone.utc).isoformat(), "git_commit": rev.stdout.strip(),
+            "replicates": replicates, "cache_from": str(cache_from), "intent_source": "baseline corpus meta.intent",
+            "overrides": overrides,
+            "model": config["model"], "temperature": config["temperature"]})
+        for r in range(1, replicates + 1):
+            for b in BRANCHES:
+                folder = out / f"rep{r}" / b
+                folder.mkdir(parents=True)
+                shutil.copyfile(cache_from / b / "http.sqlite", folder / "http.sqlite")
+                tracer = Tracer(folder / "trace.jsonl")
+                cache = run.cache(Cache(folder / "http.sqlite"))
+                llm, oa, wos = DeepSeek(settings, tracer), OpenAlexClient(settings, cache, tracer), WosClient(settings, cache, tracer)
+                events: list[dict] = []
+                with (folder / "console.log").open("w", encoding="utf-8") as log_file, record_stages(events):
+                    def log(message):
+                        print(f"[rep{r} {b}] {message}", flush=True)
+                        log_file.write(message + "\n")
+                    build.build_corpus(params[b], llm, oa, wos, tracer, folder / "corpus.json", log=log,
+                                       frozen_intent=base[b].meta.intent)
+                write_json(folder / "stages.json", events)
+                write_json(folder / "usage.json", tracer.usage.model_dump())
+        analyze(out)
+        print(f"Report: {out / 'variance.md'}", flush=True)
+        run.complete([out / f"rep{r}" / b / "corpus.json" for r in range(1, replicates + 1) for b in BRANCHES])
+        return 0
 
 
 def main() -> int:
@@ -283,11 +293,14 @@ def main() -> int:
     live.add_argument("--replicates", type=int, default=3)
     live.add_argument("--set", action="append", default=[], metavar="FIELD=VALUE",
                       help="Override a BuildParams field for this experiment, e.g. --set screen_votes=3")
+    live.add_argument("--keep-history", action="store_true", help="Keep earlier completed results")
+    live.add_argument("--keep-cache", action="store_true", help="Keep cache for repeat experiments")
     offline = sub.add_parser("analyze", help="Recompute the report from an existing variance directory")
     offline.add_argument("out", type=Path)
     args = parser.parse_args()
     if args.command == "run":
-        return run(args.out.resolve(), args.cache_from.resolve(), args.replicates, parse_overrides(args.set))
+        return run(args.out.resolve(), args.cache_from.resolve(), args.replicates, parse_overrides(args.set),
+                   keep_history=args.keep_history, keep_cache=args.keep_cache)
     analyze(args.out)
     print(f"Report: {args.out / 'variance.md'}")
     return 0

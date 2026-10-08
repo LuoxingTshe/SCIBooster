@@ -1,6 +1,6 @@
 # TimelineStudy 检索复现
 
-本目录只用于复现 2026-10-07 的 SCIBooster 检索步骤：两条分支各跑一次 `build_corpus`，结果与当时的 79 条候选比较。DOI 身份核验、Crossref 审计、直接支持清单的筛选和时间线重构都不在复现范围内。上一级目录的案例文件与 `cases/timeline-study/` 逐字节相同（`SOURCE_MANIFEST.json` 的哈希由测试检查）。
+本目录只用于复现 2026-10-07 的 SCIBooster 检索步骤：两条分支各跑一次 `build_corpus`，结果与当时的 79 条候选比较。DOI 身份核验、Crossref 审计、直接支持清单的筛选和时间线重构都不在复现范围内。文献包位于上一级 `literature/`，保留内容由 `SOURCE_MANIFEST.json` 哈希检查；非检索研究产物已移出测试目录。
 
 |文件|用途|
 |---|---|
@@ -11,13 +11,18 @@
 
 ```bash
 .venv/bin/python -m scripts.timeline_retrieval plan                       # 离线：显示种子和实际检索式
-.venv/bin/python -m scripts.timeline_retrieval run --out corpora/timeline-repro-<label>   # 真实 API，约 20 次 DeepSeek 调用、6 次 WoS 请求
+.venv/bin/python -m scripts.timeline_retrieval run --out artifacts/runs/timeline-repro-<label> --keep-history --keep-cache   # 真实 API，并保留缓存供下一条波动实验复用
 .venv/bin/python -m scripts.timeline_retrieval run --out ... --reparse-intent               # 让 LLM 重新解析意图（repro-1 的做法）
-.venv/bin/python -m scripts.timeline_variance run --out corpora/timeline-variance-<label> --cache-from corpora/timeline-repro-<label> [--set frontier_size=6]   # 复用缓存，只量化 LLM 波动
-.venv/bin/python -m scripts.timeline_retrieval compare corpora/timeline-repro-<label>     # 离线重算对比
+.venv/bin/python -m scripts.timeline_variance run --out artifacts/runs/timeline-variance-<label> --cache-from artifacts/runs/timeline-repro-<label> [--set frontier_size=6]   # 复用缓存，只量化 LLM 波动
+.venv/bin/python -m scripts.timeline_retrieval compare artifacts/runs/timeline-repro-<label>     # 离线重算对比
 ```
 
 `run` 默认**冻结研究意图**：直接使用基线语料 `meta.intent` 中记录的意图，不再调用 LLM 重新解析（2026-10-07 实验表明意图重解析是最大的波动来源）。每条分支使用独立的新 HTTP 缓存，输出目录必须不存在，结果写入 `comparison.md` / `comparison.json`。只有结构问题会导致非零退出码：种子未全部解析、实际检索式与 `case.json` 不同、语料内重复。重合率只用于描述，不作为通过门槛。
+
+通过后默认清空缓存并删除先前完成的受管理结果，失败保留旧结果与缓存。
+需要跨次对比或继续波动实验时加 `--keep-history --keep-cache`。
+波动实验的所有重复作为一份完整结果，在实验结束后统一清理；源语料副本保存在
+本次 `inputs/` 中，因此原运行被删除后仍能离线 `analyze`。
 
 ## 比较口径
 
@@ -47,4 +52,4 @@
 |A：+ 阈值附近多次打分取中位数|66%（15/28）|85%（44/56）|约 11 万|
 |B：A + 滚雪球起点 6 篇|77%（19/28）|87%（49/60）|约 11 万|
 
-冻结意图后，管线找到的 20 条直接支持 DOI 在 3 次中都全部命中（repro-1 为 18/20）。A 没有减少跨阈值的翻转，多次打分的代码已回滚；B 的小幅提升在 3 次重复的噪声范围内，未改动冻结协议。本地仅保留 `corpora/timeline-variance-2026-10-07`（冻结意图组）；A、B 两组原始数据已删除，以上表格为其摘要。
+冻结意图后，管线找到的 20 条直接支持 DOI 在 3 次中都全部命中（repro-1 为 18/20）。A 没有减少跨阈值的翻转，多次打分的代码已回滚；B 的小幅提升在 3 次重复的噪声范围内，未改动冻结协议。本地仅保留 `artifacts/runs/timeline-variance-2026-10-07`（冻结意图组）；A、B 两组原始数据已删除，以上表格为其摘要。

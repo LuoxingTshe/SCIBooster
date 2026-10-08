@@ -5,7 +5,10 @@ __pycache__/
 .env
 .cache/
 corpora/
+artifacts/*
+!artifacts/README.md
 .DS_Store
 # Local, user-supplied literature PDFs; portable benchmark metadata lives in fixtures.
 tests/[sS][cC][iI]/*.[pP][dD][fF]
 tests/[sS][cC][iI]/system_test/
+tests/cases/classical-garden/literature/

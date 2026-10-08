@@ -1,4 +1,7 @@
-# SCIBooster
+# SCIBooster · beta1.0
+
+**Official Beta release: beta1.0** (2026-10-08). Python package version: `1.0.0b1`.
+See [release notes](CHANGELOG.md); run `scibooster --version` to check your installed version.
 
 A literature retrieval agent harness driven by DeepSeek. You describe a research need in natural language and supply a few core papers; SCIBooster searches **Web of Science Starter API**, uses **OpenAlex** (via [pyalex](https://github.com/J535D165/pyalex)) to fill in abstracts and citation relations, and builds a citation-linked corpus in JSON. Results are written as an **Obsidian vault** (a note per paper, a Bases table, a citation-network Canvas laid out like the dev renderer, Graph view colour groups, an overview with the PRISMA flow). A small bundled web renderer (citation network + BFS/DFS playback) is kept as a development tool. Corpora can be scored for recall against published surveys and exported to BibTeX / RIS / CSV.
 
@@ -37,9 +40,44 @@ cp .env.example .env   # fill in DEEPSEEK_API_KEY, WOS_API_KEY, OPENALEX_EMAIL
 | `WOS_MAX_REQUESTS` | Cap on WoS requests per run (the free tier has a low daily quota); cache hits don't count toward it |
 | `OPENALEX_EMAIL` / `OPENALEX_API_KEY` | OpenAlex polite pool / optional API key |
 
-All WoS / OpenAlex responses are cached in `.cache/http.sqlite`, so rerunning the same task uses no quota.
+WoS / OpenAlex responses are cached in `artifacts/cache/http.sqlite` during retrieval.
+Successful retrieval clears the cache by default. Use `--keep-cache` to reuse saved responses in later runs;
+cache misses and expired entries still require API requests.
+
+Runtime data is kept under `artifacts/`: shared cache in `cache/`, retrieval outputs in
+`runs/`, and unrelated historical research materials in `archive/`. These files are Git-ignored.
+`SCIB_CACHE_DIR` / `SCIB_CORPORA_DIR` override the cache and run directories. Case-specific caches
+stay beside their run outputs for reproducibility. `tests/cases/` contains only literature packages,
+fixed inputs, gold sets, necessary regression baselines and test code. The local PDF package is at
+`tests/cases/classical-garden/literature/`. The old `.cache/` and `corpora/` directories have been migrated.
+
 
 ## CLI
+
+After a successful `build`, a finished `agent` session, or a passing real-case run, the application
+keeps **one complete result directory** under `artifacts/runs/`. This includes the final corpus,
+requested exports, reports and local Obsidian output. All requested output must be saved before
+earlier completed runs are removed. Cached responses from the run and shared cache are emptied
+and SQLite storage is compacted; the empty database file remains available for the next retrieval.
+`cleanup.json` records removed directories, cleared caches and any cleanup errors.
+
+Use `--keep-history` to retain earlier completed results and `--keep-cache` to retain cached responses.
+Both options are available on `build`, `agent`, and the three real-search experiment scripts.
+The environment settings `SCIB_KEEP_HISTORY=true` / `SCIB_KEEP_CACHE=true` enable these preferences globally.
+For repeat experiments or later cached variance runs, use both options on the source retrieval.
+
+Failed, interrupted, unfinished Agent sessions and failed case evaluations preserve the previous
+complete result and cached responses, along with their partial output for diagnosis. Only owned,
+completed run directories are pruned; unrecognized folders and symlinks are preserved. Custom
+output outside the configured run root does not prune that root. `tests/cases/`, `artifacts/archive/`
+and external Obsidian vaults are outside this retention policy. Retrievals sharing a run root are
+serialized; a second simultaneous retrieval is refused. Agent continuation writes to a new result
+directory, so its input corpus is preserved until the new session finishes successfully.
+
+Existing local results have been registered for retention; they are eligible for removal after the
+next successful retrieval. The earlier garden regression remains an incomplete run for diagnosis.
+Variance results copy the source corpora into their own `inputs/` directory so offline reanalysis
+continues to work after the source run is removed.
 
 ```bash
 # Debug: show only the parsed intent and generated queries
@@ -56,21 +94,24 @@ scibooster build "..." --source openalex --tier quick
 
 # Agent mode: DeepSeek calls tools on its own (search / snowball / screen / add) to extend an existing corpus
 # --max-papers is a hard cap: add_to_corpus refuses beyond it
-scibooster agent "补充 2023 年后基于大模型的分子生成工作" --corpus corpora/<run>/corpus.json --max-steps 30 --max-papers 100
+scibooster agent "补充 2023 年后基于大模型的分子生成工作" --corpus artifacts/runs/<run>/corpus.json --max-steps 30 --max-papers 100
 
 # (Re)write the Obsidian output for an existing corpus; build/agent do this automatically
-scibooster obsidian corpora/<run>/corpus.json                       # → corpora/<run>/obsidian/ (open as a vault)
-scibooster obsidian corpora/<run>/corpus.json --vault ~/Notes       # → ~/Notes/SCIBooster/<run>/
+scibooster obsidian artifacts/runs/<run>/corpus.json                       # → artifacts/runs/<run>/obsidian/ (open as a vault)
+scibooster obsidian artifacts/runs/<run>/corpus.json --vault ~/Notes       # → ~/Notes/SCIBooster/<run>/
 
 # Recall against the reference list of a published survey (OpenAlex only, no LLM); writes eval.json
-scibooster eval   corpora/<run>/corpus.json --gold 10.1016/j.ddtec.2020.11.009
+scibooster eval   artifacts/runs/<run>/corpus.json --gold 10.1016/j.ddtec.2020.11.009
 
 # Export for Zotero / EndNote / spreadsheets (corpus.bib / .ris / .csv next to the corpus)
-scibooster export corpora/<run>/corpus.json --format bibtex --min-score 7
+scibooster export artifacts/runs/<run>/corpus.json --format bibtex --min-score 7
 
-scibooster stats    corpora/<run>/corpus.json
-scibooster traverse corpora/<run>/corpus.json --start W2606780347 --mode dfs --direction cited_by --depth 4
-scibooster serve    corpora/<run>/corpus.json        # dev renderer, http://127.0.0.1:8765
+# Offline publication-version filter; writes a new corpus, audit report and exports
+scibooster deduplicate artifacts/runs/<run>/corpus.json --out artifacts/runs/<new-run>
+
+scibooster stats    artifacts/runs/<run>/corpus.json
+scibooster traverse artifacts/runs/<run>/corpus.json --start W2606780347 --mode dfs --direction cited_by --depth 4
+scibooster serve    artifacts/runs/<run>/corpus.json        # dev renderer, http://127.0.0.1:8765
 ```
 
 `--tier quick|standard|deep` picks a preset; any explicit option overrides it:
@@ -85,7 +126,7 @@ Other `build` options: `--direction backward|forward|both`; `--threshold` releva
 
 `eval` caveat: a survey's reference list also contains background works outside your need, so absolute recall understates coverage. Use it to compare runs on the same gold set, and don't use a corpus seed as the gold survey (its references are snowballed directly; the command warns).
 
-Each run produces `corpora/<slug>-<time>/`:
+Each run produces `artifacts/runs/<slug>-<time>/`:
 - `corpus.json`: the corpus (schema below)
 - `trace.jsonl`: every LLM / WoS / OpenAlex / tool call (for auditing and reproducibility)
 - `obsidian/`: the Obsidian vault output (unless `SCIB_OBSIDIAN_VAULT` points at your own vault, or `--no-obsidian`)
@@ -121,6 +162,45 @@ Each run produces `corpora/<slug>-<time>/`:
 ```
 
 The schema is defined in `scibooster/models.py` (Pydantic), and `Corpus.model_validate` can validate it.
+
+## Publication versions (2026-10-08)
+
+`build` runs a conservative offline version filter **after screening, before the final size cap**.
+`agent` applies the same rules to an existing corpus and to additions; a recognized version can be
+merged even at the size cap. Plain loading does not run fuzzy version matching. To process an older
+run without overwriting it, use `scibooster deduplicate <corpus.json> --out <new-directory>`.
+This writes `deduplication.json`, `deduplication.md`, a new corpus, BibTeX/RIS/CSV and a local Obsidian
+vault (`--no-obsidian` skips the vault). No API calls are made.
+
+The `versions-v1` policy recognizes missing-DOI duplicates using exact normalized titles and authors
+with close known years. Preprint/published pairs require known DOIs, years at most three years apart,
+matching first authors and substantial author overlap, plus long near-identical titles or a shared
+title with an added subtitle. Non-identical titles require corroborating references. Explicit
+repository DOI/venue patterns identify preprints. Different published DOIs, conflicting authors,
+corrections, unknown dates and ambiguous transitive matches remain separate. Similar titles are
+reported for review. These are conservative metadata inferences, not publisher-confirmed version
+relationships; renamed manuscripts, author initials and historic reprints can remain unresolved.
+There is no additional LLM judge. Exact thresholds are in `scibooster/dedup.py`.
+
+Each consolidated paper has flat `versions` snapshots containing **all original records**, including
+the representative. Formal publication metadata is preferred; seed/retraction flags and notes are
+preserved, relevance is the highest recorded score, references/keywords are unioned, and citation
+counts are not summed. `meta.deduplication` records merge rules, evidence and review candidates.
+`stats.n_papers` counts representatives; `n_source_records` counts their source versions. Remaining
+ambiguity means these are not guaranteed counts of independent studies.
+
+Old IDs and DOIs remain lookup aliases. Citation edges map to representatives, removing self-loops
+and duplicate edges; `record_pairs` retain original citing/cited IDs, with mapped edges marked
+`openalex_version_mapped`. Obsidian notes list versions and identify mapped citations. Survey recall
+collapses known version aliases in both the gold set and corpus. Frozen-case DOI checks recognize
+retained versions; timeline record-overlap comparisons include their original keys. Historical
+PRISMA in an offline-converted corpus retains its original run counts; use the deduplication report
+and current `stats` for the post-filter size. A new build's PRISMA uses the consolidated candidate pool.
+
+Historical offline check on the 2026-10-08 rockery run (all run artifacts were subsequently deleted at the user’s request; version-filter tests now use synthetic pairs): **25 → 23 representatives**, preserving 25 source
+records and the seed; 52 citation edges become 47 after version mapping. Both removed representatives
+are Research Square preprints with retained journal versions. On a separate history run, a WoS/OpenAlex
+duplicate merges (52 → 51); book/review pairs and a distant reprint remain separate for review.
 
 ## Obsidian output
 
@@ -159,6 +239,7 @@ scibooster/
   evaluate.py export.py  recall against survey references; BibTeX / RIS / CSV export
   obsidian.py            Obsidian vault output (notes, Base, Canvas, overview)
   store.py graph.py      corpus dedup/merge/persistence; citation graph and BFS/DFS
+  dedup.py               conservative version filter, retained source records and review candidates
   llm/                   DeepSeek wrapper (JSON output, tool calling, retries, token accounting) + prompts
   sources/               WoS Starter client, OpenAlex (pyalex) wrapper, sqlite cache
   pipeline/              intent / seeds / query / enrich / screen / snowball / gaps / relations / build
@@ -190,7 +271,7 @@ CI (`.github/workflows/ci.yml`, `ubuntu-26.04`, actions v7 on the Node 24 runtim
 - 核心文献固定为 3 篇：皇家园林三维保护、历史园林点云空间分析、古典园林假山定量分析。
 - `build --branch` 可重复指定四个额外 WoS 分支：`vegetation_tls`（古树植被/TLS）、`garden_syntax`（园路/空间句法）、`garden_reviews`（园林综述）、`heritage_pointcloud`（遗产点云方法）。不指定分支时保留原有通用检索行为。这四个分支是本领域的显式选项，并非所有研究主题通用的查询。
 - `build` 对检索补全、引文扩展和共引补缺阶段的已知年份执行显式年份边界，修复初始查询受年份限制而扩展结果越界的问题。`excluded_out_of_year` 记录剔除事件；未知年份及用户显式种子仍按现有规则保留，固定测试会将未知或越界年份判为需关注。
-- 整理 `tests/`：离线系统测试放在 `tests/system/`，可提交的真实测试输入移入 `tests/fixtures/real_search/`（2026-10-07 起位于 `tests/cases/classical-garden/`，见 [`tests/README.md`](tests/README.md)），不再依赖 macOS 的 `SCI`/`sci` 大小写兼容。原始 PDF 与约 397 MB 文献包保留本地，不提交 Git；运行结果在 `corpora/`。
+- 整理 `tests/`：离线系统测试放在 `tests/system/`，可提交的真实测试输入移入 `tests/fixtures/real_search/`（2026-10-07 起位于 `tests/cases/classical-garden/`，见 [`tests/README.md`](tests/README.md)），不再依赖 macOS 的 `SCI`/`sci` 大小写兼容。原始 PDF 与约 397 MB 文献包保留本地，不提交 Git；运行结果在 `artifacts/runs/`。
 - 新增固定测试入口 `python -m scripts.real_search`：锁定研究意图、种子、基础检索式、分支和参数；真实调用生产管线后自动检查语料、导出 Obsidian、核对 DOI、写报告。基准答案只用于运行后的评估，不参与检索或筛选提示。
 
 以下是把两轮已有语料按**同一个十篇核对集**重新计算的结果，机器可读基线见 [`baselines.json`](tests/cases/classical-garden/baselines.json)：
@@ -221,17 +302,17 @@ CI (`.github/workflows/ci.yml`, `ubuntu-26.04`, actions v7 on the Node 24 runtim
 
 # 完整真实运行；需 DEEPSEEK_API_KEY、WOS_API_KEY 及可访问的 OpenAlex
 # 每次使用新的目录，避免覆盖语料和日志；会消耗实际 API 配额
-.venv/bin/python -m scripts.real_search run --out corpora/garden-v1-dev001
+.venv/bin/python -m scripts.real_search run --out artifacts/runs/garden-v1-dev001
 
 # 离线复评已有语料；不调用 API；报告也必须写入新目录
 .venv/bin/python -m scripts.real_search evaluate \
-  corpora/real-test-classical-garden-branches-20261006/corpus.json \
-  --out corpora/garden-v1-audit001
+  artifacts/runs/real-test-classical-garden-branches-20261006/corpus.json \
+  --out artifacts/runs/garden-v1-audit001
 ```
 
 [`case.json`](tests/cases/classical-garden/case.json) 固定 2018–2025、WoS 主检索、3 条基础查询加 4 个分支、每查询 50 条、一跳双向扩展、每节点 25 条、前沿 15、预筛选 150、阈值 6、上限 200、共引至少 3 次且最多 30 条，以及边标注参数。模型固定 `deepseek-chat`、temperature=0.2，单次 WoS 请求预算 60。直接调用通用 CLI 时仍可自由配置；要比较开发版本，请使用固定入口。
 
-每次真实运行使用独立的 HTTP 缓存，保存 `inputs/` 输入快照、`run.json`（Git 提交、工作区状态、代码/输入摘要、模型、实际用量、运行状态）、`console.log`、`trace.jsonl`、`http.sqlite`、`corpus.json`、`obsidian/`、`benchmark.json` 和 `benchmark.md`。失败也保留状态与日志。所有运行产物留在本地，密钥不写入测试配置或 Git。
+每次真实运行使用独立的 HTTP 缓存，保存 `inputs/` 输入快照、`run.json`（Git 提交、工作区状态、代码/输入摘要、模型、实际用量、运行状态）、`console.log`、`trace.jsonl`、`http.sqlite`、`corpus.json`、`obsidian/`、`benchmark.json` 和 `benchmark.md`。通过后默认只保留本次完整结果并清空缓存；比较多次运行时加 `--keep-history --keep-cache`。失败或回归保留原结果、缓存、状态与日志。所有运行产物留在本地，密钥不写入测试配置或 Git。
 
 质量检查要求三篇种子完整、非种子核对文献至少命中 6/7、年份已知且在范围内、记录 ID/DOI 不重复、引用边有效，并检查真实运行是否执行了全部固定查询。通过退出码为 0，召回回退或检查失败为非零。固定输入不保证数据库、模型或索引永远不变；回退应结合报告分析，不能直接等同于代码错误。
 
@@ -245,7 +326,7 @@ CI (`.github/workflows/ci.yml`, `ubuntu-26.04`, actions v7 on the Node 24 runtim
 | 高 | 评估范围有限。十篇子集在复盘后确定；尚无全包年份、主题、正负标签，也无独立精确率评价。 | 固定当前回归集；补全人工标注、独立验证集及抽样相关度评价，区分核心、综述、方法参考。 |
 | 高 | 截断可能影响召回。第二轮 180 条检索候选只送筛 150 条，303 条扩展候选只送筛 150 条，共 183 条未筛；四分支间共享筛选配额，没有分支保底。 | 分支配额、语义召回/重排与参数消融；目前没有证据把第一轮具体漏项直接归因于 BM25。 |
 | 高 | 被引数排序有偏。WoS、前向引用和后向参考均优先高被引，并受每查询/每节点上限及一跳限制影响。 | 比较新近排序、主题覆盖和混合排序，评估低被引新文献及边缘子主题。 |
-| 高 | 跨 DOI/OpenAlex ID 的版本未合并。假山定量、三苏祠数字保存及扫描仪比较等出现预印本/正式稿疑似重复。 | 基于版本关系、题名、作者核对同一研究；区分记录数与独立研究数。 |
+| 高 | 跨 DOI/OpenAlex ID 的版本重复：2026-10-08 已加入保守版本过滤及原始记录/引用映射，假山案例两组通过。 | 继续处理改题、作者缩写、重印等待核对项；尚未查询出版社版本关系，不能保证去尽所有重复。 |
 | 中 | 综述与方法参考的纳入边界不明确。统一单一相关度分数可能低估背景综述，也可能保留过泛的方法综述。 | 明确文献角色、分角色标准，避免只降低全局阈值。 |
 | 中 | 年份和文献类型仍有边界。build 已过滤已知越界年份，但未知年份、种子例外、在线年/卷期年差异、agent 模式均需独立处理；扩展阶段未强制执行 Article/Review/Proceedings 类型要求。 | 显式年份政策、缺失年份标记、类型过滤与 agent 一致性检查。 |
 | 中 | 共引补缺效率与计数。第二轮取回 30 条但年份过滤后仅 2 条；越界论文移出候选池后可能被后续阶段再次取回。`excluded_out_of_year` 可能跨阶段重复，`identified` 仅统计留在池中的记录，二者不能直接相加为唯一发现量。 | 提前年份筛选、回填有效候选、记录排除 ID 和完整 PRISMA 口径。 |

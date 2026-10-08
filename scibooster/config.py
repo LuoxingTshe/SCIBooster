@@ -24,8 +24,10 @@ class Settings(BaseSettings):
     openalex_email: str = ""
     openalex_api_key: str = ""
 
-    scib_cache_dir: Path = Path(".cache")
-    scib_corpora_dir: Path = Path("corpora")
+    scib_cache_dir: Path = Path("artifacts/cache")
+    scib_corpora_dir: Path = Path("artifacts/runs")
+    scib_keep_history: bool = False
+    scib_keep_cache: bool = False
     # Existing Obsidian vault to write runs into (as <vault>/SCIBooster/<run>/); empty = <run>/obsidian/ as its own vault
     scib_obsidian_vault: Path | None = None
 

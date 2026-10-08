@@ -66,8 +66,8 @@ def evaluate(corpus: Corpus, config: dict, gold: list[dict]) -> dict:
     start, end = config["params"]["years"]
     by_doi = {}
     for p in corpus.papers:
-        if p.doi:
-            by_doi.setdefault(normalize_doi(p.doi), []).append(p)
+        for doi in {normalize_doi(v.doi) for v in [p, *p.versions] if v.doi}:
+            by_doi.setdefault(doi, []).append(p)
     rows = []
     for g in gold:
         matches = by_doi.get(normalize_doi(g["doi"]), [])
@@ -83,9 +83,9 @@ def evaluate(corpus: Corpus, config: dict, gold: list[dict]) -> dict:
                        if p.year is not None and not start <= p.year <= end]
     unknown_years = [p.id for p in corpus.papers if p.year is None]
     seed_dois = {normalize_doi(g["doi"]) for g in gold if g["role"] == "seed"}
-    actual_seeds = {normalize_doi(p.doi) for p in corpus.papers if p.is_seed}
+    actual_seeds = {normalize_doi(v.doi) for p in corpus.papers for v in p.versions or [p] if v.is_seed}
     errors = []
-    if actual_seeds != seed_dois or sum(p.is_seed for p in corpus.papers) != len(seed_dois):
+    if actual_seeds != seed_dois:
         errors.append("seed_resolution_or_seed_leakage")
     if year_violations:
         errors.append("out_of_year")
@@ -152,7 +152,7 @@ def fingerprint() -> str:
     return digest.hexdigest()
 
 
-def run_live(out: Path, config: dict, params: BuildParams, gold: list[dict]) -> int:
+def run_live(out: Path, config: dict, params: BuildParams, gold: list[dict], *, keep_history: bool = False, keep_cache: bool = False) -> int:
     from scibooster.config import get_settings
     from scibooster.llm.deepseek import DeepSeek
     from scibooster.obsidian import export_vault
@@ -166,48 +166,55 @@ def run_live(out: Path, config: dict, params: BuildParams, gold: list[dict]) -> 
     if not settings.deepseek_api_key or not settings.wos_api_key:
         raise ValueError("DEEPSEEK_API_KEY and WOS_API_KEY are required")
     out.mkdir(parents=True, exist_ok=False)
-    snapshot = out / "inputs"
-    snapshot.mkdir()
-    for name in INPUTS:
-        shutil.copyfile(FIXTURE / name, snapshot / name)
-    if (FIXTURE / "baselines.json").exists():
-        shutil.copyfile(FIXTURE / "baselines.json", snapshot / "baselines.json")
-    rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
-    status = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, text=True)
-    manifest = {"case_id": config["case_id"], "started_at_utc": datetime.now(timezone.utc).isoformat(),
-                "git_commit": rev.stdout.strip() if rev.returncode == 0 else None,
-                "dirty_checkout": bool(status.stdout.strip()), "code_sha256": fingerprint(),
-                "inputs_sha256": {name: hashlib.sha256((snapshot / name).read_bytes()).hexdigest() for name in INPUTS},
-                "model": config["model"], "temperature": config["temperature"],
-                "cache_policy": "isolated per run; no previous HTTP cache reused",
-                "expected_queries": expected_queries(params), "status": "running"}
-    write_json(out / "run.json", manifest)
-    tracer = Tracer(out / "trace.jsonl")
-    cache = Cache(out / "http.sqlite")
-    try:
-        llm, oa, wos = DeepSeek(settings, tracer), OpenAlexClient(settings, cache, tracer), WosClient(settings, cache, tracer)
-        with (out / "console.log").open("w", encoding="utf-8") as log_file:
-            def log(message):
-                print(message, flush=True)
-                log_file.write(message + "\n")
-                log_file.flush()
-            store = build_corpus(params, llm, oa, wos, tracer, out / "corpus.json", log=log)
-        export_vault(store.corpus, out / "obsidian", out / "obsidian")
-        result = evaluate(store.corpus, config, gold)
-        if store.corpus.meta.queries != manifest["expected_queries"]:
-            result["errors"].append("executed_queries_differ_from_fixed_case")
-            result["passed"] = False
-        write_report(out, result)
-        manifest["status"] = "passed" if result["passed"] else "regression"
-        print(f"Report: {out / 'benchmark.md'}", flush=True)
-        return 0 if result["passed"] else 1
-    except Exception as exc:
-        manifest["status"], manifest["error_type"] = "failed", type(exc).__name__
-        raise
-    finally:
-        manifest["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
-        manifest["usage"] = tracer.usage.model_dump()
+    from scibooster.runtime import RetrievalRun
+
+    with RetrievalRun(settings, out, kind="classical-garden", keep_history=keep_history, keep_cache=keep_cache) as run:
+        snapshot = out / "inputs"
+        snapshot.mkdir()
+        for name in INPUTS:
+            shutil.copyfile(FIXTURE / name, snapshot / name)
+        if (FIXTURE / "baselines.json").exists():
+            shutil.copyfile(FIXTURE / "baselines.json", snapshot / "baselines.json")
+        rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
+        status = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, text=True)
+        manifest = {"case_id": config["case_id"], "started_at_utc": datetime.now(timezone.utc).isoformat(),
+                    "git_commit": rev.stdout.strip() if rev.returncode == 0 else None,
+                    "dirty_checkout": bool(status.stdout.strip()), "code_sha256": fingerprint(),
+                    "inputs_sha256": {name: hashlib.sha256((snapshot / name).read_bytes()).hexdigest() for name in INPUTS},
+                    "model": config["model"], "temperature": config["temperature"],
+                    "cache_policy": "isolated per run; no previous HTTP cache reused",
+                    "expected_queries": expected_queries(params), "status": "running"}
         write_json(out / "run.json", manifest)
+        tracer = Tracer(out / "trace.jsonl")
+        cache = run.cache(Cache(out / "http.sqlite"))
+        try:
+            llm, oa, wos = DeepSeek(settings, tracer), OpenAlexClient(settings, cache, tracer), WosClient(settings, cache, tracer)
+            with (out / "console.log").open("w", encoding="utf-8") as log_file:
+                def log(message):
+                    print(message, flush=True)
+                    log_file.write(message + "\n")
+                    log_file.flush()
+                store = build_corpus(params, llm, oa, wos, tracer, out / "corpus.json", log=log)
+            export_vault(store.corpus, out / "obsidian", out / "obsidian")
+            result = evaluate(store.corpus, config, gold)
+            if store.corpus.meta.queries != manifest["expected_queries"]:
+                result["errors"].append("executed_queries_differ_from_fixed_case")
+                result["passed"] = False
+            write_report(out, result)
+            manifest["status"] = "passed" if result["passed"] else "regression"
+            print(f"Report: {out / 'benchmark.md'}", flush=True)
+            return_code = 0 if result["passed"] else 1
+        except Exception as exc:
+            manifest["status"], manifest["error_type"] = "failed", type(exc).__name__
+            raise
+        finally:
+            manifest["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
+            manifest["usage"] = tracer.usage.model_dump()
+            write_json(out / "run.json", manifest)
+
+        if return_code == 0:
+            run.complete([out / "corpus.json"])
+        return return_code
 
 
 def main() -> int:
@@ -216,6 +223,8 @@ def main() -> int:
     sub.add_parser("plan", help="Show fixed inputs and queries; no API calls")
     live = sub.add_parser("run", help="Call real APIs and evaluate; incurs quota/cost")
     live.add_argument("--out", type=Path, required=True, help="New output directory (existing directories are refused)")
+    live.add_argument("--keep-history", action="store_true", help="Keep earlier completed results")
+    live.add_argument("--keep-cache", action="store_true", help="Keep cache for repeat experiments")
     audit = sub.add_parser("evaluate", help="Evaluate an existing corpus offline")
     audit.add_argument("corpus", type=Path)
     audit.add_argument("--out", type=Path, required=True, help="New report directory")
@@ -227,7 +236,7 @@ def main() -> int:
                          ensure_ascii=False, indent=2))
         return 0
     if args.command == "run":
-        return run_live(args.out.resolve(), config, params, gold)
+        return run_live(args.out.resolve(), config, params, gold, keep_history=args.keep_history, keep_cache=args.keep_cache)
     corpus = Corpus.model_validate(read_json(args.corpus))
     result = evaluate(corpus, config, gold)
     args.out.mkdir(parents=True, exist_ok=False)

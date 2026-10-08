@@ -29,7 +29,7 @@ class Relevance(BaseModel):
     flag: str | None = None  # e.g. "no_abstract": scored from the title only
 
 
-class Paper(BaseModel):
+class PaperRecord(BaseModel):
     id: str  # OpenAlex W-id; when unmatched, "WOS:<uid>"
     doi: str | None = None
     wos_uid: str | None = None
@@ -56,6 +56,12 @@ class Paper(BaseModel):
         return f"{self.title}. {self.abstract or ''} {' '.join(self.keywords)}"
 
 
+class Paper(PaperRecord):
+    # Original records, including the representative, before version consolidation.
+    # Flat snapshots preserve DOI, year, references, scores and provenance without recursion.
+    versions: list[PaperRecord] = Field(default_factory=list)
+
+
 class EdgeRelation(BaseModel):
     label: RelationLabel
     rationale: str = ""
@@ -67,6 +73,7 @@ class Edge(BaseModel):
     type: Literal["cites"] = "cites"
     provenance: str = "openalex"
     relation: EdgeRelation | None = None
+    record_pairs: list[tuple[str, str]] = Field(default_factory=list)  # original citing/cited version ids
 
 
 class Usage(BaseModel):
@@ -112,6 +119,7 @@ class Meta(BaseModel):
     usage: Usage = Field(default_factory=Usage)
     summary: str | None = None
     prisma: Prisma | None = None
+    deduplication: dict = Field(default_factory=dict)
 
 
 class Corpus(BaseModel):

@@ -13,6 +13,7 @@ from typing import Any
 
 class Cache:
     def __init__(self, path: Path | None, ttl_days: float = 30):
+        self.path = path
         self.ttl = ttl_days * 86400
         self._lock = threading.Lock()
         self._db: sqlite3.Connection | None = None
@@ -20,6 +21,20 @@ class Cache:
             path.parent.mkdir(parents=True, exist_ok=True)
             self._db = sqlite3.connect(str(path), check_same_thread=False)
             self._db.execute("CREATE TABLE IF NOT EXISTS kv (k TEXT PRIMARY KEY, v TEXT, t REAL)")
+
+    def clear(self) -> None:
+        """Empty cached responses and reclaim space without unlinking a live SQLite database."""
+        with self._lock:
+            if self._db is not None:
+                self._db.execute("DELETE FROM kv")
+                self._db.commit()
+                self._db.execute("VACUUM")
+
+    def close(self) -> None:
+        with self._lock:
+            if self._db is not None:
+                self._db.close()
+                self._db = None
 
     @staticmethod
     def key(*parts: Any) -> str:
